@@ -9,6 +9,8 @@ tags: [博客,Jekyll,写作]
 render_with_liquid: false
 layout: post
 ---
+
+
 将指导你如何写一篇关于 *Chirpy *主题的文章。 即使你以前使用过 Jekyll，这篇文章也值得一读，因为很多特性都需要设置特定的变量。
 
 > 这是翻译某GitHub帖子的，若要查阅请点击作者ID。
