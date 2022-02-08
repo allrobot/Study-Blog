@@ -39,7 +39,7 @@ tags: [深度学习,机器学习,生理信号,sEMG识别]
  本课题运用NN模式识别将某些样本量的特征提取出来（肌肉收缩的信号幅值、统计学特性的变化等），经一定训练组成合适的状态空间，等待下一次肌电活动段识别的时候去判断信号与状态空间的哪个状态最为接近（识别与回归）。
   
 ### 主要实现功能如下：
- 1. 模拟信号采集：至少1000HZ采样频率；
+ 1. 模拟信号采集，根据香农采样定理，采样频率应不小于1000HZ；
  2. 信号预处理：整流、过滤10～500hz有效范围的信号；
  3. 无线传输信号：每个数据包带有0.1s内的数字信息，数据包抵达处理终端时自动打上时间戳；
  4. 数字过滤：使用过滤算法去掉无用噪音，提取有价值的信息
@@ -48,6 +48,7 @@ tags: [深度学习,机器学习,生理信号,sEMG识别]
  7. NN模型推测某段肌电活动段可能的最大概率含义，转为字符流进行输出
  
 ![图1 设计流程与实现](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-08-sEMG-proposal-report/设计流程与实现.png)
+
 ### 研究方法和手段：
 - 通过Arduino开发平台完成sEMG采集装置的设计与实现。
 - 借用NN开发工具实现分类算法设计、样本采集工具以及训练。
@@ -62,3 +63,4 @@ tags: [深度学习,机器学习,生理信号,sEMG识别]
 
 ## 参考文献：
 [1] Andrés G. Jaramillo; Marco E. Benalcázar . Real-time hand gesture recognition with EMG using machine learning . 2017 IEEE Second Ecuador Technical Chapters
+[2] 待添加
