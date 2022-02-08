@@ -1,0 +1,129 @@
+I"�!<h2 id="前言">前言</h2>
+
+<p>花了半天时间建的博客，博客链接<a href="https://allrobot.github.io/Study-Blog/">在此</a></p>
+
+<p>写一个Github建博客指南，防以后忘记</p>
+
+<p>若以下内容过时导致失效，请查阅Jekyll文档</p>
+
+<p>Jekyll文档：https://jekyllrb.com/docs/
+以及https://jekyllrb.com/docs/themes/</p>
+
+<h2 id="安装环境">安装环境</h2>
+<ul>
+  <li><a href="https://rubyinstaller.org/downloads/">Ruby</a></li>
+  <li><a href="https://rubygems.org/pages/download">RubyGems</a></li>
+  <li><a href="https://nodejs.org/en/download/">NodeJS</a></li>
+  <li><a href="https://www.python.org/downloads/">Python3</a></li>
+  <li><a href="https://nchc.dl.sourceforge.net/project/mingw/Installer/mingw-get-setup.exe">GCC</a>和<a href="https://cmake.org/">Make</a></li>
+</ul>
+
+<p>下载的6个程序包，需设系统的<code class="language-plaintext highlighter-rouge">环境变量</code>…安装教程自行搜索，弄完了输入版本指令验证是否安装成功</p>
+
+<h3 id="打开cmd安装jekyll和bundler">打开CMD安装<code class="language-plaintext highlighter-rouge">jekyll</code>和<code class="language-plaintext highlighter-rouge">bundler</code></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # gem安装依赖RubyGems实现
+ gem install jekyll bundler
+ # 输入查询版本指令，查看是否安装成功
+ jekyll -v
+ bundler -v
+</code></pre></div></div>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/1.png" alt="安装与验证" /></p>
+
+<h3 id="下载github桌面版github">下载[Github桌面版]<a href="https://desktop.github.com/">Github</a></h3>
+
+<h4 id="点击file-new-repository新建博客仓库">点击<code class="language-plaintext highlighter-rouge">File-New repository</code>新建博客仓库</h4>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/2.png" alt="" /></p>
+<h4 id="随便填点点击create-repository按钮">随便填点，点击<code class="language-plaintext highlighter-rouge">Create repository</code>按钮</h4>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/3.png" alt="" /></p>
+
+<h2 id="jekyll创建简易博客">Jekyll创建简易博客</h2>
+<h3 id="cmd跳到dtest目录">CMD跳到<code class="language-plaintext highlighter-rouge">D:\test</code>目录</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cd /d D:\test
+</code></pre></div></div>
+<p>Github建立的项目文件夹</p>
+<blockquote>
+  <p>记得设为Public，否则私人仓库开通Github博客需要付费的
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/4.png" alt="" /></p>
+</blockquote>
+
+<h3 id="输入指令新建jekyll项目">输入指令<code class="language-plaintext highlighter-rouge">新建Jekyll项目</code></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # test为github仓库名，若没有则新建文件夹
+ jekyll new test
+</code></pre></div></div>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/5.png" alt="新建jekyll项目" /></p>
+
+<p>此时，test文件夹多了几个文件
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/6.png" alt="Jekyll新建的项目" /></p>
+
+<h3 id="添加webrick启动本地浏览器">添加<code class="language-plaintext highlighter-rouge">webrick</code>，启动本地浏览器</h3>
+<p>如果<code class="language-plaintext highlighter-rouge">webrick</code>等待时间长了，按<code class="language-plaintext highlighter-rouge">ctrl+c</code>退出，在输入一次</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle add webrick
+jekyll serve
+</code></pre></div></div>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/7.png" alt="" /></p>
+<h4 id="开启本地服务">开启本地服务</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll serve
+</code></pre></div></div>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/8.png" alt="" /></p>
+
+<h4 id="浏览器输入localhost4000">浏览器输入localhost:4000</h4>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="打开本地博客" /></p>
+
+<p>确保所有文件存放Jekyll站点目录下，需把主题文件夹的CSS样式表等文件放入仓库博客</p>
+<h3 id="打开_configyml文件">打开<code class="language-plaintext highlighter-rouge">_config.yml</code>文件</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>title: Your awesome title
+email: your-email@example.com
+description: &gt;- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname &amp; protocol for your site, e.g. http://example.com
+twitter_username: jekyllrb
+github_username:  jekyll
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+</code></pre></div></div>
+<p>要发布到Github Pages仅修改<code class="language-plaintext highlighter-rouge">_config.yml</code>即可,只是要删除上面的<code class="language-plaintext highlighter-rouge">theme: minima</code>，因为Github不加载Gemfile对主题gem的引用,具体参阅官方文档</p>
+
+<p>然后添加<code class="language-plaintext highlighter-rouge">baseurl:"/仓库项目名"</code>如果不添加，Github博客不会加载CSS样式表
+我这儿是加了’baseurl: “/test”</p>
+
+<h3 id="搜索主题文件夹并复制到仓库目录">搜索主题文件夹并复制到仓库目录</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> bundle info --path minima
+</code></pre></div></div>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/10.png" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/11.png" alt="" /></p>
+
+<h3 id="github-pages开启页面并保存">Github Pages开启页面并保存</h3>
+<p>Github桌面版同步到Giuhub，点击<code class="language-plaintext highlighter-rouge">View on GitHub</code>，前往<code class="language-plaintext highlighter-rouge">Settings</code>-<code class="language-plaintext highlighter-rouge">Pages</code>
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/12.png" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/13.png" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/14.png" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/15.png" alt="" />
+建立的简易博客：https://allrobots.github.io/test/</p>
+
+<h4 id="更换主题">更换主题</h4>
+<p><a href="http://jekyllthemes.org/">可供下载的主题网站</a></p>
+<blockquote>
+  <p>如果有更换主题需求，先把原来的主题文件夹删掉，更换C:\Ruby30-x64\lib\ruby\gems\3.0.0\gems下的任意主题文件夹</p>
+</blockquote>
+
+<h2 id="关于编写文章">关于编写文章</h2>
+
+<p>D:\test\test_posts复制里面的示例文件<code class="language-plaintext highlighter-rouge">2022-02-06-welcome-to-jekyll副本.markdown</code>重命名为<code class="language-plaintext highlighter-rouge">2022-02-06-article1.markdown</code>
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/16.png" alt="" /></p>
+
+<p>建议开启<code class="language-plaintext highlighter-rouge">jekyll serve</code>本地预览，边写边预览</p>
+
+<p>或VS Code下个<code class="language-plaintext highlighter-rouge">Office Viewer</code>、<code class="language-plaintext highlighter-rouge">Markdown All in One</code>之类的小插件，边写边预览</p>
+
+<p>要修改标题，可以改md文件里的title….
+博客支持Markdown语法，LaTex 数学公式…</p>
+
+<p>写完文章，Git同步就可以了，很方便的</p>
+
+:ET

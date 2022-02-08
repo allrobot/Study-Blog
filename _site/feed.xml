@@ -1,0 +1,2449 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/Study-Blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/Study-Blog/" rel="alternate" type="text/html" hreflang="zh-CN" /><updated>2022-02-08T07:07:55+00:00</updated><id>http://localhost:4000/Study-Blog/feed.xml</id><title type="html">allrobot的云笔记博客</title><subtitle>没啥好说的，本站是云笔记的博客，从Github拉取Blog
+</subtitle><author><name>李广琛</name><email>allrobots@163.com</email></author><entry><title type="html">吴恩达机器学习系列笔记 Day1</title><link href="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/06/artcle2-Andrew-Ng-DL-1.html" rel="alternate" type="text/html" title="吴恩达机器学习系列笔记 Day1" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/06/artcle2-Andrew-Ng-DL-1</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/06/artcle2-Andrew-Ng-DL-1.html"><![CDATA[]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="机器学习" /><category term="机器学习" /><category term="吴恩达" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Jekyll博客配置</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/configuration.html" rel="alternate" type="text/html" title="Jekyll博客配置" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/configuration</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/configuration.html"><![CDATA[<p>Jekyll 允许你很轻松的设计你的网站，这很大程度上归功于灵活强大的配置功能。既可以配置在网站根目录下的  <em>_config.yml</em> 文件，也可以作为命令行的标记来配置。</p>
+
+<p class="warning"><em>_config.yml</em> 包括一些在运行时一次性读入的全局配置和变量定义， 在自动生成的过程中并<strong>不会</strong>重新加载，除非重新运行。注意 Data Files 包括在自动生成范围内，可以在更改后自动重新加载。</p>
+
+<!--more-->
+
+<h2 id="网站配置项">网站配置项</h2>
+
+<h3 id="主题">主题</h3>
+
+<p>如果是通过主题方式安装的，你需要这样配置以启用主题:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">theme</span><span class="pi">:</span> <span class="s">jekyll-text-theme</span>
+</code></pre></div></div>
+
+<h3 id="皮肤">皮肤</h3>
+
+<p>TeXt 内置有 6 套皮肤，你也可以定制自己的皮肤。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><code class="language-plaintext highlighter-rouge">default</code></th>
+      <th><code class="language-plaintext highlighter-rouge">dark</code></th>
+      <th><code class="language-plaintext highlighter-rouge">forest</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_default.jpg" alt="Default" /></td>
+      <td><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_dark.jpg" alt="Dark" /></td>
+      <td><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_forest.jpg" alt="Forest" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th><code class="language-plaintext highlighter-rouge">ocean</code></th>
+      <th><code class="language-plaintext highlighter-rouge">chocolate</code></th>
+      <th><code class="language-plaintext highlighter-rouge">orange</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_ocean.jpg" alt="Ocean" /></td>
+      <td><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_chocolate.jpg" alt="Chocolate" /></td>
+      <td><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_orange.jpg" alt="Orange" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">text_skin</span><span class="pi">:</span> <span class="s">default</span> <span class="c1"># "default" (default), "dark", "forest", "ocean", "chocolate", "orange"</span>
+</code></pre></div></div>
+
+<h3 id="代码高亮主题">代码高亮主题</h3>
+
+<p>TeXt 使用 <a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow</a> 作为它的代码高亮主题。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><code class="language-plaintext highlighter-rouge">tomorrow</code></th>
+      <th><code class="language-plaintext highlighter-rouge">tomorrow-night</code></th>
+      <th><code class="language-plaintext highlighter-rouge">tomorrow-night-eighties</code></th>
+      <th><code class="language-plaintext highlighter-rouge">tomorrow-night-blue</code></th>
+      <th><code class="language-plaintext highlighter-rouge">tomorrow-night-bright</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow.png" alt="Tomorrow" /></td>
+      <td><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night.png" alt="Tomorrow Night" /></td>
+      <td><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-eighties.png" alt="Tomorrow Night Eighties" /></td>
+      <td><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-blue.png" alt="Tomorrow Night Blue" /></td>
+      <td><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-bright.png" alt="Tomorrow Night Bright" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>每个皮肤有一个默认的代码高亮主题，当然你可以通过 <code class="language-plaintext highlighter-rouge">highlight_theme</code> 配置项来指定其他主题。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">highlight_theme</span><span class="pi">:</span> <span class="s">default</span> <span class="c1"># "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"</span>
+</code></pre></div></div>
+
+<h3 id="url">URL</h3>
+
+<p>网站的协议和域名。</p>
+
+<p>如果你的网站是搭建在 Github Pages 上的，这个只会被设置为 GitHub Pages 域名（CNAME 或个人域名）<sup id="fnref:gitHub_metadata" role="doc-noteref"><a href="#fn:gitHub_metadata" class="footnote" rel="footnote">1</a></sup>. 举个例子, https://kitian616.github.io 或者 https://tianqi.name 如果设置了 CNAME。</p>
+
+<p class="warning">在 3.3 及更高版本的 Jekyll 中运行 <code class="language-plaintext highlighter-rouge">jekyll serve</code> 命令会在开发模式时将其设置为 url: http://localhost:4000，你可以通过 <code class="language-plaintext highlighter-rouge">JEKYLL_ENV=production</code> 设置生产环境。</p>
+
+<h3 id="base-url">Base URL</h3>
+
+<p>网站的根路径，不包含域名，其默认值为“/”。如果你的网站是搭建在 Github Pages 上的，那么这个值会默认设置为网站对应的项目名<sup id="fnref:gitHub_metadata:1" role="doc-noteref"><a href="#fn:gitHub_metadata" class="footnote" rel="footnote">1</a></sup>。</p>
+
+<h3 id="网站标题">网站标题</h3>
+
+<p>网站的标题。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">My</span><span class="nv"> </span><span class="s">Awesome</span><span class="nv"> </span><span class="s">Website"</span>
+</code></pre></div></div>
+
+<h3 id="网站描述">网站描述</h3>
+
+<p>使用一些简短的语言来描述你的网站。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">description</span><span class="pi">:</span> <span class="pi">&gt;</span> <span class="c1"># this means to ignore newlines until "nav_lists:"</span>
+  <span class="s">A website with awesome stories.</span>
+</code></pre></div></div>
+
+<h2 id="语言与时区">语言与时区</h2>
+
+<h3 id="语言">语言</h3>
+
+<p>网站的语言，当然你可以在头信息<sup id="fnref:font_matter" role="doc-noteref"><a href="#fn:font_matter" class="footnote" rel="footnote">2</a></sup>里指定特定的文章或页面的语言，你可以在<a href="https://tianqi.name/jekyll-TeXt-theme/docs/zh/i18n">国际化</a>找到更多信息。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">lang</span><span class="pi">:</span> <span class="s">en</span>
+</code></pre></div></div>
+
+<h3 id="时区">时区</h3>
+
+<p>设置时区，这个设置作用于 TZ 变量， Ruby 用它来处理日期和时间。使用 IANA Time Zone Database 标准，比如 America/New_York 。其默认值为操作系统的时区。详情请戳 <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">这里</a>。<sup id="fnref:jekyll_global_configuration" role="doc-noteref"><a href="#fn:jekyll_global_configuration" class="footnote" rel="footnote">3</a></sup></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">timezone</span><span class="pi">:</span> <span class="s">Asia/Shanghai</span>
+</code></pre></div></div>
+
+<h2 id="作者信息">作者信息</h2>
+
+<p>网站作者的信息（可以是个人、团队或者组织）。</p>
+
+<h3 id="类型-type">类型 (type)</h3>
+
+<p>作者的类型，个人或者是组织，作为 <a href="https://schema.org/">schema.org</a> 的语义化标记使用。</p>
+
+<h3 id="作者名-name">作者名 (name)</h3>
+
+<p>用来表明网站的作者。</p>
+
+<h3 id="头像-avatar">头像 (avatar)</h3>
+
+<p>作者的图片或 Logo。</p>
+
+<h3 id="简介-bio">简介 (bio)</h3>
+
+<p>关于作者的一个简单介绍。</p>
+
+<h3 id="社交">社交</h3>
+
+<p>社交网站的用户名或用户 ID。</p>
+
+<p>目前支持邮件，微博，Facebook，Twitter，微博，Google Plus，Telegram，Medium，知乎，豆瓣，Linkedin，Github 和 Npm，持续添加中。</p>
+
+<p>当你设置了相应项的值后，对应的社交按钮就会出现在页面下方。</p>
+
+<h2 id="github-源码仓库">GitHub 源码仓库</h2>
+
+<p><a href="https://github.com/jekyll/github-metadata">GitHub Metadata</a> 插件的设置, 详情请戳 <a href="https://github.com/jekyll/github-metadata/blob/master/docs/configuration.md#configuration">这里</a>。</p>
+
+<p>这个设置告诉 jekyll-github-metadata 插件应该从哪个项目中获取元数据，其格式为 <code class="language-plaintext highlighter-rouge">项目所有者 ID/项目名称</code>，例如：kitian616/jekyll-TeXt-theme。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">repository</span><span class="pi">:</span> <span class="s">user_name/repo_name</span>
+</code></pre></div></div>
+
+<h2 id="文章配置项">文章配置项</h2>
+
+<h3 id="摘要">摘要</h3>
+
+<p>该主题的摘要有两种模式——TEXT 模式和 HTML 模式。 当 <em>_config.yml</em> 配置项 <code class="language-plaintext highlighter-rouge">excerpt_type</code> 的值为 <code class="language-plaintext highlighter-rouge">text</code> 时是 TEXT 模式，为 <code class="language-plaintext highlighter-rouge">html</code> 时是 HTML 模式，<strong>默认为 TEXT 模式</strong>。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>模式名称</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>text</strong></td>
+      <td>此时摘要为纯文本，会过滤掉一切非文本元素（标题，链接，列表，表格，图片等等），且截取前 350 个字符。</td>
+    </tr>
+    <tr>
+      <td><strong>html</strong></td>
+      <td>此时摘要为 HTML 文档，与文章内容一致，并且 <strong>默认展示整篇文章的内容</strong>。若想控制摘要内容，需要在文章中想要显示到的地方加上 <code class="language-plaintext highlighter-rouge">&lt;!--more--&gt;</code>，详情请戳 <a href="https://jekyllrb.com/docs/posts/#post-excerpts">这里</a>。</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">excerpt_separator</span><span class="pi">:</span> <span class="s">&lt;!--more--&gt;</span>
+<span class="na">excerpt_type</span><span class="pi">:</span> <span class="s">text</span> <span class="c1"># text (default), html</span>
+</code></pre></div></div>
+
+<p class="error">该设置在 2.2.0 版中移到了 Articles 和 Home 布局的头信息中，详情请戳 <a href="https://tianqi.name/jekyll-TeXt-theme/docs/cn/layouts#articles-layout">这里</a>。</p>
+
+<h3 id="许可协议">许可协议</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>许可协议</th>
+      <th>图片</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CC-BY-4.0</td>
+      <td><a href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International</a></td>
+      <td><img src="https://i.creativecommons.org/l/by/4.0/88x31.png" alt="CC-BY-4.0" /></td>
+    </tr>
+    <tr>
+      <td>CC-BY-SA-4.0</td>
+      <td><a href="https://creativecommons.org/licenses/by-sa/4.0/">Attribution-ShareAlike 4.0 International</a></td>
+      <td><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="CC-BY-SA-4.0" /></td>
+    </tr>
+    <tr>
+      <td>CC-BY-NC-4.0</td>
+      <td><a href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a></td>
+      <td><img src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" alt="CC-BY-NC-4.0" /></td>
+    </tr>
+    <tr>
+      <td>CC-BY-ND-4.0</td>
+      <td><a href="https://creativecommons.org/licenses/by-nd/4.0/">Attribution-NoDerivatives 4.0 International</a></td>
+      <td><img src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" alt="CC-BY-ND-4.0" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">license</span><span class="pi">:</span> <span class="s">CC-BY-NC-4.0</span>
+</code></pre></div></div>
+
+<h3 id="目录">目录</h3>
+
+<p>作为文章目录的元素。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">toc</span><span class="pi">:</span>
+  <span class="na">selectors</span><span class="pi">:</span> <span class="s2">"</span><span class="s">h1,h2,h3"</span>
+</code></pre></div></div>
+
+<h3 id="markdown-增强">Markdown 增强</h3>
+
+<p>为了增强文章的写作和阅读体验，TeXt 对 Jekyll 现有的 markdown 做了一些增强。当然这些增强都是默认禁止的，你需要设置相应的配置项为 true 来启动它们：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Mathjax</span>
+<span class="na">mathjax</span><span class="pi">:</span> <span class="no">true</span>
+<span class="na">mathjax_autoNumber</span><span class="pi">:</span> <span class="no">true</span>
+
+<span class="c1"># Mermaid</span>
+<span class="na">mermaid</span><span class="pi">:</span> <span class="no">true</span>
+
+<span class="c1"># Chart</span>
+<span class="na">chart</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>当然你也可以为某一篇文章或页面通过头信息<sup id="fnref:font_matter:1" role="doc-noteref"><a href="#fn:font_matter" class="footnote" rel="footnote">2</a></sup>来做单独的指定。</p>
+
+<p>在 <a href="/">撰写博客</a> 篇中有更详细的使用说明。</p>
+
+<h2 id="分页">分页</h2>
+
+<p><a href="https://github.com/jekyll/jekyll-paginate">Jekyll Paginate</a> 插件的配置。</p>
+
+<p>要想对文章列表做分页，你需要在 <em>_config.yml</em> 文件中配置每页显示的文章数：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">paginate</span><span class="pi">:</span> <span class="m">8</span>
+</code></pre></div></div>
+
+<p>这个数字代表了文章列表页每页显示的最大文章数。</p>
+
+<p>你也可以像这样指定分页页面的地址：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">paginate_path</span><span class="pi">:</span> <span class="s">/page:num</span> <span class="c1"># don't change this unless for special need</span>
+</code></pre></div></div>
+
+<h2 id="cdn-源">CDN 源</h2>
+
+<p>TeXt 使用 CDN<sup id="fnref:cdn" role="doc-noteref"><a href="#fn:cdn" class="footnote" rel="footnote">4</a></sup> 来加快载入速度，你可以选择 <a href="http://www.bootcdn.cn/">BootCDN</a>（默认项）或者<a href="https://unpkg.com/">unpkg</a>作为网站的 CDN 源。它们都是开源而免费的。</p>
+
+<p>国内用户请优先使用 BootCDN。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sources</span><span class="pi">:</span> <span class="s">bootcdn</span> <span class="c1"># bootcdn (default), unpkg</span>
+</code></pre></div></div>
+
+<h2 id="分享">分享</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>分享系统提供方</th>
+      <th>最低版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>addtoany</strong></td>
+      <td><a href="https://www.addtoany.com/">AddToAny</a></td>
+      <td>2.2.2</td>
+    </tr>
+    <tr>
+      <td><strong>addthis</strong></td>
+      <td><a href="https://www.addthis.com/">AddThis</a></td>
+      <td>2.2.3</td>
+    </tr>
+    <tr>
+      <td><strong>custom</strong></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="addtoany">AddToAny</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">comments</span><span class="pi">:</span>
+  <span class="na">provider</span><span class="pi">:</span> <span class="s">addtoany</span>
+</code></pre></div></div>
+
+<h3 id="addthis">AddThis</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">comments</span><span class="pi">:</span>
+  <span class="na">provider</span><span class="pi">:</span> <span class="s">addthis</span>
+  <span class="na">addthis</span><span class="pi">:</span>
+    <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">your-addthis-pubid"</span>
+</code></pre></div></div>
+
+<p class="warning">你需要在页面的头信息里设置 <code class="language-plaintext highlighter-rouge">sharing</code> 属性为 <code class="language-plaintext highlighter-rouge">true</code> 来开启该页的评论，详情请戳 <a href="https://tianqi.name/jekyll-TeXt-theme/docs/zh/layouts#article-%E5%B8%83%E5%B1%80">这里</a>。</p>
+
+<h2 id="评论">评论</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>评论系统提供方</th>
+      <th>最低版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>disqus</strong></td>
+      <td><a href="https://disqus.com/">Disqus</a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>gitalk</strong></td>
+      <td><a href="https://github.com/gitalk/gitalk/">Gitalk</a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>valine</strong></td>
+      <td><a href="https://valine.js.org/en/">Valine</a></td>
+      <td>2.2.4</td>
+    </tr>
+    <tr>
+      <td><strong>custom</strong></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="disqus">Disqus</h3>
+
+<p>要想启用 Disqus 作为评论系统，你需要注册一个 Disqus 账号然后申请一个针对该网站的 <a href="https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-">shortname</a>，完成后将 shortname 填入到 <em>_config.yml</em> 中：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">comments</span><span class="pi">:</span>
+  <span class="na">provider</span><span class="pi">:</span> <span class="s">disqus</span>
+  <span class="na">disqus</span><span class="pi">:</span>
+    <span class="na">shortname</span><span class="pi">:</span> <span class="s2">"</span><span class="s">your-disqus-shortname"</span>
+</code></pre></div></div>
+
+<h3 id="gitalk">Gitalk</h3>
+
+<p>要想启用 Gitalk 作为评论系统，首先你需要一个 GitHub Application，如果没有<a href="https://github.com/settings/applications/new">点击这里</a>申请。然后将相应的参数添加到 <em>_config.yml</em> 配置中：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">comments</span><span class="pi">:</span>
+  <span class="na">provider</span><span class="pi">:</span> <span class="s">gitalk</span>
+  <span class="na">gitalk</span><span class="pi">:</span>
+    <span class="na">clientID    </span><span class="pi">:</span> <span class="s2">"</span><span class="s">github-application-client-id"</span>
+    <span class="na">clientSecret</span><span class="pi">:</span> <span class="s2">"</span><span class="s">github-application-client-secret"</span>
+    <span class="na">repository  </span><span class="pi">:</span> <span class="s2">"</span><span class="s">github-repo"</span>
+    <span class="na">owner       </span><span class="pi">:</span> <span class="s2">"</span><span class="s">github-repo-owner"</span>
+    <span class="na">admin</span><span class="pi">:</span> <span class="c1"># Github repo owner and collaborators, only these guys can initialize github issues, IT IS A LIST.</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">your-github-id"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">the-other-admin-github-id"</span>
+</code></pre></div></div>
+
+<h3 id="valine">Valine</h3>
+
+<p>要想启用 Valine 作为评论系统，你需要注册一个 LeanCloud 账号然后建立一个 LeanCloud 应用，详情见 <a href="#leancloud">LeanCloud</a>。因为 Valine 会自动在应用中建立一个 Class，因此并不需要像文章点击量那样手动建立 Class。</p>
+
+<p>可以和<a href="#文章点击量">文章点击量</a>公用一个 LeanCloud 应用。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">comments</span><span class="pi">:</span>
+  <span class="na">provider</span><span class="pi">:</span> <span class="s">valine</span>
+  <span class="na">valine</span><span class="pi">:</span>
+    <span class="na">app_id  </span><span class="pi">:</span> <span class="s2">"</span><span class="s">your-leanCloud-app-id"</span>
+    <span class="na">app_key </span><span class="pi">:</span> <span class="s2">"</span><span class="s">your-leanCloud-app-key"</span>
+</code></pre></div></div>
+
+<p class="warning">对于上面所有的评论系统, 你都需要在页面的头信息里设置 <code class="language-plaintext highlighter-rouge">key</code> 属性来开启该页的评论，详情请戳 <a href="https://tianqi.name/jekyll-TeXt-theme/docs/zh/layouts#page-%E5%B8%83%E5%B1%80">这里</a>。</p>
+
+<h2 id="文章点击量">文章点击量</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>文章点击量后台提供方</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>leancloud</strong></td>
+      <td><a href="https://leancloud.cn/">LeanCloud</a></td>
+    </tr>
+    <tr>
+      <td><strong>custom</strong></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="leancloud">LeanCloud</h3>
+
+<p>TeXt 使用 LeanCloud 作为点击量功能的后台服务。你需要建立一个 LeanCloud 应用，然后在应用中建立一个 Class，之后将必要的信息填写到 <em>_config.yml</em> 文件中。下面详细介绍其操作步骤。</p>
+
+<p>在进入<a href="https://leancloud.cn/">主页</a>后点击页面右上角的“访问控制台”，然后注册账号并登录。</p>
+
+<p>在应用面板存储子页中点击“创建应用”按钮，在弹出的对话框中填写应用名称，计价方案选择“开发版”（土豪随意），然后点击“创建”按钮创建应用。</p>
+
+<p>创建完成后应用面板上会出现你刚刚创建的应用卡片，点击进入选择创建 Class：</p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/leancloud-create-class-0.jpg" alt="Leancloud：创建 Class 0" style="max-height:420px" class="border" /></p>
+
+<p>在弹出的对话框中填写 Class 的名字，权限选择“无限制”，点击“创建 Class”按钮：</p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/leancloud-create-class-1.jpg" alt="Leancloud：创建 Class 1" style="max-height:620px" class="border" /></p>
+
+<p>当然你可以随时更改 Class 的权限，在应用面板存储子页中选择想要修改的 Class，点击上面菜单的其他 -&gt; 权限设置项，即可进入设置页：</p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/leancloud-authorization.jpg" alt="Leancloud：权限设置" style="max-height:300px" /></p>
+
+<p>最后点击应用面板右侧的“设置”，点击“应用 Key” 选项，即可得到对应的 APP ID 和 APP KEY：</p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/leancloud-app-info.jpg" alt="Leancloud：App Info" class="border" /></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">pageview</span><span class="pi">:</span>
+  <span class="na">provider</span><span class="pi">:</span> <span class="s">leancloud</span>
+  <span class="na">leancloud</span><span class="pi">:</span>
+    <span class="na">app_id    </span><span class="pi">:</span> <span class="s2">"</span><span class="s">your-leanCloud-app-id"</span>
+    <span class="na">app_key   </span><span class="pi">:</span> <span class="s2">"</span><span class="s">your-leanCloud-app-key"</span>
+    <span class="na">app_class </span><span class="pi">:</span> <span class="s2">"</span><span class="s">your-leanCloud-app-class"</span>
+</code></pre></div></div>
+
+<p class="warning">对于上面所有的点击量统计, 你都需要在页面的头信息里设置 <code class="language-plaintext highlighter-rouge">key</code> 属性来开启该页的统计功能，详情请戳 <a href="https://tianqi.name/jekyll-TeXt-theme/docs/zh/layouts#page-%E5%B8%83%E5%B1%80">这里</a>。</p>
+
+<h2 id="站点统计">站点统计</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>站点统计提供方</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>google</strong></td>
+      <td><a href="https://analytics.google.com/">Google Analytics</a></td>
+    </tr>
+    <tr>
+      <td><strong>custom</strong></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="google-analytics">Google Analytics</h3>
+
+<p>你需要将 <code class="language-plaintext highlighter-rouge">tracking_id</code> 设置成你的 Google Analytics 账户中针对该网站的跟踪代码来启动这项功能。你也可以通过设置 <code class="language-plaintext highlighter-rouge">anonymize_ip</code> 为 <code class="language-plaintext highlighter-rouge">true</code> 将所有事件的 IP 地址匿名化。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">analytics</span><span class="pi">:</span>
+  <span class="na">provider</span><span class="pi">:</span> <span class="s">google</span>
+  <span class="na">google</span><span class="pi">:</span>
+    <span class="na">tracking_id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">your-google-analytics-tracking-code"</span>
+    <span class="na">anonymize_ip</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>文章或页面的作者默认为在 <em>_config.yml</em> 中配置的 <code class="language-plaintext highlighter-rouge">author</code>，当然你可以通过 YAML 头信息来指定特定文章的作者。</p>
+
+<p>首先你需要有一个 <em>_data/authors.yml</em> 的文件，参考以下格式来增加作者信息。其可用参数和 <em>_config.yml</em> 中的 <code class="language-plaintext highlighter-rouge">author</code> 项的参数一致（type, name, url, avatar, bio, email, facebook 等）。</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">Tian Qi</span><span class="pi">:</span>
+  <span class="na">name      </span><span class="pi">:</span> <span class="s">Tian Qi</span>
+  <span class="na">url       </span><span class="pi">:</span> <span class="s">https://tianqi.name</span>
+  <span class="na">avatar    </span><span class="pi">:</span> <span class="s">https://wx3.sinaimg.cn/large/73bd9e13ly1fjkqy66hl8j208c08c0td.jpg</span>
+  <span class="na">bio       </span><span class="pi">:</span> <span class="s">Author of TeXt.</span>
+  <span class="na">email     </span><span class="pi">:</span> <span class="s">kitian616@outlook.com</span>
+  <span class="na">facebook  </span><span class="pi">:</span> <span class="c1"># "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name</span>
+  <span class="na">twitter   </span><span class="pi">:</span> <span class="s">kitian616</span> <span class="c1"># "user_name" the last part of your profile url, e.g. https://twitter.com/user_name</span>
+  <span class="na">weibo     </span><span class="pi">:</span> <span class="m">234695683</span> <span class="c1"># "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...</span>
+  <span class="na">googleplus</span><span class="pi">:</span> <span class="m">101827554735084402671</span> <span class="c1"># "user_id"   the last part of your profile url, e.g. https://plus.google.com/u/0/user_id</span>
+  <span class="na">telegram  </span><span class="pi">:</span> <span class="c1"># "user_name" the last part of your profile url, e.g. https://t.me/user_name</span>
+  <span class="na">medium    </span><span class="pi">:</span> <span class="c1"># "user_name" the last part of your profile url, e.g. https://medium.com/user_name</span>
+  <span class="na">zhihu     </span><span class="pi">:</span> <span class="c1"># "user_name" the last part of your profile url, e.g. https://www.zhihu.com/people/user_name</span>
+  <span class="na">douban    </span><span class="pi">:</span> <span class="c1"># "user_name" the last part of your profile url, e.g. https://www.douban.com/people/user_name</span>
+  <span class="na">linkedin  </span><span class="pi">:</span> <span class="c1"># "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name</span>
+  <span class="na">github    </span><span class="pi">:</span> <span class="s">kitian616</span> <span class="c1"># "user_name" the last part of your profile url, e.g. https://github.com/user_name</span>
+  <span class="na">npm       </span><span class="pi">:</span> <span class="c1"># "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name</span>
+</code></pre></div></div>
+
+<p>将在 <em>authors.yml</em> 中定义的作者作为某篇文章或页面的作者以覆盖 <code class="language-plaintext highlighter-rouge">site.author</code> 全局作者。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+author: Tian Qi
+---
+</code></pre></div></div>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:gitHub_metadata" role="doc-endnote">
+      <p><a href="https://github.com/jekyll/github-metadata#what-it-does">GitHub Metadata, a.k.a. site.github</a> <a href="#fnref:gitHub_metadata" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:gitHub_metadata:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:font_matter" role="doc-endnote">
+      <p><a href="https://jekyllrb.com/docs/frontmatter/">Front Matter</a> <a href="#fnref:font_matter" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:font_matter:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:jekyll_global_configuration" role="doc-endnote">
+      <p><a href="https://jekyllrb.com/docs/configuration/#global-configuration">Configuration#Global Configuration</a> <a href="#fnref:jekyll_global_configuration" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:cdn" role="doc-endnote">
+      <p><a href="https://en.wikipedia.org/wiki/Content_delivery_network">Content delivery network</a> <a href="#fnref:cdn" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[Jekyll 允许你很轻松的设计你的网站，这很大程度上归功于灵活强大的配置功能。既可以配置在网站根目录下的 _config.yml 文件，也可以作为命令行的标记来配置。 _config.yml 包括一些在运行时一次性读入的全局配置和变量定义， 在自动生成的过程中并不会重新加载，除非重新运行。注意 Data Files 包括在自动生成范围内，可以在更改后自动重新加载。]]></summary></entry><entry><title type="html">快速建Jekyll博客</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html" rel="alternate" type="text/html" title="快速建Jekyll博客" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html"><![CDATA[<p>TeXt 是一款 100% 兼容 GitHub Pages 的 Jekyll 主题，你可以通过 Fork、下载或主题等方式安装。</p>
+
+<p>在这篇文章中，你将学到如何<strong>安装设置主题</strong>，通过<strong>本地预览</strong>进行开发以及<strong>编译</strong>和<strong>发布</strong>。</p>
+
+<!--more-->
+
+<pre><code class="language-mermaid">graph LR;
+    A0(安装 TeXt)
+    B0(普通方式)
+    B1[主题方式]
+    C0[从 GitHub 克隆]
+    C1[Fork 该仓库]
+    C2[下载]
+    D0[设置]
+    E0(安装开发环境)
+    F0[直接安装]
+    F1[使用 Docker]
+    A0--&gt;B0;
+    A0--&gt;B1;
+    B0--&gt;C0;
+    B0--&gt;C1;
+    B0--&gt;C2;
+    B1--&gt;D0;
+    C1--&gt;E0
+    C2--&gt;E0
+    D0--&gt;E0
+    E0--&gt;F0
+    E0--&gt;F1
+</code></pre>
+
+<h2 id="安装">安装</h2>
+
+<h3 id="普通方式">普通方式</h3>
+
+<p>这种方式要求你的项目里包含所有的主题文件，你可以通过以下途径来安装：</p>
+
+<ol>
+  <li>
+    <p>从 GitHub 克隆 <a href="https://github.com/kitian616/jekyll-TeXt-theme">jekyll-TeXt-theme</a> 项目:</p>
+
+    <p><strong>通过 HTTPS 方式克隆：</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/kitian616/jekyll-TeXt-theme.git
+</code></pre></div>    </div>
+
+    <p><strong>通过 SSH 方式克隆：</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:kitian616/jekyll-TeXt-theme.git
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>下载主题压缩包并解压到你的项目目录中：</p>
+
+    <p><a class="button button--success button--rounded" href="https://github.com/kitian616/jekyll-TeXt-theme/archive/master.zip"><i class="fas fa-download"></i> 下载 TeXt 主题</a></p>
+  </li>
+  <li>
+    <p>如果你打算在 GitHub Pages 上搭建你的网站，你可以直接 fork <a href="https://github.com/kitian616/jekyll-TeXt-theme">jekyll-TeXt-theme</a> 到你的仓库，然后将其重命名为 <strong>USERNAME.github.io</strong> — 这里的 <strong>USERNAME</strong> 是你的 GitHub 用户名。</p>
+
+    <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/github-fork.jpg" alt="Fork" /></p>
+
+    <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/github-rename-repo.jpg" alt="Rename" /></p>
+  </li>
+</ol>
+
+<h3 id="主题方式">主题方式</h3>
+
+<ol>
+  <li>
+    <p>若要安装一套主题，请先将该主题添加到您站点的 <em>Gemfile</em> 文件中：</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"jekyll-text-theme"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>向站点的 <em>_config.yml</em> 中加入下列代码来启用主题：</p>
+
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">theme</span><span class="pi">:</span> <span class="s">jekyll-text-theme</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="设置">设置</h2>
+
+<p><strong>这里仅针对主题方式的安装，普通方式安装请跳过。</strong></p>
+
+<p>Jekyll 主题含有主题默认的布局文件、包含文件和样式表， 但是有些目录（例如<em>assets</em>, <em>_layouts</em>, <em>_includes</em> 以及 <em>_sass</em> 目录）需要手动添加到项目目录中，这样的好处在于将主题的文件和站点的内容和配置隔离开来，方便主题的升级。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── 404.html
+├── Gemfile
+├── _config.yml
+├── _data
+│   └── locale.yml
+├── _posts
+│   └── ...
+├── about.md
+├── archive.html
+└── index.html
+</code></pre></div></div>
+
+<p>你可以参考主题源码的 <a href="https://github.com/kitian616/jekyll-TeXt-theme/tree/master/test">/test 目录</a>, 这是一个使用主题的示例。</p>
+
+<h2 id="安装开发环境">安装开发环境</h2>
+
+<p>如果你想本地运行主题，你需要安装 Ruby 以及 Jekyll，详情请戳 <a href="https://jekyllrb.com/docs/installation/">这里</a>。</p>
+
+<p>上述步骤完成后，安装 Ruby 依赖包：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span> <span class="nt">--path</span> vendor/bundle
+</code></pre></div></div>
+
+<p>当然，TeXt 还提供了 <a href="https://www.docker.com/">Docker</a> 支持，使用 Docker 能让你更方便的完成环境的安装，并且环境统一，不会出错。</p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/docker.jpg" alt="Docker" width="400px" /></p>
+
+<p>你只需要以下 3 步即可通过 Docker 完成环境的搭建：</p>
+
+<ol>
+  <li>
+    <p><a href="https://docs.docker.com/install/">安装 Docker</a>。</p>
+  </li>
+  <li>
+    <p>生成 <em>Gemfile.lock</em> 文件：</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span>:/usr/src/app <span class="nt">-w</span> /usr/src/app ruby:2.6 bundle <span class="nb">install</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>创建 Docker 镜像 (Image)：</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose <span class="nt">-f</span> ./docker/docker-compose.build-image.yml build
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="本地预览">本地预览</h2>
+
+<p>Jekyll 集成了一个开发用的服务器，可以让你使用浏览器在本地进行预览。</p>
+
+<p>通过 <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> 命令启动开发服务器，然后你就可以访问 <a href="http://localhost:4000/">http://localhost:4000/</a> 预览你的网站了。</p>
+
+<p>如果是通过 Docker 搭建的环境，请运行 <code class="language-plaintext highlighter-rouge">docker-compose -f ./docker/docker-compose.default.yml up</code> 命令以启动开发服务器。</p>
+
+<h2 id="编译和发布">编译和发布</h2>
+
+<p>如果你打算把网站搭建在 GitHub Pages 上，那你所需要做的就是将项目的源码上传到 USERNAME.github.io 源码仓库的 master 分支，GitHub 会自动的编译，几分钟后你就可以通过 <strong>https://USERNAME.github.io</strong> 访问到你的网站了。</p>
+
+<p>如果你的网站是搭建在其他服务器上的，那么你就需要来自己编译了。首先运行命令 <code class="language-plaintext highlighter-rouge">JEKYLL_ENV=production bundle exec jekyll build</code> 编译你的网站，然后将编译的文件（位于 <em>_site</em> 目录）更新到你的服务器上。</p>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[TeXt 是一款 100% 兼容 GitHub Pages 的 Jekyll 主题，你可以通过 Fork、下载或主题等方式安装。 在这篇文章中，你将学到如何安装设置主题，通过本地预览进行开发以及编译和发布。]]></summary></entry><entry><title type="html">撰写博客</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts.html" rel="alternate" type="text/html" title="撰写博客" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts.html"><![CDATA[<h1 id="jekyll博客的编写">Jekyll博客的编写</h1>
+
+<p>在<a href="http://jekyllcn.com/docs/structure/">目录结构</a>介绍中说明过，<strong>所有的文章都在 <em>/_posts</em> 文件夹中</strong>。这些文件可以用 Markdown 或 HTML 编写。只要文件中有 YAML 头信息，它们就会从源格式转化成 HTML 页面，从而成为你的静态网站的一部分。</p>
+
+<!--more-->
+
+<h2 id="创建文章">创建文章</h2>
+
+<p>发表一篇新文章，你所需要做的就是在 <em>/_posts</em> 文件夹中创建一个新的文件。文件名的命名非常重要。Jekyll 要求一篇文章的文件名遵循下面的格式：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>年-月-日-标题.MARKUP
+</code></pre></div></div>
+
+<p>下面是一些合法的文件名的例子：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2011-12-31-new-years-eve-is-awesome.md
+2012-09-12-how-to-write-a-blog.markdown
+</code></pre></div></div>
+
+<h2 id="内容相关">内容相关</h2>
+
+<p>所有博客文章顶部必须有一段 YAML 头信息(YAML front-matter)。</p>
+
+<p>为了提高文章的阅读和书写体验，TeXt 在 Markdown 原有的基础上做了一些增强。</p>
+
+<h3 id="yaml-头信息">YAML 头信息</h3>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="s">---</span>
+    <span class="s">layout</span><span class="err">:</span> <span class="s">article</span>
+    <span class="s">title</span><span class="err">:</span> <span class="s">Document - Writing Posts</span>
+    <span class="s">mathjax</span><span class="err">:</span> <span class="no">true</span>
+    <span class="s">---</span>
+</code></pre></div></div>
+<p>{ 
+在 <code class="language-plaintext highlighter-rouge">---</code> 之间你可以设置属性的值，可以把它们看作页面的配置，这些配置会覆盖在 <em>_config.yml</em> 文件中设置的全局配置。</p>
+
+<p>除去 Jekyll 自定义的变量外，TeXt 也定义了一些额外的变量，详情请戳<a href="https://tianqi.name/jekyll-TeXt-theme/docs/zh/layouts">布局</a>。</p>
+
+<h1 id="markdown增强">Markdown增强</h1>
+
+<p>你需要在 <em>_config.yml</em> 或 YAML 头信息中设置相关的属性为 <code class="language-plaintext highlighter-rouge">true</code> 来开启对应的功能。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>增强项</th>
+      <th>描述</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mathjax</strong></td>
+      <td>在文章中方便的加入数学公式，使用 MathML、LaTeX 和 ASCIIMathML 语法</td>
+      <td><a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/07/07/mathjax.html">示例</a></td>
+    </tr>
+    <tr>
+      <td><strong>Mermaid</strong></td>
+      <td>在文章中方便的加入流程图</td>
+      <td><a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/06/06/mermaid.html">示例</a></td>
+    </tr>
+    <tr>
+      <td><strong>Chart</strong></td>
+      <td>在文章中方便的加入可交互的图表</td>
+      <td><a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/05/05/chart.html">示例</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="mathjax">Mathjax</h2>
+
+<p>When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are</p>
+
+\[x_1 = {-b + \sqrt{b^2-4ac} \over 2a}\]
+
+\[x_2 = {-b - \sqrt{b^2-4ac} \over 2a} \notag\]
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-tex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>When <span class="p">$$</span><span class="nb">a </span><span class="nv">\ne</span><span class="nb"> </span><span class="m">0</span><span class="p">$$</span>, there are two solutions to <span class="p">$$</span><span class="nb">ax</span><span class="p">^</span><span class="m">2</span><span class="nb"> </span><span class="o">+</span><span class="nb"> bx </span><span class="o">+</span><span class="nb"> c </span><span class="o">=</span><span class="nb"> </span><span class="m">0</span><span class="p">$$</span> and they are
+<span class="p">$$</span><span class="nb">x</span><span class="p">_</span><span class="m">1</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="p">{</span><span class="o">-</span><span class="nb">b </span><span class="o">+</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="p">{</span><span class="nb">b</span><span class="p">^</span><span class="m">2</span><span class="o">-</span><span class="m">4</span><span class="nb">ac</span><span class="p">}</span><span class="nb"> </span><span class="nv">\over</span><span class="nb"> </span><span class="m">2</span><span class="nb">a</span><span class="p">}$$</span>
+<span class="p">$$</span><span class="nb">x</span><span class="p">_</span><span class="m">2</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="p">{</span><span class="o">-</span><span class="nb">b </span><span class="o">-</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="p">{</span><span class="nb">b</span><span class="p">^</span><span class="m">2</span><span class="o">-</span><span class="m">4</span><span class="nb">ac</span><span class="p">}</span><span class="nb"> </span><span class="nv">\over</span><span class="nb"> </span><span class="m">2</span><span class="nb">a</span><span class="p">}</span><span class="nb"> </span><span class="nv">\notag</span><span class="p">$$</span>
+</code></pre></div></div>
+
+<p class="info"><strong>当 MathJax 激活后</strong>，你可以设置 <code class="language-plaintext highlighter-rouge">mathjax_autoNumber: true</code> 让公式自动编号，你可以使用 \notag 或者 \nonumber 阻止某条公式自动编号。</p>
+
+<h2 id="mermaid">Mermaid</h2>
+
+<pre><code class="language-mermaid">graph TB;
+    A[Do you have a problem in your life?]
+    B[Then don't worry]
+    C[Can you do something about it?]
+    A--no--&gt;B;
+    A--yes--&gt;C;
+    C--no--&gt;B;
+    C--yes--&gt;B;
+</code></pre>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```mermaid
+graph TB;
+    A[Do you have a problem in your life?]
+    B[Then don't worry]
+    C[Can you do something about it?]
+    A--no--&gt;B;
+    A--yes--&gt;C;
+    C--no--&gt;B;
+    C--yes--&gt;B;
+```
+</code></pre></div></div>
+
+<p><a href="https://mermaidjs.github.io/">Mermaid</a> 支持以下三种示意图:</p>
+
+<ul>
+  <li>
+    <p><a href="https://mermaidjs.github.io/flowchart.html">Flowchart</a></p>
+  </li>
+  <li>
+    <p><a href="https://mermaidjs.github.io/sequenceDiagram.html">Sequence Diagram</a></p>
+  </li>
+  <li>
+    <p><a href="https://mermaidjs.github.io/gantt.html">Gant Diagram</a></p>
+  </li>
+</ul>
+
+<h2 id="chart">Chart</h2>
+
+<pre><code class="language-chart">{
+  "type": "line",
+  "data": {
+    "labels": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July"
+    ],
+    "datasets": [
+      {
+        "label": "# of bugs",
+        "fill": false,
+        "lineTension": 0.1,
+        "backgroundColor": "rgba(75,192,192,0.4)",
+        "borderColor": "rgba(75,192,192,1)",
+        "borderCapStyle": "butt",
+        "borderDash": [],
+        "borderDashOffset": 0,
+        "borderJoinStyle": "miter",
+        "pointBorderColor": "rgba(75,192,192,1)",
+        "pointBackgroundColor": "#fff",
+        "pointBorderWidth": 1,
+        "pointHoverRadius": 5,
+        "pointHoverBackgroundColor": "rgba(75,192,192,1)",
+        "pointHoverBorderColor": "rgba(220,220,220,1)",
+        "pointHoverBorderWidth": 2,
+        "pointRadius": 1,
+        "pointHitRadius": 10,
+        "data": [
+          65,
+          59,
+          80,
+          81,
+          56,
+          55,
+          40
+        ],
+        "spanGaps": false
+      }
+    ]
+  },
+  "options": {}
+}
+</code></pre>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```chart
+{
+  "type": "polarArea",
+  "data": {
+    "datasets": [
+      {
+        "data": [
+          11,
+          16,
+          7,
+          3,
+          14
+        ],
+        "backgroundColor": [
+          "#FF6384",
+          "#4BC0C0",
+          "#FFCE56",
+          "#E7E9ED",
+          "#36A2EB"
+        ],
+        "label": "My dataset"
+      }
+    ],
+    "labels": [
+      "Red",
+      "Green",
+      "Yellow",
+      "Grey",
+      "Blue"
+    ]
+  },
+  "options": {}
+}
+```
+</code></pre></div></div>
+
+<p><a href="http://www.chartjs.org/docs/latest/">Chart.js</a> 支持以下 7 种图表:</p>
+
+<ul>
+  <li>
+    <p><a href="http://www.chartjs.org/docs/latest/charts/line.html">Line Chart</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chartjs.org/docs/latest/charts/bar.html">Bar Chart</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chartjs.org/docs/latest/charts/radar.html">Radar Chart</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chartjs.org/latest/charts/polar.html">Polar Area Chart</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chartjs.org/docs/latest/charts/doughnut.html">Pie Chart</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chartjs.org/docs/latest/charts/doughnut.html">Doughnut Chart</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chartjs.org/docs/latest/charts/bubble.html">Bubble Chart</a></p>
+  </li>
+</ul>
+
+<h1 id="markdown文本样式">Markdown文本样式</h1>
+
+<p>为了展示Markdown语法的渲染，<a href="https://github.com/cotes2020/jekyll-theme-chirpy/fork"><strong>Chirpy</strong></a>, 你也可以用它作为写作的例子。 现在，让我们来看看文本和版式。</p>
+
+<h2 id="标题">标题</h2>
+
+<h1 data-toc-skip=""> H1 - 开头</h1>
+
+<h2 data-toc-skip="">H2 - heading</h2>
+
+<h3 data-toc-skip="">H3 - heading</h3>
+
+<h4>H4 - heading</h4>
+<p><strong>markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># H1 - 开头</span>
+
+<span class="gu">## H2 - heading</span>
+
+<span class="gu">### H3 - heading</span>
+
+<span class="gu">#### H4 - heading</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<h2 id="文章段落">文章段落</h2>
+
+<p>I wandered lonely as a cloud</p>
+
+<p>That floats on high o’er vales and hills,</p>
+
+<p>When all at once I saw a crowd,</p>
+
+<p>A host, of golden daffodils;</p>
+
+<p>Beside the lake, beneath the trees,</p>
+
+<p>Fluttering and dancing in the breeze.</p>
+
+<h2 id="列表">列表</h2>
+
+<h3 id="有序列表">有序列表</h3>
+
+<ol>
+  <li>Firstly</li>
+  <li>Secondly</li>
+  <li>Thirdly</li>
+</ol>
+
+<p><strong>markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">1.</span> Firstly
+<span class="p">2.</span> Secondly
+<span class="p">3.</span> Thirdly
+</code></pre></div></div>
+<h3 id="无序列表">无序列表</h3>
+
+<ul>
+  <li>章节
+    <ul>
+      <li>节选
+        <ul>
+          <li>段落</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> 章节
+<span class="p">  -</span> 节选
+<span class="p">    -</span> 段落
+</code></pre></div></div>
+
+<h3 id="任务列表">任务列表</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />TODO</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Completed</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Defeat COVID-19
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Vaccine production</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Economic recovery</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />People smile again</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> [ ] TODO
+<span class="p">-</span> [x] Completed
+<span class="p">-</span> [ ] Defeat COVID-19
+<span class="p">  -</span> [x] Vaccine production
+<span class="p">  -</span> [ ] Economic recovery
+<span class="p">  -</span> [ ] People smile again
+</code></pre></div></div>
+
+<h3 id="描述列表">描述列表</h3>
+
+<dl>
+  <dt>Sun</dt>
+  <dd>the star around which the earth orbits</dd>
+  <dt>Moon</dt>
+  <dd>the natural satellite of the earth, visible by reflected light from the sun</dd>
+</dl>
+
+<p><strong>markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sun
+: the star around which the earth orbits
+
+Moon
+: the natural satellite of the earth, visible by reflected light from the sun
+</code></pre></div></div>
+<h2 id="引用">引用</h2>
+
+<blockquote>
+  <p>This line shows the <em>block quote</em>.</p>
+</blockquote>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; This line shows the _block quote_.</span>
+</code></pre></div></div>
+
+<h2 id="表格">表格</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Company</th>
+      <th style="text-align: left">Contact</th>
+      <th style="text-align: right">Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Alfreds Futterkiste</td>
+      <td style="text-align: left">Maria Anders</td>
+      <td style="text-align: right">Germany</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Island Trading</td>
+      <td style="text-align: left">Helen Bennett</td>
+      <td style="text-align: right">UK</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Magazzini Alimentari Riuniti</td>
+      <td style="text-align: left">Giovanni Rovelli</td>
+      <td style="text-align: right">Italy</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Company                      | Contact          | Country |
+|:-----------------------------|:-----------------|--------:|
+| Alfreds Futterkiste          | Maria Anders     | Germany |
+| Island Trading               | Helen Bennett    | UK      |
+| Magazzini Alimentari Riuniti | Giovanni Rovelli | Italy   |
+</code></pre></div></div>
+
+<h2 id="链接">链接</h2>
+
+<p><a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a></p>
+
+<p><strong>markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">&lt;http://127.0.0.1:4000&gt;</span>
+</code></pre></div></div>
+
+<h2 id="脚注">脚注</h2>
+
+<p>点击右上边的脚注<sup id="fnref:footnote" role="doc-noteref"><a href="#fn:footnote" class="footnote" rel="footnote">1</a></sup>, 这里是另一个脚注<sup id="fnref:fn-nth-2" role="doc-noteref"><a href="#fn:fn-nth-2" class="footnote" rel="footnote">2</a></sup>.</p>
+
+<p><strong>markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>点击右上边的脚注[^footnote], 这里是另一个脚注[^fn-nth-2].
+</code></pre></div></div>
+
+<h3 id="脚注注释">脚注注释</h3>
+
+<p><strong>markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="ss">^footnote</span><span class="p">]:</span> <span class="sx">The</span> footnote source
+<span class="p">[</span><span class="ss">^fn-nth-2</span><span class="p">]:</span> <span class="sx">The</span> 2nd footnote source
+</code></pre></div></div>
+<h2 id="提示">提示</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>样式名称</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>success</strong></td>
+    </tr>
+    <tr>
+      <td><strong>info</strong></td>
+    </tr>
+    <tr>
+      <td><strong>warning</strong></td>
+    </tr>
+    <tr>
+      <td><strong>error</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="success">Success Text.</p>
+
+<p class="info">Info Text.</p>
+
+<p class="warning">Warning Text.</p>
+
+<p class="error">Error Text.</p>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Success Text.
+{:.success}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Info Text.
+{:.info}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Warning Text.
+{:.warning}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error Text.
+{:.error}
+</code></pre></div></div>
+
+<h2 id="标签">标签</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class Names</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>success</strong></td>
+    </tr>
+    <tr>
+      <td><strong>info</strong></td>
+    </tr>
+    <tr>
+      <td><strong>warning</strong></td>
+    </tr>
+    <tr>
+      <td><strong>error</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext success highlighter-rouge">success</code></p>
+
+<p><code class="language-plaintext info highlighter-rouge">info</code></p>
+
+<p><code class="language-plaintext warning highlighter-rouge">warning</code></p>
+
+<p><code class="language-plaintext error highlighter-rouge">error</code></p>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`success`{:.success}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`info`{:.info}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`warning`{:.warning}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`error`{:.error}
+</code></pre></div></div>
+
+<h2 id="图像">图像</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>样式名称</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>border</strong></td>
+    </tr>
+    <tr>
+      <td><strong>shadow</strong></td>
+    </tr>
+    <tr>
+      <td><strong>rounded</strong></td>
+    </tr>
+    <tr>
+      <td><strong>circle</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="border">Border</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_border" class="border" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.border}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<h3 id="shadow">Shadow</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_shadow" class="shadow" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.shadow}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<h3 id="rounded">Rounded</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_rounded" class="rounded" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.rounded}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<h3 id="circle">Circle</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_circle" class="circle" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.circle}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<h3 id="mixture">Mixture</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_border+rounded" class="border rounded" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.border.rounded}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_circle+shadow" class="circle shadow" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.circle.shadow}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_circle+border+shadow" class="circle border shadow" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.circle.border.shadow}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<ul>
+  <li>默认 (带说明文字)</li>
+</ul>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Desktop View" width="20%" height="20%" />
+<em>Full screen width and center alignment</em></p>
+
+<p><br /></p>
+
+<ul>
+  <li>阴影</li>
+</ul>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Window shadow" class="shadow" width="20%" height="20%" style="max-width: 90%" />
+<em>shadow effect (visible in light mode)</em></p>
+
+<p><br /></p>
+
+<ul>
+  <li>左对齐</li>
+</ul>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Desktop View" width="20%" height="20%" style="max-width: 70%" class="normal" /></p>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <p>向左浮动</p>
+
+    <p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Desktop View" width="20%" height="20%" style="max-width: 200px" class="left" />
+“一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。  “</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <p>向右浮动</p>
+
+    <p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Desktop View" width="20%" height="20%" style="max-width: 200px" class="right" />
+“一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。  “</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="mermaid-svg">Mermaid SVG</h2>
+
+<pre><code class="language-mermaid"> gantt
+  title  Adding GANTT diagram functionality to mermaid
+  apple :a, 2017-07-20, 1w
+  banana :crit, b, 2017-07-23, 1d
+  cherry :active, c, after b a, 1d
+</code></pre>
+
+<p><strong>markdown:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\`\`\`mermaid
+ gantt
+  title  Adding GANTT diagram functionality to mermaid
+  apple :a, 2017-07-20, 1w
+  banana :crit, b, 2017-07-23, 1d
+  cherry :active, c, after b a, 1d
+\`\`\`
+</code></pre></div></div>
+
+<h2 id="mathematics">Mathematics</h2>
+
+<p>The mathematics powered by <a href="https://www.mathjax.org/"><strong>MathJax</strong></a>:</p>
+
+\[\sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}\]
+
+<p>When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are</p>
+
+\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The mathematics powered by <span class="p">[</span><span class="nv">**MathJax**</span><span class="p">](</span><span class="sx">https://www.mathjax.org/</span><span class="p">)</span>:
+
+$$ <span class="se">\s</span>um_{n=1}^<span class="se">\i</span>nfty 1/n^2 = <span class="se">\f</span>rac{<span class="se">\p</span>i^2}{6} $$
+
+When $a <span class="se">\n</span>e 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
+
+$$ x = {-b <span class="se">\p</span>m <span class="se">\s</span>qrt{b^2-4ac} <span class="se">\o</span>ver 2a} $$
+</code></pre></div></div>
+
+<h2 id="内联代码">内联代码</h2>
+
+<p>这是一个例子 <code class="language-plaintext highlighter-rouge">Inline Code</code>.</p>
+
+<p><strong>Markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一个例子 <span class="sb">`Inline Code`</span>.
+</code></pre></div></div>
+
+<h2 id="文件路径">文件路径</h2>
+
+<p>这儿是 <code class="language-plaintext filepath highlighter-rouge">/path/to/the/file.extend</code>.
+<strong>Markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这儿是 <span class="sb">`/path/to/the/file.extend`</span>{: .filepath}.
+</code></pre></div></div>
+
+<h2 id="代码块">代码块</h2>
+
+<h3 id="普通">普通</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一个普通的代码片段，没有语法突出显示和行号。  
+</code></pre></div></div>
+
+<h3 id="特定语言">特定语言</h3>
+
+<h4 id="console">Console</h4>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">env</span> |grep SHELL
+<span class="go">SHELL=/usr/local/bin/bash
+PYENV_SHELL=bash
+</span></code></pre></div></div>
+
+<h4 id="shell">Shell</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-ne</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"The command was not successful."</span><span class="p">;</span>
+    <span class="c">#do the needful / exit</span>
+<span class="k">fi</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="specific-filename">Specific filename</h3>
+
+<p>语法sass</p>
+<div file="_sass/jekyll-theme-chirpy.scss" class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span>
+  <span class="s2">"colors/light-typography"</span><span class="o">,</span>
+  <span class="s2">"colors/dark-typography"</span>
+</code></pre></div></div>
+
+<h1 id="logo">Logo</h1>
+
+<p>TeXt 使用  <span><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24">
+<style type="text/css">
+	.st0{fill:#515151;}
+</style>
+<path class="st0" d="M1.7,22.3c5.7-5.7,11.3-5.7,17,0c3.3-3.3,3.5-5.3,0.8-6c2.7,0.7,3.5-1.1,2.3-5.6s-3.3-5.2-6.3-2.1
+	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3" />
+</svg>
+</span> 作为它的 Logo，你可以通过替换 <em>_includes/svg/logo.svg</em> 来设置你的 Logo。</p>
+
+<h2 id="favicon">Favicon</h2>
+
+<p>TeXt 推荐使用 <a href="https://realfavicongenerator.net/">RealFaviconGenerator</a> 来生成 Favicon。</p>
+
+<p>打开 <a href="https://realfavicongenerator.net/">RealFaviconGenerator</a> 后点击“Select your Favicon picture”，选择图片进入下一步。</p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/realfavicongenerator-select-favicon-picture.jpg" alt="Select your Favicon picture" /></p>
+
+<p>图标设置完成后，你需要告诉生成器 Favicon 文件的网站路径，TeXt 将他们放在了 <em>/assets</em> 目录。</p>
+
+<p class="warning">推荐将 Favicon 文件放在网站的根目录下。</p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/realfavicongenerator-path.jpg" alt="Select your Favicon path" /></p>
+
+<p>完成后点击“Generate your Favicons and HTML code”进入到最后一步。</p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/realfavicongenerator-result.jpg" alt="Result" /></p>
+
+<p>下载生成的 favicon 包，解压文件到你方才填写的路径，将 HTML 代码替换到 <em>_includes/head/favicon.html</em> 文件中。</p>
+
+<p>ekyll 使用 kramdown 作为默认 Markdown 解释器。kramdown 可以通过 ALDs<sup id="fnref:ALDs" role="doc-noteref"><a href="#fn:ALDs" class="footnote" rel="footnote">3</a></sup> 来设置块级元素或行内元素的属性。例如，可以通过 <code class="language-plaintext highlighter-rouge">{:.class-name1.class-name-2}</code> 来给元素定义样式类。</p>
+
+<p>TeXt 定义了一些样式类，你可以在文章和页面的方便的使用，可以在 <a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/08/08/additional-styles.html">这里</a> 看到示例和详细的说明.</p>
+
+<h1 id="扩展">扩展</h1>
+
+<h2 id="音频">音频</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>扩展名称</th>
+      <th>最新版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SoundCloud</td>
+      <td>2.2.2</td>
+    </tr>
+    <tr>
+      <td>Netease Cloud Music</td>
+      <td>2.2.2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="soundcloud">SoundCloud</h3>
+
+<p><strong>id:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-soundclound.jpg" alt="extensions-soundcloud" style="max-height:500px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/soundcloud.html id='313627932' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/soundcloud.html id='313627932' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h3 id="网易云音乐">网易云音乐</h3>
+
+<p><strong>id:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-netease-cloud-music.jpg" alt="extensions-soundcloud" style="max-height:320px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/netease-cloud-music.html id='413812448' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/netease-cloud-music.html id='413812448' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h2 id="视频">视频</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>扩展名称</th>
+      <th>最新版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>YouTube</td>
+      <td>2.2.2</td>
+    </tr>
+    <tr>
+      <td>TED</td>
+      <td>2.2.2</td>
+    </tr>
+    <tr>
+      <td>bilibili</td>
+      <td>2.2.2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="youtube">YouTube</h3>
+
+<p><strong>id:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-youtube.jpg" alt="extensions-soundcloud" style="max-height:250px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/youtube.html id='wbY97-hdD5c' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/youtube.html id='wbY97-hdD5c' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h3 id="ted">TED</h3>
+
+<p><strong>id:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-ted.jpg" alt="extensions-soundcloud" style="max-height:83px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/ted.html id='emily_esfahani_smith_there_s_more_to_life_than_being_happy' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/ted.html id='emily_esfahani_smith_there_s_more_to_life_than_being_happy' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h3 id="哔哩哔哩">哔哩哔哩</h3>
+
+<p><strong>id:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-bilibili.jpg" alt="extensions-bilibili" style="max-height:190px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/bilibili.html id='11091080' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/bilibili.html id='11091080' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h2 id="幻灯片">幻灯片</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>扩展名称</th>
+      <th>最新版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SlideShare</td>
+      <td>2.2.2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="slideshare">SlideShare</h3>
+
+<p><strong>id:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-slideshare.jpg" alt="extensions-slideshare" style="max-height:480px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/slideshare.html id='u9L9zDsqEWNKE1' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/slideshare.html id='u9L9zDsqEWNKE1' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h2 id="在线示例">在线示例</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>扩展名称</th>
+      <th>最新版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CodePen</td>
+      <td>2.2.3</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="codepen">CodePen</h3>
+
+<p><strong>user &amp; hash:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-codepen.jpg" alt="extensions-codepen" style="max-height:100px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/codepen.html user='kitian616' hash='aQmWZG' default_tab='html,result' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/codepen.html user='kitian616' hash='aQmWZG' default_tab='html,result' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h1 id="国际化">国际化</h1>
+
+<p>TeXt 把 UI 元素的文字整理成一系列的翻译标识统一的放置在 <em>_data/locale.yml</em> 中，这样能够比较方便添加不同语言的支持。</p>
+
+<p>通过 <code class="language-plaintext highlighter-rouge">titles</code> 配置项可以给文章，布局和导航定义定义多语言标题，TeXt 默认定义了很多这样的标题，它们分别位于 <em>_data/navigation</em>，<em>_layouts/archive</em>，<em>_layouts/home</em> 和 <em>about.md</em> 中。</p>
+
+<!-- more -->
+
+<p>上文所提到的翻译标识和多语言标题支持以下语言：
+<!-- @start locale config --></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>语言</th>
+      <th><code class="language-plaintext highlighter-rouge">lang</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>英语</strong></td>
+      <td>en, en-GB, en-US, en-CA, en-AU</td>
+    </tr>
+    <tr>
+      <td><strong>简体中文</strong></td>
+      <td>zh-Hans, zh, zh-CN, zh-SG</td>
+    </tr>
+    <tr>
+      <td><strong>繁体中文</strong></td>
+      <td>zh-Hant, zh-TW, zh-HK</td>
+    </tr>
+    <tr>
+      <td><strong>韩语</strong></td>
+      <td>ko, ko-KR</td>
+    </tr>
+    <tr>
+      <td><strong>法语</strong></td>
+      <td>fr, fr-BE, fr-CA, fr-CH, fr-FR, fr-LU</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- @end locale config -->
+<p>你可以在 <a href="https://tianqi.name/jekyll-TeXt-theme/samples.html#languages">这里</a> 找到不同语言的示例。</p>
+
+<h1 id="布局">布局</h1>
+
+<pre><code class="language-mermaid">graph TB;
+    NONE[none]
+    BASE[base]
+    PAGE[page]
+    ARTICLE[article]
+    ARTICLES[articles]
+    HOME[home]
+    ARCHIVE[archive]
+    LANDING[landing]
+    404[404]
+    NONE--&gt;BASE;
+    BASE--&gt;PAGE;
+    PAGE--&gt;ARTICLE;
+    PAGE--&gt;ARTICLES;
+    ARTICLES--&gt;HOME;
+    PAGE--&gt;ARCHIVE;
+    PAGE--&gt;LANDING;
+    PAGE--&gt;404;
+</code></pre>
+
+<h2 id="base-布局">Base 布局</h2>
+
+<p>继承于 None。</p>
+
+<h2 id="page-布局">Page 布局</h2>
+
+<p>继承于 Base 布局。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>配置项</th>
+      <th>可选值</th>
+      <th>描述</th>
+      <th>最低版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>mode</strong></td>
+      <td>normal (default), immersive</td>
+      <td>该页的模式。</td>
+      <td>2.2.0</td>
+    </tr>
+    <tr>
+      <td><strong>type</strong></td>
+      <td>webpage (default), article</td>
+      <td>该页的类型, 作为 <a href="https://schema.org/">schema.org</a> 的语义化标记使用。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>key</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td>页面的唯一标识符，供评论系统和点击量统计使用。必须以字母（<code class="language-plaintext highlighter-rouge">[A-Za-z]</code>）开头，其后可以接若干字母、数字（<code class="language-plaintext highlighter-rouge">[0-9]</code>）、连字符（<code class="language-plaintext highlighter-rouge">-</code>）、下划线（<code class="language-plaintext highlighter-rouge">_</code>）、冒号（<code class="language-plaintext highlighter-rouge">:</code>）和小数点（<code class="language-plaintext highlighter-rouge">.</code>）。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>lang</strong></td>
+      <td>en (default), zh, zh-Hans, zh-Hant</td>
+      <td>该页的语言。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>author</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
+      <td>将在 <em>authors.yml</em> 中定义的作者作为某篇文章或页面的作者, 详情请看<a href="https://tianqi.name/jekyll-TeXt-theme/docs/zh/authors">作者</a>。</td>
+      <td>2.2.0</td>
+    </tr>
+    <tr>
+      <td><strong>show_title</strong></td>
+      <td>true (default), false</td>
+      <td>是否显示标题，默认显示，设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>show_edit_on_github</strong></td>
+      <td>true, false (default)</td>
+      <td>是否显示“在 Github 上修改”按钮，设置为 <code class="language-plaintext highlighter-rouge">true</code> 显示。你需要先在 <em>_config.yml</em> 中设置 <code class="language-plaintext highlighter-rouge">repository</code> 和 <code class="language-plaintext highlighter-rouge">repository_tree</code>。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>show_date</strong></td>
+      <td>true (default), false</td>
+      <td>是否展示该页的发布日期，设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏。</td>
+      <td>2.2.0</td>
+    </tr>
+    <tr>
+      <td><strong>show_tags</strong></td>
+      <td>true (default), false</td>
+      <td>是否展示该页的标签，设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏。</td>
+      <td>2.2.0</td>
+    </tr>
+    <tr>
+      <td><strong>full_width</strong></td>
+      <td>true, false (default)</td>
+      <td>该页内容是否占据全部宽度，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>pageview</strong></td>
+      <td>true, false (default)</td>
+      <td>是否开启阅读量统计，默认关闭，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
+      <td>2.2.0</td>
+    </tr>
+    <tr>
+      <td><strong>comment</strong></td>
+      <td>true (default), false</td>
+      <td>是否开启评论支持，默认开启，设置为 <code class="language-plaintext highlighter-rouge">false</code> 关闭。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>mathjax</strong></td>
+      <td>true, false</td>
+      <td>是否开启 Mathjax 公式支持，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>mathjax_autoNumber</strong></td>
+      <td>true, false</td>
+      <td>该页的 Mathjax 公式是否自动编号，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>mermaid</strong></td>
+      <td>true, false</td>
+      <td>是否开启 Mermaid 流程图支持，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>chart</strong></td>
+      <td>true, false</td>
+      <td>是否开启 Chart 图表支持，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>cover</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td>封面图片的 URL。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>header</strong></td>
+      <td>false, <code class="language-plaintext highlighter-rouge">!!map</code></td>
+      <td>设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏标题栏。</td>
+      <td>2.2.0</td>
+    </tr>
+    <tr>
+      <td><strong>article_header</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
+      <td> </td>
+      <td>2.2.0</td>
+    </tr>
+    <tr>
+      <td><strong>aside</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>sidebar</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>footer</strong></td>
+      <td>false</td>
+      <td>设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏底部栏。</td>
+      <td>2.2.3</td>
+    </tr>
+    <tr>
+      <td><strong>lightbox</strong></td>
+      <td>true, false</td>
+      <td>该页的大图是否能点击预览，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启，你可以通过设置 <code class="language-plaintext highlighter-rouge">lightbox-ignore</code> 类名来忽略特定的图片元素。</td>
+      <td>2.2.4</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="header">header</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>配置项</th>
+      <th>可选值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>theme</strong></td>
+      <td>light, dark</td>
+      <td>当 type 为 <code class="language-plaintext highlighter-rouge">translucent</code> 时有效。</td>
+    </tr>
+    <tr>
+      <td><strong>background</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td>当指定了 theme 值时有效。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="article_header">article_header</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>配置项</th>
+      <th>可选值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>type</strong></td>
+      <td>overlay, cover</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>align</strong></td>
+      <td>left (default), center</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>theme</strong></td>
+      <td>light (default), dark</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>background_color</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td>当 type 为 <code class="language-plaintext highlighter-rouge">overlay</code> 时有效。当设置的背景色较深时，你需要设置 <code class="language-plaintext highlighter-rouge">theme</code> 为 dark。</td>
+    </tr>
+    <tr>
+      <td><strong>background_image</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
+      <td>当 type 为 <code class="language-plaintext highlighter-rouge">overlay</code> 时有效，设置为 <code class="language-plaintext highlighter-rouge">false</code> 可覆盖 <code class="language-plaintext highlighter-rouge">cover</code> 禁止背景图片。</td>
+    </tr>
+    <tr>
+      <td><strong>image</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
+      <td>当 type 为 <code class="language-plaintext highlighter-rouge">cover</code> 时有效。</td>
+    </tr>
+    <tr>
+      <td><strong>actions</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!seq</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="article_headerbackground_image">article_header.background_image</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Option Values</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>gradient</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>src</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td>默认为 <code class="language-plaintext highlighter-rouge">cover</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="article_headerimage">article_header.image</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Option Values</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>src</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="aside">aside</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>配置项</th>
+      <th>可选值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>toc</strong></td>
+      <td>false (default), true</td>
+      <td>设置为 <code class="language-plaintext highlighter-rouge">true</code> 时展示右侧边栏目录。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="sidebar">sidebar</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>配置项</th>
+      <th>可选值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>nav</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="article-布局">Article 布局</h2>
+
+<p>继承于 Page 布局。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>配置项</th>
+      <th>可选值</th>
+      <th>描述</th>
+      <th>最低版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>modify_date</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td>该文章的最后修改时间, 其格式为 <code class="language-plaintext highlighter-rouge">YYYY-MM-DD HH:MM:SS +/-TTTT</code> 和 <code class="language-plaintext highlighter-rouge">date</code> 的格式相同</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>sharing</strong></td>
+      <td>true, false (default)</td>
+      <td>是否开启分享，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
+      <td>2.2.2</td>
+    </tr>
+    <tr>
+      <td><strong>show_author_profile</strong></td>
+      <td>true, false (default)</td>
+      <td>是否在文章开头显示作者信息卡片，设置为 <code class="language-plaintext highlighter-rouge">true</code> 显示。</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><strong>show_subscribe</strong></td>
+      <td>true, false (default)</td>
+      <td>是否在文章末尾显示订阅信息，设置为 <code class="language-plaintext highlighter-rouge">true</code> 显示。</td>
+      <td>latest</td>
+    </tr>
+    <tr>
+      <td><strong>license</strong></td>
+      <td>true, false (default), CC-BY-4.0, CC-BY-SA-4.0, CC-BY-NC-4.0, CC-BY-ND-4.0</td>
+      <td>该文章的许可协议。设置为 <code class="language-plaintext highlighter-rouge">true</code> 使用在 <em>_config.yml</em> 中设置的 <code class="language-plaintext highlighter-rouge">license</code> 值，设置为 <code class="language-plaintext highlighter-rouge">false</code> 不使用许可协议。</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="articles-布局">Articles 布局</h2>
+
+<p>继承于 Page 布局，从 <strong>2.2.0</strong> 版本支持。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>配置项</th>
+      <th>可选值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>articles</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="articles">articles</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>配置项</th>
+      <th>可选值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>data_source</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td>如果你将将集合名设置为该项的值，该页面将会展示这个集合下的文章列表。你可以在 <a href="https://jekyllrb.com/docs/collections/">Collections</a> 找到更多关于集合的信息。</td>
+    </tr>
+    <tr>
+      <td><strong>type</strong></td>
+      <td>item, brief, grid</td>
+      <td>TeXt 支持三种文章列表类型，每种类型都对应着一些配置，你可以在 <a href="https://tianqi.name/jekyll-TeXt-theme/samples.html#articles-layout">这里</a> 看到相关的示例。</td>
+    </tr>
+    <tr>
+      <td><strong>size</strong></td>
+      <td>md, sm</td>
+      <td>当 type 为 <code class="language-plaintext highlighter-rouge">grid</code> 时有效。</td>
+    </tr>
+    <tr>
+      <td><strong>article_type</strong></td>
+      <td>BlogPosting</td>
+      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。</td>
+    </tr>
+    <tr>
+      <td><strong>show_cover</strong></td>
+      <td>true (default), false</td>
+      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。 在设置改参数为 <code class="language-plaintext highlighter-rouge">true</code> 前，你需要给集合里的每篇文章设置封面, 参考 <a href="#page-layout">Page 布局</a>的 <code class="language-plaintext highlighter-rouge">cover</code> 配置项。</td>
+    </tr>
+    <tr>
+      <td><strong>cover_size</strong></td>
+      <td>lg, md, sm</td>
+      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。</td>
+    </tr>
+    <tr>
+      <td><strong>show_excerpt</strong></td>
+      <td>true, false (default)</td>
+      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效， 参考下面 <a href="#excerpt_type">excerpt_type</a> 章节。</td>
+    </tr>
+    <tr>
+      <td><strong>excerpt_type</strong></td>
+      <td>text, html</td>
+      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。</td>
+    </tr>
+    <tr>
+      <td><strong>show_readmore</strong></td>
+      <td>true, false (default)</td>
+      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。</td>
+    </tr>
+    <tr>
+      <td><strong>show_info</strong></td>
+      <td>true, false (default)</td>
+      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 或 <code class="language-plaintext highlighter-rouge">brief</code> 时有效。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="articlesexcerpt_type">articles.excerpt_type</h3>
+
+<p>文章列表中文章项的摘要有两种模式——TEXT 模式和 HTML 模式。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>模式名称</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>text</strong></td>
+      <td>此时摘要为纯文本，会过滤掉一切非文本元素（标题，链接，列表，表格，图片等等），且截取前 350 个字符。</td>
+    </tr>
+    <tr>
+      <td><strong>html</strong></td>
+      <td>此时摘要为 HTML 文档，与文章内容一致，并且 <strong>默认展示整篇文章的内容</strong>。若想控制摘要内容，需要在文章中想要显示到的地方加上 <code class="language-plaintext highlighter-rouge">&lt;!--more--&gt;</code>，详情请戳 <a href="https://jekyllrb.com/docs/posts/#post-excerpts">这里</a>。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>对于 Home 页，你可以像这样把 <code class="language-plaintext highlighter-rouge">excerpt_type</code> 设置为 <code class="language-plaintext highlighter-rouge">HTML</code>：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">layout</span><span class="pi">:</span> <span class="s">home</span>
+<span class="na">articles</span><span class="pi">:</span>
+  <span class="na">excerpt_type</span><span class="pi">:</span> <span class="s">html</span>
+</code></pre></div></div>
+
+<h2 id="home-布局">Home 布局</h2>
+
+<p>继承于 Articles 布局。</p>
+
+<h2 id="archive-布局">Archive 布局</h2>
+
+<p>继承于 Page 布局。</p>
+
+<h2 id="landing-布局">Landing 布局</h2>
+
+<p>继承于 Page 布局。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>配置项</th>
+      <th>可选值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>data</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="404-布局">404 布局</h2>
+
+<p>继承于 Page 布局。</p>
+
+<h1 id="导航栏">导航栏</h1>
+
+<p>在 TeXt 中有两种导航栏：<strong>头部导航栏</strong>（Header Navigation）和<strong>侧边栏导航栏</strong>（Sidebar Navigation），它们均在 <em>data/navigation.yml</em> 中配置。</p>
+
+<!--more-->
+
+<h2 id="头部导航栏">头部导航栏</h2>
+
+<p>头部导航栏在 <em>data/navigation.yml</em> 文件的 <code class="language-plaintext highlighter-rouge">header</code> 项定义，它是一个包含标题和 URL 项的数组：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">header</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">Docs</span>
+    <span class="na">url</span><span class="pi">:</span>        <span class="s">/docs/en/quick-start</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">文档</span>
+    <span class="na">url</span><span class="pi">:</span>        <span class="s">/docs/zh/quick-start</span>
+  <span class="pi">-</span> <span class="na">titles</span><span class="pi">:</span>
+      <span class="na">en</span><span class="pi">:</span>       <span class="s">Archive</span>
+      <span class="na">zh</span><span class="pi">:</span>       <span class="s">归档</span>
+      <span class="na">zh-Hans</span><span class="pi">:</span>  <span class="s">归档</span>
+      <span class="na">zh-Hant</span><span class="pi">:</span>  <span class="s">歸檔</span>
+    <span class="na">url</span><span class="pi">:</span>        <span class="s">/archive.html</span>
+  <span class="pi">-</span> <span class="na">titles</span><span class="pi">:</span>
+      <span class="na">en</span><span class="pi">:</span>       <span class="s">About</span>
+      <span class="na">zh</span><span class="pi">:</span>       <span class="s">关于</span>
+      <span class="na">zh-Hans</span><span class="pi">:</span>  <span class="s">关于</span>
+      <span class="na">zh-Hant</span><span class="pi">:</span>  <span class="s">關於</span>
+    <span class="na">url</span><span class="pi">:</span>        <span class="s">/about.html</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">GitHub</span>
+    <span class="na">url</span><span class="pi">:</span>        <span class="s">https://github.com/kitian616/jekyll-TeXt-theme</span>
+</code></pre></div></div>
+
+<p>你可以用 <code class="language-plaintext highlighter-rouge">titles</code> 来定义一个支持多语言的标题名。</p>
+
+<h2 id="侧边栏导航栏">侧边栏导航栏</h2>
+
+<p>要想在某篇文章或页面中使用侧边栏导航栏，首先你需要在 <em>data/navigation.yml</em> 中定义一个导航栏。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">docs-en</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">Start</span>
+    <span class="na">children</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Quick Start</span>
+        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/quick-start</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Structure</span>
+        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/structure</span>
+      <span class="s">...</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">Customization</span>
+    <span class="na">children</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Configuration</span>
+        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/configuration</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Navigation</span>
+        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/navigation</span>
+      <span class="s">...</span>
+</code></pre></div></div>
+
+<p>然后在头信息中将定义的导航作为这篇文章或页面的侧边栏导航栏：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sidebar</span><span class="pi">:</span>
+  <span class="na">nav</span><span class="pi">:</span> <span class="s">docs-en</span>
+</code></pre></div></div>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:footnote" role="doc-endnote">
+      <p>The footnote source <a href="#fnref:footnote" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:fn-nth-2" role="doc-endnote">
+      <p>The 2nd footnote source <a href="#fnref:fn-nth-2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:ALDs" role="doc-endnote">
+      <p><a href="https://kramdown.gettalong.org/syntax.html#attribute-list-definitions">Attribute List Definitions</a> <a href="#fnref:ALDs" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Tian Qi</name><email>kitian616@outlook.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[Jekyll博客的编写 在目录结构介绍中说明过，所有的文章都在 /_posts 文件夹中。这些文件可以用 Markdown 或 HTML 编写。只要文件中有 YAML 头信息，它们就会从源格式转化成 HTML 页面，从而成为你的静态网站的一部分。]]></summary></entry><entry><title type="html">Win10建云笔记用的简易博客Github+Jekyll</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html" rel="alternate" type="text/html" title="Win10建云笔记用的简易博客Github+Jekyll" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html"><![CDATA[<h2 id="前言">前言</h2>
+
+<p>花了半天时间建的博客，博客链接<a href="https://allrobot.github.io/Study-Blog/">在此</a></p>
+
+<p>写一个Github建博客指南，防以后忘记</p>
+
+<p>若以下内容过时导致失效，请查阅Jekyll文档</p>
+
+<p>Jekyll文档：https://jekyllrb.com/docs/
+以及https://jekyllrb.com/docs/themes/</p>
+
+<h2 id="安装环境">安装环境</h2>
+<ul>
+  <li><a href="https://rubyinstaller.org/downloads/">Ruby</a></li>
+  <li><a href="https://rubygems.org/pages/download">RubyGems</a></li>
+  <li><a href="https://nodejs.org/en/download/">NodeJS</a></li>
+  <li><a href="https://www.python.org/downloads/">Python3</a></li>
+  <li><a href="https://nchc.dl.sourceforge.net/project/mingw/Installer/mingw-get-setup.exe">GCC</a>和<a href="https://cmake.org/">Make</a></li>
+</ul>
+
+<p>下载的6个程序包，需设系统的<code class="language-plaintext highlighter-rouge">环境变量</code>…安装教程自行搜索，弄完了输入版本指令验证是否安装成功</p>
+
+<h3 id="打开cmd安装jekyll和bundler">打开CMD安装<code class="language-plaintext highlighter-rouge">jekyll</code>和<code class="language-plaintext highlighter-rouge">bundler</code></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # gem安装依赖RubyGems实现
+ gem install jekyll bundler
+ # 输入查询版本指令，查看是否安装成功
+ jekyll -v
+ bundler -v
+</code></pre></div></div>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/1.png" alt="安装与验证" /></p>
+
+<h3 id="下载github桌面版github">下载[Github桌面版]<a href="https://desktop.github.com/">Github</a></h3>
+
+<h4 id="点击file-new-repository新建博客仓库">点击<code class="language-plaintext highlighter-rouge">File-New repository</code>新建博客仓库</h4>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/2.png" alt="" /></p>
+<h4 id="随便填点点击create-repository按钮">随便填点，点击<code class="language-plaintext highlighter-rouge">Create repository</code>按钮</h4>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/3.png" alt="" /></p>
+
+<h2 id="jekyll创建简易博客">Jekyll创建简易博客</h2>
+<h3 id="cmd跳到dtest目录">CMD跳到<code class="language-plaintext highlighter-rouge">D:\test</code>目录</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cd /d D:\test
+</code></pre></div></div>
+<p>Github建立的项目文件夹</p>
+<blockquote>
+  <p>记得设为Public，否则私人仓库开通Github博客需要付费的
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/4.png" alt="" /></p>
+</blockquote>
+
+<h3 id="输入指令新建jekyll项目">输入指令<code class="language-plaintext highlighter-rouge">新建Jekyll项目</code></h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # test为github仓库名，若没有则新建文件夹
+ jekyll new test
+</code></pre></div></div>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/5.png" alt="新建jekyll项目" /></p>
+
+<p>此时，test文件夹多了几个文件
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/6.png" alt="Jekyll新建的项目" /></p>
+
+<h3 id="添加webrick启动本地浏览器">添加<code class="language-plaintext highlighter-rouge">webrick</code>，启动本地浏览器</h3>
+<p>如果<code class="language-plaintext highlighter-rouge">webrick</code>等待时间长了，按<code class="language-plaintext highlighter-rouge">ctrl+c</code>退出，在输入一次</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle add webrick
+jekyll serve
+</code></pre></div></div>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/7.png" alt="" /></p>
+<h4 id="开启本地服务">开启本地服务</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll serve
+</code></pre></div></div>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/8.png" alt="" /></p>
+
+<h4 id="浏览器输入localhost4000">浏览器输入localhost:4000</h4>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="打开本地博客" /></p>
+
+<p>确保所有文件存放Jekyll站点目录下，需把主题文件夹的CSS样式表等文件放入仓库博客</p>
+<h3 id="打开_configyml文件">打开<code class="language-plaintext highlighter-rouge">_config.yml</code>文件</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>title: Your awesome title
+email: your-email@example.com
+description: &gt;- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname &amp; protocol for your site, e.g. http://example.com
+twitter_username: jekyllrb
+github_username:  jekyll
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+</code></pre></div></div>
+<p>要发布到Github Pages仅修改<code class="language-plaintext highlighter-rouge">_config.yml</code>即可,只是要删除上面的<code class="language-plaintext highlighter-rouge">theme: minima</code>，因为Github不加载Gemfile对主题gem的引用,具体参阅官方文档</p>
+
+<p>然后添加<code class="language-plaintext highlighter-rouge">baseurl:"/仓库项目名"</code>如果不添加，Github博客不会加载CSS样式表
+我这儿是加了’baseurl: “/test”</p>
+
+<h3 id="搜索主题文件夹并复制到仓库目录">搜索主题文件夹并复制到仓库目录</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> bundle info --path minima
+</code></pre></div></div>
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/10.png" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/11.png" alt="" /></p>
+
+<h3 id="github-pages开启页面并保存">Github Pages开启页面并保存</h3>
+<p>Github桌面版同步到Giuhub，点击<code class="language-plaintext highlighter-rouge">View on GitHub</code>，前往<code class="language-plaintext highlighter-rouge">Settings</code>-<code class="language-plaintext highlighter-rouge">Pages</code>
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/12.png" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/13.png" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/14.png" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/15.png" alt="" />
+建立的简易博客：https://allrobots.github.io/test/</p>
+
+<h4 id="更换主题">更换主题</h4>
+<p><a href="http://jekyllthemes.org/">可供下载的主题网站</a></p>
+<blockquote>
+  <p>如果有更换主题需求，先把原来的主题文件夹删掉，更换C:\Ruby30-x64\lib\ruby\gems\3.0.0\gems下的任意主题文件夹</p>
+</blockquote>
+
+<h2 id="关于编写文章">关于编写文章</h2>
+
+<p>D:\test\test_posts复制里面的示例文件<code class="language-plaintext highlighter-rouge">2022-02-06-welcome-to-jekyll副本.markdown</code>重命名为<code class="language-plaintext highlighter-rouge">2022-02-06-article1.markdown</code>
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/16.png" alt="" /></p>
+
+<p>建议开启<code class="language-plaintext highlighter-rouge">jekyll serve</code>本地预览，边写边预览</p>
+
+<p>或VS Code下个<code class="language-plaintext highlighter-rouge">Office Viewer</code>、<code class="language-plaintext highlighter-rouge">Markdown All in One</code>之类的小插件，边写边预览</p>
+
+<p>要修改标题，可以改md文件里的title….
+博客支持Markdown语法，LaTex 数学公式…</p>
+
+<p>写完文章，Git同步就可以了，很方便的</p>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[前言 花了半天时间建的博客，博客链接在此 写一个Github建博客指南，防以后忘记 若以下内容过时导致失效，请查阅Jekyll文档 Jekyll文档：https://jekyllrb.com/docs/ 以及https://jekyllrb.com/docs/themes/ 安装环境 Ruby RubyGems NodeJS Python3 GCC和Make 下载的6个程序包，需设系统的环境变量…安装教程自行搜索，弄完了输入版本指令验证是否安装成功 打开CMD安装jekyll和bundler # gem安装依赖RubyGems实现 gem install jekyll bundler # 输入查询版本指令，查看是否安装成功 jekyll -v bundler -v 下载[Github桌面版]Github 点击File-New repository新建博客仓库 随便填点，点击Create repository按钮 Jekyll创建简易博客 CMD跳到D:\test目录 cd /d D:\test Github建立的项目文件夹 记得设为Public，否则私人仓库开通Github博客需要付费的 输入指令新建Jekyll项目 # test为github仓库名，若没有则新建文件夹 jekyll new test 此时，test文件夹多了几个文件 添加webrick，启动本地浏览器 如果webrick等待时间长了，按ctrl+c退出，在输入一次 bundle add webrick jekyll serve 开启本地服务 jekyll serve 浏览器输入localhost:4000 确保所有文件存放Jekyll站点目录下，需把主题文件夹的CSS样式表等文件放入仓库博客 打开_config.yml文件 title: Your awesome title email: your-email@example.com description: &gt;- # this means to ignore newlines until "baseurl:" Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description. baseurl: "" # the subpath of your site, e.g. /blog url: "" # the base hostname &amp; protocol for your site, e.g. http://example.com twitter_username: jekyllrb github_username: jekyll # Build settings theme: minima plugins: - jekyll-feed 要发布到Github Pages仅修改_config.yml即可,只是要删除上面的theme: minima，因为Github不加载Gemfile对主题gem的引用,具体参阅官方文档 然后添加baseurl:"/仓库项目名"如果不添加，Github博客不会加载CSS样式表 我这儿是加了’baseurl: “/test” 搜索主题文件夹并复制到仓库目录 bundle info --path minima Github Pages开启页面并保存 Github桌面版同步到Giuhub，点击View on GitHub，前往Settings-Pages 建立的简易博客：https://allrobots.github.io/test/ 更换主题 可供下载的主题网站 如果有更换主题需求，先把原来的主题文件夹删掉，更换C:\Ruby30-x64\lib\ruby\gems\3.0.0\gems下的任意主题文件夹 关于编写文章 D:\test\test_posts复制里面的示例文件2022-02-06-welcome-to-jekyll副本.markdown重命名为2022-02-06-article1.markdown 建议开启jekyll serve本地预览，边写边预览 或VS Code下个Office Viewer、Markdown All in One之类的小插件，边写边预览 要修改标题，可以改md文件里的title…. 博客支持Markdown语法，LaTex 数学公式… 写完文章，Git同步就可以了，很方便的]]></summary></entry></feed>

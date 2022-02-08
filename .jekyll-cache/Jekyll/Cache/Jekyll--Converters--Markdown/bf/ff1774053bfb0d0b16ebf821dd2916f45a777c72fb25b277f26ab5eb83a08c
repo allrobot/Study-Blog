@@ -1,0 +1,569 @@
+I"V<h1 id="新建博客">新建博客</h1>
+
+<p>在<a href="http://jekyllcn.com/docs/structure/">目录结构</a>介绍中说明过，<strong>所有的文章都在 <em>/_posts</em> 文件夹中</strong>。这些文件可以用 Markdown 或 HTML 编写。只要文件中有 YAML 头信息，它们就会从源格式转化成 HTML 页面，从而成为你的静态网站的一部分。</p>
+
+<!--more-->
+
+<h2 id="创建文章">创建文章</h2>
+
+<p>发表一篇新文章，你所需要做的就是在 <em>/_posts</em> 文件夹中创建一个新的文件。文件名的命名非常重要。Jekyll 要求一篇文章的文件名遵循下面的格式：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>年-月-日-标题.MARKUP
+</code></pre></div></div>
+
+<p>下面是一些合法的文件名的例子：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2011-12-31-new-years-eve-is-awesome.md
+2012-09-12-how-to-write-a-blog.markdown
+</code></pre></div></div>
+
+<h2 id="内容相关">内容相关</h2>
+
+<p>所有博客文章顶部必须有一段 YAML 头信息(YAML front-matter)。</p>
+
+<p>为了提高文章的阅读和书写体验，TeXt 在 Markdown 原有的基础上做了一些增强。</p>
+
+<h3 id="yaml-头信息">YAML 头信息</h3>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="s">---</span>
+    <span class="s">layout</span><span class="err">:</span> <span class="s">article</span>
+    <span class="s">title</span><span class="err">:</span> <span class="s">Document - Writing Posts</span>
+    <span class="s">mathjax</span><span class="err">:</span> <span class="no">true</span>
+    <span class="s">---</span>
+</code></pre></div></div>
+<p>{ 
+在 <code class="language-plaintext highlighter-rouge">---</code> 之间你可以设置属性的值，可以把它们看作页面的配置，这些配置会覆盖在 <em>_config.yml</em> 文件中设置的全局配置。</p>
+
+<p>除去 Jekyll 自定义的变量外，TeXt 也定义了一些额外的变量，详情请戳<a href="https://tianqi.name/jekyll-TeXt-theme/docs/zh/layouts">布局</a>。</p>
+
+<h1 id="markdown增强">Markdown增强</h1>
+
+<p>你需要在 <em>_config.yml</em> 或 YAML 头信息中设置相关的属性为 <code class="language-plaintext highlighter-rouge">true</code> 来开启对应的功能。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>增强项</th>
+      <th>描述</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mathjax</strong></td>
+      <td>在文章中方便的加入数学公式，使用 MathML、LaTeX 和 ASCIIMathML 语法</td>
+      <td><a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/07/07/mathjax.html">示例</a></td>
+    </tr>
+    <tr>
+      <td><strong>Mermaid</strong></td>
+      <td>在文章中方便的加入流程图</td>
+      <td><a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/06/06/mermaid.html">示例</a></td>
+    </tr>
+    <tr>
+      <td><strong>Chart</strong></td>
+      <td>在文章中方便的加入可交互的图表</td>
+      <td><a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/05/05/chart.html">示例</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="mathjax">Mathjax</h2>
+
+<p>When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are</p>
+
+\[x_1 = {-b + \sqrt{b^2-4ac} \over 2a}\]
+
+\[x_2 = {-b - \sqrt{b^2-4ac} \over 2a} \notag\]
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-tex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>When <span class="p">$$</span><span class="nb">a </span><span class="nv">\ne</span><span class="nb"> </span><span class="m">0</span><span class="p">$$</span>, there are two solutions to <span class="p">$$</span><span class="nb">ax</span><span class="p">^</span><span class="m">2</span><span class="nb"> </span><span class="o">+</span><span class="nb"> bx </span><span class="o">+</span><span class="nb"> c </span><span class="o">=</span><span class="nb"> </span><span class="m">0</span><span class="p">$$</span> and they are
+<span class="p">$$</span><span class="nb">x</span><span class="p">_</span><span class="m">1</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="p">{</span><span class="o">-</span><span class="nb">b </span><span class="o">+</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="p">{</span><span class="nb">b</span><span class="p">^</span><span class="m">2</span><span class="o">-</span><span class="m">4</span><span class="nb">ac</span><span class="p">}</span><span class="nb"> </span><span class="nv">\over</span><span class="nb"> </span><span class="m">2</span><span class="nb">a</span><span class="p">}$$</span>
+<span class="p">$$</span><span class="nb">x</span><span class="p">_</span><span class="m">2</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="p">{</span><span class="o">-</span><span class="nb">b </span><span class="o">-</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="p">{</span><span class="nb">b</span><span class="p">^</span><span class="m">2</span><span class="o">-</span><span class="m">4</span><span class="nb">ac</span><span class="p">}</span><span class="nb"> </span><span class="nv">\over</span><span class="nb"> </span><span class="m">2</span><span class="nb">a</span><span class="p">}</span><span class="nb"> </span><span class="nv">\notag</span><span class="p">$$</span>
+</code></pre></div></div>
+
+<p class="info"><strong>当 MathJax 激活后</strong>，你可以设置 <code class="language-plaintext highlighter-rouge">mathjax_autoNumber: true</code> 让公式自动编号，你可以使用 \notag 或者 \nonumber 阻止某条公式自动编号。</p>
+
+<h2 id="mermaid">Mermaid</h2>
+
+<pre><code class="language-mermaid">graph TB;
+    A[Do you have a problem in your life?]
+    B[Then don't worry]
+    C[Can you do something about it?]
+    A--no--&gt;B;
+    A--yes--&gt;C;
+    C--no--&gt;B;
+    C--yes--&gt;B;
+</code></pre>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```mermaid
+graph TB;
+    A[Do you have a problem in your life?]
+    B[Then don't worry]
+    C[Can you do something about it?]
+    A--no--&gt;B;
+    A--yes--&gt;C;
+    C--no--&gt;B;
+    C--yes--&gt;B;
+```
+</code></pre></div></div>
+
+<p><a href="https://mermaidjs.github.io/">Mermaid</a> 支持以下三种示意图:</p>
+
+<ul>
+  <li>
+    <p><a href="https://mermaidjs.github.io/flowchart.html">Flowchart</a></p>
+  </li>
+  <li>
+    <p><a href="https://mermaidjs.github.io/sequenceDiagram.html">Sequence Diagram</a></p>
+  </li>
+  <li>
+    <p><a href="https://mermaidjs.github.io/gantt.html">Gant Diagram</a></p>
+  </li>
+</ul>
+
+<h2 id="chart">Chart</h2>
+
+<pre><code class="language-chart">{
+  "type": "line",
+  "data": {
+    "labels": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July"
+    ],
+    "datasets": [
+      {
+        "label": "# of bugs",
+        "fill": false,
+        "lineTension": 0.1,
+        "backgroundColor": "rgba(75,192,192,0.4)",
+        "borderColor": "rgba(75,192,192,1)",
+        "borderCapStyle": "butt",
+        "borderDash": [],
+        "borderDashOffset": 0,
+        "borderJoinStyle": "miter",
+        "pointBorderColor": "rgba(75,192,192,1)",
+        "pointBackgroundColor": "#fff",
+        "pointBorderWidth": 1,
+        "pointHoverRadius": 5,
+        "pointHoverBackgroundColor": "rgba(75,192,192,1)",
+        "pointHoverBorderColor": "rgba(220,220,220,1)",
+        "pointHoverBorderWidth": 2,
+        "pointRadius": 1,
+        "pointHitRadius": 10,
+        "data": [
+          65,
+          59,
+          80,
+          81,
+          56,
+          55,
+          40
+        ],
+        "spanGaps": false
+      }
+    ]
+  },
+  "options": {}
+}
+</code></pre>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```chart
+{
+  "type": "polarArea",
+  "data": {
+    "datasets": [
+      {
+        "data": [
+          11,
+          16,
+          7,
+          3,
+          14
+        ],
+        "backgroundColor": [
+          "#FF6384",
+          "#4BC0C0",
+          "#FFCE56",
+          "#E7E9ED",
+          "#36A2EB"
+        ],
+        "label": "My dataset"
+      }
+    ],
+    "labels": [
+      "Red",
+      "Green",
+      "Yellow",
+      "Grey",
+      "Blue"
+    ]
+  },
+  "options": {}
+}
+```
+</code></pre></div></div>
+
+<p><a href="http://www.chartjs.org/docs/latest/">Chart.js</a> 支持以下 7 种图表:</p>
+
+<ul>
+  <li>
+    <p><a href="http://www.chartjs.org/docs/latest/charts/line.html">Line Chart</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chartjs.org/docs/latest/charts/bar.html">Bar Chart</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chartjs.org/docs/latest/charts/radar.html">Radar Chart</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chartjs.org/latest/charts/polar.html">Polar Area Chart</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chartjs.org/docs/latest/charts/doughnut.html">Pie Chart</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chartjs.org/docs/latest/charts/doughnut.html">Doughnut Chart</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chartjs.org/docs/latest/charts/bubble.html">Bubble Chart</a></p>
+  </li>
+</ul>
+
+<h1 id="markdown文本样式">Markdown文本样式</h1>
+
+<p>为了展示Markdown语法的渲染，<a href="https://github.com/cotes2020/jekyll-theme-chirpy/fork"><strong>Chirpy</strong></a>, 你也可以用它作为写作的例子。 现在，让我们来看看文本和版式。</p>
+
+<h2 id="标题">标题</h2>
+<hr />
+<p><strong>markdown:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+</code></pre></div></div>
+<h1 id="h1---开头">H1 - 开头</h1>
+
+<h2 data-toc-skip="">H2 - heading</h2>
+
+<h3 data-toc-skip="">H3 - heading</h3>
+
+<h4>H4 - heading</h4>
+<p><strong>markdown:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># H1 - 开头
+
+## H2 - heading
+
+### H3 - heading
+
+#### H4 - heading
+
+</code></pre></div></div>
+<p><br /></p>
+
+<h2 id="文章段落">文章段落</h2>
+
+<p>I wandered lonely as a cloud</p>
+
+<p>That floats on high o’er vales and hills,</p>
+
+<p>When all at once I saw a crowd,</p>
+
+<p>A host, of golden daffodils;</p>
+
+<p>Beside the lake, beneath the trees,</p>
+
+<p>Fluttering and dancing in the breeze.</p>
+
+<h2 id="列表">列表</h2>
+
+<h3 id="有序列表">有序列表</h3>
+
+<ol>
+  <li>Firstly</li>
+  <li>Secondly</li>
+  <li>Thirdly</li>
+</ol>
+
+<p><strong>markdown:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Firstly
+2. Secondly
+3. Thirdly
+
+</code></pre></div></div>
+<h3 id="无序列表">无序列表</h3>
+
+<ul>
+  <li>章节
+    <ul>
+      <li>节选
+        <ul>
+          <li>段落</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>markdown:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 章节
+  - 节选
+    - 段落
+</code></pre></div></div>
+
+<h3 id="任务列表">任务列表</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />TODO</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Completed</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Defeat COVID-19
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Vaccine production</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Economic recovery</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />People smile again</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>markdown:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- [ ] TODO
+- [x] Completed
+- [ ] Defeat COVID-19
+  - [x] Vaccine production
+  - [ ] Economic recovery
+  - [ ] People smile again
+</code></pre></div></div>
+
+<h3 id="描述列表">描述列表</h3>
+
+<dl>
+  <dt>Sun</dt>
+  <dd>the star around which the earth orbits</dd>
+  <dt>Moon</dt>
+  <dd>the natural satellite of the earth, visible by reflected light from the sun</dd>
+</dl>
+
+<p><strong>markdown:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sun
+: the star around which the earth orbits
+
+Moon
+: the natural satellite of the earth, visible by reflected light from the sun
+
+</code></pre></div></div>
+<h2 id="引用">引用</h2>
+
+<blockquote>
+  <p>This line shows the <em>block quote</em>.</p>
+</blockquote>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&gt; This line shows the _block quote_.
+
+</code></pre></div></div>
+
+<h2 id="提示">提示</h2>
+
+<p class="prompt-note">显示<code class="language-plaintext highlighter-rouge">笔记</code>类型提示符的示例。</p>
+
+<p class="prompt-warning">显示<code class="language-plaintext highlighter-rouge">warning</code>类型提示符的例子。</p>
+
+<p class="prompt-danger">显示<code class="language-plaintext highlighter-rouge">危险</code>类型提示符的例子。</p>
+
+<p><strong>markdown:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>显示`笔记`类型提示符的示例。
+{: .prompt-note }
+
+显示`warning`类型提示符的例子。
+{: .prompt-warning }
+
+显示`危险`类型提示符的例子。
+{: .prompt-danger }
+</code></pre></div></div>
+
+<h2 id="表格">表格</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Company</th>
+      <th style="text-align: left">Contact</th>
+      <th style="text-align: right">Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Alfreds Futterkiste</td>
+      <td style="text-align: left">Maria Anders</td>
+      <td style="text-align: right">Germany</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Island Trading</td>
+      <td style="text-align: left">Helen Bennett</td>
+      <td style="text-align: right">UK</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Magazzini Alimentari Riuniti</td>
+      <td style="text-align: left">Giovanni Rovelli</td>
+      <td style="text-align: right">Italy</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>markdown:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Company                      | Contact          | Country |
+|:-----------------------------|:-----------------|--------:|
+| Alfreds Futterkiste          | Maria Anders     | Germany |
+| Island Trading               | Helen Bennett    | UK      |
+| Magazzini Alimentari Riuniti | Giovanni Rovelli | Italy   |
+</code></pre></div></div>
+
+<h2 id="链接">链接</h2>
+
+<p><a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a></p>
+
+<p><strong>markdown:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;http://127.0.0.1:4000&gt;
+</code></pre></div></div>
+
+<h2 id="脚注">脚注</h2>
+
+<p>点击右上边的脚注<sup id="fnref:footnote" role="doc-noteref"><a href="#fn:footnote" class="footnote" rel="footnote">1</a></sup>, 这里是另一个脚注<sup id="fnref:fn-nth-2" role="doc-noteref"><a href="#fn:fn-nth-2" class="footnote" rel="footnote">2</a></sup>.</p>
+
+<p><strong>markdown:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>点击右上边的脚注[^footnote], 这里是另一个脚注[^fn-nth-2].
+</code></pre></div></div>
+
+<h3 id="脚注注释">脚注注释</h3>
+
+<p><strong>markdown:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[^footnote]: The footnote source
+[^fn-nth-2]: The 2nd footnote source
+</code></pre></div></div>
+
+<h2 id="图像">图像</h2>
+
+<ul>
+  <li>默认 (带说明文字)</li>
+</ul>
+
+<p><img src="https://alifei04.cfp.cn/creative/vcg/veer/1600water/veer-303764513.jpg" alt="Desktop View" width="50%" height="50%" />
+<em>Full screen width and center alignment</em></p>
+
+<p><br /></p>
+
+<ul>
+  <li>阴影</li>
+</ul>
+
+<p><img src="https://alifei04.cfp.cn/creative/vcg/veer/1600water/veer-303764513.jpg" alt="Window shadow" class="shadow" width="1548" height="864" style="max-width: 90%" />
+<em>shadow effect (visible in light mode)</em></p>
+
+<p><br /></p>
+
+<ul>
+  <li>左对齐</li>
+</ul>
+
+<p><img src="https://alifei04.cfp.cn/creative/vcg/veer/1600water/veer-303764513.jpg" alt="Desktop View" width="972" height="589" style="max-width: 70%" class="normal" /></p>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <p>向左浮动</p>
+
+    <p><img src="https://alifei04.cfp.cn/creative/vcg/veer/1600water/veer-303764513.jpg" alt="Desktop View" width="972" height="589" style="max-width: 200px" class="left" />
+“一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。  “</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <p>向右浮动</p>
+
+    <p><img src="https://alifei04.cfp.cn/creative/vcg/veer/1600water/veer-303764513.jpg" alt="Desktop View" width="972" height="589" style="max-width: 200px" class="right" />
+“一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。  “</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="mermaid-svg">Mermaid SVG</h2>
+
+<pre><code class="language-mermaid"> gantt
+  title  Adding GANTT diagram functionality to mermaid
+  apple :a, 2017-07-20, 1w
+  banana :crit, b, 2017-07-23, 1d
+  cherry :active, c, after b a, 1d
+</code></pre>
+
+<h2 id="mathematics">Mathematics</h2>
+
+<p>The mathematics powered by <a href="https://www.mathjax.org/"><strong>MathJax</strong></a>:</p>
+
+\[\sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}\]
+
+<p>When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are</p>
+
+\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]
+
+<h2 id="内联代码">内联代码</h2>
+
+<p>这是一个例子 <code class="language-plaintext highlighter-rouge">Inline Code</code>.</p>
+
+<h2 id="文件路径">文件路径</h2>
+
+<p>这儿是 <code class="language-plaintext filepath highlighter-rouge">/path/to/the/file.extend</code>.</p>
+
+<h2 id="代码块">代码块</h2>
+
+<h3 id="普通">普通</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一个普通的代码片段，没有语法突出显示和行号。  
+</code></pre></div></div>
+
+<h3 id="特定语言">特定语言</h3>
+
+<h4 id="console">Console</h4>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">env</span> |grep SHELL
+<span class="go">SHELL=/usr/local/bin/bash
+PYENV_SHELL=bash
+</span></code></pre></div></div>
+
+<h4 id="shell">Shell</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-ne</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"The command was not successful."</span><span class="p">;</span>
+    <span class="c">#do the needful / exit</span>
+<span class="k">fi</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="specific-filename">Specific filename</h3>
+
+<div file="_sass/jekyll-theme-chirpy.scss" class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span>
+  <span class="s2">"colors/light-typography"</span><span class="o">,</span>
+  <span class="s2">"colors/dark-typography"</span>
+</code></pre></div></div>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:footnote" role="doc-endnote">
+      <p>The footnote source <a href="#fnref:footnote" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:fn-nth-2" role="doc-endnote">
+      <p>The 2nd footnote source <a href="#fnref:fn-nth-2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

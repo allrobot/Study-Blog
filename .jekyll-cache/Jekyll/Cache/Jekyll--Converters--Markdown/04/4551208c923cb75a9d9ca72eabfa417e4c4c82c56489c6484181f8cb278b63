@@ -1,0 +1,219 @@
+I"�<p>Jekyll 使用 kramdown 作为默认 Markdown 解释器。kramdown 可以通过 ALDs<sup id="fnref:ALDs" role="doc-noteref"><a href="#fn:ALDs" class="footnote" rel="footnote">1</a></sup> 来设置块级元素或行内元素的属性。例如，可以通过 <code class="language-plaintext highlighter-rouge">{:.class-name1.class-name-2}</code> 来给元素定义样式类。</p>
+
+<p>TeXt 定义了一些样式类，你可以在文章和页面的方便的使用，可以在 <a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/08/08/additional-styles.html">这里</a> 看到示例和详细的说明.</p>
+
+<h2 id="提示">提示</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>样式名称</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>success</strong></td>
+    </tr>
+    <tr>
+      <td><strong>info</strong></td>
+    </tr>
+    <tr>
+      <td><strong>warning</strong></td>
+    </tr>
+    <tr>
+      <td><strong>error</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="success">Success Text.</p>
+
+<p class="info">Info Text.</p>
+
+<p class="warning">Warning Text.</p>
+
+<p class="error">Error Text.</p>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Success Text.
+{:.success}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Info Text.
+{:.info}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Warning Text.
+{:.warning}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error Text.
+{:.error}
+</code></pre></div></div>
+
+<h2 id="标签">标签</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class Names</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>success</strong></td>
+    </tr>
+    <tr>
+      <td><strong>info</strong></td>
+    </tr>
+    <tr>
+      <td><strong>warning</strong></td>
+    </tr>
+    <tr>
+      <td><strong>error</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext success highlighter-rouge">success</code></p>
+
+<p><code class="language-plaintext info highlighter-rouge">info</code></p>
+
+<p><code class="language-plaintext warning highlighter-rouge">warning</code></p>
+
+<p><code class="language-plaintext error highlighter-rouge">error</code></p>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`success`{:.success}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`info`{:.info}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`warning`{:.warning}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`error`{:.error}
+</code></pre></div></div>
+
+<h2 id="图片">图片</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>样式名称</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>border</strong></td>
+    </tr>
+    <tr>
+      <td><strong>shadow</strong></td>
+    </tr>
+    <tr>
+      <td><strong>rounded</strong></td>
+    </tr>
+    <tr>
+      <td><strong>circle</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="border">Border</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_border" class="border" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.border}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<h3 id="shadow">Shadow</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_shadow" class="shadow" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.shadow}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<h3 id="rounded">Rounded</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_rounded" class="rounded" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.rounded}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<h3 id="circle">Circle</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_circle" class="circle" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.circle}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<h3 id="mixture">Mixture</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_border+rounded" class="border rounded" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.border.rounded}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_circle+shadow" class="circle shadow" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.circle.shadow}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_circle+border+shadow" class="circle border shadow" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.circle.border.shadow}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:ALDs" role="doc-endnote">
+      <p><a href="https://kramdown.gettalong.org/syntax.html#attribute-list-definitions">Attribute List Definitions</a> <a href="#fnref:ALDs" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

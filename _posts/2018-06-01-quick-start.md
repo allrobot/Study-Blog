@@ -1,6 +1,6 @@
 ---
 layout: article
-title: 快速开始
+title: 快速建Jekyll博客
 tags: [博客,写作]
 date:   2022-02-06 19:26:41 +0800
 categories: [博客]

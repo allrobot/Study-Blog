@@ -1,0 +1,193 @@
+I"�<h2 id="音频">音频</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>扩展名称</th>
+      <th>最新版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SoundCloud</td>
+      <td>2.2.2</td>
+    </tr>
+    <tr>
+      <td>Netease Cloud Music</td>
+      <td>2.2.2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="soundcloud">SoundCloud</h3>
+
+<p><strong>id:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-soundclound.jpg" alt="extensions-soundcloud" style="max-height:500px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/soundcloud.html id='313627932' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/soundcloud.html id='313627932' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h3 id="网易云音乐">网易云音乐</h3>
+
+<p><strong>id:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-netease-cloud-music.jpg" alt="extensions-soundcloud" style="max-height:320px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/netease-cloud-music.html id='413812448' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/netease-cloud-music.html id='413812448' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h2 id="视频">视频</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>扩展名称</th>
+      <th>最新版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>YouTube</td>
+      <td>2.2.2</td>
+    </tr>
+    <tr>
+      <td>TED</td>
+      <td>2.2.2</td>
+    </tr>
+    <tr>
+      <td>bilibili</td>
+      <td>2.2.2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="youtube">YouTube</h3>
+
+<p><strong>id:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-youtube.jpg" alt="extensions-soundcloud" style="max-height:250px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/youtube.html id='wbY97-hdD5c' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/youtube.html id='wbY97-hdD5c' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h3 id="ted">TED</h3>
+
+<p><strong>id:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-ted.jpg" alt="extensions-soundcloud" style="max-height:83px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/ted.html id='emily_esfahani_smith_there_s_more_to_life_than_being_happy' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/ted.html id='emily_esfahani_smith_there_s_more_to_life_than_being_happy' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h3 id="哔哩哔哩">哔哩哔哩</h3>
+
+<p><strong>id:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-bilibili.jpg" alt="extensions-bilibili" style="max-height:190px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/bilibili.html id='11091080' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/bilibili.html id='11091080' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h2 id="幻灯片">幻灯片</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>扩展名称</th>
+      <th>最新版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SlideShare</td>
+      <td>2.2.2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="slideshare">SlideShare</h3>
+
+<p><strong>id:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-slideshare.jpg" alt="extensions-slideshare" style="max-height:480px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/slideshare.html id='u9L9zDsqEWNKE1' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/slideshare.html id='u9L9zDsqEWNKE1' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+<h2 id="在线示例">在线示例</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>扩展名称</th>
+      <th>最新版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CodePen</td>
+      <td>2.2.3</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="codepen">CodePen</h3>
+
+<p><strong>user &amp; hash:</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-codepen.jpg" alt="extensions-codepen" style="max-height:100px" class="border" /></p>
+
+<p><strong>html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/codepen.html user='kitian616' hash='aQmWZG' default_tab='html,result' -%}
+</code></pre></div></div>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/codepen.html user='kitian616' hash='aQmWZG' default_tab='html,result' -%}&lt;/div&gt;
+</code></pre></div></div>
+
+:ET

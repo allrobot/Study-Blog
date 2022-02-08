@@ -1,0 +1,58 @@
+I"Z<p>在 TeXt 中有两种导航栏：<strong>头部导航栏</strong>（Header Navigation）和<strong>侧边栏导航栏</strong>（Sidebar Navigation），它们均在 <em>data/navigation.yml</em> 中配置。</p>
+
+<!--more-->
+
+<h2 id="头部导航栏">头部导航栏</h2>
+
+<p>头部导航栏在 <em>data/navigation.yml</em> 文件的 <code class="language-plaintext highlighter-rouge">header</code> 项定义，它是一个包含标题和 URL 项的数组：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">header</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">Docs</span>
+    <span class="na">url</span><span class="pi">:</span>        <span class="s">/docs/en/quick-start</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">文档</span>
+    <span class="na">url</span><span class="pi">:</span>        <span class="s">/docs/zh/quick-start</span>
+  <span class="pi">-</span> <span class="na">titles</span><span class="pi">:</span>
+      <span class="na">en</span><span class="pi">:</span>       <span class="s">Archive</span>
+      <span class="na">zh</span><span class="pi">:</span>       <span class="s">归档</span>
+      <span class="na">zh-Hans</span><span class="pi">:</span>  <span class="s">归档</span>
+      <span class="na">zh-Hant</span><span class="pi">:</span>  <span class="s">歸檔</span>
+    <span class="na">url</span><span class="pi">:</span>        <span class="s">/archive.html</span>
+  <span class="pi">-</span> <span class="na">titles</span><span class="pi">:</span>
+      <span class="na">en</span><span class="pi">:</span>       <span class="s">About</span>
+      <span class="na">zh</span><span class="pi">:</span>       <span class="s">关于</span>
+      <span class="na">zh-Hans</span><span class="pi">:</span>  <span class="s">关于</span>
+      <span class="na">zh-Hant</span><span class="pi">:</span>  <span class="s">關於</span>
+    <span class="na">url</span><span class="pi">:</span>        <span class="s">/about.html</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">GitHub</span>
+    <span class="na">url</span><span class="pi">:</span>        <span class="s">https://github.com/kitian616/jekyll-TeXt-theme</span>
+</code></pre></div></div>
+
+<p>你可以用 <code class="language-plaintext highlighter-rouge">titles</code> 来定义一个支持多语言的标题名。</p>
+
+<h2 id="侧边栏导航栏">侧边栏导航栏</h2>
+
+<p>要想在某篇文章或页面中使用侧边栏导航栏，首先你需要在 <em>data/navigation.yml</em> 中定义一个导航栏。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">docs-en</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">Start</span>
+    <span class="na">children</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Quick Start</span>
+        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/quick-start</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Structure</span>
+        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/structure</span>
+      <span class="s">...</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">Customization</span>
+    <span class="na">children</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Configuration</span>
+        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/configuration</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Navigation</span>
+        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/navigation</span>
+      <span class="s">...</span>
+</code></pre></div></div>
+
+<p>然后在头信息中将定义的导航作为这篇文章或页面的侧边栏导航栏：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sidebar</span><span class="pi">:</span>
+  <span class="na">nav</span><span class="pi">:</span> <span class="s">docs-en</span>
+</code></pre></div></div>
+:ET

@@ -122,20 +122,20 @@ sharing:
 ## => Comments
 ##############################
 comments:
-  provider: "gitalk" # false (default), "disqus", "gitalk", "valine", "custom"
+  provider: "disqus" # false (default), "disqus", "gitalk", "valine", "custom"
 
   ## Disqus
-#  disqus:
-#    shortname: allrobot-github-io # the Disqus shortname for the site
+  disqus:
+    shortname: allrobot # the Disqus shortname for the site
 
   ## Gitalk
   # please refer to https://github.com/gitalk/gitalk for more info.
-  gitalk:
-    clientID    : 3466c3af6857927371d2 # GitHub Application Client ID
-    clientSecret: 51312fdc3ebea8a4e24ff7e52ba17b891db74619 # GitHub Application Client Secret
-    repository  : Study-Blog # GitHub repo
-    owner       : allrobot # GitHub repo owner
-    admin: allrobot # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
+#  gitalk:
+#    clientID    : 3466c3af6857927371d2 # GitHub Application Client ID
+#    clientSecret: 51312fdc3ebea8a4e24ff7e52ba17b891db74619 # GitHub Application Client Secret
+#    repository  : Study-Blog # GitHub repo
+#    owner       : allrobot # GitHub repo owner
+#    admin: allrobot # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
       # - your GitHub Id
 
   ## Valine
