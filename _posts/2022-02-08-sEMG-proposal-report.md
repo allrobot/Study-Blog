@@ -46,7 +46,7 @@ tags: [深度学习,机器学习,生理信号,sEMG识别]
  6. RNN、CNN、SVM向量机等神经网络模型，根据（5）创建的数据集测量它们的识别精度，决定手势识别系统采用哪个模型；
  7. NN模型推测某段肌电活动段可能的最大概率含义，转为字符流进行输出
  
-![图1 设计流程与实现]()
+![图1 设计流程与实现](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-08-sEMG-proposal-report/设计流程与实现.png)
 # 研究方法和手段：
 - 通过Arduino开发平台完成sEMG采集装置的设计与实现。
 - 借用NN开发工具实现分类算法设计、样本采集工具以及训练。
