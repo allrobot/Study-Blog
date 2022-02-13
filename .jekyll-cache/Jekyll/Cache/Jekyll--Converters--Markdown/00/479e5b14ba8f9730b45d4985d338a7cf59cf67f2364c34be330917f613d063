@@ -1,67 +1,52 @@
----
-layout: article
-title:  "吴恩达机器学习笔记 Day 2"
-date:   2022-02-12
-categories: 机器学习
-tags: [机器学习,吴恩达]
----
+I"H$<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->
 
-<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->
+<h2 id="矩阵和向量">矩阵和向量</h2>
 
-## 矩阵和向量
+<p>矩阵是矩形数组的，由行数i和列数j构成</p>
 
-矩阵是矩形数组的，由行数i和列数j构成
+<p>4*2矩阵，用数学符号表现为$R^{4*2}$</p>
 
-4\*2矩阵，用数学符号表现为$R^{4*2}$
-
-$$
-A=
+\[A=
 \begin{equation*}\begin{bmatrix}
-1402&191  \\
-1372&821  \\
-949&1437  \\
-147&1448
-\end{bmatrix}\end{equation*}
-$$
+1402&amp;191  \\
+1372&amp;821  \\
+949&amp;1437  \\
+147&amp;1448
+\end{bmatrix}\end{equation*}\]
 
-$A_{ij}$，那么$A_{11}=1402,A_{22}=821,A_{32}=1437$
+<p>$A_{ij}$，那么$A_{11}=1402,A_{22}=821,A_{32}=1437$</p>
 
-2\*3矩阵，用数学符号表现为$R^{2*3}$
+<p>2*3矩阵，用数学符号表现为$R^{2*3}$</p>
 
-$$
-\\
+\[\\
 \begin{equation*}\begin{bmatrix}
-1&2&3  \\
-4&5&6
-\end{bmatrix}\end{equation*}
-$$
+1&amp;2&amp;3  \\
+4&amp;5&amp;6
+\end{bmatrix}\end{equation*}\]
 
-由n\*1的向量矩阵，$R^{4}$
-$$
-y=
+<p>由n*1的向量矩阵，$R^{4}$
+\(y=
 \begin{equation*}\begin{bmatrix}
 460  \\
 232  \\
 315  \\
 178  
-\end{bmatrix}\end{equation*}
-$$
+\end{bmatrix}\end{equation*}\)</p>
 
-$y_{1}=460,y_{2}=232$
+<p>$y_{1}=460,y_{2}=232$</p>
 
-它是从下标1开始的，计算机中是从0开始的。矩阵通常以大写字母表示的，小写字母表现为标量向量的。
+<p>它是从下标1开始的，计算机中是从0开始的。矩阵通常以大写字母表示的，小写字母表现为标量向量的。</p>
 
-### 矩阵计算
+<h3 id="矩阵计算">矩阵计算</h3>
 
-$h_{\theta}(x)=-40+0.25x$
+<p>$h_{\theta}(x)=-40+0.25x$</p>
 
-那么矩阵计算过程为
-$$
-\begin{bmatrix}
-1&2104  \\
-1&1416  \\
-1&1534  \\
-1&852
+<p>那么矩阵计算过程为
+\(\begin{bmatrix}
+1&amp;2104  \\
+1&amp;1416  \\
+1&amp;1534  \\
+1&amp;852
 \end{bmatrix}
 *
 \begin{bmatrix}
@@ -74,84 +59,82 @@ $$
 -40*1+0.25*1416  \\
 -40*1+0.25*1534  \\
 -40*1+0.25*852
-\end{bmatrix}
-$$
+\end{bmatrix}\)</p>
 
-给定3个假定函数
-1. $h_{\theta}(x)=-40+0.25x$
-2. $h_{\theta}(x)=200+0.1x$
-3. $h_{\theta}(x)=-150+0.4x$
+<p>给定3个假定函数</p>
+<ol>
+  <li>$h_{\theta}(x)=-40+0.25x$</li>
+  <li>$h_{\theta}(x)=200+0.1x$</li>
+  <li>$h_{\theta}(x)=-150+0.4x$</li>
+</ol>
 
-$$
-\begin{equation*}
+\[\begin{equation*}
 \begin{bmatrix}
-1&2104  \\
-1&1416  \\
-1&1534  \\
-1&852
+1&amp;2104  \\
+1&amp;1416  \\
+1&amp;1534  \\
+1&amp;852
 \end{bmatrix}
 *
 \begin{bmatrix}
--40&200&-150  \\
-0.25&0.1&0.4
+-40&amp;200&amp;-150  \\
+0.25&amp;0.1&amp;0.4
 \end{bmatrix}
 =
 \begin{bmatrix}
-486&410&692  \\
-314&342&416  \\
-344&353&464  \\
-173&285&191
+486&amp;410&amp;692  \\
+314&amp;342&amp;416  \\
+344&amp;353&amp;464  \\
+173&amp;285&amp;191
 \end{bmatrix}
-\end{equation*}
-$$
+\end{equation*}\]
 
-### 矩阵特性
+<h3 id="矩阵特性">矩阵特性</h3>
 
-参考《线性代数》矩阵相关的公式、定义等
+<p>参考《线性代数》矩阵相关的公式、定义等</p>
 
-
-| --- |
-| AB未必与BA相等 |
-|AX=AY 不能推出X=Y|
-|$(AB)^k$与$A^{k}B^{k}$不一定相等|
-|$A^{2}+(k+j)AB+kjB^{2}$ 与 $(A+kB)(A+jB)$ 不一定相等,但$A^{2}+(k+j)A+kjE=A^{2}+(k+j)AE+kjE^{2}=(A+kE)(A+jE)$|
-| $\|\lambda A\|=\lambda^{n}\|A\|$ |
-|$\|(AB)^{T}\|=B^{T}A^{T}$|
-|$A\*A^{1}=E\ or\ A^{1}\*A=E$|
-|$A\*A^{\*}=\|A\|E\ or\ A^{\*}*A=\|A\|E$|
+<table>
+  <tbody>
+    <tr>
+      <td>AB未必与BA相等</td>
+    </tr>
+    <tr>
+      <td>AX=AY 不能推出X=Y</td>
+    </tr>
+    <tr>
+      <td>$(AB)^k$与$A^{k}B^{k}$不一定相等</td>
+    </tr>
+    <tr>
+      <td>$A^{2}+(k+j)AB+kjB^{2}$ 与 $(A+kB)(A+jB)$ 不一定相等,但$A^{2}+(k+j)A+kjE=A^{2}+(k+j)AE+kjE^{2}=(A+kE)(A+jE)$</td>
+    </tr>
+    <tr>
+      <td>$|\lambda A|=\lambda^{n}|A|$</td>
+    </tr>
+    <tr>
+      <td>$|(AB)^{T}|=B^{T}A^{T}$</td>
+    </tr>
+    <tr>
+      <td>$A<em>A^{1}=E\ or\ A^{1}</em>A=E$</td>
+    </tr>
+    <tr>
+      <td>$A<em>A^{</em>}=|A|E\ or\ A^{<em>}</em>A=|A|E$</td>
+    </tr>
+  </tbody>
+</table>
 
 <table>
 	<tr>
 		<td>条件</td>
-		<td colspan="4">解的情况</td>
+		<td>解的情况</td>
 	</tr>
 	<tr>
-		<td rowspan="2">齐次</td>
+		<td colspan="2">齐次</td>
 		<td>$R(A)=$未知数个数</td>
-		
-		<td colspan="3">唯一解（零解）</td>
-		
+		<td>$R(A)&lt;$未知数个数</td>
+		<td>唯一解（零解）</td>
+		<td>多个解（零解和多个非零解）</td>
 	</tr>
 	<tr>
-		<td>$R(A)<$未知数个数</td>
-		<td  colspan="3">多个解（零解和多个非零解）</td>
-	</tr>
-	<tr>
-		<td rowspan="3">非齐次</td>
-		<td>$R(A)\ne R(A|b)$</td>
-		<td colspan="3">无解</td>
-	</tr>
-	<tr>
-		<td rowspan="2">$R(A)=R(A|b)$</td>
-		<td rowspan="2">有解</td>
-		<td>$R(A)=R(A|b)=$未知数个数</td>
-		<td>一个非零解</td>
-	</tr>
-	<tr>
-		<td>$R(A)=R(A|b)<$未知数个数</td>
-		<td>多个非零解</td>
-	</tr>
-</table>
 		
 
 
@@ -249,14 +232,14 @@ R_{n}
 \epsilon\  R^{n+1}  \\
   \begin{split}
     h_{\theta}
-    & = \theta_{0}x_{0}+\theta_{1}x_{1}+\theta_{1}x_{2}+\ldots-\theta_{n}x_{n}   \\
-	& = \theta_{x}^{T}  \\
+    &amp; = \theta_{0}x_{0}+\theta_{1}x_{1}+\theta_{1}x_{2}+\ldots-\theta_{n}x_{n}   \\
+	&amp; = \theta_{x}^{T}  \\
   \end{split}  \\
   
 \text{其中}  \\
 
 \begin{bmatrix}
-\theta_{0}x_{0}&\theta_{1}x_{1}&\ldots&\theta_{n}x_{n}  \\
+\theta_{0}x_{0}&amp;\theta_{1}x_{1}&amp;\ldots&amp;\theta_{n}x_{n}  \\
 \end{bmatrix}
 
 \begin{bmatrix}
@@ -270,7 +253,7 @@ x_{n}
 $$
 
 
->为了方便，$\theta_{0}x{0}$的$x{0}=1$,故省去
+&gt;为了方便，$\theta_{0}x{0}$的$x{0}=1$,故省去
 
 ## 多种参数的梯度下降法
 
@@ -377,8 +360,8 @@ $$\ldots,0.001,0.003,0.01,\ldots,0.1,\ldots,1,\ldots$$
 $$\begin{equation*}
   \begin{split}
     h_{\theta}(x)
-	& = h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3} \\
-	& = h_{\theta}=\theta_{0}+\theta_{1}\text{(面积)}+\theta_{2}\text{(面积)}^{2}+\theta_{3}\text{(面积)}^{3} \\
+	&amp; = h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3} \\
+	&amp; = h_{\theta}=\theta_{0}+\theta_{1}\text{(面积)}+\theta_{2}\text{(面积)}^{2}+\theta_{3}\text{(面积)}^{3} \\
   \end{split}
 \end{equation*}$$
 $$\begin{equation*}
@@ -405,3 +388,5 @@ h_{\theta}=\theta_{0}+\theta_{1}\text{(面积)}+\theta_{2}\sqrt{\text{(面积)}}
 
 
 
+</tr></table>
+:ET

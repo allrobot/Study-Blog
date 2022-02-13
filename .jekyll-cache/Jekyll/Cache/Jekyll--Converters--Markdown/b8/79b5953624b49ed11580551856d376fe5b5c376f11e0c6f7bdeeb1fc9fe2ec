@@ -1,0 +1,372 @@
+I"H'<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->
+
+<h2 id="矩阵和向量">矩阵和向量</h2>
+
+<p>矩阵是矩形数组的，由行数i和列数j构成</p>
+
+<p>4*2矩阵，用数学符号表现为$R^{4*2}$</p>
+
+\[A=
+\begin{equation*}\begin{bmatrix}
+1402&amp;191  \\
+1372&amp;821  \\
+949&amp;1437  \\
+147&amp;1448
+\end{bmatrix}\end{equation*}\]
+
+<p>$A_{ij}$，那么$A_{11}=1402,A_{22}=821,A_{32}=1437$</p>
+
+<p>2*3矩阵，用数学符号表现为$R^{2*3}$</p>
+
+\[\\
+\begin{equation*}\begin{bmatrix}
+1&amp;2&amp;3  \\
+4&amp;5&amp;6
+\end{bmatrix}\end{equation*}\]
+
+<p>由n*1的向量矩阵，$R^{4}$
+\(y=
+\begin{equation*}\begin{bmatrix}
+460  \\
+232  \\
+315  \\
+178  
+\end{bmatrix}\end{equation*}\)</p>
+
+<p>$y_{1}=460,y_{2}=232$</p>
+
+<p>它是从下标1开始的，计算机中是从0开始的。矩阵通常以大写字母表示的，小写字母表现为标量向量的。</p>
+
+<h3 id="矩阵计算">矩阵计算</h3>
+
+<p>$h_{\theta}(x)=-40+0.25x$</p>
+
+<p>那么矩阵计算过程为
+\(\begin{bmatrix}
+1&amp;2104  \\
+1&amp;1416  \\
+1&amp;1534  \\
+1&amp;852
+\end{bmatrix}
+*
+\begin{bmatrix}
+-40  \\
+0.25
+\end{bmatrix}
+=
+\begin{bmatrix}
+-40*1+0.25*2104  \\
+-40*1+0.25*1416  \\
+-40*1+0.25*1534  \\
+-40*1+0.25*852
+\end{bmatrix}\)</p>
+
+<p>给定3个假定函数</p>
+<ol>
+  <li>$h_{\theta}(x)=-40+0.25x$</li>
+  <li>$h_{\theta}(x)=200+0.1x$</li>
+  <li>$h_{\theta}(x)=-150+0.4x$</li>
+</ol>
+
+\[\begin{equation*}
+\begin{bmatrix}
+1&amp;2104  \\
+1&amp;1416  \\
+1&amp;1534  \\
+1&amp;852
+\end{bmatrix}
+*
+\begin{bmatrix}
+-40&amp;200&amp;-150  \\
+0.25&amp;0.1&amp;0.4
+\end{bmatrix}
+=
+\begin{bmatrix}
+486&amp;410&amp;692  \\
+314&amp;342&amp;416  \\
+344&amp;353&amp;464  \\
+173&amp;285&amp;191
+\end{bmatrix}
+\end{equation*}\]
+
+<h3 id="矩阵特性">矩阵特性</h3>
+
+<p>参考《线性代数》矩阵相关的公式、定义等</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>AB未必与BA相等</td>
+    </tr>
+    <tr>
+      <td>AX=AY 不能推出X=Y</td>
+    </tr>
+    <tr>
+      <td>$(AB)^k$与$A^{k}B^{k}$不一定相等</td>
+    </tr>
+    <tr>
+      <td>$A^{2}+(k+j)AB+kjB^{2}与(A+kB)(A+jB)不一定相等，但$A^{2}+(k+j)A+kjE=A^{2}+(k+j)AE+kjE^{2}=(A+kE)(A+jE)$</td>
+    </tr>
+    <tr>
+      <td>$|\lambda A|=\lambda^{n}|A|$</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="多种特征">多种特征</h2>
+
+<p>特征向量，以房价为例</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>面积$m^2$</th>
+      <th>卧室数量</th>
+      <th>门数量</th>
+      <th>房龄</th>
+      <th>价格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2104</td>
+      <td>5</td>
+      <td>1</td>
+      <td>45</td>
+      <td>460</td>
+    </tr>
+    <tr>
+      <td>1416</td>
+      <td>3</td>
+      <td>2</td>
+      <td>40</td>
+      <td>232</td>
+    </tr>
+    <tr>
+      <td>1534</td>
+      <td>3</td>
+      <td>2</td>
+      <td>30</td>
+      <td>315</td>
+    </tr>
+    <tr>
+      <td>852</td>
+      <td>2</td>
+      <td>1</td>
+      <td>36</td>
+      <td>178</td>
+    </tr>
+    <tr>
+      <td>$\ldots$</td>
+      <td>$\ldots$</td>
+      <td>$\ldots$</td>
+      <td>$\ldots$</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>n=特征数量</li>
+</ul>
+
+\[\begin{equation*}
+n=4
+\end{equation*}\]
+
+<ul>
+  <li>$x^{(i)}$=$i^{th}$训练样本的特征向量</li>
+</ul>
+
+\[\begin{equation*}x^{2}=
+\begin{bmatrix}
+1416  \\
+3  \\
+2  \\
+40
+\end{bmatrix}
+\end{equation*}
+\epsilon R^{4}\]
+
+<ul>
+  <li>$x_{j}^{(i)}$=$i^{th}$训练样本的第j个特征量的值</li>
+</ul>
+
+\[\begin{equation*}
+x_{3}^{(2)}=2
+\end{equation*}\]
+
+<p>线性回归的假定函数$h_{\theta}=\theta_{0}+\theta_{1}x$不适用此情况，此时的函数模型应为：</p>
+
+\[\begin{equation*}
+h_{\theta}=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{3}-\theta_{4}x_{4}
+\end{equation*}\]
+
+<p>意味着后续特征增加时，模型可应为:</p>
+
+\[\begin{equation*}
+h_{\theta}=\theta_{0}+\theta_{1}x_{1}+\theta_{1}x_{2}+\ldots+\theta_{n}x_{n}  \\
+x=
+\begin{bmatrix}
+x_{0}  \\
+x_{1}  \\
+x_{2}  \\
+\ldots  \\
+x_{n}
+\end{bmatrix}\ 
+\epsilon\  R^{n+1}
+\qquad
+\theta=
+\begin{bmatrix}
+R_{0}  \\
+R_{1}  \\
+R_{2}  \\
+\ldots  \\
+R_{n}
+\end{bmatrix}
+\epsilon\  R^{n+1}  \\
+  \begin{split}
+    h_{\theta}
+    &amp; = \theta_{0}x_{0}+\theta_{1}x_{1}+\theta_{1}x_{2}+\ldots-\theta_{n}x_{n}   \\
+	&amp; = \theta_{x}^{T}  \\
+  \end{split}  \\
+  
+\text{其中}  \\
+
+\begin{bmatrix}
+\theta_{0}x_{0}&amp;\theta_{1}x_{1}&amp;\ldots&amp;\theta_{n}x_{n}  \\
+\end{bmatrix}
+
+\begin{bmatrix}
+x_{0}  \\
+x_{0}  \\
+\ldots  \\
+x_{n} 
+\end{bmatrix}
+
+\end{equation*}\]
+
+<blockquote>
+  <p>为了方便，$\theta_{0}x{0}$的$x{0}=1$,故省去</p>
+</blockquote>
+
+<h2 id="多种参数的梯度下降法">多种参数的梯度下降法</h2>
+
+<p>之前最简函数$h_{\theta}=\theta_{0}+\theta_{1}x$的$\theta_{0}$，给出的梯度下降法：</p>
+
+\[\begin{equation*}
+\theta_{0}:=\theta_{0}-\vartheta\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}}_{\frac{\partial}{\partial \theta_{0}}J(\theta)}  \\
+
+\theta_{1}:=\theta_{1}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}
+\end{equation*}\]
+
+<p>意味着当有其它参数时，可给出公式：</p>
+
+\[\begin{equation*}
+\theta_{j}:=\theta_{j}-\vartheta\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}}_{\text{同时更新所有\theta_{j}}}  \\
+
+text{类推 }  \\
+\theta_{0}:=\theta_{0}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
+
+\theta_{1}:=\theta_{1}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
+
+\theta_{2}:=\theta_{2}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
+
+\ldots
+
+\end{equation*}\]
+
+<p>以后的多元梯度下降法用到类似的更新规则。</p>
+
+<h2 id="梯度下降训练特征缩放">梯度下降训练：特征缩放</h2>
+
+<p>假定$x_{1}=面积(0~2000/m^2),x_{2}=卧室数量(1~5)$，呈现的等高线图比较瘦长，梯度下降的点会反复来回震荡很长时间才能抵达全局最优解。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/1.png" alt="" /></p>
+
+<p>解决办法是<strong>特征缩放</strong>把两个x值设为$0\le x_{1}\le 1, \  0\le x_{2}\le 1$，椭圆等高线图呈现比较扁平，偏移没那么严重。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/2.png" alt="" /></p>
+
+<p>一般特征缩放后的值范围为$-1\le x_{i} \le 1$</p>
+
+<p><code class="language-plaintext success highlighter-rouge">正确</code>
+$0\le x_{1} \le 3 \qquad -2\le x_{2} \le 0.5  \ \qquad \qquad
+-3\ to\ 3 \qquad -\frac{1}{3}\ to\ \frac{1}{3}$</p>
+
+<p><code class="language-plaintext error highlighter-rouge">错误</code>
+$-100\le x_{3}\le 100 \qquad -0.0001\le x_{4}\le 0.0001$</p>
+
+<p>只有这样，梯度下降法才会<strong>正常工作</strong>！</p>
+
+<h2 id="均值归一化">均值归一化</h2>
+
+<p>用$x_{i}$替换$x_{i}-u_{i}$使特征的均值近似为零(不使$x_{0}=1)</p>
+
+<p>假若房子面积平均值为1000，每套房子的卧室平均数量为2</p>
+
+\[\begin{equation*}
+x_{1}=frac{\text{面积}-1000}{2000}  \\
+
+x_{2}=frac{\text{卧室数量}-2}{5}  \\
+
+-0.5\le x_{1}\le 0.5,-0.5\le x_{2}\le 0.5
+
+\end{equation*}\]
+
+<p>取值范围可以为-1~5一切是为了梯度下降的速度更快。</p>
+
+\[x_{i}=\frac{x_{1}-u_{1}}{s_{1}}\]
+
+<h2 id="梯度下降训练学习率">梯度下降训练：学习率</h2>
+
+<p>学习率选择比较重要，如果选大了，也许梯度下降只要30步就完成了；选小了，梯度也可能要3000，甚至3，000，000步才能抵达全局最优解。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/3.png" alt="" /></p>
+
+<p>如何判断梯度下降曲线，从而选择合适的学习率。当判断梯度下降的时候发现$J(\theta)$图正上升，这里学习率可能选大了，应选小，不然会发生梯度爆炸的情况。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/4.png" alt="" /></p>
+
+<p>也有$J(\theta)$显示波浪线，这里暂不讨论，上述学习率的选择适用于线性回归问题。</p>
+
+<p>有一个解决方案比较适合：</p>
+
+\[\ldots,0.001,\ldots,0.01,\ldots,0.1,\ldots,1,\ldots\]
+
+<p>每迭代10~100轮，学习率0.001递增3倍，若不影响梯度下降就升为0.03，再递增…出现梯度上升的情况就反之。</p>
+
+\[\ldots,0.001,0.003,0.01,\ldots,0.1,\ldots,1,\ldots\]
+
+<h2 id="多变量的线性回归">多变量的线性回归</h2>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/5.png" alt="" /></p>
+
+<p>要设计函数模型输出房子的售价，要考虑提取哪些特征，上图有2个特征，房子正面和纵深的长度乘号得面积，模型也许二次项$h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}$能很好预测价格，但随着房子面积增加且价格下降，这就不能很好拟合数据集了，改成三次方$h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3}$</p>
+
+<p>\(\begin{equation*}
+  \begin{split}
+    h_{\theta}(x)
+	&amp; = h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3} \\
+	&amp; = h_{\theta}=\theta_{0}+\theta_{1}\text{(面积)}+\theta_{2}\text{(面积)}^{2}+\theta_{3}\text{(面积)}^{3} \\
+  \end{split}
+\end{equation*}\)
+\(\begin{equation*}
+  x_{1}=\text{(面积)}  \qquad \qquad \text{(面积:1~1000)}\\
+  x_{2}=\text{(面积)}^2\qquad \qquad \text{(面积:1~10^5)} \\
+  x_{3}=\text{(面积)}^3\qquad \qquad \text{(面积:1~10^9)} 
+\end{equation*}\)</p>
+
+<p>三个参数的值较大，采用特征缩放为宜。</p>
+
+<p>除此之外，当房子面积增加时二次项函数不太拟合数据集，除了改至三次项，第二个参数可以采用平方根函数：</p>
+
+\[\begin{equation*}
+h_{\theta}=\theta_{0}+\theta_{1}\text{(面积)}+\theta_{2}\sqrt{\text{(面积)}}
+\end{equation*}\]
+
+<p>特征的选择需要多种合适的角度去看待。</p>
+
+<h2 id="正规方程">正规方程</h2>
+
+:ET
