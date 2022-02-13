@@ -1,5 +1,2271 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/Study-Blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/Study-Blog/" rel="alternate" type="text/html" hreflang="zh-CN" /><updated>2022-02-08T07:07:55+00:00</updated><id>http://localhost:4000/Study-Blog/feed.xml</id><title type="html">allrobot的云笔记博客</title><subtitle>没啥好说的，本站是云笔记的博客，从Github拉取Blog
-</subtitle><author><name>李广琛</name><email>allrobots@163.com</email></author><entry><title type="html">吴恩达机器学习系列笔记 Day1</title><link href="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/06/artcle2-Andrew-Ng-DL-1.html" rel="alternate" type="text/html" title="吴恩达机器学习系列笔记 Day1" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/06/artcle2-Andrew-Ng-DL-1</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/06/artcle2-Andrew-Ng-DL-1.html"><![CDATA[]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="机器学习" /><category term="机器学习" /><category term="吴恩达" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Jekyll博客配置</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/configuration.html" rel="alternate" type="text/html" title="Jekyll博客配置" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/configuration</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/configuration.html"><![CDATA[<p>Jekyll 允许你很轻松的设计你的网站，这很大程度上归功于灵活强大的配置功能。既可以配置在网站根目录下的  <em>_config.yml</em> 文件，也可以作为命令行的标记来配置。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/Study-Blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/Study-Blog/" rel="alternate" type="text/html" hreflang="zh-CN" /><updated>2022-02-13T06:56:53+00:00</updated><id>http://localhost:4000/Study-Blog/feed.xml</id><title type="html">allrobot的云笔记博客</title><subtitle>没啥好说的，本站是云笔记的博客，从Github拉取Blog
+</subtitle><author><name>李广琛</name><email>allrobots@163.com</email></author><entry><title type="html">吴恩达机器学习笔记 Day 2</title><link href="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/12/Andrew-Ng-DL-2.html" rel="alternate" type="text/html" title="吴恩达机器学习笔记 Day 2" /><published>2022-02-12T00:00:00+00:00</published><updated>2022-02-12T00:00:00+00:00</updated><id>http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/12/Andrew-Ng-DL-2</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/12/Andrew-Ng-DL-2.html"><![CDATA[<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->
+
+<h2 id="矩阵和向量">矩阵和向量</h2>
+
+<p>矩阵是矩形数组的，由行数i和列数j构成</p>
+
+<p>4*2矩阵，用数学符号表现为$R^{4*2}$</p>
+
+\[A=
+\begin{equation*}\begin{bmatrix}
+1402&amp;191  \\
+1372&amp;821  \\
+949&amp;1437  \\
+147&amp;1448
+\end{bmatrix}\end{equation*}\]
+
+<p>$A_{ij}$，那么$A_{11}=1402,A_{22}=821,A_{32}=1437$</p>
+
+<p>2*3矩阵，用数学符号表现为$R^{2*3}$</p>
+
+\[\\
+\begin{equation*}\begin{bmatrix}
+1&amp;2&amp;3  \\
+4&amp;5&amp;6
+\end{bmatrix}\end{equation*}\]
+
+<p>由n*1的向量矩阵，$R^{4}$
+\(y=
+\begin{equation*}\begin{bmatrix}
+460  \\
+232  \\
+315  \\
+178  
+\end{bmatrix}\end{equation*}\)</p>
+
+<p>$y_{1}=460,y_{2}=232$</p>
+
+<p>它是从下标1开始的，计算机中是从0开始的。矩阵通常以大写字母表示的，小写字母表现为标量向量的。</p>
+
+<h3 id="矩阵计算">矩阵计算</h3>
+
+<p>$h_{\theta}(x)=-40+0.25x$</p>
+
+<p>那么矩阵计算过程为
+\(\begin{bmatrix}
+1&amp;2104  \\
+1&amp;1416  \\
+1&amp;1534  \\
+1&amp;852
+\end{bmatrix}
+*
+\begin{bmatrix}
+-40  \\
+0.25
+\end{bmatrix}
+=
+\begin{bmatrix}
+-40*1+0.25*2104  \\
+-40*1+0.25*1416  \\
+-40*1+0.25*1534  \\
+-40*1+0.25*852
+\end{bmatrix}\)</p>
+
+<p>给定3个假定函数</p>
+<ol>
+  <li>$h_{\theta}(x)=-40+0.25x$</li>
+  <li>$h_{\theta}(x)=200+0.1x$</li>
+  <li>$h_{\theta}(x)=-150+0.4x$</li>
+</ol>
+
+\[\begin{equation*}
+\begin{bmatrix}
+1&amp;2104  \\
+1&amp;1416  \\
+1&amp;1534  \\
+1&amp;852
+\end{bmatrix}
+*
+\begin{bmatrix}
+-40&amp;200&amp;-150  \\
+0.25&amp;0.1&amp;0.4
+\end{bmatrix}
+=
+\begin{bmatrix}
+486&amp;410&amp;692  \\
+314&amp;342&amp;416  \\
+344&amp;353&amp;464  \\
+173&amp;285&amp;191
+\end{bmatrix}
+\end{equation*}\]
+
+<h3 id="矩阵特性">矩阵特性</h3>
+
+<p>参考《线性代数》矩阵相关的公式、定义等</p>
+
+<h2 id="多种特征">多种特征</h2>
+
+<p>特征向量，以房价为例</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>面积$m^2$</th>
+      <th>卧室数量</th>
+      <th>门数量</th>
+      <th>房龄</th>
+      <th>价格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2104</td>
+      <td>5</td>
+      <td>1</td>
+      <td>45</td>
+      <td>460</td>
+    </tr>
+    <tr>
+      <td>1416</td>
+      <td>3</td>
+      <td>2</td>
+      <td>40</td>
+      <td>232</td>
+    </tr>
+    <tr>
+      <td>1534</td>
+      <td>3</td>
+      <td>2</td>
+      <td>30</td>
+      <td>315</td>
+    </tr>
+    <tr>
+      <td>852</td>
+      <td>2</td>
+      <td>1</td>
+      <td>36</td>
+      <td>178</td>
+    </tr>
+    <tr>
+      <td>$\ldots$</td>
+      <td>$\ldots$</td>
+      <td>$\ldots$</td>
+      <td>$\ldots$</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>n=特征数量</li>
+</ul>
+
+\[\begin{equation*}
+n=4
+\end{equation*}\]
+
+<ul>
+  <li>$x^{(i)}$=$i^{th}$训练样本的特征向量</li>
+</ul>
+
+\[\begin{equation*}x^{2}=
+\begin{bmatrix}
+1416  \\
+3  \\
+2  \\
+40
+\end{bmatrix}
+\end{equation*}
+\epsilon R^{4}\]
+
+<ul>
+  <li>$x_{j}^{(i)}$=$i^{th}$训练样本的第j个特征量的值</li>
+</ul>
+
+\[\begin{equation*}
+x_{3}^{(2)}=2
+\end{equation*}\]
+
+<p>线性回归的假定函数$h_{\theta}=\theta_{0}+\theta_{1}x$不适用此情况，此时的函数模型应为：</p>
+
+\[\begin{equation*}
+h_{\theta}=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{3}-\theta_{4}x_{4}
+\end{equation*}\]
+
+<p>意味着后续特征增加时，模型可应为:</p>
+
+\[\begin{equation*}
+h_{\theta}=\theta_{0}+\theta_{1}x_{1}+\theta_{1}x_{2}+\ldots+\theta_{n}x_{n}  \\
+x=
+\begin{bmatrix}
+x_{0}  \\
+x_{1}  \\
+x_{2}  \\
+\ldots  \\
+x_{n}
+\end{bmatrix}\ 
+\epsilon\  R^{n+1}
+\qquad
+\theta=
+\begin{bmatrix}
+R_{0}  \\
+R_{1}  \\
+R_{2}  \\
+\ldots  \\
+R_{n}
+\end{bmatrix}
+\epsilon\  R^{n+1}  \\
+  \begin{split}
+    h_{\theta}
+    &amp; = \theta_{0}x_{0}+\theta_{1}x_{1}+\theta_{1}x_{2}+\ldots-\theta_{n}x_{n}   \\
+	&amp; = \theta_{x}^{T}  \\
+  \end{split}  \\
+  
+\text{其中}  \\
+
+\begin{bmatrix}
+\theta_{0}x_{0}&amp;\theta_{1}x_{1}&amp;\ldots&amp;\theta_{n}x_{n}  \\
+\end{bmatrix}
+
+\begin{bmatrix}
+x_{0}  \\
+x_{0}  \\
+\ldots  \\
+x_{n} 
+\end{bmatrix}
+
+\end{equation*}\]
+
+<blockquote>
+  <p>为了方便，$\theta_{0}x{0}$的$x{0}=1$,故省去</p>
+</blockquote>
+
+<h3 id="多种参数的梯度下降法">多种参数的梯度下降法</h3>
+
+<p>之前最简函数$h_{\theta}=\theta_{0}+\theta_{1}x$的$\theta_{0}$，给出的梯度下降法：</p>
+
+\[\begin{equation*}
+\theta_{0}:=\theta_{0}-\vartheta\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}}_{\frac{\partial}{\partial \theta_{0}}J(\theta)}  \\
+
+\theta_{1}:=\theta_{1}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}
+\end{equation*}\]
+
+<p>意味着当有其它参数时，可给出公式：</p>
+
+\[\begin{equation*}
+\theta_{j}:=\theta_{j}-\vartheta\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}}_{\text{同时更新所有\theta_{j}}}  \\
+
+text{类推  \\}
+\theta_{0}:=\theta_{0}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
+
+\theta_{1}:=\theta_{1}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
+
+\theta_{2}:=\theta_{2}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
+
+\ldots
+
+\end{equation*}\]
+
+<p>以后的多元梯度下降法用到类似的更新规则。</p>
+
+<h3 id="梯度下降训练特征缩放">梯度下降训练：特征缩放</h3>
+
+<p>假定$x_{1}=面积(0~2000/m^2),x_{2}=卧室数量(1~5)$，呈现的等高线图比较瘦长，梯度下降的点会反复来回震荡很长时间才能抵达全局最优解。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/1.png" alt="" /></p>
+
+<p>解决办法是<strong>特征缩放</strong>把两个x值设为$0\le x_{1}\le 1 \qquad 0\e x_{2}\le 1$，椭圆等高线图呈现比较扁平，偏移没那么严重。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/2.png" alt="" /></p>
+
+<p>一般特征缩放后的值范围为$-1\le x_{i} \le 1$</p>
+
+<p>$0\le x_{1} \le 3 \qquad -2\le x_{2} \le 0.5  <br />
+-3 to 3 \qquad -\frac{1}{3} to \frac{1}{3}$</p>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="机器学习" /><category term="机器学习" /><category term="吴恩达" /><summary type="html"><![CDATA[矩阵和向量 矩阵是矩形数组的，由行数i和列数j构成 4*2矩阵，用数学符号表现为$R^{4*2}$ \[A= \begin{equation*}\begin{bmatrix} 1402&amp;191 \\ 1372&amp;821 \\ 949&amp;1437 \\ 147&amp;1448 \end{bmatrix}\end{equation*}\] $A_{ij}$，那么$A_{11}=1402,A_{22}=821,A_{32}=1437$ 2*3矩阵，用数学符号表现为$R^{2*3}$ \[\\ \begin{equation*}\begin{bmatrix} 1&amp;2&amp;3 \\ 4&amp;5&amp;6 \end{bmatrix}\end{equation*}\] 由n*1的向量矩阵，$R^{4}$ \(y= \begin{equation*}\begin{bmatrix} 460 \\ 232 \\ 315 \\ 178 \end{bmatrix}\end{equation*}\) $y_{1}=460,y_{2}=232$ 它是从下标1开始的，计算机中是从0开始的。矩阵通常以大写字母表示的，小写字母表现为标量向量的。 矩阵计算 $h_{\theta}(x)=-40+0.25x$ 那么矩阵计算过程为 \(\begin{bmatrix} 1&amp;2104 \\ 1&amp;1416 \\ 1&amp;1534 \\ 1&amp;852 \end{bmatrix} * \begin{bmatrix} -40 \\ 0.25 \end{bmatrix} = \begin{bmatrix} -40*1+0.25*2104 \\ -40*1+0.25*1416 \\ -40*1+0.25*1534 \\ -40*1+0.25*852 \end{bmatrix}\) 给定3个假定函数 $h_{\theta}(x)=-40+0.25x$ $h_{\theta}(x)=200+0.1x$ $h_{\theta}(x)=-150+0.4x$ \[\begin{equation*} \begin{bmatrix} 1&amp;2104 \\ 1&amp;1416 \\ 1&amp;1534 \\ 1&amp;852 \end{bmatrix} * \begin{bmatrix} -40&amp;200&amp;-150 \\ 0.25&amp;0.1&amp;0.4 \end{bmatrix} = \begin{bmatrix} 486&amp;410&amp;692 \\ 314&amp;342&amp;416 \\ 344&amp;353&amp;464 \\ 173&amp;285&amp;191 \end{bmatrix} \end{equation*}\] 矩阵特性 参考《线性代数》矩阵相关的公式、定义等 多种特征 特征向量，以房价为例 面积$m^2$ 卧室数量 门数量 房龄 价格 2104 5 1 45 460 1416 3 2 40 232 1534 3 2 30 315 852 2 1 36 178 $\ldots$ $\ldots$ $\ldots$ $\ldots$   n=特征数量 \[\begin{equation*} n=4 \end{equation*}\] $x^{(i)}$=$i^{th}$训练样本的特征向量 \[\begin{equation*}x^{2}= \begin{bmatrix} 1416 \\ 3 \\ 2 \\ 40 \end{bmatrix} \end{equation*} \epsilon R^{4}\] $x_{j}^{(i)}$=$i^{th}$训练样本的第j个特征量的值 \[\begin{equation*} x_{3}^{(2)}=2 \end{equation*}\] 线性回归的假定函数$h_{\theta}=\theta_{0}+\theta_{1}x$不适用此情况，此时的函数模型应为： \[\begin{equation*} h_{\theta}=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{3}-\theta_{4}x_{4} \end{equation*}\] 意味着后续特征增加时，模型可应为: \[\begin{equation*} h_{\theta}=\theta_{0}+\theta_{1}x_{1}+\theta_{1}x_{2}+\ldots+\theta_{n}x_{n} \\ x= \begin{bmatrix} x_{0} \\ x_{1} \\ x_{2} \\ \ldots \\ x_{n} \end{bmatrix}\ \epsilon\ R^{n+1} \qquad \theta= \begin{bmatrix} R_{0} \\ R_{1} \\ R_{2} \\ \ldots \\ R_{n} \end{bmatrix} \epsilon\ R^{n+1} \\ \begin{split} h_{\theta} &amp; = \theta_{0}x_{0}+\theta_{1}x_{1}+\theta_{1}x_{2}+\ldots-\theta_{n}x_{n} \\ &amp; = \theta_{x}^{T} \\ \end{split} \\ \text{其中} \\ \begin{bmatrix} \theta_{0}x_{0}&amp;\theta_{1}x_{1}&amp;\ldots&amp;\theta_{n}x_{n} \\ \end{bmatrix} \begin{bmatrix} x_{0} \\ x_{0} \\ \ldots \\ x_{n} \end{bmatrix} \end{equation*}\] 为了方便，$\theta_{0}x{0}$的$x{0}=1$,故省去 多种参数的梯度下降法 之前最简函数$h_{\theta}=\theta_{0}+\theta_{1}x$的$\theta_{0}$，给出的梯度下降法： \[\begin{equation*} \theta_{0}:=\theta_{0}-\vartheta\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}}_{\frac{\partial}{\partial \theta_{0}}J(\theta)} \\ \theta_{1}:=\theta_{1}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)} \end{equation*}\] 意味着当有其它参数时，可给出公式： \[\begin{equation*} \theta_{j}:=\theta_{j}-\vartheta\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}}_{\text{同时更新所有\theta_{j}}} \\ text{类推 \\} \theta_{0}:=\theta_{0}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)} \\ \theta_{1}:=\theta_{1}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)} \\ \theta_{2}:=\theta_{2}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)} \\ \ldots \end{equation*}\] 以后的多元梯度下降法用到类似的更新规则。 梯度下降训练：特征缩放 假定$x_{1}=面积(0~2000/m^2),x_{2}=卧室数量(1~5)$，呈现的等高线图比较瘦长，梯度下降的点会反复来回震荡很长时间才能抵达全局最优解。 解决办法是特征缩放把两个x值设为$0\le x_{1}\le 1 \qquad 0\e x_{2}\le 1$，椭圆等高线图呈现比较扁平，偏移没那么严重。 一般特征缩放后的值范围为$-1\le x_{i} \le 1$ $0\le x_{1} \le 3 \qquad -2\le x_{2} \le 0.5 -3 to 3 \qquad -\frac{1}{3} to \frac{1}{3}$]]></summary></entry><entry><title type="html">吴恩达机器学习笔记 Day 1</title><link href="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1.html" rel="alternate" type="text/html" title="吴恩达机器学习笔记 Day 1" /><published>2022-02-11T00:00:00+00:00</published><updated>2022-02-11T00:00:00+00:00</updated><id>http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1.html"><![CDATA[<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ 
+$\displaystyle\underbrace{a_i}_{\text{i从1到n}}$
+
+$\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
+-->
+
+<h2 id="模型描述">模型描述</h2>
+
+<p>线性<code class="language-plaintext highlighter-rouge">回归</code>，这里的回归是指<strong>分类</strong>问题，用来预测离散值输出。</p>
+
+<p>举个例子：城市不同房子对应不同售价，假设某房子1250英尺，它的售价220000美元，数据集包含卖出的房子面积大小和价格。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>$面积/m^{2} (x)$</th>
+      <th>$价格/1000美元(y)$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2014</td>
+      <td>460</td>
+    </tr>
+    <tr>
+      <td>1416</td>
+      <td>212</td>
+    </tr>
+    <tr>
+      <td>1436</td>
+      <td>315</td>
+    </tr>
+    <tr>
+      <td>859</td>
+      <td>178</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>符号</strong></p>
+
+<ul>
+  <li><strong>m</strong>=训练样本的数量
+    <ul>
+      <li>假如表格有47列，那么m=47</li>
+    </ul>
+  </li>
+  <li><strong>x’s</strong>=输入变量/特征
+    <ul>
+      <li>表格左侧的面积是输入变量或特征</li>
+    </ul>
+  </li>
+  <li><strong>y’s</strong>=输出变量/目标变量
+    <ul>
+      <li>表格右侧的价格</li>
+    </ul>
+  </li>
+</ul>
+
+<p>模型的工作是从这个数据中训练的。</p>
+
+<p>$(x,y)$</p>
+
+<ul>
+  <li>表示特定训练样本</li>
+</ul>
+
+<p>$(x^{(i)},y^{(i)})$</p>
+
+<ul>
+  <li>上标i表示第i个训练样本，充当索引作用，$x^{(1)}$是$2104$，$x^{(2)}$是$1416$，$y^{(1)}$是$460$</li>
+</ul>
+
+<pre><code class="language-mermaid">graph TB;
+	A[训练集]
+	B[学习算法]
+	C[h(函数)]
+	D[房子面积]
+	E[售价]
+	A--&gt;B;
+	B--&gt;C;
+	D--&gt;C;
+	C--&gt;E;
+</code></pre>
+
+<p>得到h函数，房子面积作为x输入，得到y的输出。这种根据房子尺寸进行房价预测的函数，函数取决于于用户用什么来表达。</p>
+
+\[h_{\theta}=\theta_{0}+\theta_{1}x\]
+
+<p>缩写: \(h_{\theta}(x)\)</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/1.PNG" alt="线性回归" /></p>
+
+<p>这种线性回归类型，是取决于x单一变量的。</p>
+
+<h2 id="监督学习">监督学习</h2>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/2.PNG" alt="预测房价" /></p>
+
+<p>y轴是房价，x轴是房子面积，此时用一条直线拟合数据,假设卖家的房子尺寸是$750^2$，那么它的售价为150*1000美元，如上图所示。</p>
+
+<p>如果函数用二阶多项式来表达，那么拟合数据的表现可能会更佳。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/3.PNG" alt="" /></p>
+
+<p>这回归问题的价格是一个离散值，预测离散值的输出。</p>
+
+<p>无论采用哪种模型算法，都属于监督学习的类型，监督学习算法目的是给定训练数据集，迭代函数的权重获得正确的答案，下次输入未知的x也能输出需要的答案。</p>
+
+<h2 id="无监督学习">无监督学习</h2>
+
+<p>假设某函数判断病人的肿瘤是否良性或恶性，用输出0与1来表示，这类有答案的</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/4.PNG" alt="" /></p>
+
+<p>当这些数据集没有任何标签，没有答案，算法自行学习其中的结构，将其给不同数据自行分类。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/5.PNG" alt="" /></p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/6.PNG" alt="" /></p>
+
+<h2 id="损失函数">损失函数</h2>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/7.PNG" alt="" /></p>
+
+<p>$\theta_{0},\theta_{1}$是常数，输出的值可能不同，通过数据集的训练使直线尽可能靠拢、拟合数据</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/7.PNG" alt="未分类的数据集" /></p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/8.PNG" alt="已分类的数据集" /></p>
+
+<p>如何得到正确的$\theta_{0},\theta_{1}$呢？</p>
+
+<p>损失函数定义：$\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2$，其中$h_{\theta}(x^{(i)})=\theta_{0}+\theta_{1}x^{(i)}$</p>
+
+<p>m为47个训练样本，通过损失函数计算它们的输出值$h_{\theta}$减去实际值$y^{(i)}$的二次方和从而得到的总误差项<sup id="fnref:foot1" role="doc-noteref"><a href="#fn:foot1" class="footnote" rel="footnote">1</a></sup>，目的是尽可能降低这个值。</p>
+
+<p>为了让损失函数变得容易理解，减少至$\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2$</p>
+
+<p>这是线性回归的整体目标函数，目标是减小$\theta_{0},\theta_{1}$的值，使总误差项最小化。</p>
+
+<h3 id="损失函数公式">损失函数公式</h3>
+
+\[\begin{equation}
+  J(\theta_{0},\theta_{1})=\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2  \\
+  \mathop{minimize}\limits_{\theta_{0},\theta_{1}} \mathop{J(\theta_{0},\theta_{1})}_{\text{损失函数}}
+\end{equation}\]
+
+<p>minimize v. 使减少到最低限度</p>
+
+<p>假设的函数模型的参数有各种各样,为了计算方便，这里先假定函数$h_{\theta}=\theta_{1}x^{(i)}$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/10.PNG" alt="" /></p>
+
+<p>假定$\theta_{1}=1$</p>
+
+\[\begin{equation*}
+  \begin{split}
+    J(1)
+    &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2  \\
+	&amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (\theta-y^{(i)})^2  \\
+	&amp; = \frac{1}{2m}(0^{2}+0^{2}+0^{2})  \\
+	&amp; = 0^{2}
+  \end{split}
+\end{equation*}\]
+
+<p>函数拟合数据得到最好的表现，总误差项为0，这是最理想的情况</p>
+
+<p>假定$\theta_{1}=0.5$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/11.PNG" alt="" /></p>
+
+\[\begin{equation*}
+  \begin{split}
+    J(0.5)
+	&amp; = \frac{1}{2m}[(0*5-1)^{2}+(1-2)^{2}+(1*5-3)^{2})] \\
+	&amp; = \frac{1}{2*3}(3*5) \\
+	&amp; = \frac{3*5}{6} \\
+	&amp; = 0.58
+  \end{split}
+\end{equation*}\]
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/12.PNG" alt="" /></p>
+
+\[\begin{equation*}
+  \begin{split}
+    J(0)
+	&amp; = \frac{1}{2m}[1^{2}+2^{2}+3^{2})] \\
+	&amp; = \frac{1}{6}*14 \\
+	&amp; = 2.3
+  \end{split}
+\end{equation*}\]
+
+<p>同理，当$\theta_{1}=-0.5$时，总误差项为5.25，误差非常大</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/13.PNG" alt="梯度" /></p>
+
+<p>横轴为$\theta_{1}$，纵轴为总误差项，之前$\theta_{1}=1、\theta_{0}=1\ldots$给出的总误差项y，构成上图</p>
+
+<p>损失函数的优化目标是获得最小值的$J(\theta_{1})$，此时上图$\theta_{1}=1$已结完美拟合了</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/14.PNG" alt="" /></p>
+
+<p>$\theta_{0}=50,\theta_{1}=0.06$,绘制$J(\theta_{0},\theta_{1})$就多了一个$\theta_{0}=50$，它与训练集相关</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/15.PNG" alt="" /></p>
+
+<p>这是等高线图，用2D表现如下图(几圈圈椭圆)，最小值位于最小的椭圆中心。</p>
+
+<p>首先假定$\theta_{0}=800,\theta_{1}=-0.15$，位于下图$J(\theta_{0},\theta_{1})$手绘篮圈的红叉号。左边的$h(x)$显然不符合，离最小值甚远，因为拟合的不好</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/16.PNG" alt="" /></p>
+
+<p>假定$\theta_{0}=360,\theta_{1}=0$，离最小值有些接近了</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/17.PNG" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/18.PNG" alt="" /></p>
+
+<p>到了这里，虽然不是最小值，这是训练样本实际值与预测值之间的所有误差和，$J(\theta_{0},\theta_{1})$表示损失函数J的意义，接近损失函数J最小值的点。</p>
+
+<p>我们目标是寻找一个高效的算法，来自动寻找损失函数J最小值，之后由于涉及众多参数、更高维的图形，只能通过代码实现。</p>
+
+<h2 id="梯度下降">梯度下降</h2>
+
+<p>用梯度下降算法最小化任意函数J，包括线性函数、非线性函数等。</p>
+
+<p>$J(\theta_{0},\theta_{1})$可扩展$J(\theta_{0},\theta_{1},\theta_{2}\ldots\theta_{n})$</p>
+
+<p>最小化$\mathop{min}\limits_{\theta_{0},\theta_{1}}J(\theta_{0},\theta_{1})$亦可$\mathop{min}\limits_{\theta_{0},\theta_{1}}J(\theta_{0},\theta_{1},\theta_{2}\ldots\theta_{n})$</p>
+
+<p>梯度下降，一般设$\theta_{0}=0,\theta_{1}=0)$，假如能看到哪里是最低点，如下图一步一步走不断收敛至局部最低点。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/19.PNG" alt="" /></p>
+
+<p>实际上，我们并不能环顾四周看哪里是最低的，是碰运气不断走着，直到获得完全不同的局部最优解<sup id="fnref:foot2" role="doc-noteref"><a href="#fn:foot2" class="footnote" rel="footnote">2</a></sup>。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/20.PNG" alt="" /></p>
+
+<h3 id="梯度下降算法">梯度下降算法</h3>
+
+\[\text{重复直至收敛}{\theta_{j}:=\theta_{j}-\alpha\frac{\partial}{\partial\theta_{j}}J(\theta_{0},\theta_{1})\qquad (\text{同时更新 j=0 和 j=1})}\]
+
+<p><code class="language-plaintext success highlighter-rouge">正确：同时更新</code>
+\(temp0:=\theta_{0}-\alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0},\theta_{1}) \\
+temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{1}) \\
+\theta_{0}:=temp0  \\
+\theta_{1}:=temp1\)</p>
+
+<p><code class="language-plaintext error highlighter-rouge">错误：异步更新</code>
+\(temp0:=\theta_{0}-\alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0},\theta_{1}) \\
+\theta_{0}:=temp0  \\
+temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{1}) \\
+\theta_{1}:=temp1\)</p>
+
+<blockquote>
+  <p><code class="language-plaintext info highlighter-rouge">:=</code>这是计算机赋值的意思</p>
+</blockquote>
+
+<p>$\alpha$是<strong>学习率</strong>，如果这个<strong>常数很大</strong>，那么梯度下降$J(\theta_{0},\theta_{1})$容易<strong>越过最小值</strong>，左右横跳导致梯度上升(自己算)；如果<strong>太小</strong>，要迭代<strong>很多次</strong>才能收敛。</p>
+
+<p>反复迭代，直至收敛为止。如果使用异步更新，那就不是梯度下降法了，是其它的算法。</p>
+
+<h3 id="梯度下降法的意义">梯度下降法的意义</h3>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/21.PNG" alt="" /></p>
+
+<p>公式的$\frac{\partial}{\partial \theta_{1}}J(\theta_{0})$是取坐标轴曲线一点的切线(红色直线的斜率)，这条线有正斜率，说明它有正导数。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/22.PNG" alt="" /></p>
+
+<p>因为是正数，$\theta_{1}$减去$\partial$乘以的正数，在坐标轴体现的是向左移动，然后迭代几轮收敛到最小值。</p>
+
+<p>如果$\theta_{1}$在左边，那么$\frac{\partial}{\partial \theta_{1}} J(\theta_{1})$的导数是负的，按公式(3)$\theta_{1}$的值不断递增，直至梯度最小值为止。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/23.PNG" alt="" /></p>
+
+<h4 id="梯度消失">梯度消失</h4>
+
+<p>假设$\theta_{1}$处于局部最优解，这样的话$\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})$的斜率等于0，不上升也不下降。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/24.PNG" alt="" /></p>
+
+<p>是因为$\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})$的斜率更新，刚开始从右边紫点出发，这时导数值值比较大，绿点随着接近最小值，得到导数值变小了，得到红点，再继续梯度下降，直至收敛到局部极小值。根据定义，在局部最低点时导数等于0，这是梯度下降法的运行方式，所以没必要减小$\partial$的值</p>
+
+\[\begin{equation*}
+  \begin{split}
+    \frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})
+	&amp; = \frac{\partial}{\partial \theta_{1}}\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2  \\
+	&amp; = \frac{\partial}{\partial \theta_{1}}\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (\theta_{0}+\theta_{1}x^{(i)}-y^{(i)})^2  \\
+	&amp; = 
+  \end{split}
+\end{equation*}\]
+
+<p>推导函数的两个$\theta$值，按上述推导可以明白(多元微分推导)</p>
+
+<p>对应$\theta_{0}$的$\frac{\vartheta}{\vartheta \theta_{0}}J(\theta_{0},\theta_{1})$的偏导数</p>
+
+\[\begin{equation*}
+  \begin{split}
+    \theta_{0}
+	&amp; = 0:\frac{\partial}{\partial \theta_{0}}J(\theta_{0},\theta_{1})
+	&amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})
+  \end{split}
+\end{equation*}\]
+
+<p>对应$\theta_{1}$的$\frac{\vartheta}{\vartheta \theta_{1}}J(\theta_{0},\theta_{1})$的偏导数</p>
+
+\[\begin{equation*}
+  \begin{split}
+    \theta_{1}
+	&amp; = 1:\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})
+	&amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})*x^{(i)}
+  \end{split}
+\end{equation*}\]
+
+<p>然后$\theta_{0},\theta_{1}$不断重复该过程直到收敛。线性回归问题通常表现为弓状函数(凸函数)，这种看起来像弓形，只有一个全局最优解，当计算这种损失函数的梯度下降，总是收敛到全局最优。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/26.PNG" alt="" /></p>
+
+<p>房价的数据集，先初始设定$\theta_{0}=-900,\theta_{1}=-0.1$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/27.PNG" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/28.PNG" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/29.PNG" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/30.PNG" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/31.PNG" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/32.PNG" alt="" /></p>
+
+<p>这种梯度下降法叫<strong>“Batch”</strong>梯度下降，遍历所有训练样本并计算偏导数，每一次梯度下降总要计算m个样本的总和。</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:foot1" role="doc-endnote">
+      <p>误差项，某些文献也称呼敏感度、错误率 <a href="#fnref:foot1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:foot2" role="doc-endnote">
+      <p><a href="">关于局部最优解</a> <a href="#fnref:foot2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="机器学习" /><category term="机器学习" /><category term="吴恩达" /><summary type="html"><![CDATA[模型描述 线性回归，这里的回归是指分类问题，用来预测离散值输出。 举个例子：城市不同房子对应不同售价，假设某房子1250英尺，它的售价220000美元，数据集包含卖出的房子面积大小和价格。 $面积/m^{2} (x)$ $价格/1000美元(y)$ 2014 460 1416 212 1436 315 859 178 … … 符号 m=训练样本的数量 假如表格有47列，那么m=47 x’s=输入变量/特征 表格左侧的面积是输入变量或特征 y’s=输出变量/目标变量 表格右侧的价格 模型的工作是从这个数据中训练的。 $(x,y)$ 表示特定训练样本 $(x^{(i)},y^{(i)})$ 上标i表示第i个训练样本，充当索引作用，$x^{(1)}$是$2104$，$x^{(2)}$是$1416$，$y^{(1)}$是$460$ graph TB; A[训练集] B[学习算法] C[h(函数)] D[房子面积] E[售价] A--&gt;B; B--&gt;C; D--&gt;C; C--&gt;E; 得到h函数，房子面积作为x输入，得到y的输出。这种根据房子尺寸进行房价预测的函数，函数取决于于用户用什么来表达。 \[h_{\theta}=\theta_{0}+\theta_{1}x\] 缩写: \(h_{\theta}(x)\) 这种线性回归类型，是取决于x单一变量的。 监督学习 y轴是房价，x轴是房子面积，此时用一条直线拟合数据,假设卖家的房子尺寸是$750^2$，那么它的售价为150*1000美元，如上图所示。 如果函数用二阶多项式来表达，那么拟合数据的表现可能会更佳。 这回归问题的价格是一个离散值，预测离散值的输出。 无论采用哪种模型算法，都属于监督学习的类型，监督学习算法目的是给定训练数据集，迭代函数的权重获得正确的答案，下次输入未知的x也能输出需要的答案。 无监督学习 假设某函数判断病人的肿瘤是否良性或恶性，用输出0与1来表示，这类有答案的 当这些数据集没有任何标签，没有答案，算法自行学习其中的结构，将其给不同数据自行分类。 损失函数 $\theta_{0},\theta_{1}$是常数，输出的值可能不同，通过数据集的训练使直线尽可能靠拢、拟合数据 如何得到正确的$\theta_{0},\theta_{1}$呢？ 损失函数定义：$\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2$，其中$h_{\theta}(x^{(i)})=\theta_{0}+\theta_{1}x^{(i)}$ m为47个训练样本，通过损失函数计算它们的输出值$h_{\theta}$减去实际值$y^{(i)}$的二次方和从而得到的总误差项1，目的是尽可能降低这个值。 为了让损失函数变得容易理解，减少至$\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2$ 这是线性回归的整体目标函数，目标是减小$\theta_{0},\theta_{1}$的值，使总误差项最小化。 损失函数公式 \[\begin{equation} J(\theta_{0},\theta_{1})=\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2 \\ \mathop{minimize}\limits_{\theta_{0},\theta_{1}} \mathop{J(\theta_{0},\theta_{1})}_{\text{损失函数}} \end{equation}\] minimize v. 使减少到最低限度 假设的函数模型的参数有各种各样,为了计算方便，这里先假定函数$h_{\theta}=\theta_{1}x^{(i)}$ 假定$\theta_{1}=1$ \[\begin{equation*} \begin{split} J(1) &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2 \\ &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (\theta-y^{(i)})^2 \\ &amp; = \frac{1}{2m}(0^{2}+0^{2}+0^{2}) \\ &amp; = 0^{2} \end{split} \end{equation*}\] 函数拟合数据得到最好的表现，总误差项为0，这是最理想的情况 假定$\theta_{1}=0.5$ \[\begin{equation*} \begin{split} J(0.5) &amp; = \frac{1}{2m}[(0*5-1)^{2}+(1-2)^{2}+(1*5-3)^{2})] \\ &amp; = \frac{1}{2*3}(3*5) \\ &amp; = \frac{3*5}{6} \\ &amp; = 0.58 \end{split} \end{equation*}\] \[\begin{equation*} \begin{split} J(0) &amp; = \frac{1}{2m}[1^{2}+2^{2}+3^{2})] \\ &amp; = \frac{1}{6}*14 \\ &amp; = 2.3 \end{split} \end{equation*}\] 同理，当$\theta_{1}=-0.5$时，总误差项为5.25，误差非常大 横轴为$\theta_{1}$，纵轴为总误差项，之前$\theta_{1}=1、\theta_{0}=1\ldots$给出的总误差项y，构成上图 损失函数的优化目标是获得最小值的$J(\theta_{1})$，此时上图$\theta_{1}=1$已结完美拟合了 $\theta_{0}=50,\theta_{1}=0.06$,绘制$J(\theta_{0},\theta_{1})$就多了一个$\theta_{0}=50$，它与训练集相关 这是等高线图，用2D表现如下图(几圈圈椭圆)，最小值位于最小的椭圆中心。 首先假定$\theta_{0}=800,\theta_{1}=-0.15$，位于下图$J(\theta_{0},\theta_{1})$手绘篮圈的红叉号。左边的$h(x)$显然不符合，离最小值甚远，因为拟合的不好 假定$\theta_{0}=360,\theta_{1}=0$，离最小值有些接近了 到了这里，虽然不是最小值，这是训练样本实际值与预测值之间的所有误差和，$J(\theta_{0},\theta_{1})$表示损失函数J的意义，接近损失函数J最小值的点。 我们目标是寻找一个高效的算法，来自动寻找损失函数J最小值，之后由于涉及众多参数、更高维的图形，只能通过代码实现。 梯度下降 用梯度下降算法最小化任意函数J，包括线性函数、非线性函数等。 $J(\theta_{0},\theta_{1})$可扩展$J(\theta_{0},\theta_{1},\theta_{2}\ldots\theta_{n})$ 最小化$\mathop{min}\limits_{\theta_{0},\theta_{1}}J(\theta_{0},\theta_{1})$亦可$\mathop{min}\limits_{\theta_{0},\theta_{1}}J(\theta_{0},\theta_{1},\theta_{2}\ldots\theta_{n})$ 梯度下降，一般设$\theta_{0}=0,\theta_{1}=0)$，假如能看到哪里是最低点，如下图一步一步走不断收敛至局部最低点。 实际上，我们并不能环顾四周看哪里是最低的，是碰运气不断走着，直到获得完全不同的局部最优解2。 梯度下降算法 \[\text{重复直至收敛}{\theta_{j}:=\theta_{j}-\alpha\frac{\partial}{\partial\theta_{j}}J(\theta_{0},\theta_{1})\qquad (\text{同时更新 j=0 和 j=1})}\] 正确：同时更新 \(temp0:=\theta_{0}-\alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0},\theta_{1}) \\ temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{1}) \\ \theta_{0}:=temp0 \\ \theta_{1}:=temp1\) 错误：异步更新 \(temp0:=\theta_{0}-\alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0},\theta_{1}) \\ \theta_{0}:=temp0 \\ temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{1}) \\ \theta_{1}:=temp1\) :=这是计算机赋值的意思 $\alpha$是学习率，如果这个常数很大，那么梯度下降$J(\theta_{0},\theta_{1})$容易越过最小值，左右横跳导致梯度上升(自己算)；如果太小，要迭代很多次才能收敛。 反复迭代，直至收敛为止。如果使用异步更新，那就不是梯度下降法了，是其它的算法。 梯度下降法的意义 公式的$\frac{\partial}{\partial \theta_{1}}J(\theta_{0})$是取坐标轴曲线一点的切线(红色直线的斜率)，这条线有正斜率，说明它有正导数。 因为是正数，$\theta_{1}$减去$\partial$乘以的正数，在坐标轴体现的是向左移动，然后迭代几轮收敛到最小值。 如果$\theta_{1}$在左边，那么$\frac{\partial}{\partial \theta_{1}} J(\theta_{1})$的导数是负的，按公式(3)$\theta_{1}$的值不断递增，直至梯度最小值为止。 梯度消失 假设$\theta_{1}$处于局部最优解，这样的话$\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})$的斜率等于0，不上升也不下降。 是因为$\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})$的斜率更新，刚开始从右边紫点出发，这时导数值值比较大，绿点随着接近最小值，得到导数值变小了，得到红点，再继续梯度下降，直至收敛到局部极小值。根据定义，在局部最低点时导数等于0，这是梯度下降法的运行方式，所以没必要减小$\partial$的值 \[\begin{equation*} \begin{split} \frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1}) &amp; = \frac{\partial}{\partial \theta_{1}}\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2 \\ &amp; = \frac{\partial}{\partial \theta_{1}}\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (\theta_{0}+\theta_{1}x^{(i)}-y^{(i)})^2 \\ &amp; = \end{split} \end{equation*}\] 推导函数的两个$\theta$值，按上述推导可以明白(多元微分推导) 对应$\theta_{0}$的$\frac{\vartheta}{\vartheta \theta_{0}}J(\theta_{0},\theta_{1})$的偏导数 \[\begin{equation*} \begin{split} \theta_{0} &amp; = 0:\frac{\partial}{\partial \theta_{0}}J(\theta_{0},\theta_{1}) &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)}) \end{split} \end{equation*}\] 对应$\theta_{1}$的$\frac{\vartheta}{\vartheta \theta_{1}}J(\theta_{0},\theta_{1})$的偏导数 \[\begin{equation*} \begin{split} \theta_{1} &amp; = 1:\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1}) &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})*x^{(i)} \end{split} \end{equation*}\] 然后$\theta_{0},\theta_{1}$不断重复该过程直到收敛。线性回归问题通常表现为弓状函数(凸函数)，这种看起来像弓形，只有一个全局最优解，当计算这种损失函数的梯度下降，总是收敛到全局最优。 房价的数据集，先初始设定$\theta_{0}=-900,\theta_{1}=-0.1$ 这种梯度下降法叫“Batch”梯度下降，遍历所有训练样本并计算偏导数，每一次梯度下降总要计算m个样本的总和。 误差项，某些文献也称呼敏感度、错误率 &#8617; 关于局部最优解 &#8617;]]></summary></entry><entry><title type="html"></title><link href="http://localhost:4000/Study-Blog/2022/02/11/.html" rel="alternate" type="text/html" title="" /><published>2022-02-11T00:00:00+00:00</published><updated>2022-02-11T00:00:00+00:00</updated><id>http://localhost:4000/Study-Blog/2022/02/11/</id><content type="html" xml:base="http://localhost:4000/Study-Blog/2022/02/11/.html"><![CDATA[<!-- 
+categories: 机器学习
+tags: [机器学习,吴恩达]
+ -->
+
+<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">撰写博客</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts.html" rel="alternate" type="text/html" title="撰写博客" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts.html"><![CDATA[<h1 id="jekyll博客的编写">Jekyll博客的编写</h1>
+
+<p>在<a href="http://jekyllcn.com/docs/structure/">目录结构</a>介绍中说明过，<strong>所有的文章都在 <em>/_posts</em> 文件夹中</strong>。这些文件可以用 Markdown 或 HTML 编写。只要文件中有 YAML 头信息，它们就会从源格式转化成 HTML 页面，从而成为你的静态网站的一部分。</p>
+
+<!--more-->
+
+<h2 id="创建文章">创建文章</h2>
+
+<p>发表一篇新文章，你所需要做的就是在 <em>/_posts</em> 文件夹中创建一个新的文件。文件名的命名非常重要。Jekyll 要求一篇文章的文件名遵循下面的格式：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>年-月-日-标题.MARKUP
+</code></pre></div></div>
+
+<p>下面是一些合法的文件名的例子：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2011-12-31-new-years-eve-is-awesome.md
+2012-09-12-how-to-write-a-blog.markdown
+</code></pre></div></div>
+
+<h2 id="内容相关">内容相关</h2>
+
+<p>所有博客文章顶部必须有一段 YAML 头信息(YAML front-matter)。</p>
+
+<p>为了提高文章的阅读和书写体验，TeXt 在 Markdown 原有的基础上做了一些增强。</p>
+
+<h3 id="yaml-头信息">YAML 头信息</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="s">---</span>
+    <span class="s">layout</span><span class="err">:</span> <span class="s">article</span>
+    <span class="s">title</span><span class="err">:</span> <span class="s">Document - Writing Posts</span>
+    <span class="s">mathjax</span><span class="err">:</span> <span class="no">true</span>
+    <span class="s">---</span>
+</code></pre></div></div>
+
+<p>{
+在 <code class="language-plaintext highlighter-rouge">---</code> 之间你可以设置属性的值，可以把它们看作页面的配置，这些配置会覆盖在 <em>_config.yml</em> 文件中设置的全局配置。</p>
+
+<p>除去 Jekyll 自定义的变量外，TeXt 也定义了一些额外的变量，详情请戳<a href="https://tianqi.name/jekyll-TeXt-theme/docs/zh/layouts">布局</a>。</p>
+
+<h1 id="markdown增强">Markdown增强</h1>
+
+<p>你需要在 <em>_config.yml</em> 或 YAML 头信息中设置相关的属性为 <code class="language-plaintext highlighter-rouge">true</code> 来开启对应的功能。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>增强项</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mathjax</strong></td>
+      <td>在文章中方便的加入数学公式，使用 MathML、LaTeX 和 ASCIIMathML 语法</td>
+    </tr>
+    <tr>
+      <td><strong>Mermaid</strong></td>
+      <td>在文章中方便的加入流程图</td>
+    </tr>
+    <tr>
+      <td><strong>Chart</strong></td>
+      <td>在文章中方便的加入可交互的图表</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="mathjax">Mathjax</h2>
+
+<p>When</p>
+
+\[a \ne 0\]
+
+<p>, there are two solutions to 
+\(ax^2 + bx + c = 0\)</p>
+
+<p>and they are</p>
+
+\[x_1 = {-b + \sqrt{b^2-4ac} \over 2a}\]
+
+\[x_2 = {-b - \sqrt{b^2-4ac} \over 2a} \notag\]
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-tex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>When <span class="p">$$</span><span class="nb">a </span><span class="nv">\ne</span><span class="nb"> </span><span class="m">0</span><span class="p">$$</span>, there are two solutions to <span class="p">$$</span><span class="nb">ax</span><span class="p">^</span><span class="m">2</span><span class="nb"> </span><span class="o">+</span><span class="nb"> bx </span><span class="o">+</span><span class="nb"> c </span><span class="o">=</span><span class="nb"> </span><span class="m">0</span><span class="p">$$</span> and they are
+<span class="p">$$</span><span class="nb">x</span><span class="p">_</span><span class="m">1</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="p">{</span><span class="o">-</span><span class="nb">b </span><span class="o">+</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="p">{</span><span class="nb">b</span><span class="p">^</span><span class="m">2</span><span class="o">-</span><span class="m">4</span><span class="nb">ac</span><span class="p">}</span><span class="nb"> </span><span class="nv">\over</span><span class="nb"> </span><span class="m">2</span><span class="nb">a</span><span class="p">}$$</span>
+<span class="p">$$</span><span class="nb">x</span><span class="p">_</span><span class="m">2</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="p">{</span><span class="o">-</span><span class="nb">b </span><span class="o">-</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="p">{</span><span class="nb">b</span><span class="p">^</span><span class="m">2</span><span class="o">-</span><span class="m">4</span><span class="nb">ac</span><span class="p">}</span><span class="nb"> </span><span class="nv">\over</span><span class="nb"> </span><span class="m">2</span><span class="nb">a</span><span class="p">}</span><span class="nb"> </span><span class="nv">\notag</span><span class="p">$$</span>
+</code></pre></div></div>
+
+<p class="info"><strong>当 MathJax 激活后</strong>，你可以设置 <code class="language-plaintext highlighter-rouge">mathjax_autoNumber: true</code> 让公式自动编号，你可以使用 \notag 或者 \nonumber 阻止某条公式自动编号。</p>
+
+<h2 id="mermaid">Mermaid</h2>
+
+<pre><code class="language-mermaid">graph TB;
+    A[Do you have a problem in your life?]
+    B[Then don't worry]
+    C[Can you do something about it?]
+    A--no--&gt;B;
+    A--yes--&gt;C;
+    C--no--&gt;B;
+    C--yes--&gt;B;
+</code></pre>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>``mermaid     graph TB;         A[Do you have a problem in your life?]         B[Then don't worry]         C[Can you do something about it?]         A--no--&gt;B;         A--yes--&gt;C;         C--no--&gt;B;         C--yes--&gt;B;     ``
+</code></pre></div></div>
+
+<p><a href="https://mermaidjs.github.io/">Mermaid</a> 支持以下三种示意图:</p>
+
+<ul>
+  <li><a href="https://mermaidjs.github.io/flowchart.html">Flowchart</a></li>
+  <li><a href="https://mermaidjs.github.io/sequenceDiagram.html">Sequence Diagram</a></li>
+  <li><a href="https://mermaidjs.github.io/gantt.html">Gant Diagram</a></li>
+</ul>
+
+<h2 id="chart">Chart</h2>
+
+<pre><code class="language-chart">{
+  "type": "line",
+  "data": {
+    "labels": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July"
+    ],
+    "datasets": [
+      {
+        "label": "# of bugs",
+        "fill": false,
+        "lineTension": 0.1,
+        "backgroundColor": "rgba(75,192,192,0.4)",
+        "borderColor": "rgba(75,192,192,1)",
+        "borderCapStyle": "butt",
+        "borderDash": [],
+        "borderDashOffset": 0,
+        "borderJoinStyle": "miter",
+        "pointBorderColor": "rgba(75,192,192,1)",
+        "pointBackgroundColor": "#fff",
+        "pointBorderWidth": 1,
+        "pointHoverRadius": 5,
+        "pointHoverBackgroundColor": "rgba(75,192,192,1)",
+        "pointHoverBorderColor": "rgba(220,220,220,1)",
+        "pointHoverBorderWidth": 2,
+        "pointRadius": 1,
+        "pointHitRadius": 10,
+        "data": [
+          65,
+          59,
+          80,
+          81,
+          56,
+          55,
+          40
+        ],
+        "spanGaps": false
+      }
+    ]
+  },
+  "options": {}
+}
+</code></pre>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\`\`\`chart
+{
+  "type": "polarArea",
+  "data": {
+    "datasets": [
+      {
+        "data": [
+          11,
+          16,
+          7,
+          3,
+          14
+        ],
+        "backgroundColor": [
+          "#FF6384",
+          "#4BC0C0",
+          "#FFCE56",
+          "#E7E9ED",
+          "#36A2EB"
+        ],
+        "label": "My dataset"
+      }
+    ],
+    "labels": [
+      "Red",
+      "Green",
+      "Yellow",
+      "Grey",
+      "Blue"
+    ]
+  },
+  "options": {}
+}
+\`\`\`
+</code></pre></div></div>
+
+<p><a href="http://www.chartjs.org/docs/latest/">Chart.js</a> 支持以下 7 种图表:</p>
+
+<ul>
+  <li><a href="http://www.chartjs.org/docs/latest/charts/line.html">Line Chart</a></li>
+  <li><a href="http://www.chartjs.org/docs/latest/charts/bar.html">Bar Chart</a></li>
+  <li><a href="http://www.chartjs.org/docs/latest/charts/radar.html">Radar Chart</a></li>
+  <li><a href="http://www.chartjs.org/latest/charts/polar.html">Polar Area Chart</a></li>
+  <li><a href="http://www.chartjs.org/docs/latest/charts/doughnut.html">Pie Chart</a></li>
+  <li><a href="http://www.chartjs.org/docs/latest/charts/doughnut.html">Doughnut Chart</a></li>
+  <li><a href="http://www.chartjs.org/docs/latest/charts/bubble.html">Bubble Chart</a></li>
+</ul>
+
+<h1 id="markdown文本样式">Markdown文本样式</h1>
+
+<p>为了展示Markdown语法的渲染，<a href="https://github.com/cotes2020/jekyll-theme-chirpy/fork"><strong>Chirpy</strong></a>, 你也可以用它作为写作的例子。 现在，让我们来看看文本和版式。</p>
+
+<h2 id="标题">标题</h2>
+
+<h1 data-toc-skip=""> H1 - 开头</h1>
+
+<h2 data-toc-skip="">H2 - heading</h2>
+
+<h3 data-toc-skip="">H3 - heading</h3>
+
+<h4>H4 - heading</h4>
+<p><strong>markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># H1 - 开头</span>
+
+<span class="gu">## H2 - heading</span>
+
+<span class="gu">### H3 - heading</span>
+
+<span class="gu">#### H4 - heading</span>
+
+</code></pre></div></div>
+<p><br /></p>
+
+<h2 id="文章段落">文章段落</h2>
+
+<p>I wandered lonely as a cloud</p>
+
+<p>That floats on high o’er vales and hills,</p>
+
+<p>When all at once I saw a crowd,</p>
+
+<p>A host, of golden daffodils;</p>
+
+<p>Beside the lake, beneath the trees,</p>
+
+<p>Fluttering and dancing in the breeze.</p>
+
+<h2 id="列表">列表</h2>
+
+<h3 id="有序列表">有序列表</h3>
+
+<ol>
+  <li>Firstly</li>
+  <li>Secondly</li>
+  <li>Thirdly</li>
+</ol>
+
+<p><strong>markdown:</strong></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">1.</span> Firstly
+<span class="p">2.</span> Secondly
+<span class="p">3.</span> Thirdly
+</code></pre></div></div>
+
+<h3 id="无序列表">无序列表</h3>
+
+<ul>
+  <li>章节
+    <ul>
+      <li>节选
+        <ul>
+          <li>段落</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> 章节
+<span class="p">  -</span> 节选
+<span class="p">    -</span> 段落
+</code></pre></div></div>
+
+<h3 id="任务列表">任务列表</h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />TODO</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Completed</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Defeat COVID-19
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Vaccine production</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Economic recovery</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />People smile again</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> [ ] TODO
+<span class="p">-</span> [x] Completed
+<span class="p">-</span> [ ] Defeat COVID-19
+<span class="p">  -</span> [x] Vaccine production
+<span class="p">  -</span> [ ] Economic recovery
+<span class="p">  -</span> [ ] People smile again
+</code></pre></div></div>
+
+<h3 id="描述列表">描述列表</h3>
+
+<dl>
+  <dt>Sun</dt>
+  <dd>the star around which the earth orbits</dd>
+  <dt>Moon</dt>
+  <dd>the natural satellite of the earth, visible by reflected light from the sun</dd>
+</dl>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sun
+: the star around which the earth orbits
+
+Moon
+: the natural satellite of the earth, visible by reflected light from the sun
+</code></pre></div></div>
+
+<h2 id="引用">引用</h2>
+
+<blockquote>
+  <p>This line shows the <em>block quote</em>.</p>
+</blockquote>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; This line shows the _block quote_.</span>
+</code></pre></div></div>
+
+<h2 id="表格">表格</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Company</th>
+      <th style="text-align: left">Contact</th>
+      <th style="text-align: right">Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Alfreds Futterkiste</td>
+      <td style="text-align: left">Maria Anders</td>
+      <td style="text-align: right">Germany</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Island Trading</td>
+      <td style="text-align: left">Helen Bennett</td>
+      <td style="text-align: right">UK</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Magazzini Alimentari Riuniti</td>
+      <td style="text-align: left">Giovanni Rovelli</td>
+      <td style="text-align: right">Italy</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Company                      | Contact          | Country |
+|:-----------------------------|:-----------------|--------:|
+| Alfreds Futterkiste          | Maria Anders     | Germany |
+| Island Trading               | Helen Bennett    | UK      |
+| Magazzini Alimentari Riuniti | Giovanni Rovelli | Italy   |
+</code></pre></div></div>
+
+<h2 id="链接">链接</h2>
+
+<p><a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a></p>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">&lt;http://127.0.0.1:4000&gt;</span>
+</code></pre></div></div>
+
+<h2 id="脚注">脚注</h2>
+
+<p>点击右上边的脚注<sup id="fnref:footnote" role="doc-noteref"><a href="#fn:footnote" class="footnote" rel="footnote">1</a></sup>, 这里是另一个脚注<sup id="fnref:fn-nth-2" role="doc-noteref"><a href="#fn:fn-nth-2" class="footnote" rel="footnote">2</a></sup>.</p>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>点击右上边的脚注[^footnote], 这里是另一个脚注[^fn-nth-2].
+</code></pre></div></div>
+
+<h3 id="脚注注释">脚注注释</h3>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="ss">^footnote</span><span class="p">]:</span> <span class="sx">The</span> footnote source
+<span class="p">[</span><span class="ss">^fn-nth-2</span><span class="p">]:</span> <span class="sx">The</span> 2nd footnote source
+</code></pre></div></div>
+
+<h2 id="提示">提示</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>样式名称</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>success</strong></td>
+    </tr>
+    <tr>
+      <td><strong>info</strong></td>
+    </tr>
+    <tr>
+      <td><strong>warning</strong></td>
+    </tr>
+    <tr>
+      <td><strong>error</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="success">Success Text.</p>
+
+<p class="info">Info Text.</p>
+
+<p class="warning">Warning Text.</p>
+
+<p class="error">Error Text.</p>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Success Text.
+{:.success}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Info Text.
+{:.info}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Warning Text.
+{:.warning}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error Text.
+{:.error}
+</code></pre></div></div>
+
+<h2 id="标签">标签</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class Names</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>success</strong></td>
+    </tr>
+    <tr>
+      <td><strong>info</strong></td>
+    </tr>
+    <tr>
+      <td><strong>warning</strong></td>
+    </tr>
+    <tr>
+      <td><strong>error</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext success highlighter-rouge">success</code></p>
+
+<p><code class="language-plaintext info highlighter-rouge">info</code></p>
+
+<p><code class="language-plaintext warning highlighter-rouge">warning</code></p>
+
+<p><code class="language-plaintext error highlighter-rouge">error</code></p>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`success`{:.success}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`info`{:.info}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`warning`{:.warning}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`error`{:.error}
+</code></pre></div></div>
+
+<h2 id="图像">图像</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>样式名称</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>border</strong></td>
+    </tr>
+    <tr>
+      <td><strong>shadow</strong></td>
+    </tr>
+    <tr>
+      <td><strong>rounded</strong></td>
+    </tr>
+    <tr>
+      <td><strong>circle</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="border">Border</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_border" class="border" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.border}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<h3 id="shadow">Shadow</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_shadow" class="shadow" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.shadow}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<h3 id="rounded">Rounded</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_rounded" class="rounded" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.rounded}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<h3 id="circle">Circle</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_circle" class="circle" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.circle}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<h3 id="mixture">Mixture</h3>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_border+rounded" class="border rounded" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.border.rounded}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_circle+shadow" class="circle shadow" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.circle.shadow}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<div class="grid-containre">
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4 ">
+      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_circle+border+shadow" class="circle border shadow" /></p>
+    </div>
+<div class="cell cell--12 cell--md-auto">
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.circle.border.shadow}
+</code></pre></div>      </div>
+    </div>
+</div>
+</div>
+
+<ul>
+  <li>默认 (带说明文字)</li>
+</ul>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Desktop View" width="20%" height="20%" />
+<em>Full screen width and center alignment</em></p>
+
+<p><br /></p>
+
+<ul>
+  <li>阴影</li>
+</ul>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Window shadow" class="shadow" width="20%" height="20%" style="max-width: 90%" />
+<em>shadow effect (visible in light mode)</em></p>
+
+<p><br /></p>
+
+<ul>
+  <li>左对齐</li>
+</ul>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Desktop View" width="20%" height="20%" style="max-width: 70%" class="normal" /></p>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <p>向左浮动</p>
+
+    <p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Desktop View" width="20%" height="20%" style="max-width: 200px" class="left" />
+“一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。  “</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<ul>
+  <li>
+    <p>向右浮动</p>
+
+    <p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Desktop View" width="20%" height="20%" style="max-width: 200px" class="right" />
+“一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。  “</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="mermaid-svg">Mermaid SVG</h2>
+
+<pre><code class="language-mermaid"> gantt
+  title  Adding GANTT diagram functionality to mermaid
+  apple :a, 2017-07-20, 1w
+  banana :crit, b, 2017-07-23, 1d
+  cherry :active, c, after b a, 1d
+</code></pre>
+
+<p><strong>markdown:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\`\`\`mermaid
+ gantt
+  title  Adding GANTT diagram functionality to mermaid
+  apple :a, 2017-07-20, 1w
+  banana :crit, b, 2017-07-23, 1d
+  cherry :active, c, after b a, 1d
+\`\`\`
+</code></pre></div></div>
+
+<h2 id="mathematics">Mathematics</h2>
+
+<p>The mathematics powered by <a href="https://www.mathjax.org/"><strong>MathJax</strong></a>:</p>
+
+\[\sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}\]
+
+<p>When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are</p>
+
+\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The mathematics powered by <span class="p">[</span><span class="nv">**MathJax**</span><span class="p">](</span><span class="sx">https://www.mathjax.org/</span><span class="p">)</span>:
+
+$$ <span class="se">\s</span>um_{n=1}^<span class="se">\i</span>nfty 1/n^2 = <span class="se">\f</span>rac{<span class="se">\p</span>i^2}{6} $$
+
+When $a <span class="se">\n</span>e 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
+
+$$ x = {-b <span class="se">\p</span>m <span class="se">\s</span>qrt{b^2-4ac} <span class="se">\o</span>ver 2a} $$
+</code></pre></div></div>
+
+<h2 id="内联代码">内联代码</h2>
+
+<p>这是一个例子 <code class="language-plaintext highlighter-rouge">Inline Code</code>.</p>
+
+<p><strong>Markdown:</strong></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一个例子 <span class="sb">`Inline Code`</span>.
+</code></pre></div></div>
+
+<h2 id="文件路径">文件路径</h2>
+
+<p>这儿是 <code class="language-plaintext filepath highlighter-rouge">/path/to/the/file.extend</code>.
+<strong>Markdown:</strong></p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这儿是 <span class="sb">`/path/to/the/file.extend`</span>{: .filepath}.
+</code></pre></div></div>
+
+<h2 id="代码块">代码块</h2>
+
+<h3 id="普通">普通</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一个普通的代码片段，没有语法突出显示和行号。  
+</code></pre></div></div>
+
+<h3 id="特定语言">特定语言</h3>
+
+<h4 id="console">Console</h4>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">env</span> |grep SHELL
+<span class="go">SHELL=/usr/local/bin/bash
+PYENV_SHELL=bash
+</span></code></pre></div></div>
+
+<h4 id="shell">Shell</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-ne</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"The command was not successful."</span><span class="p">;</span>
+    <span class="c">#do the needful / exit</span>
+<span class="k">fi</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="specific-filename">Specific filename</h3>
+
+<p>语法sass</p>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span>
+  <span class="s2">"colors/light-typography"</span><span class="o">,</span>
+  <span class="s2">"colors/dark-typography"</span>
+</code></pre></div></div>
+
+<p>TeXt 使用  <span><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24">
+<style type="text/css">
+	.st0{fill:#515151;}
+</style>
+<path class="st0" d="M1.7,22.3c5.7-5.7,11.3-5.7,17,0c3.3-3.3,3.5-5.3,0.8-6c2.7,0.7,3.5-1.1,2.3-5.6s-3.3-5.2-6.3-2.1
+	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3" />
+</svg>
+</span> 作为它的 Logo，你可以通过替换 <em>_includes/svg/logo.svg</em> 来设置你的 Logo。</p>
+
+<p>|  |  |
+| - | - |
+|  |  |
+|  |  |</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- more -->
+
+<!-- @start locale config -->
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- @end locale config -->
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<!--more-->
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:footnote" role="doc-endnote">
+      <p>The footnote source <a href="#fnref:footnote" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:fn-nth-2" role="doc-endnote">
+      <p>The 2nd footnote source <a href="#fnref:fn-nth-2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Tian Qi</name><email>kitian616@outlook.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[Jekyll博客的编写 在目录结构介绍中说明过，所有的文章都在 /_posts 文件夹中。这些文件可以用 Markdown 或 HTML 编写。只要文件中有 YAML 头信息，它们就会从源格式转化成 HTML 页面，从而成为你的静态网站的一部分。]]></summary></entry><entry><title type="html">基于sEMG信号的手势识别系统</title><link href="http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/sEMG-proposal-report.html" rel="alternate" type="text/html" title="基于sEMG信号的手势识别系统" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/sEMG-proposal-report</id><content type="html" xml:base="http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/sEMG-proposal-report.html"><![CDATA[<p>（报告内容包括课题的意义、国内外发展状况、本课题的研究内容、研究方法、研究手段、研究步骤以及参考文献资料等。）</p>
+<h2 id="课题的意义">课题的意义：</h2>
+<p><code class="language-plaintext highlighter-rouge">sEMG</code>(Surface Electromyography)是指浅层肌肉纤维收缩时形成的综合电位差信号，肌电本质是大脑的中枢神经系统通过MUs(motor units)逐次兴奋和单位时间内的兴奋次数等控制肌肉收缩力的大小和变化速度。肌电信号是一维时间序列信号，来源于中枢神经脊髓中的运动神经元，是电极接触的众多运动单元发射与释放的APs（action potentials）总和。所以肌电信号包含肌肉收缩模式及强度的信息。
+  因此sEMG客观反映了人体肌肉活动的情况，手臂驱使人手作出不同手势动作的肌肉层的电势变化，各种动作的不同肌电变化是本课题研究目的。手势语言作为语言障碍者的交际工具、AR交互输入方式、遥控机器人、义肢等，应用前景相当广泛，本选题目的是建立sEMG识别模型推测sEMG活动段所对应的含义。课题意义是研究人机交互的一种方式，sEMG客观反映了人体肌肉活动的情况，采用非入侵式肌电检测方法，检测皮层下的肌电活动信号，计算机从肌电信号提取某些特殊特征将其经拟合函数输出，输出为计算机理解对应的含义，以实现计算机解读手势动作，达成较好的人机交互效果。</p>
+
+<h2 id="国内外发展状况">国内外发展状况：</h2>
+<p>国内外90年代肌电研究历程，大多数研究采用三种方案：</p>
+<ol>
+  <li><strong>基于阈值识别方案</strong>
+  sEMG信号经校正、滤波和调制后，肌肉每次收缩产生信号峰值，通过比较峰值与阈值，表示肌电状态处于握拳或伸展状态；</li>
+  <li>
+    <p><strong>基于幅值编码方案</strong>
+  将将肌电信号的三态模式按照时序进行编码输出。具体的肌电控制语言由三位编码组成，（a1(t),a2(t),a3(t)） ai(t)属于{0，1，2}  每一位可以使用肌电信号幅值的三个态“1”“2”“0”表示（通过肌电收缩幅度的大小实现“1”和“2”，“0”代表无肌肉活动）它们组合起来对应输出各种模式。
+  每次肌肉收缩的检测依靠对肌电信号的非高斯性评估（倾斜度、峭度），并随即进行特定时间窗口内的滤波（去除干扰噪声），以确定信号幅度峰值强度是“1”或“2”。编码语言的全部三位采集完毕后对应模式即作出规定输出（映射表，不同肌电活动段分别映射不同模式）；</p>
+  </li>
+  <li><strong>分层控制决策</strong>，由先进的信号调制及模式识别算法识别出手臂肌肉进行的输出模式。
+  目前，现在已发展新的一种模式：基于<code class="language-plaintext highlighter-rouge">模式（NN）识别</code>的算法
+  国外已有产品案例，Thalmic Labs公司的产品MYO手环2016年正式上市，MYO手环的8个非入侵式干电极用于捕获用户胳臂运动时肌肉产生的生物电活动段，加上九轴IMU（三轴加速计、三轴陀螺仪、三轴磁强计）判断胳膊的运动姿势，通过模式识别从而实现判别佩戴者的动作，亦可利用蓝牙远程控制设备。
+  使用肌电信号的义肢，论文Shared human–robot proportional control of a dexterous myoelectric prosthesis提出的概念：通过截肢者残肢的肌肉活动来解码手指运动的意图，以达到控制单个手指的目的，这种神经工程学与机器人工程学交叉的概念已在截肢者获得试验成功，发表于《Nature Machine Intelligence》。其核心关键是NN算法学习如何解码用户的肌肉活动信号的意图，并转换为操控义肢控制装置的指令，来完成手指的动作。</li>
+</ol>
+
+<h2 id="本课题的研究内容">本课题的研究内容：</h2>
+<p>肌电识别的定义：提取肌电信号有<code class="language-plaintext highlighter-rouge">价值</code>的信息，并解码生物电信号表达的手指<code class="language-plaintext highlighter-rouge">运动意图</code>。表层肌电信号是电极接触的皮肤表层皮下的经过皮脂、溶液传导的动作电位总和，由于表层肌肉活动信号存在三种特点：</p>
+
+<ul>
+  <li>肌电信号微弱；</li>
+  <li>随机性强；</li>
+  <li>信噪比低</li>
+</ul>
+
+<p>从模式识别的角度看，肌电信号的特征在特征空间允许呈现无穷维，所以我们用机器学习算法对有限的模式进行训练，一是NN算法，二是样本量，只要两者相当合适，可以保证肌电信号有用信息的提取与识别。
+ 本课题运用NN模式识别将某些样本量的特征提取出来（肌肉收缩的信号幅值、统计学特性的变化等），经一定训练组成合适的状态空间，等待下一次肌电活动段识别的时候去判断信号与状态空间的哪个状态最为接近（识别与回归）。</p>
+
+<h3 id="主要实现功能如下">主要实现功能如下：</h3>
+<ol>
+  <li>模拟信号采集：根据香农采样定理，采样频率应不小于1000HZ；</li>
+  <li>信号预处理：整流、过滤10～500hz有效范围的信号；</li>
+  <li>无线传输信号：每个数据包带有0.1s内的数字信息，数据包抵达处理终端时自动打上时间戳；</li>
+  <li>数字过滤：使用过滤算法去掉无用噪音，提取有价值的信息</li>
+  <li>特征提取：系统分割活动段后，用如平均绝对值、简单平方积分、均方根值等；样本均值、方差、积分等；频率的平均频率、平均功率等特征，特征提取由NN模型决定；</li>
+  <li>RNN、CNN、SVM向量机等神经网络模型，根据5.创建的数据集测量它们的识别精度，决定手势识别系统采用哪个模型；</li>
+  <li>NN模型推测某段肌电活动段可能的最大概率的字符，从而实现NN模式识别
+ 
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-08-sEMG-proposal-report/设计流程与实现.png" alt="图1 设计流程与实现" /></li>
+</ol>
+
+<h3 id="研究方法和手段">研究方法和手段：</h3>
+<ul>
+  <li>通过Arduino开发平台完成sEMG采集装置的设计与实现。</li>
+  <li>借用NN开发工具实现分类算法设计、样本采集工具以及训练。</li>
+  <li>手势映射表的设计与实现。</li>
+</ul>
+
+<h3 id="研究步骤">研究步骤：</h3>
+<ul>
+  <li>通过图书馆、互联网，充分查阅相关的文献资料，规划设计的需求。</li>
+  <li>明确毕设方案，进行课题方案和进度设计，且能不断地研究和完善。</li>
+  <li>系统的界面设计，要求简洁大方，资源库要保证准确性。</li>
+  <li>认真测试和维护系统，保证系统的正常运行。</li>
+  <li>毕业设计说明书的内容要对所开发系统的过程进行充分的论述说明，其格式要符合天津理工大学本科毕业设计说明书规范格式的要求。按时保质保量完成毕业设计。</li>
+</ul>
+
+<h2 id="参考文献">参考文献：</h2>
+<p>[1] Andrés G. Jaramillo; Marco E. Benalcázar . Real-time hand gesture recognition with EMG using machine learning . 2017 IEEE Second Ecuador Technical Chapters
+[2] 待添加</p>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="sEMG识别" /><category term="深度学习" /><category term="机器学习" /><category term="生理信号" /><category term="sEMG识别" /><summary type="html"><![CDATA[（报告内容包括课题的意义、国内外发展状况、本课题的研究内容、研究方法、研究手段、研究步骤以及参考文献资料等。） 课题的意义： sEMG(Surface Electromyography)是指浅层肌肉纤维收缩时形成的综合电位差信号，肌电本质是大脑的中枢神经系统通过MUs(motor units)逐次兴奋和单位时间内的兴奋次数等控制肌肉收缩力的大小和变化速度。肌电信号是一维时间序列信号，来源于中枢神经脊髓中的运动神经元，是电极接触的众多运动单元发射与释放的APs（action potentials）总和。所以肌电信号包含肌肉收缩模式及强度的信息。 因此sEMG客观反映了人体肌肉活动的情况，手臂驱使人手作出不同手势动作的肌肉层的电势变化，各种动作的不同肌电变化是本课题研究目的。手势语言作为语言障碍者的交际工具、AR交互输入方式、遥控机器人、义肢等，应用前景相当广泛，本选题目的是建立sEMG识别模型推测sEMG活动段所对应的含义。课题意义是研究人机交互的一种方式，sEMG客观反映了人体肌肉活动的情况，采用非入侵式肌电检测方法，检测皮层下的肌电活动信号，计算机从肌电信号提取某些特殊特征将其经拟合函数输出，输出为计算机理解对应的含义，以实现计算机解读手势动作，达成较好的人机交互效果。 国内外发展状况： 国内外90年代肌电研究历程，大多数研究采用三种方案： 基于阈值识别方案 sEMG信号经校正、滤波和调制后，肌肉每次收缩产生信号峰值，通过比较峰值与阈值，表示肌电状态处于握拳或伸展状态； 基于幅值编码方案 将将肌电信号的三态模式按照时序进行编码输出。具体的肌电控制语言由三位编码组成，（a1(t),a2(t),a3(t)） ai(t)属于{0，1，2}  每一位可以使用肌电信号幅值的三个态“1”“2”“0”表示（通过肌电收缩幅度的大小实现“1”和“2”，“0”代表无肌肉活动）它们组合起来对应输出各种模式。 每次肌肉收缩的检测依靠对肌电信号的非高斯性评估（倾斜度、峭度），并随即进行特定时间窗口内的滤波（去除干扰噪声），以确定信号幅度峰值强度是“1”或“2”。编码语言的全部三位采集完毕后对应模式即作出规定输出（映射表，不同肌电活动段分别映射不同模式）； 分层控制决策，由先进的信号调制及模式识别算法识别出手臂肌肉进行的输出模式。 目前，现在已发展新的一种模式：基于模式（NN）识别的算法 国外已有产品案例，Thalmic Labs公司的产品MYO手环2016年正式上市，MYO手环的8个非入侵式干电极用于捕获用户胳臂运动时肌肉产生的生物电活动段，加上九轴IMU（三轴加速计、三轴陀螺仪、三轴磁强计）判断胳膊的运动姿势，通过模式识别从而实现判别佩戴者的动作，亦可利用蓝牙远程控制设备。 使用肌电信号的义肢，论文Shared human–robot proportional control of a dexterous myoelectric prosthesis提出的概念：通过截肢者残肢的肌肉活动来解码手指运动的意图，以达到控制单个手指的目的，这种神经工程学与机器人工程学交叉的概念已在截肢者获得试验成功，发表于《Nature Machine Intelligence》。其核心关键是NN算法学习如何解码用户的肌肉活动信号的意图，并转换为操控义肢控制装置的指令，来完成手指的动作。 本课题的研究内容： 肌电识别的定义：提取肌电信号有价值的信息，并解码生物电信号表达的手指运动意图。表层肌电信号是电极接触的皮肤表层皮下的经过皮脂、溶液传导的动作电位总和，由于表层肌肉活动信号存在三种特点： 肌电信号微弱； 随机性强； 信噪比低 从模式识别的角度看，肌电信号的特征在特征空间允许呈现无穷维，所以我们用机器学习算法对有限的模式进行训练，一是NN算法，二是样本量，只要两者相当合适，可以保证肌电信号有用信息的提取与识别。 本课题运用NN模式识别将某些样本量的特征提取出来（肌肉收缩的信号幅值、统计学特性的变化等），经一定训练组成合适的状态空间，等待下一次肌电活动段识别的时候去判断信号与状态空间的哪个状态最为接近（识别与回归）。 主要实现功能如下： 模拟信号采集：根据香农采样定理，采样频率应不小于1000HZ； 信号预处理：整流、过滤10～500hz有效范围的信号； 无线传输信号：每个数据包带有0.1s内的数字信息，数据包抵达处理终端时自动打上时间戳； 数字过滤：使用过滤算法去掉无用噪音，提取有价值的信息 特征提取：系统分割活动段后，用如平均绝对值、简单平方积分、均方根值等；样本均值、方差、积分等；频率的平均频率、平均功率等特征，特征提取由NN模型决定； RNN、CNN、SVM向量机等神经网络模型，根据5.创建的数据集测量它们的识别精度，决定手势识别系统采用哪个模型； NN模型推测某段肌电活动段可能的最大概率的字符，从而实现NN模式识别   研究方法和手段： 通过Arduino开发平台完成sEMG采集装置的设计与实现。 借用NN开发工具实现分类算法设计、样本采集工具以及训练。 手势映射表的设计与实现。 研究步骤： 通过图书馆、互联网，充分查阅相关的文献资料，规划设计的需求。 明确毕设方案，进行课题方案和进度设计，且能不断地研究和完善。 系统的界面设计，要求简洁大方，资源库要保证准确性。 认真测试和维护系统，保证系统的正常运行。 毕业设计说明书的内容要对所开发系统的过程进行充分的论述说明，其格式要符合天津理工大学本科毕业设计说明书规范格式的要求。按时保质保量完成毕业设计。 参考文献： [1] Andrés G. Jaramillo; Marco E. Benalcázar . Real-time hand gesture recognition with EMG using machine learning . 2017 IEEE Second Ecuador Technical Chapters [2] 待添加]]></summary></entry><entry><title type="html">CNN入门</title><link href="http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/CNN-day-1.html" rel="alternate" type="text/html" title="CNN入门" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/CNN-day-1</id><content type="html" xml:base="http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/CNN-day-1.html"><![CDATA[<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->
+
+<h2 id="激活函数relu">激活函数Relu</h2>
+
+<p>$f(x)=\max{(0,x)}$</p>
+
+<!-- ![CNN示意图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN.PNG){:.height=50%,width=50%}
+
+常用架构描述：`INPUT -> [[CONV]*N -> POOL?]*M -> [FC]*K`{:info}，CNN由**卷积层、池化层、全连接**层组成
+
+描述为`INPUT -> CONV -> POOL -> CONV -> POOL -> FC -> FC`{:.info}，一个卷积层（含池化层），为N=1个卷积层叠加,重复了M=2次,最后共K=2个全连接层 -->
+
+<h2 id="卷积输出">卷积输出</h2>
+
+<p>通过图像的矩阵乘以filter矩阵得到特征图</p>
+
+<!-- ![卷积输出](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_1.PNG){:.height=50%,width=50%} -->
+
+\[\begin{equation*}
+  \begin{split}
+    Out_{0,0}
+    &amp; = f(\sum_{m=0}^{2}\sum_{n=0}^{2}W_{m,n}X_{m+0,n+1}+W_{b}) \\
+    &amp; = relu(W_{0,0}X_{0,0}+W_{0,1}X_{0,1}+W_{0,2}X_{0,2}+W_{1,0}X_{1,0}+W_{1,1}X_{1,1}+W_{1,2}X_{1,2}+W_{2,0}X_{2,0}+W_{2,1}X_{2,1}+W_{2,2}X_{2,2}+W_{b}) \\
+    &amp; = relu(1+0+1+0+1+0+0+0+1+0) \\
+    &amp; = relu(4) \\
+    &amp; = 4
+  \end{split}
+\end{equation*}\]
+
+<p>M为第M行，N为第N列</p>
+
+<h3 id="卷积输出的计算过程">卷积输出的计算过程</h3>
+<!-- ![步幅为1时的卷积输出特征图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_2.GIF)
+
+步幅为2时的卷积输出，看完二图就明白
+
+![步幅为2时的卷积输出特征图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_3.PNG)
+
+![步幅为2时的卷积输出特征图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_4.PNG)
+
+宽度跳2下，高度也跳二个步骤，共输出
+
+ 4 | 4 
+--|:--:|--
+ 2 | 4  -->
+
+<h3 id="特征图大小的关系公式">特征图大小的关系公式</h3>
+
+\[\begin{equation*}特征图宽度=\frac{输入矩阵宽度-filter矩阵宽度+2*补几圈的0}{步幅}+1\end{equation*}\]
+
+\[\begin{equation*}特征图高度=\frac{输入矩阵高度-filter矩阵高度+2*补几圈的0}{步幅}+1\end{equation*}\]
+
+<p>参考上面步幅为2的图，输入矩阵宽度5，filter矩阵宽度3，补圈0为0，步幅为2</p>
+
+\[\begin{equation*}
+  \begin{split}
+    特征图宽度
+    &amp; = \frac{5-3+2*0}{2}+1 \\
+    &amp; = 2 
+  \end{split}
+\end{equation*}\]
+
+<h3 id="多输入多filter的卷积计算过程">多输入多Filter的卷积计算过程</h3>
+
+<p>输入矩阵若多个时，深度为D个矩阵，F为filter矩阵的大小（高和宽相同），$w_{d,m,n}$表示filter矩阵的第d层第m行第n列filter，$Out_{d,i,j}$为第d层第i行第j列的元素</p>
+
+<blockquote>
+  <p>filter矩阵为超参数<sup id="fnref:foot1" role="doc-noteref"><a href="#fn:foot1" class="footnote" rel="footnote">1</a></sup>，有<strong>几个</strong>filter矩阵就有<strong>几个</strong>输出矩阵（数量相同）</p>
+</blockquote>
+
+<blockquote>
+  <p>补了一圈0，便于图像边缘的特征提取</p>
+</blockquote>
+
+<p>7<em>7</em>3的输入，经2个3<em>3</em>3filter矩阵的卷积计算（步幅为2），得到3<em>3</em>2的输出</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_5.GIF" alt="多个输入矩阵的计算过程" /></p>
+
+<blockquote>
+  <p>上面卷积的计算方法，体现了<strong>局部连接</strong>和<strong>权值共享</strong>，2个3<em>3</em>3的filter卷积层参数仅有(3<em>3</em>3+1)*2=56个，相比全连接大大减少了参数数量</p>
+</blockquote>
+
+\[\begin{equation*}
+  \begin{split}
+    Out_{i,j}
+    &amp; = f(\displaystyle\sum\limits_{d=0}^{D-1}\displaystyle\sum\limits_{m=0}^{F-1}\displaystyle\sum\limits_{n=0}^{F-1}W_{d,m,n}X_{d,i+m,j+n}+W_{b}) \\
+  \end{split}
+\end{equation*}\]
+
+<h2 id="pooling层的计算">Pooling层的计算</h2>
+
+<h3 id="max-pooling">Max Pooling</h3>
+
+<p>n*n的样本中取最大值</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/Max_Pooling.png" alt="Max_Pooling" /></p>
+
+<p>n*n的样本中取均值
+类似上图，取4个元素的均值</p>
+
+<h2 id="卷积层的训练">卷积层的训练</h2>
+
+<p>训练算法原理：利用链式求导计算损失函数对每个权重的偏导数（梯度），然后根据梯度下降公式更新权重。</p>
+
+<ul>
+  <li>前向计算每个神经元的输出值$a_{j}$(j表示网络的第j个神经元)</li>
+  <li>反向计算每个神经元的误差项，是网络的损失函数对神经元<strong>加权</strong>输入\(net_{j}\)的偏导数，即\(\delta_{j}=\frac{\vartheta E_{d}}{\vartheta net_{j}}\)</li>
+  <li>计算每个神经元的连接权重$W_{ji}$(神经元i到神经元j的权重)的<strong>梯度</strong>，公式为\(\frac{\vartheta E_{d}}{\vartheta W_{ji}}=a_{i}\delta_{j}\)</li>
+</ul>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:foot1" role="doc-endnote">
+      <p>人为设定的参数 <a href="#fnref:foot1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="sEMG识别" /><category term="深度学习" /><category term="CNN" /><summary type="html"><![CDATA[激活函数Relu $f(x)=\max{(0,x)}$ 卷积输出 通过图像的矩阵乘以filter矩阵得到特征图 \[\begin{equation*} \begin{split} Out_{0,0} &amp; = f(\sum_{m=0}^{2}\sum_{n=0}^{2}W_{m,n}X_{m+0,n+1}+W_{b}) \\ &amp; = relu(W_{0,0}X_{0,0}+W_{0,1}X_{0,1}+W_{0,2}X_{0,2}+W_{1,0}X_{1,0}+W_{1,1}X_{1,1}+W_{1,2}X_{1,2}+W_{2,0}X_{2,0}+W_{2,1}X_{2,1}+W_{2,2}X_{2,2}+W_{b}) \\ &amp; = relu(1+0+1+0+1+0+0+0+1+0) \\ &amp; = relu(4) \\ &amp; = 4 \end{split} \end{equation*}\] M为第M行，N为第N列 卷积输出的计算过程 特征图大小的关系公式 \[\begin{equation*}特征图宽度=\frac{输入矩阵宽度-filter矩阵宽度+2*补几圈的0}{步幅}+1\end{equation*}\] \[\begin{equation*}特征图高度=\frac{输入矩阵高度-filter矩阵高度+2*补几圈的0}{步幅}+1\end{equation*}\] 参考上面步幅为2的图，输入矩阵宽度5，filter矩阵宽度3，补圈0为0，步幅为2 \[\begin{equation*} \begin{split} 特征图宽度 &amp; = \frac{5-3+2*0}{2}+1 \\ &amp; = 2 \end{split} \end{equation*}\] 多输入多Filter的卷积计算过程 输入矩阵若多个时，深度为D个矩阵，F为filter矩阵的大小（高和宽相同），$w_{d,m,n}$表示filter矩阵的第d层第m行第n列filter，$Out_{d,i,j}$为第d层第i行第j列的元素 filter矩阵为超参数1，有几个filter矩阵就有几个输出矩阵（数量相同） 补了一圈0，便于图像边缘的特征提取 773的输入，经2个333filter矩阵的卷积计算（步幅为2），得到332的输出 上面卷积的计算方法，体现了局部连接和权值共享，2个333的filter卷积层参数仅有(333+1)*2=56个，相比全连接大大减少了参数数量 \[\begin{equation*} \begin{split} Out_{i,j} &amp; = f(\displaystyle\sum\limits_{d=0}^{D-1}\displaystyle\sum\limits_{m=0}^{F-1}\displaystyle\sum\limits_{n=0}^{F-1}W_{d,m,n}X_{d,i+m,j+n}+W_{b}) \\ \end{split} \end{equation*}\] Pooling层的计算 Max Pooling n*n的样本中取最大值 n*n的样本中取均值 类似上图，取4个元素的均值 卷积层的训练 训练算法原理：利用链式求导计算损失函数对每个权重的偏导数（梯度），然后根据梯度下降公式更新权重。 前向计算每个神经元的输出值$a_{j}$(j表示网络的第j个神经元) 反向计算每个神经元的误差项，是网络的损失函数对神经元加权输入\(net_{j}\)的偏导数，即\(\delta_{j}=\frac{\vartheta E_{d}}{\vartheta net_{j}}\) 计算每个神经元的连接权重$W_{ji}$(神经元i到神经元j的权重)的梯度，公式为\(\frac{\vartheta E_{d}}{\vartheta W_{ji}}=a_{i}\delta_{j}\) 人为设定的参数 &#8617;]]></summary></entry><entry><title type="html">快速建Jekyll博客</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html" rel="alternate" type="text/html" title="快速建Jekyll博客" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html"><![CDATA[<p>TeXt 是一款 100% 兼容 GitHub Pages 的 Jekyll 主题，你可以通过 Fork、下载或主题等方式安装。</p>
+
+<p>在这篇文章中，你将学到如何<strong>安装设置主题</strong>，通过<strong>本地预览</strong>进行开发以及<strong>编译</strong>和<strong>发布</strong>。</p>
+
+<!--more-->
+
+<pre><code class="language-mermaid">graph LR;
+    A0(安装 TeXt)
+    B0(普通方式)
+    B1[主题方式]
+    C0[从 GitHub 克隆]
+    C1[Fork 该仓库]
+    C2[下载]
+    D0[设置]
+    E0(安装开发环境)
+    F0[直接安装]
+    F1[使用 Docker]
+    A0--&gt;B0;
+    A0--&gt;B1;
+    B0--&gt;C0;
+    B0--&gt;C1;
+    B0--&gt;C2;
+    B1--&gt;D0;
+    C1--&gt;E0
+    C2--&gt;E0
+    D0--&gt;E0
+    E0--&gt;F0
+    E0--&gt;F1
+</code></pre>
+
+<h2 id="安装">安装</h2>
+
+<h3 id="普通方式">普通方式</h3>
+
+<p>这种方式要求你的项目里包含所有的主题文件，你可以通过以下途径来安装：</p>
+
+<ol>
+  <li>
+    <p>从 GitHub 克隆 <a href="https://github.com/kitian616/jekyll-TeXt-theme">jekyll-TeXt-theme</a> 项目:</p>
+
+    <p><strong>通过 HTTPS 方式克隆：</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/kitian616/jekyll-TeXt-theme.git
+</code></pre></div>    </div>
+
+    <p><strong>通过 SSH 方式克隆：</strong></p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:kitian616/jekyll-TeXt-theme.git
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>下载主题压缩包并解压到你的项目目录中：</p>
+
+    <p><a class="button button--success button--rounded" href="https://github.com/kitian616/jekyll-TeXt-theme/archive/master.zip"><i class="fas fa-download"></i> 下载 TeXt 主题</a></p>
+  </li>
+  <li>
+    <p>如果你打算在 GitHub Pages 上搭建你的网站，你可以直接 fork <a href="https://github.com/kitian616/jekyll-TeXt-theme">jekyll-TeXt-theme</a> 到你的仓库，然后将其重命名为 <strong>USERNAME.github.io</strong> — 这里的 <strong>USERNAME</strong> 是你的 GitHub 用户名。</p>
+
+    <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/github-fork.jpg" alt="Fork" /></p>
+
+    <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/github-rename-repo.jpg" alt="Rename" /></p>
+  </li>
+</ol>
+
+<h3 id="主题方式">主题方式</h3>
+
+<ol>
+  <li>
+    <p>若要安装一套主题，请先将该主题添加到您站点的 <em>Gemfile</em> 文件中：</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"jekyll-text-theme"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>向站点的 <em>_config.yml</em> 中加入下列代码来启用主题：</p>
+
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">theme</span><span class="pi">:</span> <span class="s">jekyll-text-theme</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="设置">设置</h2>
+
+<p><strong>这里仅针对主题方式的安装，普通方式安装请跳过。</strong></p>
+
+<p>Jekyll 主题含有主题默认的布局文件、包含文件和样式表， 但是有些目录（例如<em>assets</em>, <em>_layouts</em>, <em>_includes</em> 以及 <em>_sass</em> 目录）需要手动添加到项目目录中，这样的好处在于将主题的文件和站点的内容和配置隔离开来，方便主题的升级。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── 404.html
+├── Gemfile
+├── _config.yml
+├── _data
+│   └── locale.yml
+├── _posts
+│   └── ...
+├── about.md
+├── archive.html
+└── index.html
+</code></pre></div></div>
+
+<p>你可以参考主题源码的 <a href="https://github.com/kitian616/jekyll-TeXt-theme/tree/master/test">/test 目录</a>, 这是一个使用主题的示例。</p>
+
+<h2 id="安装开发环境">安装开发环境</h2>
+
+<p>如果你想本地运行主题，你需要安装 Ruby 以及 Jekyll，详情请戳 <a href="https://jekyllrb.com/docs/installation/">这里</a>。</p>
+
+<p>上述步骤完成后，安装 Ruby 依赖包：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span> <span class="nt">--path</span> vendor/bundle
+</code></pre></div></div>
+
+<p>当然，TeXt 还提供了 <a href="https://www.docker.com/">Docker</a> 支持，使用 Docker 能让你更方便的完成环境的安装，并且环境统一，不会出错。</p>
+
+<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/docker.jpg" alt="Docker" width="400px" /></p>
+
+<p>你只需要以下 3 步即可通过 Docker 完成环境的搭建：</p>
+
+<ol>
+  <li>
+    <p><a href="https://docs.docker.com/install/">安装 Docker</a>。</p>
+  </li>
+  <li>
+    <p>生成 <em>Gemfile.lock</em> 文件：</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span>:/usr/src/app <span class="nt">-w</span> /usr/src/app ruby:2.6 bundle <span class="nb">install</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>创建 Docker 镜像 (Image)：</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose <span class="nt">-f</span> ./docker/docker-compose.build-image.yml build
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="本地预览">本地预览</h2>
+
+<p>Jekyll 集成了一个开发用的服务器，可以让你使用浏览器在本地进行预览。</p>
+
+<p>通过 <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> 命令启动开发服务器，然后你就可以访问 <a href="http://localhost:4000/">http://localhost:4000/</a> 预览你的网站了。</p>
+
+<p>如果是通过 Docker 搭建的环境，请运行 <code class="language-plaintext highlighter-rouge">docker-compose -f ./docker/docker-compose.default.yml up</code> 命令以启动开发服务器。</p>
+
+<h2 id="编译和发布">编译和发布</h2>
+
+<p>如果你打算把网站搭建在 GitHub Pages 上，那你所需要做的就是将项目的源码上传到 USERNAME.github.io 源码仓库的 master 分支，GitHub 会自动的编译，几分钟后你就可以通过 <strong>https://USERNAME.github.io</strong> 访问到你的网站了。</p>
+
+<p>如果你的网站是搭建在其他服务器上的，那么你就需要来自己编译了。首先运行命令 <code class="language-plaintext highlighter-rouge">JEKYLL_ENV=production bundle exec jekyll build</code> 编译你的网站，然后将编译的文件（位于 <em>_site</em> 目录）更新到你的服务器上。</p>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[TeXt 是一款 100% 兼容 GitHub Pages 的 Jekyll 主题，你可以通过 Fork、下载或主题等方式安装。 在这篇文章中，你将学到如何安装设置主题，通过本地预览进行开发以及编译和发布。]]></summary></entry><entry><title type="html">Jekyll博客配置</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/configuration.html" rel="alternate" type="text/html" title="Jekyll博客配置" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/configuration</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/configuration.html"><![CDATA[<p>Jekyll 允许你很轻松的设计你的网站，这很大程度上归功于灵活强大的配置功能。既可以配置在网站根目录下的  <em>_config.yml</em> 文件，也可以作为命令行的标记来配置。</p>
 
 <p class="warning"><em>_config.yml</em> 包括一些在运行时一次性读入的全局配置和变量定义， 在自动生成的过程中并<strong>不会</strong>重新加载，除非重新运行。注意 Data Files 包括在自动生成范围内，可以在更改后自动重新加载。</p>
 
@@ -536,1791 +2802,7 @@ author: Tian Qi
       <p><a href="https://en.wikipedia.org/wiki/Content_delivery_network">Content delivery network</a> <a href="#fnref:cdn" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
-</div>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[Jekyll 允许你很轻松的设计你的网站，这很大程度上归功于灵活强大的配置功能。既可以配置在网站根目录下的 _config.yml 文件，也可以作为命令行的标记来配置。 _config.yml 包括一些在运行时一次性读入的全局配置和变量定义， 在自动生成的过程中并不会重新加载，除非重新运行。注意 Data Files 包括在自动生成范围内，可以在更改后自动重新加载。]]></summary></entry><entry><title type="html">快速建Jekyll博客</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html" rel="alternate" type="text/html" title="快速建Jekyll博客" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html"><![CDATA[<p>TeXt 是一款 100% 兼容 GitHub Pages 的 Jekyll 主题，你可以通过 Fork、下载或主题等方式安装。</p>
-
-<p>在这篇文章中，你将学到如何<strong>安装设置主题</strong>，通过<strong>本地预览</strong>进行开发以及<strong>编译</strong>和<strong>发布</strong>。</p>
-
-<!--more-->
-
-<pre><code class="language-mermaid">graph LR;
-    A0(安装 TeXt)
-    B0(普通方式)
-    B1[主题方式]
-    C0[从 GitHub 克隆]
-    C1[Fork 该仓库]
-    C2[下载]
-    D0[设置]
-    E0(安装开发环境)
-    F0[直接安装]
-    F1[使用 Docker]
-    A0--&gt;B0;
-    A0--&gt;B1;
-    B0--&gt;C0;
-    B0--&gt;C1;
-    B0--&gt;C2;
-    B1--&gt;D0;
-    C1--&gt;E0
-    C2--&gt;E0
-    D0--&gt;E0
-    E0--&gt;F0
-    E0--&gt;F1
-</code></pre>
-
-<h2 id="安装">安装</h2>
-
-<h3 id="普通方式">普通方式</h3>
-
-<p>这种方式要求你的项目里包含所有的主题文件，你可以通过以下途径来安装：</p>
-
-<ol>
-  <li>
-    <p>从 GitHub 克隆 <a href="https://github.com/kitian616/jekyll-TeXt-theme">jekyll-TeXt-theme</a> 项目:</p>
-
-    <p><strong>通过 HTTPS 方式克隆：</strong></p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/kitian616/jekyll-TeXt-theme.git
-</code></pre></div>    </div>
-
-    <p><strong>通过 SSH 方式克隆：</strong></p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:kitian616/jekyll-TeXt-theme.git
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>下载主题压缩包并解压到你的项目目录中：</p>
-
-    <p><a class="button button--success button--rounded" href="https://github.com/kitian616/jekyll-TeXt-theme/archive/master.zip"><i class="fas fa-download"></i> 下载 TeXt 主题</a></p>
-  </li>
-  <li>
-    <p>如果你打算在 GitHub Pages 上搭建你的网站，你可以直接 fork <a href="https://github.com/kitian616/jekyll-TeXt-theme">jekyll-TeXt-theme</a> 到你的仓库，然后将其重命名为 <strong>USERNAME.github.io</strong> — 这里的 <strong>USERNAME</strong> 是你的 GitHub 用户名。</p>
-
-    <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/github-fork.jpg" alt="Fork" /></p>
-
-    <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/github-rename-repo.jpg" alt="Rename" /></p>
-  </li>
-</ol>
-
-<h3 id="主题方式">主题方式</h3>
-
-<ol>
-  <li>
-    <p>若要安装一套主题，请先将该主题添加到您站点的 <em>Gemfile</em> 文件中：</p>
-
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"jekyll-text-theme"</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>向站点的 <em>_config.yml</em> 中加入下列代码来启用主题：</p>
-
-    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">theme</span><span class="pi">:</span> <span class="s">jekyll-text-theme</span>
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<h2 id="设置">设置</h2>
-
-<p><strong>这里仅针对主题方式的安装，普通方式安装请跳过。</strong></p>
-
-<p>Jekyll 主题含有主题默认的布局文件、包含文件和样式表， 但是有些目录（例如<em>assets</em>, <em>_layouts</em>, <em>_includes</em> 以及 <em>_sass</em> 目录）需要手动添加到项目目录中，这样的好处在于将主题的文件和站点的内容和配置隔离开来，方便主题的升级。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── 404.html
-├── Gemfile
-├── _config.yml
-├── _data
-│   └── locale.yml
-├── _posts
-│   └── ...
-├── about.md
-├── archive.html
-└── index.html
-</code></pre></div></div>
-
-<p>你可以参考主题源码的 <a href="https://github.com/kitian616/jekyll-TeXt-theme/tree/master/test">/test 目录</a>, 这是一个使用主题的示例。</p>
-
-<h2 id="安装开发环境">安装开发环境</h2>
-
-<p>如果你想本地运行主题，你需要安装 Ruby 以及 Jekyll，详情请戳 <a href="https://jekyllrb.com/docs/installation/">这里</a>。</p>
-
-<p>上述步骤完成后，安装 Ruby 依赖包：</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span> <span class="nt">--path</span> vendor/bundle
-</code></pre></div></div>
-
-<p>当然，TeXt 还提供了 <a href="https://www.docker.com/">Docker</a> 支持，使用 Docker 能让你更方便的完成环境的安装，并且环境统一，不会出错。</p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/docker.jpg" alt="Docker" width="400px" /></p>
-
-<p>你只需要以下 3 步即可通过 Docker 完成环境的搭建：</p>
-
-<ol>
-  <li>
-    <p><a href="https://docs.docker.com/install/">安装 Docker</a>。</p>
-  </li>
-  <li>
-    <p>生成 <em>Gemfile.lock</em> 文件：</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--rm</span> <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span>:/usr/src/app <span class="nt">-w</span> /usr/src/app ruby:2.6 bundle <span class="nb">install</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>创建 Docker 镜像 (Image)：</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose <span class="nt">-f</span> ./docker/docker-compose.build-image.yml build
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<h2 id="本地预览">本地预览</h2>
-
-<p>Jekyll 集成了一个开发用的服务器，可以让你使用浏览器在本地进行预览。</p>
-
-<p>通过 <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> 命令启动开发服务器，然后你就可以访问 <a href="http://localhost:4000/">http://localhost:4000/</a> 预览你的网站了。</p>
-
-<p>如果是通过 Docker 搭建的环境，请运行 <code class="language-plaintext highlighter-rouge">docker-compose -f ./docker/docker-compose.default.yml up</code> 命令以启动开发服务器。</p>
-
-<h2 id="编译和发布">编译和发布</h2>
-
-<p>如果你打算把网站搭建在 GitHub Pages 上，那你所需要做的就是将项目的源码上传到 USERNAME.github.io 源码仓库的 master 分支，GitHub 会自动的编译，几分钟后你就可以通过 <strong>https://USERNAME.github.io</strong> 访问到你的网站了。</p>
-
-<p>如果你的网站是搭建在其他服务器上的，那么你就需要来自己编译了。首先运行命令 <code class="language-plaintext highlighter-rouge">JEKYLL_ENV=production bundle exec jekyll build</code> 编译你的网站，然后将编译的文件（位于 <em>_site</em> 目录）更新到你的服务器上。</p>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[TeXt 是一款 100% 兼容 GitHub Pages 的 Jekyll 主题，你可以通过 Fork、下载或主题等方式安装。 在这篇文章中，你将学到如何安装设置主题，通过本地预览进行开发以及编译和发布。]]></summary></entry><entry><title type="html">撰写博客</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts.html" rel="alternate" type="text/html" title="撰写博客" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts.html"><![CDATA[<h1 id="jekyll博客的编写">Jekyll博客的编写</h1>
-
-<p>在<a href="http://jekyllcn.com/docs/structure/">目录结构</a>介绍中说明过，<strong>所有的文章都在 <em>/_posts</em> 文件夹中</strong>。这些文件可以用 Markdown 或 HTML 编写。只要文件中有 YAML 头信息，它们就会从源格式转化成 HTML 页面，从而成为你的静态网站的一部分。</p>
-
-<!--more-->
-
-<h2 id="创建文章">创建文章</h2>
-
-<p>发表一篇新文章，你所需要做的就是在 <em>/_posts</em> 文件夹中创建一个新的文件。文件名的命名非常重要。Jekyll 要求一篇文章的文件名遵循下面的格式：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>年-月-日-标题.MARKUP
-</code></pre></div></div>
-
-<p>下面是一些合法的文件名的例子：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2011-12-31-new-years-eve-is-awesome.md
-2012-09-12-how-to-write-a-blog.markdown
-</code></pre></div></div>
-
-<h2 id="内容相关">内容相关</h2>
-
-<p>所有博客文章顶部必须有一段 YAML 头信息(YAML front-matter)。</p>
-
-<p>为了提高文章的阅读和书写体验，TeXt 在 Markdown 原有的基础上做了一些增强。</p>
-
-<h3 id="yaml-头信息">YAML 头信息</h3>
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="s">---</span>
-    <span class="s">layout</span><span class="err">:</span> <span class="s">article</span>
-    <span class="s">title</span><span class="err">:</span> <span class="s">Document - Writing Posts</span>
-    <span class="s">mathjax</span><span class="err">:</span> <span class="no">true</span>
-    <span class="s">---</span>
-</code></pre></div></div>
-<p>{ 
-在 <code class="language-plaintext highlighter-rouge">---</code> 之间你可以设置属性的值，可以把它们看作页面的配置，这些配置会覆盖在 <em>_config.yml</em> 文件中设置的全局配置。</p>
-
-<p>除去 Jekyll 自定义的变量外，TeXt 也定义了一些额外的变量，详情请戳<a href="https://tianqi.name/jekyll-TeXt-theme/docs/zh/layouts">布局</a>。</p>
-
-<h1 id="markdown增强">Markdown增强</h1>
-
-<p>你需要在 <em>_config.yml</em> 或 YAML 头信息中设置相关的属性为 <code class="language-plaintext highlighter-rouge">true</code> 来开启对应的功能。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>增强项</th>
-      <th>描述</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Mathjax</strong></td>
-      <td>在文章中方便的加入数学公式，使用 MathML、LaTeX 和 ASCIIMathML 语法</td>
-      <td><a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/07/07/mathjax.html">示例</a></td>
-    </tr>
-    <tr>
-      <td><strong>Mermaid</strong></td>
-      <td>在文章中方便的加入流程图</td>
-      <td><a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/06/06/mermaid.html">示例</a></td>
-    </tr>
-    <tr>
-      <td><strong>Chart</strong></td>
-      <td>在文章中方便的加入可交互的图表</td>
-      <td><a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/05/05/chart.html">示例</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="mathjax">Mathjax</h2>
-
-<p>When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are</p>
-
-\[x_1 = {-b + \sqrt{b^2-4ac} \over 2a}\]
-
-\[x_2 = {-b - \sqrt{b^2-4ac} \over 2a} \notag\]
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-tex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>When <span class="p">$$</span><span class="nb">a </span><span class="nv">\ne</span><span class="nb"> </span><span class="m">0</span><span class="p">$$</span>, there are two solutions to <span class="p">$$</span><span class="nb">ax</span><span class="p">^</span><span class="m">2</span><span class="nb"> </span><span class="o">+</span><span class="nb"> bx </span><span class="o">+</span><span class="nb"> c </span><span class="o">=</span><span class="nb"> </span><span class="m">0</span><span class="p">$$</span> and they are
-<span class="p">$$</span><span class="nb">x</span><span class="p">_</span><span class="m">1</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="p">{</span><span class="o">-</span><span class="nb">b </span><span class="o">+</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="p">{</span><span class="nb">b</span><span class="p">^</span><span class="m">2</span><span class="o">-</span><span class="m">4</span><span class="nb">ac</span><span class="p">}</span><span class="nb"> </span><span class="nv">\over</span><span class="nb"> </span><span class="m">2</span><span class="nb">a</span><span class="p">}$$</span>
-<span class="p">$$</span><span class="nb">x</span><span class="p">_</span><span class="m">2</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="p">{</span><span class="o">-</span><span class="nb">b </span><span class="o">-</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="p">{</span><span class="nb">b</span><span class="p">^</span><span class="m">2</span><span class="o">-</span><span class="m">4</span><span class="nb">ac</span><span class="p">}</span><span class="nb"> </span><span class="nv">\over</span><span class="nb"> </span><span class="m">2</span><span class="nb">a</span><span class="p">}</span><span class="nb"> </span><span class="nv">\notag</span><span class="p">$$</span>
-</code></pre></div></div>
-
-<p class="info"><strong>当 MathJax 激活后</strong>，你可以设置 <code class="language-plaintext highlighter-rouge">mathjax_autoNumber: true</code> 让公式自动编号，你可以使用 \notag 或者 \nonumber 阻止某条公式自动编号。</p>
-
-<h2 id="mermaid">Mermaid</h2>
-
-<pre><code class="language-mermaid">graph TB;
-    A[Do you have a problem in your life?]
-    B[Then don't worry]
-    C[Can you do something about it?]
-    A--no--&gt;B;
-    A--yes--&gt;C;
-    C--no--&gt;B;
-    C--yes--&gt;B;
-</code></pre>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```mermaid
-graph TB;
-    A[Do you have a problem in your life?]
-    B[Then don't worry]
-    C[Can you do something about it?]
-    A--no--&gt;B;
-    A--yes--&gt;C;
-    C--no--&gt;B;
-    C--yes--&gt;B;
-```
-</code></pre></div></div>
-
-<p><a href="https://mermaidjs.github.io/">Mermaid</a> 支持以下三种示意图:</p>
-
-<ul>
-  <li>
-    <p><a href="https://mermaidjs.github.io/flowchart.html">Flowchart</a></p>
-  </li>
-  <li>
-    <p><a href="https://mermaidjs.github.io/sequenceDiagram.html">Sequence Diagram</a></p>
-  </li>
-  <li>
-    <p><a href="https://mermaidjs.github.io/gantt.html">Gant Diagram</a></p>
-  </li>
-</ul>
-
-<h2 id="chart">Chart</h2>
-
-<pre><code class="language-chart">{
-  "type": "line",
-  "data": {
-    "labels": [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July"
-    ],
-    "datasets": [
-      {
-        "label": "# of bugs",
-        "fill": false,
-        "lineTension": 0.1,
-        "backgroundColor": "rgba(75,192,192,0.4)",
-        "borderColor": "rgba(75,192,192,1)",
-        "borderCapStyle": "butt",
-        "borderDash": [],
-        "borderDashOffset": 0,
-        "borderJoinStyle": "miter",
-        "pointBorderColor": "rgba(75,192,192,1)",
-        "pointBackgroundColor": "#fff",
-        "pointBorderWidth": 1,
-        "pointHoverRadius": 5,
-        "pointHoverBackgroundColor": "rgba(75,192,192,1)",
-        "pointHoverBorderColor": "rgba(220,220,220,1)",
-        "pointHoverBorderWidth": 2,
-        "pointRadius": 1,
-        "pointHitRadius": 10,
-        "data": [
-          65,
-          59,
-          80,
-          81,
-          56,
-          55,
-          40
-        ],
-        "spanGaps": false
-      }
-    ]
-  },
-  "options": {}
-}
-</code></pre>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```chart
-{
-  "type": "polarArea",
-  "data": {
-    "datasets": [
-      {
-        "data": [
-          11,
-          16,
-          7,
-          3,
-          14
-        ],
-        "backgroundColor": [
-          "#FF6384",
-          "#4BC0C0",
-          "#FFCE56",
-          "#E7E9ED",
-          "#36A2EB"
-        ],
-        "label": "My dataset"
-      }
-    ],
-    "labels": [
-      "Red",
-      "Green",
-      "Yellow",
-      "Grey",
-      "Blue"
-    ]
-  },
-  "options": {}
-}
-```
-</code></pre></div></div>
-
-<p><a href="http://www.chartjs.org/docs/latest/">Chart.js</a> 支持以下 7 种图表:</p>
-
-<ul>
-  <li>
-    <p><a href="http://www.chartjs.org/docs/latest/charts/line.html">Line Chart</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chartjs.org/docs/latest/charts/bar.html">Bar Chart</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chartjs.org/docs/latest/charts/radar.html">Radar Chart</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chartjs.org/latest/charts/polar.html">Polar Area Chart</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chartjs.org/docs/latest/charts/doughnut.html">Pie Chart</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chartjs.org/docs/latest/charts/doughnut.html">Doughnut Chart</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chartjs.org/docs/latest/charts/bubble.html">Bubble Chart</a></p>
-  </li>
-</ul>
-
-<h1 id="markdown文本样式">Markdown文本样式</h1>
-
-<p>为了展示Markdown语法的渲染，<a href="https://github.com/cotes2020/jekyll-theme-chirpy/fork"><strong>Chirpy</strong></a>, 你也可以用它作为写作的例子。 现在，让我们来看看文本和版式。</p>
-
-<h2 id="标题">标题</h2>
-
-<h1 data-toc-skip=""> H1 - 开头</h1>
-
-<h2 data-toc-skip="">H2 - heading</h2>
-
-<h3 data-toc-skip="">H3 - heading</h3>
-
-<h4>H4 - heading</h4>
-<p><strong>markdown:</strong></p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># H1 - 开头</span>
-
-<span class="gu">## H2 - heading</span>
-
-<span class="gu">### H3 - heading</span>
-
-<span class="gu">#### H4 - heading</span>
-</code></pre></div></div>
-<p><br /></p>
-
-<h2 id="文章段落">文章段落</h2>
-
-<p>I wandered lonely as a cloud</p>
-
-<p>That floats on high o’er vales and hills,</p>
-
-<p>When all at once I saw a crowd,</p>
-
-<p>A host, of golden daffodils;</p>
-
-<p>Beside the lake, beneath the trees,</p>
-
-<p>Fluttering and dancing in the breeze.</p>
-
-<h2 id="列表">列表</h2>
-
-<h3 id="有序列表">有序列表</h3>
-
-<ol>
-  <li>Firstly</li>
-  <li>Secondly</li>
-  <li>Thirdly</li>
-</ol>
-
-<p><strong>markdown:</strong></p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">1.</span> Firstly
-<span class="p">2.</span> Secondly
-<span class="p">3.</span> Thirdly
-</code></pre></div></div>
-<h3 id="无序列表">无序列表</h3>
-
-<ul>
-  <li>章节
-    <ul>
-      <li>节选
-        <ul>
-          <li>段落</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>markdown:</strong></p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> 章节
-<span class="p">  -</span> 节选
-<span class="p">    -</span> 段落
-</code></pre></div></div>
-
-<h3 id="任务列表">任务列表</h3>
-
-<ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />TODO</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Completed</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Defeat COVID-19
-    <ul class="task-list">
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Vaccine production</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Economic recovery</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />People smile again</li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>markdown:</strong></p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> [ ] TODO
-<span class="p">-</span> [x] Completed
-<span class="p">-</span> [ ] Defeat COVID-19
-<span class="p">  -</span> [x] Vaccine production
-<span class="p">  -</span> [ ] Economic recovery
-<span class="p">  -</span> [ ] People smile again
-</code></pre></div></div>
-
-<h3 id="描述列表">描述列表</h3>
-
-<dl>
-  <dt>Sun</dt>
-  <dd>the star around which the earth orbits</dd>
-  <dt>Moon</dt>
-  <dd>the natural satellite of the earth, visible by reflected light from the sun</dd>
-</dl>
-
-<p><strong>markdown:</strong></p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sun
-: the star around which the earth orbits
-
-Moon
-: the natural satellite of the earth, visible by reflected light from the sun
-</code></pre></div></div>
-<h2 id="引用">引用</h2>
-
-<blockquote>
-  <p>This line shows the <em>block quote</em>.</p>
-</blockquote>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; This line shows the _block quote_.</span>
-</code></pre></div></div>
-
-<h2 id="表格">表格</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Company</th>
-      <th style="text-align: left">Contact</th>
-      <th style="text-align: right">Country</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">Alfreds Futterkiste</td>
-      <td style="text-align: left">Maria Anders</td>
-      <td style="text-align: right">Germany</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Island Trading</td>
-      <td style="text-align: left">Helen Bennett</td>
-      <td style="text-align: right">UK</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Magazzini Alimentari Riuniti</td>
-      <td style="text-align: left">Giovanni Rovelli</td>
-      <td style="text-align: right">Italy</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><strong>markdown:</strong></p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Company                      | Contact          | Country |
-|:-----------------------------|:-----------------|--------:|
-| Alfreds Futterkiste          | Maria Anders     | Germany |
-| Island Trading               | Helen Bennett    | UK      |
-| Magazzini Alimentari Riuniti | Giovanni Rovelli | Italy   |
-</code></pre></div></div>
-
-<h2 id="链接">链接</h2>
-
-<p><a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a></p>
-
-<p><strong>markdown:</strong></p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">&lt;http://127.0.0.1:4000&gt;</span>
-</code></pre></div></div>
-
-<h2 id="脚注">脚注</h2>
-
-<p>点击右上边的脚注<sup id="fnref:footnote" role="doc-noteref"><a href="#fn:footnote" class="footnote" rel="footnote">1</a></sup>, 这里是另一个脚注<sup id="fnref:fn-nth-2" role="doc-noteref"><a href="#fn:fn-nth-2" class="footnote" rel="footnote">2</a></sup>.</p>
-
-<p><strong>markdown:</strong></p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>点击右上边的脚注[^footnote], 这里是另一个脚注[^fn-nth-2].
-</code></pre></div></div>
-
-<h3 id="脚注注释">脚注注释</h3>
-
-<p><strong>markdown:</strong></p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="ss">^footnote</span><span class="p">]:</span> <span class="sx">The</span> footnote source
-<span class="p">[</span><span class="ss">^fn-nth-2</span><span class="p">]:</span> <span class="sx">The</span> 2nd footnote source
-</code></pre></div></div>
-<h2 id="提示">提示</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>样式名称</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>success</strong></td>
-    </tr>
-    <tr>
-      <td><strong>info</strong></td>
-    </tr>
-    <tr>
-      <td><strong>warning</strong></td>
-    </tr>
-    <tr>
-      <td><strong>error</strong></td>
-    </tr>
-  </tbody>
-</table>
-
-<p class="success">Success Text.</p>
-
-<p class="info">Info Text.</p>
-
-<p class="warning">Warning Text.</p>
-
-<p class="error">Error Text.</p>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Success Text.
-{:.success}
-</code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Info Text.
-{:.info}
-</code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Warning Text.
-{:.warning}
-</code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error Text.
-{:.error}
-</code></pre></div></div>
-
-<h2 id="标签">标签</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Class Names</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>success</strong></td>
-    </tr>
-    <tr>
-      <td><strong>info</strong></td>
-    </tr>
-    <tr>
-      <td><strong>warning</strong></td>
-    </tr>
-    <tr>
-      <td><strong>error</strong></td>
-    </tr>
-  </tbody>
-</table>
-
-<p><code class="language-plaintext success highlighter-rouge">success</code></p>
-
-<p><code class="language-plaintext info highlighter-rouge">info</code></p>
-
-<p><code class="language-plaintext warning highlighter-rouge">warning</code></p>
-
-<p><code class="language-plaintext error highlighter-rouge">error</code></p>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`success`{:.success}
-</code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`info`{:.info}
-</code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`warning`{:.warning}
-</code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`error`{:.error}
-</code></pre></div></div>
-
-<h2 id="图像">图像</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>样式名称</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>border</strong></td>
-    </tr>
-    <tr>
-      <td><strong>shadow</strong></td>
-    </tr>
-    <tr>
-      <td><strong>rounded</strong></td>
-    </tr>
-    <tr>
-      <td><strong>circle</strong></td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="border">Border</h3>
-
-<div class="grid-containre">
-<div class="grid grid--p-2">
-<div class="cell cell--12 cell--md-4 ">
-      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_border" class="border" /></p>
-    </div>
-<div class="cell cell--12 cell--md-auto">
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.border}
-</code></pre></div>      </div>
-    </div>
-</div>
-</div>
-
-<h3 id="shadow">Shadow</h3>
-
-<div class="grid-containre">
-<div class="grid grid--p-2">
-<div class="cell cell--12 cell--md-4 ">
-      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_shadow" class="shadow" /></p>
-    </div>
-<div class="cell cell--12 cell--md-auto">
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.shadow}
-</code></pre></div>      </div>
-    </div>
-</div>
-</div>
-
-<h3 id="rounded">Rounded</h3>
-
-<div class="grid-containre">
-<div class="grid grid--p-2">
-<div class="cell cell--12 cell--md-4 ">
-      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_rounded" class="rounded" /></p>
-    </div>
-<div class="cell cell--12 cell--md-auto">
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.rounded}
-</code></pre></div>      </div>
-    </div>
-</div>
-</div>
-
-<h3 id="circle">Circle</h3>
-
-<div class="grid-containre">
-<div class="grid grid--p-2">
-<div class="cell cell--12 cell--md-4 ">
-      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_circle" class="circle" /></p>
-    </div>
-<div class="cell cell--12 cell--md-auto">
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.circle}
-</code></pre></div>      </div>
-    </div>
-</div>
-</div>
-
-<h3 id="mixture">Mixture</h3>
-
-<div class="grid-containre">
-<div class="grid grid--p-2">
-<div class="cell cell--12 cell--md-4 ">
-      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_border+rounded" class="border rounded" /></p>
-    </div>
-<div class="cell cell--12 cell--md-auto">
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.border.rounded}
-</code></pre></div>      </div>
-    </div>
-</div>
-</div>
-
-<div class="grid-containre">
-<div class="grid grid--p-2">
-<div class="cell cell--12 cell--md-4 ">
-      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_circle+shadow" class="circle shadow" /></p>
-    </div>
-<div class="cell cell--12 cell--md-auto">
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.circle.shadow}
-</code></pre></div>      </div>
-    </div>
-</div>
-</div>
-
-<div class="grid-containre">
-<div class="grid grid--p-2">
-<div class="cell cell--12 cell--md-4 ">
-      <p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg" alt="Image" title="Image_circle+border+shadow" class="circle border shadow" /></p>
-    </div>
-<div class="cell cell--12 cell--md-auto">
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Image](path-to-image){:.circle.border.shadow}
-</code></pre></div>      </div>
-    </div>
-</div>
-</div>
-
-<ul>
-  <li>默认 (带说明文字)</li>
-</ul>
-
-<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Desktop View" width="20%" height="20%" />
-<em>Full screen width and center alignment</em></p>
-
-<p><br /></p>
-
-<ul>
-  <li>阴影</li>
-</ul>
-
-<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Window shadow" class="shadow" width="20%" height="20%" style="max-width: 90%" />
-<em>shadow effect (visible in light mode)</em></p>
-
-<p><br /></p>
-
-<ul>
-  <li>左对齐</li>
-</ul>
-
-<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Desktop View" width="20%" height="20%" style="max-width: 70%" class="normal" /></p>
-
-<p><br /></p>
-
-<ul>
-  <li>
-    <p>向左浮动</p>
-
-    <p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Desktop View" width="20%" height="20%" style="max-width: 200px" class="left" />
-“一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。  “</p>
-  </li>
-</ul>
-
-<p><br /></p>
-
-<ul>
-  <li>
-    <p>向右浮动</p>
-
-    <p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-06-article1/9.png" alt="Desktop View" width="20%" height="20%" style="max-width: 200px" class="right" />
-“一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。 一个重复和无意义的文本被用来填补空白。  “</p>
-  </li>
-</ul>
-
-<p><br /></p>
-
-<h2 id="mermaid-svg">Mermaid SVG</h2>
-
-<pre><code class="language-mermaid"> gantt
-  title  Adding GANTT diagram functionality to mermaid
-  apple :a, 2017-07-20, 1w
-  banana :crit, b, 2017-07-23, 1d
-  cherry :active, c, after b a, 1d
-</code></pre>
-
-<p><strong>markdown:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\`\`\`mermaid
- gantt
-  title  Adding GANTT diagram functionality to mermaid
-  apple :a, 2017-07-20, 1w
-  banana :crit, b, 2017-07-23, 1d
-  cherry :active, c, after b a, 1d
-\`\`\`
-</code></pre></div></div>
-
-<h2 id="mathematics">Mathematics</h2>
-
-<p>The mathematics powered by <a href="https://www.mathjax.org/"><strong>MathJax</strong></a>:</p>
-
-\[\sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}\]
-
-<p>When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are</p>
-
-\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The mathematics powered by <span class="p">[</span><span class="nv">**MathJax**</span><span class="p">](</span><span class="sx">https://www.mathjax.org/</span><span class="p">)</span>:
-
-$$ <span class="se">\s</span>um_{n=1}^<span class="se">\i</span>nfty 1/n^2 = <span class="se">\f</span>rac{<span class="se">\p</span>i^2}{6} $$
-
-When $a <span class="se">\n</span>e 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
-
-$$ x = {-b <span class="se">\p</span>m <span class="se">\s</span>qrt{b^2-4ac} <span class="se">\o</span>ver 2a} $$
-</code></pre></div></div>
-
-<h2 id="内联代码">内联代码</h2>
-
-<p>这是一个例子 <code class="language-plaintext highlighter-rouge">Inline Code</code>.</p>
-
-<p><strong>Markdown:</strong></p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一个例子 <span class="sb">`Inline Code`</span>.
-</code></pre></div></div>
-
-<h2 id="文件路径">文件路径</h2>
-
-<p>这儿是 <code class="language-plaintext filepath highlighter-rouge">/path/to/the/file.extend</code>.
-<strong>Markdown:</strong></p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这儿是 <span class="sb">`/path/to/the/file.extend`</span>{: .filepath}.
-</code></pre></div></div>
-
-<h2 id="代码块">代码块</h2>
-
-<h3 id="普通">普通</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一个普通的代码片段，没有语法突出显示和行号。  
-</code></pre></div></div>
-
-<h3 id="特定语言">特定语言</h3>
-
-<h4 id="console">Console</h4>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">env</span> |grep SHELL
-<span class="go">SHELL=/usr/local/bin/bash
-PYENV_SHELL=bash
-</span></code></pre></div></div>
-
-<h4 id="shell">Shell</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-ne</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
-    </span><span class="nb">echo</span> <span class="s2">"The command was not successful."</span><span class="p">;</span>
-    <span class="c">#do the needful / exit</span>
-<span class="k">fi</span><span class="p">;</span>
-</code></pre></div></div>
-
-<h3 id="specific-filename">Specific filename</h3>
-
-<p>语法sass</p>
-<div file="_sass/jekyll-theme-chirpy.scss" class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span>
-  <span class="s2">"colors/light-typography"</span><span class="o">,</span>
-  <span class="s2">"colors/dark-typography"</span>
-</code></pre></div></div>
-
-<h1 id="logo">Logo</h1>
-
-<p>TeXt 使用  <span><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24">
-<style type="text/css">
-	.st0{fill:#515151;}
-</style>
-<path class="st0" d="M1.7,22.3c5.7-5.7,11.3-5.7,17,0c3.3-3.3,3.5-5.3,0.8-6c2.7,0.7,3.5-1.1,2.3-5.6s-3.3-5.2-6.3-2.1
-	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3" />
-</svg>
-</span> 作为它的 Logo，你可以通过替换 <em>_includes/svg/logo.svg</em> 来设置你的 Logo。</p>
-
-<h2 id="favicon">Favicon</h2>
-
-<p>TeXt 推荐使用 <a href="https://realfavicongenerator.net/">RealFaviconGenerator</a> 来生成 Favicon。</p>
-
-<p>打开 <a href="https://realfavicongenerator.net/">RealFaviconGenerator</a> 后点击“Select your Favicon picture”，选择图片进入下一步。</p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/realfavicongenerator-select-favicon-picture.jpg" alt="Select your Favicon picture" /></p>
-
-<p>图标设置完成后，你需要告诉生成器 Favicon 文件的网站路径，TeXt 将他们放在了 <em>/assets</em> 目录。</p>
-
-<p class="warning">推荐将 Favicon 文件放在网站的根目录下。</p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/realfavicongenerator-path.jpg" alt="Select your Favicon path" /></p>
-
-<p>完成后点击“Generate your Favicons and HTML code”进入到最后一步。</p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/realfavicongenerator-result.jpg" alt="Result" /></p>
-
-<p>下载生成的 favicon 包，解压文件到你方才填写的路径，将 HTML 代码替换到 <em>_includes/head/favicon.html</em> 文件中。</p>
-
-<p>ekyll 使用 kramdown 作为默认 Markdown 解释器。kramdown 可以通过 ALDs<sup id="fnref:ALDs" role="doc-noteref"><a href="#fn:ALDs" class="footnote" rel="footnote">3</a></sup> 来设置块级元素或行内元素的属性。例如，可以通过 <code class="language-plaintext highlighter-rouge">{:.class-name1.class-name-2}</code> 来给元素定义样式类。</p>
-
-<p>TeXt 定义了一些样式类，你可以在文章和页面的方便的使用，可以在 <a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/08/08/additional-styles.html">这里</a> 看到示例和详细的说明.</p>
-
-<h1 id="扩展">扩展</h1>
-
-<h2 id="音频">音频</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>扩展名称</th>
-      <th>最新版本</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>SoundCloud</td>
-      <td>2.2.2</td>
-    </tr>
-    <tr>
-      <td>Netease Cloud Music</td>
-      <td>2.2.2</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="soundcloud">SoundCloud</h3>
-
-<p><strong>id:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-soundclound.jpg" alt="extensions-soundcloud" style="max-height:500px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/soundcloud.html id='313627932' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/soundcloud.html id='313627932' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h3 id="网易云音乐">网易云音乐</h3>
-
-<p><strong>id:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-netease-cloud-music.jpg" alt="extensions-soundcloud" style="max-height:320px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/netease-cloud-music.html id='413812448' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/netease-cloud-music.html id='413812448' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h2 id="视频">视频</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>扩展名称</th>
-      <th>最新版本</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>YouTube</td>
-      <td>2.2.2</td>
-    </tr>
-    <tr>
-      <td>TED</td>
-      <td>2.2.2</td>
-    </tr>
-    <tr>
-      <td>bilibili</td>
-      <td>2.2.2</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="youtube">YouTube</h3>
-
-<p><strong>id:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-youtube.jpg" alt="extensions-soundcloud" style="max-height:250px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/youtube.html id='wbY97-hdD5c' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/youtube.html id='wbY97-hdD5c' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h3 id="ted">TED</h3>
-
-<p><strong>id:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-ted.jpg" alt="extensions-soundcloud" style="max-height:83px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/ted.html id='emily_esfahani_smith_there_s_more_to_life_than_being_happy' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/ted.html id='emily_esfahani_smith_there_s_more_to_life_than_being_happy' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h3 id="哔哩哔哩">哔哩哔哩</h3>
-
-<p><strong>id:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-bilibili.jpg" alt="extensions-bilibili" style="max-height:190px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/bilibili.html id='11091080' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/bilibili.html id='11091080' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h2 id="幻灯片">幻灯片</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>扩展名称</th>
-      <th>最新版本</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>SlideShare</td>
-      <td>2.2.2</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="slideshare">SlideShare</h3>
-
-<p><strong>id:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-slideshare.jpg" alt="extensions-slideshare" style="max-height:480px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/slideshare.html id='u9L9zDsqEWNKE1' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/slideshare.html id='u9L9zDsqEWNKE1' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h2 id="在线示例">在线示例</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>扩展名称</th>
-      <th>最新版本</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>CodePen</td>
-      <td>2.2.3</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="codepen">CodePen</h3>
-
-<p><strong>user &amp; hash:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-codepen.jpg" alt="extensions-codepen" style="max-height:100px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/codepen.html user='kitian616' hash='aQmWZG' default_tab='html,result' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/codepen.html user='kitian616' hash='aQmWZG' default_tab='html,result' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h1 id="国际化">国际化</h1>
-
-<p>TeXt 把 UI 元素的文字整理成一系列的翻译标识统一的放置在 <em>_data/locale.yml</em> 中，这样能够比较方便添加不同语言的支持。</p>
-
-<p>通过 <code class="language-plaintext highlighter-rouge">titles</code> 配置项可以给文章，布局和导航定义定义多语言标题，TeXt 默认定义了很多这样的标题，它们分别位于 <em>_data/navigation</em>，<em>_layouts/archive</em>，<em>_layouts/home</em> 和 <em>about.md</em> 中。</p>
-
-<!-- more -->
-
-<p>上文所提到的翻译标识和多语言标题支持以下语言：
-<!-- @start locale config --></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>语言</th>
-      <th><code class="language-plaintext highlighter-rouge">lang</code></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>英语</strong></td>
-      <td>en, en-GB, en-US, en-CA, en-AU</td>
-    </tr>
-    <tr>
-      <td><strong>简体中文</strong></td>
-      <td>zh-Hans, zh, zh-CN, zh-SG</td>
-    </tr>
-    <tr>
-      <td><strong>繁体中文</strong></td>
-      <td>zh-Hant, zh-TW, zh-HK</td>
-    </tr>
-    <tr>
-      <td><strong>韩语</strong></td>
-      <td>ko, ko-KR</td>
-    </tr>
-    <tr>
-      <td><strong>法语</strong></td>
-      <td>fr, fr-BE, fr-CA, fr-CH, fr-FR, fr-LU</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- @end locale config -->
-<p>你可以在 <a href="https://tianqi.name/jekyll-TeXt-theme/samples.html#languages">这里</a> 找到不同语言的示例。</p>
-
-<h1 id="布局">布局</h1>
-
-<pre><code class="language-mermaid">graph TB;
-    NONE[none]
-    BASE[base]
-    PAGE[page]
-    ARTICLE[article]
-    ARTICLES[articles]
-    HOME[home]
-    ARCHIVE[archive]
-    LANDING[landing]
-    404[404]
-    NONE--&gt;BASE;
-    BASE--&gt;PAGE;
-    PAGE--&gt;ARTICLE;
-    PAGE--&gt;ARTICLES;
-    ARTICLES--&gt;HOME;
-    PAGE--&gt;ARCHIVE;
-    PAGE--&gt;LANDING;
-    PAGE--&gt;404;
-</code></pre>
-
-<h2 id="base-布局">Base 布局</h2>
-
-<p>继承于 None。</p>
-
-<h2 id="page-布局">Page 布局</h2>
-
-<p>继承于 Base 布局。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-      <th>最低版本</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>mode</strong></td>
-      <td>normal (default), immersive</td>
-      <td>该页的模式。</td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>type</strong></td>
-      <td>webpage (default), article</td>
-      <td>该页的类型, 作为 <a href="https://schema.org/">schema.org</a> 的语义化标记使用。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>key</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>页面的唯一标识符，供评论系统和点击量统计使用。必须以字母（<code class="language-plaintext highlighter-rouge">[A-Za-z]</code>）开头，其后可以接若干字母、数字（<code class="language-plaintext highlighter-rouge">[0-9]</code>）、连字符（<code class="language-plaintext highlighter-rouge">-</code>）、下划线（<code class="language-plaintext highlighter-rouge">_</code>）、冒号（<code class="language-plaintext highlighter-rouge">:</code>）和小数点（<code class="language-plaintext highlighter-rouge">.</code>）。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>lang</strong></td>
-      <td>en (default), zh, zh-Hans, zh-Hant</td>
-      <td>该页的语言。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>author</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td>将在 <em>authors.yml</em> 中定义的作者作为某篇文章或页面的作者, 详情请看<a href="https://tianqi.name/jekyll-TeXt-theme/docs/zh/authors">作者</a>。</td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>show_title</strong></td>
-      <td>true (default), false</td>
-      <td>是否显示标题，默认显示，设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>show_edit_on_github</strong></td>
-      <td>true, false (default)</td>
-      <td>是否显示“在 Github 上修改”按钮，设置为 <code class="language-plaintext highlighter-rouge">true</code> 显示。你需要先在 <em>_config.yml</em> 中设置 <code class="language-plaintext highlighter-rouge">repository</code> 和 <code class="language-plaintext highlighter-rouge">repository_tree</code>。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>show_date</strong></td>
-      <td>true (default), false</td>
-      <td>是否展示该页的发布日期，设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏。</td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>show_tags</strong></td>
-      <td>true (default), false</td>
-      <td>是否展示该页的标签，设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏。</td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>full_width</strong></td>
-      <td>true, false (default)</td>
-      <td>该页内容是否占据全部宽度，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>pageview</strong></td>
-      <td>true, false (default)</td>
-      <td>是否开启阅读量统计，默认关闭，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>comment</strong></td>
-      <td>true (default), false</td>
-      <td>是否开启评论支持，默认开启，设置为 <code class="language-plaintext highlighter-rouge">false</code> 关闭。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>mathjax</strong></td>
-      <td>true, false</td>
-      <td>是否开启 Mathjax 公式支持，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>mathjax_autoNumber</strong></td>
-      <td>true, false</td>
-      <td>该页的 Mathjax 公式是否自动编号，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>mermaid</strong></td>
-      <td>true, false</td>
-      <td>是否开启 Mermaid 流程图支持，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>chart</strong></td>
-      <td>true, false</td>
-      <td>是否开启 Chart 图表支持，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>cover</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>封面图片的 URL。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>header</strong></td>
-      <td>false, <code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td>设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏标题栏。</td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>article_header</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td> </td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>aside</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>sidebar</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>footer</strong></td>
-      <td>false</td>
-      <td>设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏底部栏。</td>
-      <td>2.2.3</td>
-    </tr>
-    <tr>
-      <td><strong>lightbox</strong></td>
-      <td>true, false</td>
-      <td>该页的大图是否能点击预览，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启，你可以通过设置 <code class="language-plaintext highlighter-rouge">lightbox-ignore</code> 类名来忽略特定的图片元素。</td>
-      <td>2.2.4</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="header">header</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>theme</strong></td>
-      <td>light, dark</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">translucent</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>background</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>当指定了 theme 值时有效。</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="article_header">article_header</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>type</strong></td>
-      <td>overlay, cover</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>align</strong></td>
-      <td>left (default), center</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>theme</strong></td>
-      <td>light (default), dark</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>background_color</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">overlay</code> 时有效。当设置的背景色较深时，你需要设置 <code class="language-plaintext highlighter-rouge">theme</code> 为 dark。</td>
-    </tr>
-    <tr>
-      <td><strong>background_image</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">overlay</code> 时有效，设置为 <code class="language-plaintext highlighter-rouge">false</code> 可覆盖 <code class="language-plaintext highlighter-rouge">cover</code> 禁止背景图片。</td>
-    </tr>
-    <tr>
-      <td><strong>image</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">cover</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>actions</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!seq</code></td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="article_headerbackground_image">article_header.background_image</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Variable</th>
-      <th>Option Values</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>gradient</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>src</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>默认为 <code class="language-plaintext highlighter-rouge">cover</code></td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="article_headerimage">article_header.image</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Variable</th>
-      <th>Option Values</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>src</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="aside">aside</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>toc</strong></td>
-      <td>false (default), true</td>
-      <td>设置为 <code class="language-plaintext highlighter-rouge">true</code> 时展示右侧边栏目录。</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="sidebar">sidebar</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>nav</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="article-布局">Article 布局</h2>
-
-<p>继承于 Page 布局。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-      <th>最低版本</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>modify_date</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>该文章的最后修改时间, 其格式为 <code class="language-plaintext highlighter-rouge">YYYY-MM-DD HH:MM:SS +/-TTTT</code> 和 <code class="language-plaintext highlighter-rouge">date</code> 的格式相同</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>sharing</strong></td>
-      <td>true, false (default)</td>
-      <td>是否开启分享，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td>2.2.2</td>
-    </tr>
-    <tr>
-      <td><strong>show_author_profile</strong></td>
-      <td>true, false (default)</td>
-      <td>是否在文章开头显示作者信息卡片，设置为 <code class="language-plaintext highlighter-rouge">true</code> 显示。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>show_subscribe</strong></td>
-      <td>true, false (default)</td>
-      <td>是否在文章末尾显示订阅信息，设置为 <code class="language-plaintext highlighter-rouge">true</code> 显示。</td>
-      <td>latest</td>
-    </tr>
-    <tr>
-      <td><strong>license</strong></td>
-      <td>true, false (default), CC-BY-4.0, CC-BY-SA-4.0, CC-BY-NC-4.0, CC-BY-ND-4.0</td>
-      <td>该文章的许可协议。设置为 <code class="language-plaintext highlighter-rouge">true</code> 使用在 <em>_config.yml</em> 中设置的 <code class="language-plaintext highlighter-rouge">license</code> 值，设置为 <code class="language-plaintext highlighter-rouge">false</code> 不使用许可协议。</td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="articles-布局">Articles 布局</h2>
-
-<p>继承于 Page 布局，从 <strong>2.2.0</strong> 版本支持。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>articles</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="articles">articles</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>data_source</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>如果你将将集合名设置为该项的值，该页面将会展示这个集合下的文章列表。你可以在 <a href="https://jekyllrb.com/docs/collections/">Collections</a> 找到更多关于集合的信息。</td>
-    </tr>
-    <tr>
-      <td><strong>type</strong></td>
-      <td>item, brief, grid</td>
-      <td>TeXt 支持三种文章列表类型，每种类型都对应着一些配置，你可以在 <a href="https://tianqi.name/jekyll-TeXt-theme/samples.html#articles-layout">这里</a> 看到相关的示例。</td>
-    </tr>
-    <tr>
-      <td><strong>size</strong></td>
-      <td>md, sm</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">grid</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>article_type</strong></td>
-      <td>BlogPosting</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>show_cover</strong></td>
-      <td>true (default), false</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。 在设置改参数为 <code class="language-plaintext highlighter-rouge">true</code> 前，你需要给集合里的每篇文章设置封面, 参考 <a href="#page-layout">Page 布局</a>的 <code class="language-plaintext highlighter-rouge">cover</code> 配置项。</td>
-    </tr>
-    <tr>
-      <td><strong>cover_size</strong></td>
-      <td>lg, md, sm</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>show_excerpt</strong></td>
-      <td>true, false (default)</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效， 参考下面 <a href="#excerpt_type">excerpt_type</a> 章节。</td>
-    </tr>
-    <tr>
-      <td><strong>excerpt_type</strong></td>
-      <td>text, html</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>show_readmore</strong></td>
-      <td>true, false (default)</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>show_info</strong></td>
-      <td>true, false (default)</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 或 <code class="language-plaintext highlighter-rouge">brief</code> 时有效。</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="articlesexcerpt_type">articles.excerpt_type</h3>
-
-<p>文章列表中文章项的摘要有两种模式——TEXT 模式和 HTML 模式。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>模式名称</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>text</strong></td>
-      <td>此时摘要为纯文本，会过滤掉一切非文本元素（标题，链接，列表，表格，图片等等），且截取前 350 个字符。</td>
-    </tr>
-    <tr>
-      <td><strong>html</strong></td>
-      <td>此时摘要为 HTML 文档，与文章内容一致，并且 <strong>默认展示整篇文章的内容</strong>。若想控制摘要内容，需要在文章中想要显示到的地方加上 <code class="language-plaintext highlighter-rouge">&lt;!--more--&gt;</code>，详情请戳 <a href="https://jekyllrb.com/docs/posts/#post-excerpts">这里</a>。</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>对于 Home 页，你可以像这样把 <code class="language-plaintext highlighter-rouge">excerpt_type</code> 设置为 <code class="language-plaintext highlighter-rouge">HTML</code>：</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">layout</span><span class="pi">:</span> <span class="s">home</span>
-<span class="na">articles</span><span class="pi">:</span>
-  <span class="na">excerpt_type</span><span class="pi">:</span> <span class="s">html</span>
-</code></pre></div></div>
-
-<h2 id="home-布局">Home 布局</h2>
-
-<p>继承于 Articles 布局。</p>
-
-<h2 id="archive-布局">Archive 布局</h2>
-
-<p>继承于 Page 布局。</p>
-
-<h2 id="landing-布局">Landing 布局</h2>
-
-<p>继承于 Page 布局。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>data</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="404-布局">404 布局</h2>
-
-<p>继承于 Page 布局。</p>
-
-<h1 id="导航栏">导航栏</h1>
-
-<p>在 TeXt 中有两种导航栏：<strong>头部导航栏</strong>（Header Navigation）和<strong>侧边栏导航栏</strong>（Sidebar Navigation），它们均在 <em>data/navigation.yml</em> 中配置。</p>
-
-<!--more-->
-
-<h2 id="头部导航栏">头部导航栏</h2>
-
-<p>头部导航栏在 <em>data/navigation.yml</em> 文件的 <code class="language-plaintext highlighter-rouge">header</code> 项定义，它是一个包含标题和 URL 项的数组：</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">header</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">Docs</span>
-    <span class="na">url</span><span class="pi">:</span>        <span class="s">/docs/en/quick-start</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">文档</span>
-    <span class="na">url</span><span class="pi">:</span>        <span class="s">/docs/zh/quick-start</span>
-  <span class="pi">-</span> <span class="na">titles</span><span class="pi">:</span>
-      <span class="na">en</span><span class="pi">:</span>       <span class="s">Archive</span>
-      <span class="na">zh</span><span class="pi">:</span>       <span class="s">归档</span>
-      <span class="na">zh-Hans</span><span class="pi">:</span>  <span class="s">归档</span>
-      <span class="na">zh-Hant</span><span class="pi">:</span>  <span class="s">歸檔</span>
-    <span class="na">url</span><span class="pi">:</span>        <span class="s">/archive.html</span>
-  <span class="pi">-</span> <span class="na">titles</span><span class="pi">:</span>
-      <span class="na">en</span><span class="pi">:</span>       <span class="s">About</span>
-      <span class="na">zh</span><span class="pi">:</span>       <span class="s">关于</span>
-      <span class="na">zh-Hans</span><span class="pi">:</span>  <span class="s">关于</span>
-      <span class="na">zh-Hant</span><span class="pi">:</span>  <span class="s">關於</span>
-    <span class="na">url</span><span class="pi">:</span>        <span class="s">/about.html</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">GitHub</span>
-    <span class="na">url</span><span class="pi">:</span>        <span class="s">https://github.com/kitian616/jekyll-TeXt-theme</span>
-</code></pre></div></div>
-
-<p>你可以用 <code class="language-plaintext highlighter-rouge">titles</code> 来定义一个支持多语言的标题名。</p>
-
-<h2 id="侧边栏导航栏">侧边栏导航栏</h2>
-
-<p>要想在某篇文章或页面中使用侧边栏导航栏，首先你需要在 <em>data/navigation.yml</em> 中定义一个导航栏。</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">docs-en</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">Start</span>
-    <span class="na">children</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Quick Start</span>
-        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/quick-start</span>
-      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Structure</span>
-        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/structure</span>
-      <span class="s">...</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">Customization</span>
-    <span class="na">children</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Configuration</span>
-        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/configuration</span>
-      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Navigation</span>
-        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/navigation</span>
-      <span class="s">...</span>
-</code></pre></div></div>
-
-<p>然后在头信息中将定义的导航作为这篇文章或页面的侧边栏导航栏：</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sidebar</span><span class="pi">:</span>
-  <span class="na">nav</span><span class="pi">:</span> <span class="s">docs-en</span>
-</code></pre></div></div>
-<div class="footnotes" role="doc-endnotes">
-  <ol>
-    <li id="fn:footnote" role="doc-endnote">
-      <p>The footnote source <a href="#fnref:footnote" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:fn-nth-2" role="doc-endnote">
-      <p>The 2nd footnote source <a href="#fnref:fn-nth-2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:ALDs" role="doc-endnote">
-      <p><a href="https://kramdown.gettalong.org/syntax.html#attribute-list-definitions">Attribute List Definitions</a> <a href="#fnref:ALDs" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-  </ol>
-</div>]]></content><author><name>Tian Qi</name><email>kitian616@outlook.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[Jekyll博客的编写 在目录结构介绍中说明过，所有的文章都在 /_posts 文件夹中。这些文件可以用 Markdown 或 HTML 编写。只要文件中有 YAML 头信息，它们就会从源格式转化成 HTML 页面，从而成为你的静态网站的一部分。]]></summary></entry><entry><title type="html">Win10建云笔记用的简易博客Github+Jekyll</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html" rel="alternate" type="text/html" title="Win10建云笔记用的简易博客Github+Jekyll" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html"><![CDATA[<h2 id="前言">前言</h2>
+</div>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[Jekyll 允许你很轻松的设计你的网站，这很大程度上归功于灵活强大的配置功能。既可以配置在网站根目录下的 _config.yml 文件，也可以作为命令行的标记来配置。 _config.yml 包括一些在运行时一次性读入的全局配置和变量定义， 在自动生成的过程中并不会重新加载，除非重新运行。注意 Data Files 包括在自动生成范围内，可以在更改后自动重新加载。]]></summary></entry><entry><title type="html">Win10建云笔记用的简易博客Github+Jekyll</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html" rel="alternate" type="text/html" title="Win10建云笔记用的简易博客Github+Jekyll" /><published>2022-02-06T00:00:00+00:00</published><updated>2022-02-06T00:00:00+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html"><![CDATA[<h2 id="前言">前言</h2>
 
 <p>花了半天时间建的博客，博客链接<a href="https://allrobot.github.io/Study-Blog/">在此</a></p>
 
@@ -2431,7 +2913,7 @@ plugins:
 <h4 id="更换主题">更换主题</h4>
 <p><a href="http://jekyllthemes.org/">可供下载的主题网站</a></p>
 <blockquote>
-  <p>如果有更换主题需求，先把原来的主题文件夹删掉，更换C:\Ruby30-x64\lib\ruby\gems\3.0.0\gems下的任意主题文件夹</p>
+  <p>如果有更换主题需求，保留配置、文档、引用图片即可，注意对比<code class="language-plaintext highlighter-rouge">_config.yml</code>{.:filepath}的配置，有些主题不支持特定配置（Jekyll主题不一样，插件等自然不同）</p>
 </blockquote>
 
 <h2 id="关于编写文章">关于编写文章</h2>
@@ -2446,4 +2928,4 @@ plugins:
 <p>要修改标题，可以改md文件里的title….
 博客支持Markdown语法，LaTex 数学公式…</p>
 
-<p>写完文章，Git同步就可以了，很方便的</p>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[前言 花了半天时间建的博客，博客链接在此 写一个Github建博客指南，防以后忘记 若以下内容过时导致失效，请查阅Jekyll文档 Jekyll文档：https://jekyllrb.com/docs/ 以及https://jekyllrb.com/docs/themes/ 安装环境 Ruby RubyGems NodeJS Python3 GCC和Make 下载的6个程序包，需设系统的环境变量…安装教程自行搜索，弄完了输入版本指令验证是否安装成功 打开CMD安装jekyll和bundler # gem安装依赖RubyGems实现 gem install jekyll bundler # 输入查询版本指令，查看是否安装成功 jekyll -v bundler -v 下载[Github桌面版]Github 点击File-New repository新建博客仓库 随便填点，点击Create repository按钮 Jekyll创建简易博客 CMD跳到D:\test目录 cd /d D:\test Github建立的项目文件夹 记得设为Public，否则私人仓库开通Github博客需要付费的 输入指令新建Jekyll项目 # test为github仓库名，若没有则新建文件夹 jekyll new test 此时，test文件夹多了几个文件 添加webrick，启动本地浏览器 如果webrick等待时间长了，按ctrl+c退出，在输入一次 bundle add webrick jekyll serve 开启本地服务 jekyll serve 浏览器输入localhost:4000 确保所有文件存放Jekyll站点目录下，需把主题文件夹的CSS样式表等文件放入仓库博客 打开_config.yml文件 title: Your awesome title email: your-email@example.com description: &gt;- # this means to ignore newlines until "baseurl:" Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description. baseurl: "" # the subpath of your site, e.g. /blog url: "" # the base hostname &amp; protocol for your site, e.g. http://example.com twitter_username: jekyllrb github_username: jekyll # Build settings theme: minima plugins: - jekyll-feed 要发布到Github Pages仅修改_config.yml即可,只是要删除上面的theme: minima，因为Github不加载Gemfile对主题gem的引用,具体参阅官方文档 然后添加baseurl:"/仓库项目名"如果不添加，Github博客不会加载CSS样式表 我这儿是加了’baseurl: “/test” 搜索主题文件夹并复制到仓库目录 bundle info --path minima Github Pages开启页面并保存 Github桌面版同步到Giuhub，点击View on GitHub，前往Settings-Pages 建立的简易博客：https://allrobots.github.io/test/ 更换主题 可供下载的主题网站 如果有更换主题需求，先把原来的主题文件夹删掉，更换C:\Ruby30-x64\lib\ruby\gems\3.0.0\gems下的任意主题文件夹 关于编写文章 D:\test\test_posts复制里面的示例文件2022-02-06-welcome-to-jekyll副本.markdown重命名为2022-02-06-article1.markdown 建议开启jekyll serve本地预览，边写边预览 或VS Code下个Office Viewer、Markdown All in One之类的小插件，边写边预览 要修改标题，可以改md文件里的title…. 博客支持Markdown语法，LaTex 数学公式… 写完文章，Git同步就可以了，很方便的]]></summary></entry></feed>
+<p>写完文章，Git同步就可以了，很方便的</p>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[前言 花了半天时间建的博客，博客链接在此 写一个Github建博客指南，防以后忘记 若以下内容过时导致失效，请查阅Jekyll文档 Jekyll文档：https://jekyllrb.com/docs/ 以及https://jekyllrb.com/docs/themes/ 安装环境 Ruby RubyGems NodeJS Python3 GCC和Make 下载的6个程序包，需设系统的环境变量…安装教程自行搜索，弄完了输入版本指令验证是否安装成功 打开CMD安装jekyll和bundler # gem安装依赖RubyGems实现 gem install jekyll bundler # 输入查询版本指令，查看是否安装成功 jekyll -v bundler -v 下载[Github桌面版]Github 点击File-New repository新建博客仓库 随便填点，点击Create repository按钮 Jekyll创建简易博客 CMD跳到D:\test目录 cd /d D:\test Github建立的项目文件夹 记得设为Public，否则私人仓库开通Github博客需要付费的 输入指令新建Jekyll项目 # test为github仓库名，若没有则新建文件夹 jekyll new test 此时，test文件夹多了几个文件 添加webrick，启动本地浏览器 如果webrick等待时间长了，按ctrl+c退出，在输入一次 bundle add webrick jekyll serve 开启本地服务 jekyll serve 浏览器输入localhost:4000 确保所有文件存放Jekyll站点目录下，需把主题文件夹的CSS样式表等文件放入仓库博客 打开_config.yml文件 title: Your awesome title email: your-email@example.com description: &gt;- # this means to ignore newlines until "baseurl:" Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description. baseurl: "" # the subpath of your site, e.g. /blog url: "" # the base hostname &amp; protocol for your site, e.g. http://example.com twitter_username: jekyllrb github_username: jekyll # Build settings theme: minima plugins: - jekyll-feed 要发布到Github Pages仅修改_config.yml即可,只是要删除上面的theme: minima，因为Github不加载Gemfile对主题gem的引用,具体参阅官方文档 然后添加baseurl:"/仓库项目名"如果不添加，Github博客不会加载CSS样式表 我这儿是加了’baseurl: “/test” 搜索主题文件夹并复制到仓库目录 bundle info --path minima Github Pages开启页面并保存 Github桌面版同步到Giuhub，点击View on GitHub，前往Settings-Pages 建立的简易博客：https://allrobots.github.io/test/ 更换主题 可供下载的主题网站 如果有更换主题需求，保留配置、文档、引用图片即可，注意对比_config.yml{.:filepath}的配置，有些主题不支持特定配置（Jekyll主题不一样，插件等自然不同） 关于编写文章 D:\test\test_posts复制里面的示例文件2022-02-06-welcome-to-jekyll副本.markdown重命名为2022-02-06-article1.markdown 建议开启jekyll serve本地预览，边写边预览 或VS Code下个Office Viewer、Markdown All in One之类的小插件，边写边预览 要修改标题，可以改md文件里的title…. 博客支持Markdown语法，LaTex 数学公式… 写完文章，Git同步就可以了，很方便的]]></summary></entry></feed>

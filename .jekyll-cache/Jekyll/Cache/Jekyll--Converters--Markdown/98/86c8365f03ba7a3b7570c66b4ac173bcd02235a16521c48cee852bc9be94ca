@@ -1,0 +1,118 @@
+I"<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->
+
+<h2 id="激活函数relu">激活函数Relu</h2>
+
+<p>$f(x)=\max{(0,x)}$</p>
+
+<!-- ![CNN示意图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN.PNG){:.height=50%,width=50%}
+
+常用架构描述：`INPUT -> [[CONV]*N -> POOL?]*M -> [FC]*K`{:info}，CNN由**卷积层、池化层、全连接**层组成
+
+描述为`INPUT -> CONV -> POOL -> CONV -> POOL -> FC -> FC`{:.info}，一个卷积层（含池化层），为N=1个卷积层叠加,重复了M=2次,最后共K=2个全连接层 -->
+
+<h2 id="卷积输出">卷积输出</h2>
+
+<p>通过图像的矩阵乘以filter矩阵得到特征图</p>
+
+<!-- ![卷积输出](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_1.PNG){:.height=50%,width=50%} -->
+
+\[\begin{equation*}
+  \begin{split}
+    Out_{0,0}
+    &amp; = f(\sum_{m=0}^{2}\sum_{n=0}^{2}W_{m,n}X_{m+0,n+1}+W_{b}) \\
+    &amp; = relu(W_{0,0}X_{0,0}+W_{0,1}X_{0,1}+W_{0,2}X_{0,2}+W_{1,0}X_{1,0}+W_{1,1}X_{1,1}+W_{1,2}X_{1,2}+W_{2,0}X_{2,0}+W_{2,1}X_{2,1}+W_{2,2}X_{2,2}+W_{b}) \\
+    &amp; = relu(1+0+1+0+1+0+0+0+1+0) \\
+    &amp; = relu(4) \\
+    &amp; = 4
+  \end{split}
+\end{equation*}\]
+
+<p>M为第M行，N为第N列</p>
+
+<h3 id="卷积输出的计算过程">卷积输出的计算过程</h3>
+<!-- ![步幅为1时的卷积输出特征图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_2.GIF)
+
+步幅为2时的卷积输出，看完二图就明白
+
+![步幅为2时的卷积输出特征图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_3.PNG)
+
+![步幅为2时的卷积输出特征图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_4.PNG)
+
+宽度跳2下，高度也跳二个步骤，共输出
+
+ 4 | 4 
+--|:--:|--
+ 2 | 4  -->
+
+<h3 id="特征图大小的关系公式">特征图大小的关系公式</h3>
+
+\[\begin{equation*}特征图宽度=\frac{输入矩阵宽度-filter矩阵宽度+2*补几圈的0}{步幅}+1\end{equation*}\]
+
+\[\begin{equation*}特征图高度=\frac{输入矩阵高度-filter矩阵高度+2*补几圈的0}{步幅}+1\end{equation*}\]
+
+<p>参考上面步幅为2的图，输入矩阵宽度5，filter矩阵宽度3，补圈0为0，步幅为2</p>
+
+\[\begin{equation*}
+  \begin{split}
+    特征图宽度
+    &amp; = \frac{5-3+2*0}{2}+1 \\
+    &amp; = 2 
+  \end{split}
+\end{equation*}\]
+
+<h3 id="多输入多filter的卷积计算过程">多输入多Filter的卷积计算过程</h3>
+
+<p>输入矩阵若多个时，深度为D个矩阵，F为filter矩阵的大小（高和宽相同），$w_{d,m,n}$表示filter矩阵的第d层第m行第n列filter，$Out_{d,i,j}$为第d层第i行第j列的元素</p>
+
+<blockquote>
+  <p>filter矩阵为超参数<sup id="fnref:foot1" role="doc-noteref"><a href="#fn:foot1" class="footnote" rel="footnote">1</a></sup>，有<strong>几个</strong>filter矩阵就有<strong>几个</strong>输出矩阵（数量相同）</p>
+</blockquote>
+
+<blockquote>
+  <p>补了一圈0，便于图像边缘的特征提取</p>
+</blockquote>
+
+<p>7<em>7</em>3的输入，经2个3<em>3</em>3filter矩阵的卷积计算（步幅为2），得到3<em>3</em>2的输出</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_5.GIF" alt="多个输入矩阵的计算过程" /></p>
+
+<blockquote>
+  <p>上面卷积的计算方法，体现了<strong>局部连接</strong>和<strong>权值共享</strong>，2个3<em>3</em>3的filter卷积层参数仅有(3<em>3</em>3+1)*2=56个，相比全连接大大减少了参数数量</p>
+</blockquote>
+
+\[\begin{equation*}
+  \begin{split}
+    Out_{i,j}
+    &amp; = f(\displaystyle\sum\limits_{d=0}^{D-1}\displaystyle\sum\limits_{m=0}^{F-1}\displaystyle\sum\limits_{n=0}^{F-1}W_{d,m,n}X_{d,i+m,j+n}+W_{b}) \\
+  \end{split}
+\end{equation*}\]
+
+<h2 id="pooling层的计算">Pooling层的计算</h2>
+
+<h3 id="max-pooling">Max Pooling</h3>
+
+<p>n*n的样本中取最大值</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/Max_Pooling.png" alt="Max_Pooling" /></p>
+
+<p>n*n的样本中取均值
+类似上图，取4个元素的均值</p>
+
+<h2 id="卷积层的训练">卷积层的训练</h2>
+
+<p>训练算法原理：利用链式求导计算损失函数对每个权重的偏导数（梯度），然后根据梯度下降公式更新权重。</p>
+
+<ul>
+  <li>前向计算每个神经元的输出值$a_{j}$(j表示网络的第j个神经元)</li>
+  <li>反向计算每个神经元的误差项，是网络的损失函数对神经元<strong>加权</strong>输入\(net_{j}\)的偏导数，即\(\delta_{j}=\frac{\vartheta E_{d}}{\vartheta net_{j}}\)</li>
+  <li>计算每个神经元的连接权重$W_{ji}$(神经元i到神经元j的权重)的<strong>梯度</strong>，公式为\(\frac{\vartheta E_{d}}{\vartheta W_{ji}}=a_{i}\delta_{j}\)</li>
+</ul>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:foot1" role="doc-endnote">
+      <p>人为设定的参数 <a href="#fnref:foot1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

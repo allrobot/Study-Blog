@@ -316,13 +316,15 @@
 <p>为了提高文章的阅读和书写体验，TeXt 在 Markdown 原有的基础上做了一些增强。</p>
 
 <h3 id="yaml-头信息">YAML 头信息</h3>
+
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="s">---</span>
     <span class="s">layout</span><span class="err">:</span> <span class="s">article</span>
     <span class="s">title</span><span class="err">:</span> <span class="s">Document - Writing Posts</span>
     <span class="s">mathjax</span><span class="err">:</span> <span class="no">true</span>
     <span class="s">---</span>
 </code></pre></div></div>
-<p>{ 
+
+<p>{
 在 <code class="language-plaintext highlighter-rouge">---</code> 之间你可以设置属性的值，可以把它们看作页面的配置，这些配置会覆盖在 <em>_config.yml</em> 文件中设置的全局配置。</p>
 
 <p>除去 Jekyll 自定义的变量外，TeXt 也定义了一些额外的变量，详情请戳<a href="https://tianqi.name/jekyll-TeXt-theme/docs/zh/layouts">布局</a>。</p>
@@ -336,31 +338,34 @@
     <tr>
       <th>增强项</th>
       <th>描述</th>
-      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><strong>Mathjax</strong></td>
       <td>在文章中方便的加入数学公式，使用 MathML、LaTeX 和 ASCIIMathML 语法</td>
-      <td><a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/07/07/mathjax.html">示例</a></td>
     </tr>
     <tr>
       <td><strong>Mermaid</strong></td>
       <td>在文章中方便的加入流程图</td>
-      <td><a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/06/06/mermaid.html">示例</a></td>
     </tr>
     <tr>
       <td><strong>Chart</strong></td>
       <td>在文章中方便的加入可交互的图表</td>
-      <td><a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/05/05/chart.html">示例</a></td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="mathjax">Mathjax</h2>
 
-<p>When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are</p>
+<p>When</p>
+
+\[a \ne 0\]
+
+<p>, there are two solutions to 
+\(ax^2 + bx + c = 0\)</p>
+
+<p>and they are</p>
 
 \[x_1 = {-b + \sqrt{b^2-4ac} \over 2a}\]
 
@@ -389,30 +394,15 @@
 
 <p><strong>markdown:</strong></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```mermaid
-graph TB;
-    A[Do you have a problem in your life?]
-    B[Then don't worry]
-    C[Can you do something about it?]
-    A--no--&gt;B;
-    A--yes--&gt;C;
-    C--no--&gt;B;
-    C--yes--&gt;B;
-```
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>``mermaid     graph TB;         A[Do you have a problem in your life?]         B[Then don't worry]         C[Can you do something about it?]         A--no--&gt;B;         A--yes--&gt;C;         C--no--&gt;B;         C--yes--&gt;B;     ``
 </code></pre></div></div>
 
 <p><a href="https://mermaidjs.github.io/">Mermaid</a> 支持以下三种示意图:</p>
 
 <ul>
-  <li>
-    <p><a href="https://mermaidjs.github.io/flowchart.html">Flowchart</a></p>
-  </li>
-  <li>
-    <p><a href="https://mermaidjs.github.io/sequenceDiagram.html">Sequence Diagram</a></p>
-  </li>
-  <li>
-    <p><a href="https://mermaidjs.github.io/gantt.html">Gant Diagram</a></p>
-  </li>
+  <li><a href="https://mermaidjs.github.io/flowchart.html">Flowchart</a></li>
+  <li><a href="https://mermaidjs.github.io/sequenceDiagram.html">Sequence Diagram</a></li>
+  <li><a href="https://mermaidjs.github.io/gantt.html">Gant Diagram</a></li>
 </ul>
 
 <h2 id="chart">Chart</h2>
@@ -468,7 +458,7 @@ graph TB;
 
 <p><strong>markdown:</strong></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```chart
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\`\`\`chart
 {
   "type": "polarArea",
   "data": {
@@ -501,33 +491,19 @@ graph TB;
   },
   "options": {}
 }
-```
+\`\`\`
 </code></pre></div></div>
 
 <p><a href="http://www.chartjs.org/docs/latest/">Chart.js</a> 支持以下 7 种图表:</p>
 
 <ul>
-  <li>
-    <p><a href="http://www.chartjs.org/docs/latest/charts/line.html">Line Chart</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chartjs.org/docs/latest/charts/bar.html">Bar Chart</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chartjs.org/docs/latest/charts/radar.html">Radar Chart</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chartjs.org/latest/charts/polar.html">Polar Area Chart</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chartjs.org/docs/latest/charts/doughnut.html">Pie Chart</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chartjs.org/docs/latest/charts/doughnut.html">Doughnut Chart</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chartjs.org/docs/latest/charts/bubble.html">Bubble Chart</a></p>
-  </li>
+  <li><a href="http://www.chartjs.org/docs/latest/charts/line.html">Line Chart</a></li>
+  <li><a href="http://www.chartjs.org/docs/latest/charts/bar.html">Bar Chart</a></li>
+  <li><a href="http://www.chartjs.org/docs/latest/charts/radar.html">Radar Chart</a></li>
+  <li><a href="http://www.chartjs.org/latest/charts/polar.html">Polar Area Chart</a></li>
+  <li><a href="http://www.chartjs.org/docs/latest/charts/doughnut.html">Pie Chart</a></li>
+  <li><a href="http://www.chartjs.org/docs/latest/charts/doughnut.html">Doughnut Chart</a></li>
+  <li><a href="http://www.chartjs.org/docs/latest/charts/bubble.html">Bubble Chart</a></li>
 </ul>
 
 <h1 id="markdown文本样式">Markdown文本样式</h1>
@@ -551,6 +527,7 @@ graph TB;
 <span class="gu">### H3 - heading</span>
 
 <span class="gu">#### H4 - heading</span>
+
 </code></pre></div></div>
 <p><br /></p>
 
@@ -583,6 +560,7 @@ graph TB;
 <span class="p">2.</span> Secondly
 <span class="p">3.</span> Thirdly
 </code></pre></div></div>
+
 <h3 id="无序列表">无序列表</h3>
 
 <ul>
@@ -598,6 +576,7 @@ graph TB;
 </ul>
 
 <p><strong>markdown:</strong></p>
+
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> 章节
 <span class="p">  -</span> 节选
 <span class="p">    -</span> 段落
@@ -618,6 +597,7 @@ graph TB;
 </ul>
 
 <p><strong>markdown:</strong></p>
+
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> [ ] TODO
 <span class="p">-</span> [x] Completed
 <span class="p">-</span> [ ] Defeat COVID-19
@@ -636,12 +616,14 @@ graph TB;
 </dl>
 
 <p><strong>markdown:</strong></p>
+
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sun
 : the star around which the earth orbits
 
 Moon
 : the natural satellite of the earth, visible by reflected light from the sun
 </code></pre></div></div>
+
 <h2 id="引用">引用</h2>
 
 <blockquote>
@@ -683,6 +665,7 @@ Moon
 </table>
 
 <p><strong>markdown:</strong></p>
+
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Company                      | Contact          | Country |
 |:-----------------------------|:-----------------|--------:|
 | Alfreds Futterkiste          | Maria Anders     | Germany |
@@ -695,6 +678,7 @@ Moon
 <p><a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a></p>
 
 <p><strong>markdown:</strong></p>
+
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">&lt;http://127.0.0.1:4000&gt;</span>
 </code></pre></div></div>
 
@@ -703,15 +687,18 @@ Moon
 <p>点击右上边的脚注<sup id="fnref:footnote" role="doc-noteref"><a href="#fn:footnote" class="footnote" rel="footnote">1</a></sup>, 这里是另一个脚注<sup id="fnref:fn-nth-2" role="doc-noteref"><a href="#fn:fn-nth-2" class="footnote" rel="footnote">2</a></sup>.</p>
 
 <p><strong>markdown:</strong></p>
+
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>点击右上边的脚注[^footnote], 这里是另一个脚注[^fn-nth-2].
 </code></pre></div></div>
 
 <h3 id="脚注注释">脚注注释</h3>
 
 <p><strong>markdown:</strong></p>
+
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="ss">^footnote</span><span class="p">]:</span> <span class="sx">The</span> footnote source
 <span class="p">[</span><span class="ss">^fn-nth-2</span><span class="p">]:</span> <span class="sx">The</span> 2nd footnote source
 </code></pre></div></div>
+
 <h2 id="提示">提示</h2>
 
 <table>
@@ -978,6 +965,7 @@ Moon
 </code></pre>
 
 <p><strong>markdown:</strong></p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\`\`\`mermaid
  gantt
   title  Adding GANTT diagram functionality to mermaid
@@ -1011,6 +999,7 @@ $$ x = {-b <span class="se">\p</span>m <span class="se">\s</span>qrt{b^2-4ac} <s
 <p>这是一个例子 <code class="language-plaintext highlighter-rouge">Inline Code</code>.</p>
 
 <p><strong>Markdown:</strong></p>
+
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这是一个例子 <span class="sb">`Inline Code`</span>.
 </code></pre></div></div>
 
@@ -1018,6 +1007,7 @@ $$ x = {-b <span class="se">\p</span>m <span class="se">\s</span>qrt{b^2-4ac} <s
 
 <p>这儿是 <code class="language-plaintext filepath highlighter-rouge">/path/to/the/file.extend</code>.
 <strong>Markdown:</strong></p>
+
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这儿是 <span class="sb">`/path/to/the/file.extend`</span>{: .filepath}.
 </code></pre></div></div>
 
@@ -1048,12 +1038,11 @@ PYENV_SHELL=bash
 <h3 id="specific-filename">Specific filename</h3>
 
 <p>语法sass</p>
-<div file="_sass/jekyll-theme-chirpy.scss" class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span>
   <span class="s2">"colors/light-typography"</span><span class="o">,</span>
   <span class="s2">"colors/dark-typography"</span>
 </code></pre></div></div>
-
-<h1 id="logo">Logo</h1>
 
 <p>TeXt 使用  <span><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24">
 <style type="text/css">
@@ -1064,858 +1053,553 @@ PYENV_SHELL=bash
 </svg>
 </span> 作为它的 Logo，你可以通过替换 <em>_includes/svg/logo.svg</em> 来设置你的 Logo。</p>
 
-<h2 id="favicon">Favicon</h2>
-
-<p>TeXt 推荐使用 <a href="https://realfavicongenerator.net/">RealFaviconGenerator</a> 来生成 Favicon。</p>
-
-<p>打开 <a href="https://realfavicongenerator.net/">RealFaviconGenerator</a> 后点击“Select your Favicon picture”，选择图片进入下一步。</p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/realfavicongenerator-select-favicon-picture.jpg" alt="Select your Favicon picture" /></p>
-
-<p>图标设置完成后，你需要告诉生成器 Favicon 文件的网站路径，TeXt 将他们放在了 <em>/assets</em> 目录。</p>
-
-<p class="warning">推荐将 Favicon 文件放在网站的根目录下。</p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/realfavicongenerator-path.jpg" alt="Select your Favicon path" /></p>
-
-<p>完成后点击“Generate your Favicons and HTML code”进入到最后一步。</p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/realfavicongenerator-result.jpg" alt="Result" /></p>
-
-<p>下载生成的 favicon 包，解压文件到你方才填写的路径，将 HTML 代码替换到 <em>_includes/head/favicon.html</em> 文件中。</p>
-
-<p>ekyll 使用 kramdown 作为默认 Markdown 解释器。kramdown 可以通过 ALDs<sup id="fnref:ALDs" role="doc-noteref"><a href="#fn:ALDs" class="footnote" rel="footnote">3</a></sup> 来设置块级元素或行内元素的属性。例如，可以通过 <code class="language-plaintext highlighter-rouge">{:.class-name1.class-name-2}</code> 来给元素定义样式类。</p>
-
-<p>TeXt 定义了一些样式类，你可以在文章和页面的方便的使用，可以在 <a href="https://tianqi.name/jekyll-TeXt-theme/post/2017/08/08/additional-styles.html">这里</a> 看到示例和详细的说明.</p>
-
-<h1 id="扩展">扩展</h1>
-
-<h2 id="音频">音频</h2>
+<p>|  |  |
+| - | - |
+|  |  |
+|  |  |</p>
 
 <table>
   <thead>
     <tr>
-      <th>扩展名称</th>
-      <th>最新版本</th>
+      <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>SoundCloud</td>
-      <td>2.2.2</td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td>Netease Cloud Music</td>
-      <td>2.2.2</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
-
-<h3 id="soundcloud">SoundCloud</h3>
-
-<p><strong>id:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-soundclound.jpg" alt="extensions-soundcloud" style="max-height:500px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/soundcloud.html id='313627932' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/soundcloud.html id='313627932' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h3 id="网易云音乐">网易云音乐</h3>
-
-<p><strong>id:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-netease-cloud-music.jpg" alt="extensions-soundcloud" style="max-height:320px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/netease-cloud-music.html id='413812448' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/netease-cloud-music.html id='413812448' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h2 id="视频">视频</h2>
 
 <table>
   <thead>
     <tr>
-      <th>扩展名称</th>
-      <th>最新版本</th>
+      <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>YouTube</td>
-      <td>2.2.2</td>
-    </tr>
-    <tr>
-      <td>TED</td>
-      <td>2.2.2</td>
-    </tr>
-    <tr>
-      <td>bilibili</td>
-      <td>2.2.2</td>
+      <td> </td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
-
-<h3 id="youtube">YouTube</h3>
-
-<p><strong>id:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-youtube.jpg" alt="extensions-soundcloud" style="max-height:250px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/youtube.html id='wbY97-hdD5c' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/youtube.html id='wbY97-hdD5c' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h3 id="ted">TED</h3>
-
-<p><strong>id:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-ted.jpg" alt="extensions-soundcloud" style="max-height:83px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/ted.html id='emily_esfahani_smith_there_s_more_to_life_than_being_happy' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/ted.html id='emily_esfahani_smith_there_s_more_to_life_than_being_happy' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h3 id="哔哩哔哩">哔哩哔哩</h3>
-
-<p><strong>id:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-bilibili.jpg" alt="extensions-bilibili" style="max-height:190px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/bilibili.html id='11091080' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/bilibili.html id='11091080' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h2 id="幻灯片">幻灯片</h2>
 
 <table>
   <thead>
     <tr>
-      <th>扩展名称</th>
-      <th>最新版本</th>
+      <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>SlideShare</td>
-      <td>2.2.2</td>
+      <td> </td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
-
-<h3 id="slideshare">SlideShare</h3>
-
-<p><strong>id:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-slideshare.jpg" alt="extensions-slideshare" style="max-height:480px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/slideshare.html id='u9L9zDsqEWNKE1' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/slideshare.html id='u9L9zDsqEWNKE1' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h2 id="在线示例">在线示例</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>扩展名称</th>
-      <th>最新版本</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>CodePen</td>
-      <td>2.2.3</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="codepen">CodePen</h3>
-
-<p><strong>user &amp; hash:</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/extensions-codepen.jpg" alt="extensions-codepen" style="max-height:100px" class="border" /></p>
-
-<p><strong>html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{%- include extensions/codepen.html user='kitian616' hash='aQmWZG' default_tab='html,result' -%}
-</code></pre></div></div>
-
-<p><strong>markdown:</strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div&gt;{%- include extensions/codepen.html user='kitian616' hash='aQmWZG' default_tab='html,result' -%}&lt;/div&gt;
-</code></pre></div></div>
-
-<h1 id="国际化">国际化</h1>
-
-<p>TeXt 把 UI 元素的文字整理成一系列的翻译标识统一的放置在 <em>_data/locale.yml</em> 中，这样能够比较方便添加不同语言的支持。</p>
-
-<p>通过 <code class="language-plaintext highlighter-rouge">titles</code> 配置项可以给文章，布局和导航定义定义多语言标题，TeXt 默认定义了很多这样的标题，它们分别位于 <em>_data/navigation</em>，<em>_layouts/archive</em>，<em>_layouts/home</em> 和 <em>about.md</em> 中。</p>
 
 <!-- more -->
 
-<p>上文所提到的翻译标识和多语言标题支持以下语言：
-<!-- @start locale config --></p>
+<!-- @start locale config -->
 
 <table>
   <thead>
     <tr>
-      <th>语言</th>
-      <th><code class="language-plaintext highlighter-rouge">lang</code></th>
+      <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>英语</strong></td>
-      <td>en, en-GB, en-US, en-CA, en-AU</td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td><strong>简体中文</strong></td>
-      <td>zh-Hans, zh, zh-CN, zh-SG</td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td><strong>繁体中文</strong></td>
-      <td>zh-Hant, zh-TW, zh-HK</td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td><strong>韩语</strong></td>
-      <td>ko, ko-KR</td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td><strong>法语</strong></td>
-      <td>fr, fr-BE, fr-CA, fr-CH, fr-FR, fr-LU</td>
+      <td> </td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
 
 <!-- @end locale config -->
-<p>你可以在 <a href="https://tianqi.name/jekyll-TeXt-theme/samples.html#languages">这里</a> 找到不同语言的示例。</p>
-
-<h1 id="布局">布局</h1>
-
-<pre><code class="language-mermaid">graph TB;
-    NONE[none]
-    BASE[base]
-    PAGE[page]
-    ARTICLE[article]
-    ARTICLES[articles]
-    HOME[home]
-    ARCHIVE[archive]
-    LANDING[landing]
-    404[404]
-    NONE--&gt;BASE;
-    BASE--&gt;PAGE;
-    PAGE--&gt;ARTICLE;
-    PAGE--&gt;ARTICLES;
-    ARTICLES--&gt;HOME;
-    PAGE--&gt;ARCHIVE;
-    PAGE--&gt;LANDING;
-    PAGE--&gt;404;
-</code></pre>
-
-<h2 id="base-布局">Base 布局</h2>
-
-<p>继承于 None。</p>
-
-<h2 id="page-布局">Page 布局</h2>
-
-<p>继承于 Base 布局。</p>
 
 <table>
   <thead>
     <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-      <th>最低版本</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>mode</strong></td>
-      <td>normal (default), immersive</td>
-      <td>该页的模式。</td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>type</strong></td>
-      <td>webpage (default), article</td>
-      <td>该页的类型, 作为 <a href="https://schema.org/">schema.org</a> 的语义化标记使用。</td>
       <td> </td>
-    </tr>
-    <tr>
-      <td><strong>key</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>页面的唯一标识符，供评论系统和点击量统计使用。必须以字母（<code class="language-plaintext highlighter-rouge">[A-Za-z]</code>）开头，其后可以接若干字母、数字（<code class="language-plaintext highlighter-rouge">[0-9]</code>）、连字符（<code class="language-plaintext highlighter-rouge">-</code>）、下划线（<code class="language-plaintext highlighter-rouge">_</code>）、冒号（<code class="language-plaintext highlighter-rouge">:</code>）和小数点（<code class="language-plaintext highlighter-rouge">.</code>）。</td>
       <td> </td>
-    </tr>
-    <tr>
-      <td><strong>lang</strong></td>
-      <td>en (default), zh, zh-Hans, zh-Hant</td>
-      <td>该页的语言。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>author</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td>将在 <em>authors.yml</em> 中定义的作者作为某篇文章或页面的作者, 详情请看<a href="https://tianqi.name/jekyll-TeXt-theme/docs/zh/authors">作者</a>。</td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>show_title</strong></td>
-      <td>true (default), false</td>
-      <td>是否显示标题，默认显示，设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>show_edit_on_github</strong></td>
-      <td>true, false (default)</td>
-      <td>是否显示“在 Github 上修改”按钮，设置为 <code class="language-plaintext highlighter-rouge">true</code> 显示。你需要先在 <em>_config.yml</em> 中设置 <code class="language-plaintext highlighter-rouge">repository</code> 和 <code class="language-plaintext highlighter-rouge">repository_tree</code>。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>show_date</strong></td>
-      <td>true (default), false</td>
-      <td>是否展示该页的发布日期，设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏。</td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>show_tags</strong></td>
-      <td>true (default), false</td>
-      <td>是否展示该页的标签，设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏。</td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>full_width</strong></td>
-      <td>true, false (default)</td>
-      <td>该页内容是否占据全部宽度，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>pageview</strong></td>
-      <td>true, false (default)</td>
-      <td>是否开启阅读量统计，默认关闭，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>comment</strong></td>
-      <td>true (default), false</td>
-      <td>是否开启评论支持，默认开启，设置为 <code class="language-plaintext highlighter-rouge">false</code> 关闭。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>mathjax</strong></td>
-      <td>true, false</td>
-      <td>是否开启 Mathjax 公式支持，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>mathjax_autoNumber</strong></td>
-      <td>true, false</td>
-      <td>该页的 Mathjax 公式是否自动编号，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>mermaid</strong></td>
-      <td>true, false</td>
-      <td>是否开启 Mermaid 流程图支持，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>chart</strong></td>
-      <td>true, false</td>
-      <td>是否开启 Chart 图表支持，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>cover</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>封面图片的 URL。</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><strong>header</strong></td>
-      <td>false, <code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td>设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏标题栏。</td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>article_header</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td> </td>
-      <td>2.2.0</td>
-    </tr>
-    <tr>
-      <td><strong>aside</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
       <td> </td>
       <td> </td>
     </tr>
     <tr>
-      <td><strong>sidebar</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
+      <td> </td>
+      <td> </td>
       <td> </td>
       <td> </td>
     </tr>
     <tr>
-      <td><strong>footer</strong></td>
-      <td>false</td>
-      <td>设置为 <code class="language-plaintext highlighter-rouge">false</code> 隐藏底部栏。</td>
-      <td>2.2.3</td>
-    </tr>
-    <tr>
-      <td><strong>lightbox</strong></td>
-      <td>true, false</td>
-      <td>该页的大图是否能点击预览，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启，你可以通过设置 <code class="language-plaintext highlighter-rouge">lightbox-ignore</code> 类名来忽略特定的图片元素。</td>
-      <td>2.2.4</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="header">header</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>theme</strong></td>
-      <td>light, dark</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">translucent</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>background</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>当指定了 theme 值时有效。</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="article_header">article_header</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>type</strong></td>
-      <td>overlay, cover</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
-      <td><strong>align</strong></td>
-      <td>left (default), center</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
-      <td><strong>theme</strong></td>
-      <td>light (default), dark</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
-      <td><strong>background_color</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">overlay</code> 时有效。当设置的背景色较深时，你需要设置 <code class="language-plaintext highlighter-rouge">theme</code> 为 dark。</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td><strong>background_image</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">overlay</code> 时有效，设置为 <code class="language-plaintext highlighter-rouge">false</code> 可覆盖 <code class="language-plaintext highlighter-rouge">cover</code> 禁止背景图片。</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td><strong>image</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">cover</code> 时有效。</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
     </tr>
     <tr>
-      <td><strong>actions</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!seq</code></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>
 </table>
 
-<h3 id="article_headerbackground_image">article_header.background_image</h3>
-
 <table>
   <thead>
     <tr>
-      <th>Variable</th>
-      <th>Option Values</th>
-      <th>Description</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>gradient</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td> </td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
-      <td><strong>src</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>默认为 <code class="language-plaintext highlighter-rouge">cover</code></td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="article_headerimage">article_header.image</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Variable</th>
-      <th>Option Values</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>src</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td> </td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>
 </table>
 
-<h3 id="aside">aside</h3>
-
 <table>
   <thead>
     <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>toc</strong></td>
-      <td>false (default), true</td>
-      <td>设置为 <code class="language-plaintext highlighter-rouge">true</code> 时展示右侧边栏目录。</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
     </tr>
-  </tbody>
-</table>
-
-<h3 id="sidebar">sidebar</h3>
-
-<table>
-  <thead>
     <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
+      <td> </td>
+      <td> </td>
+      <td> </td>
     </tr>
-  </thead>
-  <tbody>
     <tr>
-      <td><strong>nav</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="article-布局">Article 布局</h2>
-
-<p>继承于 Page 布局。</p>
-
 <table>
   <thead>
     <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-      <th>最低版本</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>modify_date</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>该文章的最后修改时间, 其格式为 <code class="language-plaintext highlighter-rouge">YYYY-MM-DD HH:MM:SS +/-TTTT</code> 和 <code class="language-plaintext highlighter-rouge">date</code> 的格式相同</td>
+      <td> </td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
-      <td><strong>sharing</strong></td>
-      <td>true, false (default)</td>
-      <td>是否开启分享，设置为 <code class="language-plaintext highlighter-rouge">true</code> 开启。</td>
-      <td>2.2.2</td>
-    </tr>
-    <tr>
-      <td><strong>show_author_profile</strong></td>
-      <td>true, false (default)</td>
-      <td>是否在文章开头显示作者信息卡片，设置为 <code class="language-plaintext highlighter-rouge">true</code> 显示。</td>
       <td> </td>
-    </tr>
-    <tr>
-      <td><strong>show_subscribe</strong></td>
-      <td>true, false (default)</td>
-      <td>是否在文章末尾显示订阅信息，设置为 <code class="language-plaintext highlighter-rouge">true</code> 显示。</td>
-      <td>latest</td>
-    </tr>
-    <tr>
-      <td><strong>license</strong></td>
-      <td>true, false (default), CC-BY-4.0, CC-BY-SA-4.0, CC-BY-NC-4.0, CC-BY-ND-4.0</td>
-      <td>该文章的许可协议。设置为 <code class="language-plaintext highlighter-rouge">true</code> 使用在 <em>_config.yml</em> 中设置的 <code class="language-plaintext highlighter-rouge">license</code> 值，设置为 <code class="language-plaintext highlighter-rouge">false</code> 不使用许可协议。</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="articles-布局">Articles 布局</h2>
-
-<p>继承于 Page 布局，从 <strong>2.2.0</strong> 版本支持。</p>
-
 <table>
   <thead>
     <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>articles</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
+      <td> </td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>
 </table>
 
-<h3 id="articles">articles</h3>
-
 <table>
   <thead>
     <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>data_source</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!str</code></td>
-      <td>如果你将将集合名设置为该项的值，该页面将会展示这个集合下的文章列表。你可以在 <a href="https://jekyllrb.com/docs/collections/">Collections</a> 找到更多关于集合的信息。</td>
-    </tr>
-    <tr>
-      <td><strong>type</strong></td>
-      <td>item, brief, grid</td>
-      <td>TeXt 支持三种文章列表类型，每种类型都对应着一些配置，你可以在 <a href="https://tianqi.name/jekyll-TeXt-theme/samples.html#articles-layout">这里</a> 看到相关的示例。</td>
-    </tr>
-    <tr>
-      <td><strong>size</strong></td>
-      <td>md, sm</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">grid</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>article_type</strong></td>
-      <td>BlogPosting</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>show_cover</strong></td>
-      <td>true (default), false</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。 在设置改参数为 <code class="language-plaintext highlighter-rouge">true</code> 前，你需要给集合里的每篇文章设置封面, 参考 <a href="#page-layout">Page 布局</a>的 <code class="language-plaintext highlighter-rouge">cover</code> 配置项。</td>
-    </tr>
-    <tr>
-      <td><strong>cover_size</strong></td>
-      <td>lg, md, sm</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>show_excerpt</strong></td>
-      <td>true, false (default)</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效， 参考下面 <a href="#excerpt_type">excerpt_type</a> 章节。</td>
-    </tr>
-    <tr>
-      <td><strong>excerpt_type</strong></td>
-      <td>text, html</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>show_readmore</strong></td>
-      <td>true, false (default)</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 时有效。</td>
-    </tr>
-    <tr>
-      <td><strong>show_info</strong></td>
-      <td>true, false (default)</td>
-      <td>当 type 为 <code class="language-plaintext highlighter-rouge">normal</code> 或 <code class="language-plaintext highlighter-rouge">brief</code> 时有效。</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="articlesexcerpt_type">articles.excerpt_type</h3>
-
-<p>文章列表中文章项的摘要有两种模式——TEXT 模式和 HTML 模式。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>模式名称</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>text</strong></td>
-      <td>此时摘要为纯文本，会过滤掉一切非文本元素（标题，链接，列表，表格，图片等等），且截取前 350 个字符。</td>
-    </tr>
-    <tr>
-      <td><strong>html</strong></td>
-      <td>此时摘要为 HTML 文档，与文章内容一致，并且 <strong>默认展示整篇文章的内容</strong>。若想控制摘要内容，需要在文章中想要显示到的地方加上 <code class="language-plaintext highlighter-rouge">&lt;!--more--&gt;</code>，详情请戳 <a href="https://jekyllrb.com/docs/posts/#post-excerpts">这里</a>。</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>对于 Home 页，你可以像这样把 <code class="language-plaintext highlighter-rouge">excerpt_type</code> 设置为 <code class="language-plaintext highlighter-rouge">HTML</code>：</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">layout</span><span class="pi">:</span> <span class="s">home</span>
-<span class="na">articles</span><span class="pi">:</span>
-  <span class="na">excerpt_type</span><span class="pi">:</span> <span class="s">html</span>
-</code></pre></div></div>
-
-<h2 id="home-布局">Home 布局</h2>
-
-<p>继承于 Articles 布局。</p>
-
-<h2 id="archive-布局">Archive 布局</h2>
-
-<p>继承于 Page 布局。</p>
-
-<h2 id="landing-布局">Landing 布局</h2>
-
-<p>继承于 Page 布局。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>配置项</th>
-      <th>可选值</th>
-      <th>描述</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>data</strong></td>
-      <td><code class="language-plaintext highlighter-rouge">!!map</code></td>
+      <td> </td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="404-布局">404 布局</h2>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
-<p>继承于 Page 布局。</p>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
-<h1 id="导航栏">导航栏</h1>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
-<p>在 TeXt 中有两种导航栏：<strong>头部导航栏</strong>（Header Navigation）和<strong>侧边栏导航栏</strong>（Sidebar Navigation），它们均在 <em>data/navigation.yml</em> 中配置。</p>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
 <!--more-->
-
-<h2 id="头部导航栏">头部导航栏</h2>
-
-<p>头部导航栏在 <em>data/navigation.yml</em> 文件的 <code class="language-plaintext highlighter-rouge">header</code> 项定义，它是一个包含标题和 URL 项的数组：</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">header</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">Docs</span>
-    <span class="na">url</span><span class="pi">:</span>        <span class="s">/docs/en/quick-start</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">文档</span>
-    <span class="na">url</span><span class="pi">:</span>        <span class="s">/docs/zh/quick-start</span>
-  <span class="pi">-</span> <span class="na">titles</span><span class="pi">:</span>
-      <span class="na">en</span><span class="pi">:</span>       <span class="s">Archive</span>
-      <span class="na">zh</span><span class="pi">:</span>       <span class="s">归档</span>
-      <span class="na">zh-Hans</span><span class="pi">:</span>  <span class="s">归档</span>
-      <span class="na">zh-Hant</span><span class="pi">:</span>  <span class="s">歸檔</span>
-    <span class="na">url</span><span class="pi">:</span>        <span class="s">/archive.html</span>
-  <span class="pi">-</span> <span class="na">titles</span><span class="pi">:</span>
-      <span class="na">en</span><span class="pi">:</span>       <span class="s">About</span>
-      <span class="na">zh</span><span class="pi">:</span>       <span class="s">关于</span>
-      <span class="na">zh-Hans</span><span class="pi">:</span>  <span class="s">关于</span>
-      <span class="na">zh-Hant</span><span class="pi">:</span>  <span class="s">關於</span>
-    <span class="na">url</span><span class="pi">:</span>        <span class="s">/about.html</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">GitHub</span>
-    <span class="na">url</span><span class="pi">:</span>        <span class="s">https://github.com/kitian616/jekyll-TeXt-theme</span>
-</code></pre></div></div>
-
-<p>你可以用 <code class="language-plaintext highlighter-rouge">titles</code> 来定义一个支持多语言的标题名。</p>
-
-<h2 id="侧边栏导航栏">侧边栏导航栏</h2>
-
-<p>要想在某篇文章或页面中使用侧边栏导航栏，首先你需要在 <em>data/navigation.yml</em> 中定义一个导航栏。</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">docs-en</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">Start</span>
-    <span class="na">children</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Quick Start</span>
-        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/quick-start</span>
-      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Structure</span>
-        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/structure</span>
-      <span class="s">...</span>
-  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>      <span class="s">Customization</span>
-    <span class="na">children</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Configuration</span>
-        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/configuration</span>
-      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span>  <span class="s">Navigation</span>
-        <span class="na">url</span><span class="pi">:</span>    <span class="s">/docs/en/navigation</span>
-      <span class="s">...</span>
-</code></pre></div></div>
-
-<p>然后在头信息中将定义的导航作为这篇文章或页面的侧边栏导航栏：</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sidebar</span><span class="pi">:</span>
-  <span class="na">nav</span><span class="pi">:</span> <span class="s">docs-en</span>
-</code></pre></div></div>
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:footnote" role="doc-endnote">
@@ -1923,9 +1607,6 @@ PYENV_SHELL=bash
     </li>
     <li id="fn:fn-nth-2" role="doc-endnote">
       <p>The 2nd footnote source <a href="#fnref:fn-nth-2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-    <li id="fn:ALDs" role="doc-endnote">
-      <p><a href="https://kramdown.gettalong.org/syntax.html#attribute-list-definitions">Attribute List Definitions</a> <a href="#fnref:ALDs" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -1936,7 +1617,7 @@ PYENV_SHELL=bash
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>上篇</span><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html">快速建Jekyll博客</a></div><div class="next"><span>下篇</span><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html">Win10建云笔记用的简易博客Github+Jekyll </a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>上篇</span><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html">快速建Jekyll博客</a></div><div class="next"><span>下篇</span><a href="/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/sEMG-proposal-report.html">基于sEMG信号的手势识别系统</a></div></div></div>
 
 </div>
 

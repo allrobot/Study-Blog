@@ -280,53 +280,143 @@
 
 <!-- end custom main top snippet -->
 <article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>主页</h1></header><meta itemprop="headline" content="主页"><meta itemprop="author" content="李广琛"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/06/artcle2-Andrew-Ng-DL-1.html"><h2 itemprop="headline" class="item__header">吴恩达机器学习系列笔记 Day1</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody"></div><p><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/06/artcle2-Andrew-Ng-DL-1.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+          <header><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/12/Andrew-Ng-DL-2.html"><h2 itemprop="headline" class="item__header">吴恩达机器学习笔记 Day 2</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">矩阵和向量
+
+矩阵是矩形数组的，由行数i和列数j构成
+
+4*2矩阵，用数学符号表现为$R^{4*2}$
+
+\[A=
+\begin{equation*}\begin{bmatrix}
+1402&amp;191  \\
+1372&amp;821  \\
+949&amp;1437  \\
+147&amp;1448
+\end{bmatrix}\end{equation*}\]
+
+$A_{ij}$，那么$A_{11}=1402,A_{22}=821,A_{32}=1437$
+
+2*3矩阵，用数学符号表现为$R^{2*3}$
+
+\[\\
+\begin{equation*}\begin{bmatrix}
+1&amp;2&amp;3  \\
+4&amp;5&amp;6
+\end{bmatrix}\en...</div><p><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/12/Andrew-Ng-DL-2.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/Study-Blog/archive.html?tag=%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
             </li><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/Study-Blog/archive.html?tag=%E5%90%B4%E6%81%A9%E8%BE%BE">吴恩达</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月06日</span>
-            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-06T11:26:41+00:00">
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月12日</span>
+            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-12T00:00:00+00:00">
     <meta itemprop="keywords" content="机器学习,吴恩达"></div>
       </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html"><h2 itemprop="headline" class="item__header">Win10建云笔记用的简易博客Github+Jekyll </h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">前言
+          <header><a href="/Study-Blog/2022/02/11/.html"><h2 itemprop="headline" class="item__header"></h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody"></div><p><a href="/Study-Blog/2022/02/11/.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月11日</span>
+            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-11T00:00:00+00:00"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1.html"><h2 itemprop="headline" class="item__header">吴恩达机器学习笔记 Day 1</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">模型描述
 
-花了半天时间建的博客，博客链接在此
+线性回归，这里的回归是指分类问题，用来预测离散值输出。
 
-写一个Github建博客指南，防以后忘记
-
-若以下内容过时导致失效，请查阅Jekyll文档
-
-Jekyll文档：https://jekyllrb.com/docs/
-以及https://jekyllrb.com/docs/themes/
-
-安装环境
-
-  Ruby
-  RubyGems
-  NodeJS
-  Python3
-  GCC和Make
+举个例子：城市不同房子对应不同售价，假设某房子1250英尺，它的售价220000美元，数据集包含卖出的房子面积大小和价格。
 
 
-下载的6个程序包，需设系统的环境变量…安装教程自行搜索，弄完了输入版本指令验证是否安装成功
+  
+    
+      $面积/m^{2} (x)$
+      $价格/1000美元(y)$
+    
+  
+  
+    
+      2014
+      460
+    
+    
+      1416
+      212
+    
+    
+      1436
+      315
+    
+    
+      859
+      178
+    
+    
+      …
+      …
+    
+  
 
-打开CMD安装jekyll和bundler
- # gem安装依赖RubyGems实现
- gem install jekyll bundler
- # 输入查询版本指令，查看是否安装成功
- jekyll -...</div><p><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+
+符号
+
+
+  m=训练样本的数量
+    
+      假如表格有...</div><p><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/Study-Blog/archive.html?tag=%E5%8D%9A%E5%AE%A2">博客</a>
+                href="/Study-Blog/archive.html?tag=%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
             </li><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/Study-Blog/archive.html?tag=%E5%86%99%E4%BD%9C">写作</a>
+                href="/Study-Blog/archive.html?tag=%E5%90%B4%E6%81%A9%E8%BE%BE">吴恩达</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月11日</span>
+            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-11T00:00:00+00:00">
+    <meta itemprop="keywords" content="机器学习,吴恩达"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/CNN-day-1.html"><h2 itemprop="headline" class="item__header">CNN入门</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">激活函数Relu
+
+$f(x)=\max{(0,x)}$
+
+
+
+卷积输出
+
+通过图像的矩阵乘以filter矩阵得到特征图
+
+
+
+\[\begin{equation*}
+  \begin{split}
+    Out_{0,0}
+    &amp; = f(\sum_{m=0}^{2}\sum_{n=0}^{2}W_{m,n}X_{m+0,n+1}+W_{b}) \\
+    &amp; = relu(W_{0,0}X_{0,0}+W_{0,1}X_{0,1}+W_{0,2}X_{0,2}+W_{1,0}X_{1,0}+W_{1,1}X_{1,1}+W_{1,2}X_{1,2}+W_{2,0}X_{2,0}+W_{2,1}X_{2,1}+W_{2,2}X_{2,2}+W_{b}) \\
+...</div><p><a href="/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/CNN-day-1.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度学习</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=CNN">CNN</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月06日</span>
             </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-06T11:26:41+00:00">
-    <meta itemprop="keywords" content="博客,写作"></div>
+    <meta itemprop="keywords" content="深度学习,CNN"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/sEMG-proposal-report.html"><h2 itemprop="headline" class="item__header">基于sEMG信号的手势识别系统</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">（报告内容包括课题的意义、国内外发展状况、本课题的研究内容、研究方法、研究手段、研究步骤以及参考文献资料等。）
+课题的意义：
+sEMG(Surface Electromyography)是指浅层肌肉纤维收缩时形成的综合电位差信号，肌电本质是大脑的中枢神经系统通过MUs(motor units)逐次兴奋和单位时间内的兴奋次数等控制肌肉收缩力的大小和变化速度。肌电信号是一维时间序列信号，来源于中枢神经脊髓中的运动神经元，是电极接触的众多运动单元发射与释放的APs（action potentials）总和。所以肌电信号包含肌肉收缩模式及强度的信息。
+  因此sEMG客观反映了人体肌肉活动的情况，手臂驱使人手作出不同手势动作的肌肉层的电势变化，各种动作的不同肌电变化是本课题研究目的。手势语言作...</div><p><a href="/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/sEMG-proposal-report.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度学习</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E7%94%9F%E7%90%86%E4%BF%A1%E5%8F%B7">生理信号</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=sEMG%E8%AF%86%E5%88%AB">sEMG识别</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月06日</span>
+            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-06T11:26:41+00:00">
+    <meta itemprop="keywords" content="深度学习,机器学习,生理信号,sEMG识别"></div>
       </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts.html"><h2 itemprop="headline" class="item__header">撰写博客</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">Jekyll博客的编写
@@ -365,6 +455,43 @@ _config.yml 包括一些在运行时一次性读入的全局配置和变量定�
                 href="/Study-Blog/archive.html?tag=%E5%86%99%E4%BD%9C">写作</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月06日</span>
             </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-06T11:26:41+00:00">
+    <meta itemprop="keywords" content="博客,写作"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html"><h2 itemprop="headline" class="item__header">Win10建云笔记用的简易博客Github+Jekyll </h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">前言
+
+花了半天时间建的博客，博客链接在此
+
+写一个Github建博客指南，防以后忘记
+
+若以下内容过时导致失效，请查阅Jekyll文档
+
+Jekyll文档：https://jekyllrb.com/docs/
+以及https://jekyllrb.com/docs/themes/
+
+安装环境
+
+  Ruby
+  RubyGems
+  NodeJS
+  Python3
+  GCC和Make
+
+
+下载的6个程序包，需设系统的环境变量…安装教程自行搜索，弄完了输入版本指令验证是否安装成功
+
+打开CMD安装jekyll和bundler
+ # gem安装依赖RubyGems实现
+ gem install jekyll bundler
+ # 输入查询版本指令，查看是否安装成功
+ jekyll -...</div><p><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E5%8D%9A%E5%AE%A2">博客</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E5%86%99%E4%BD%9C">写作</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月06日</span>
+            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-06T00:00:00+00:00">
     <meta itemprop="keywords" content="博客,写作"></div>
       </article></div>
 </div><div class="layout--home"></div>

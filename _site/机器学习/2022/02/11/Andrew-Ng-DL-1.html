@@ -1,0 +1,1328 @@
+<!DOCTYPE html><html lang="zh-CN">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>吴恩达机器学习笔记 Day 1 - allrobot的云笔记博客</title>
+
+<meta name="description" content="模型描述线性回归，这里的回归是指分类问题，用来预测离散值输出。举个例子：城市不同房子对应不同售价，假设某房子1250英尺，它的售价220000美元，数据集包含卖出的房子面积大小和价格。            $面积/m^{2} (x)$      $价格/1000美元(y)$                  2...">
+<link rel="canonical" href="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1.html"><link rel="alternate" type="application/rss+xml" title="allrobot的云笔记博客" href="/Study-Blog/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/Study-Blog/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/Study-Blog/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/Study-Blog/assets/favicon-16x16.png"><link rel="manifest" href="/Study-Blog/assets/site.webmanifest"><link rel="mask-icon" href="/Study-Blog/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/Study-Blog/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/Study-Blog/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet --><link rel="stylesheet" href="/Study-Blog/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" ><!-- start custom head snippets -->
+
+<!-- end custom head snippets -->
+<script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.6',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/Study-Blog/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script>
+</head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24">
+<style type="text/css">
+	.st0{fill:#515151;}
+</style>
+<path class="st0" d="M1.7,22.3c5.7-5.7,11.3-5.7,17,0c3.3-3.3,3.5-5.3,0.8-6c2.7,0.7,3.5-1.1,2.3-5.6s-3.3-5.2-6.3-2.1
+	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3"/>
+</svg>
+<a title="没啥好说的，本站是云笔记的博客，从Github拉取Blog
+" href="/Study-Blog/">allrobot的云笔记博客</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/Study-Blog/archive.html">归档</a></li><li class="navigation__item"><a href="/Study-Blog/about.html">关于</a></li><li class="navigation__item"><a href="https://www.cnblogs.com/allrobot-blog">博客园</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet -->
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>吴恩达机器学习笔记 Day 1</h1></header></div><meta itemprop="headline" content="吴恩达机器学习笔记 Day 1"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E5%90%B4%E6%81%A9%E8%BE%BE">吴恩达</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月11日</span>
+            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-11T00:00:00+00:00">
+    <meta itemprop="keywords" content="机器学习,吴恩达"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ 
+$\displaystyle\underbrace{a_i}_{\text{i从1到n}}$
+
+$\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
+-->
+
+<h2 id="模型描述">模型描述</h2>
+
+<p>线性<code class="language-plaintext highlighter-rouge">回归</code>，这里的回归是指<strong>分类</strong>问题，用来预测离散值输出。</p>
+
+<p>举个例子：城市不同房子对应不同售价，假设某房子1250英尺，它的售价220000美元，数据集包含卖出的房子面积大小和价格。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>$面积/m^{2} (x)$</th>
+      <th>$价格/1000美元(y)$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2014</td>
+      <td>460</td>
+    </tr>
+    <tr>
+      <td>1416</td>
+      <td>212</td>
+    </tr>
+    <tr>
+      <td>1436</td>
+      <td>315</td>
+    </tr>
+    <tr>
+      <td>859</td>
+      <td>178</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>…</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>符号</strong></p>
+
+<ul>
+  <li><strong>m</strong>=训练样本的数量
+    <ul>
+      <li>假如表格有47列，那么m=47</li>
+    </ul>
+  </li>
+  <li><strong>x’s</strong>=输入变量/特征
+    <ul>
+      <li>表格左侧的面积是输入变量或特征</li>
+    </ul>
+  </li>
+  <li><strong>y’s</strong>=输出变量/目标变量
+    <ul>
+      <li>表格右侧的价格</li>
+    </ul>
+  </li>
+</ul>
+
+<p>模型的工作是从这个数据中训练的。</p>
+
+<p>$(x,y)$</p>
+
+<ul>
+  <li>表示特定训练样本</li>
+</ul>
+
+<p>$(x^{(i)},y^{(i)})$</p>
+
+<ul>
+  <li>上标i表示第i个训练样本，充当索引作用，$x^{(1)}$是$2104$，$x^{(2)}$是$1416$，$y^{(1)}$是$460$</li>
+</ul>
+
+<pre><code class="language-mermaid">graph TB;
+	A[训练集]
+	B[学习算法]
+	C[h(函数)]
+	D[房子面积]
+	E[售价]
+	A--&gt;B;
+	B--&gt;C;
+	D--&gt;C;
+	C--&gt;E;
+</code></pre>
+
+<p>得到h函数，房子面积作为x输入，得到y的输出。这种根据房子尺寸进行房价预测的函数，函数取决于于用户用什么来表达。</p>
+
+\[h_{\theta}=\theta_{0}+\theta_{1}x\]
+
+<p>缩写: \(h_{\theta}(x)\)</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/1.PNG" alt="线性回归" /></p>
+
+<p>这种线性回归类型，是取决于x单一变量的。</p>
+
+<h2 id="监督学习">监督学习</h2>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/2.PNG" alt="预测房价" /></p>
+
+<p>y轴是房价，x轴是房子面积，此时用一条直线拟合数据,假设卖家的房子尺寸是$750^2$，那么它的售价为150*1000美元，如上图所示。</p>
+
+<p>如果函数用二阶多项式来表达，那么拟合数据的表现可能会更佳。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/3.PNG" alt="" /></p>
+
+<p>这回归问题的价格是一个离散值，预测离散值的输出。</p>
+
+<p>无论采用哪种模型算法，都属于监督学习的类型，监督学习算法目的是给定训练数据集，迭代函数的权重获得正确的答案，下次输入未知的x也能输出需要的答案。</p>
+
+<h2 id="无监督学习">无监督学习</h2>
+
+<p>假设某函数判断病人的肿瘤是否良性或恶性，用输出0与1来表示，这类有答案的</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/4.PNG" alt="" /></p>
+
+<p>当这些数据集没有任何标签，没有答案，算法自行学习其中的结构，将其给不同数据自行分类。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/5.PNG" alt="" /></p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/6.PNG" alt="" /></p>
+
+<h2 id="损失函数">损失函数</h2>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/7.PNG" alt="" /></p>
+
+<p>$\theta_{0},\theta_{1}$是常数，输出的值可能不同，通过数据集的训练使直线尽可能靠拢、拟合数据</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/7.PNG" alt="未分类的数据集" /></p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/8.PNG" alt="已分类的数据集" /></p>
+
+<p>如何得到正确的$\theta_{0},\theta_{1}$呢？</p>
+
+<p>损失函数定义：$\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2$，其中$h_{\theta}(x^{(i)})=\theta_{0}+\theta_{1}x^{(i)}$</p>
+
+<p>m为47个训练样本，通过损失函数计算它们的输出值$h_{\theta}$减去实际值$y^{(i)}$的二次方和从而得到的总误差项<sup id="fnref:foot1" role="doc-noteref"><a href="#fn:foot1" class="footnote" rel="footnote">1</a></sup>，目的是尽可能降低这个值。</p>
+
+<p>为了让损失函数变得容易理解，减少至$\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2$</p>
+
+<p>这是线性回归的整体目标函数，目标是减小$\theta_{0},\theta_{1}$的值，使总误差项最小化。</p>
+
+<h3 id="损失函数公式">损失函数公式</h3>
+
+\[\begin{equation}
+  J(\theta_{0},\theta_{1})=\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2  \\
+  \mathop{minimize}\limits_{\theta_{0},\theta_{1}} \mathop{J(\theta_{0},\theta_{1})}_{\text{损失函数}}
+\end{equation}\]
+
+<p>minimize v. 使减少到最低限度</p>
+
+<p>假设的函数模型的参数有各种各样,为了计算方便，这里先假定函数$h_{\theta}=\theta_{1}x^{(i)}$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/10.PNG" alt="" /></p>
+
+<p>假定$\theta_{1}=1$</p>
+
+\[\begin{equation*}
+  \begin{split}
+    J(1)
+    &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2  \\
+	&amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (\theta-y^{(i)})^2  \\
+	&amp; = \frac{1}{2m}(0^{2}+0^{2}+0^{2})  \\
+	&amp; = 0^{2}
+  \end{split}
+\end{equation*}\]
+
+<p>函数拟合数据得到最好的表现，总误差项为0，这是最理想的情况</p>
+
+<p>假定$\theta_{1}=0.5$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/11.PNG" alt="" /></p>
+
+\[\begin{equation*}
+  \begin{split}
+    J(0.5)
+	&amp; = \frac{1}{2m}[(0*5-1)^{2}+(1-2)^{2}+(1*5-3)^{2})] \\
+	&amp; = \frac{1}{2*3}(3*5) \\
+	&amp; = \frac{3*5}{6} \\
+	&amp; = 0.58
+  \end{split}
+\end{equation*}\]
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/12.PNG" alt="" /></p>
+
+\[\begin{equation*}
+  \begin{split}
+    J(0)
+	&amp; = \frac{1}{2m}[1^{2}+2^{2}+3^{2})] \\
+	&amp; = \frac{1}{6}*14 \\
+	&amp; = 2.3
+  \end{split}
+\end{equation*}\]
+
+<p>同理，当$\theta_{1}=-0.5$时，总误差项为5.25，误差非常大</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/13.PNG" alt="梯度" /></p>
+
+<p>横轴为$\theta_{1}$，纵轴为总误差项，之前$\theta_{1}=1、\theta_{0}=1\ldots$给出的总误差项y，构成上图</p>
+
+<p>损失函数的优化目标是获得最小值的$J(\theta_{1})$，此时上图$\theta_{1}=1$已结完美拟合了</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/14.PNG" alt="" /></p>
+
+<p>$\theta_{0}=50,\theta_{1}=0.06$,绘制$J(\theta_{0},\theta_{1})$就多了一个$\theta_{0}=50$，它与训练集相关</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/15.PNG" alt="" /></p>
+
+<p>这是等高线图，用2D表现如下图(几圈圈椭圆)，最小值位于最小的椭圆中心。</p>
+
+<p>首先假定$\theta_{0}=800,\theta_{1}=-0.15$，位于下图$J(\theta_{0},\theta_{1})$手绘篮圈的红叉号。左边的$h(x)$显然不符合，离最小值甚远，因为拟合的不好</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/16.PNG" alt="" /></p>
+
+<p>假定$\theta_{0}=360,\theta_{1}=0$，离最小值有些接近了</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/17.PNG" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/18.PNG" alt="" /></p>
+
+<p>到了这里，虽然不是最小值，这是训练样本实际值与预测值之间的所有误差和，$J(\theta_{0},\theta_{1})$表示损失函数J的意义，接近损失函数J最小值的点。</p>
+
+<p>我们目标是寻找一个高效的算法，来自动寻找损失函数J最小值，之后由于涉及众多参数、更高维的图形，只能通过代码实现。</p>
+
+<h2 id="梯度下降">梯度下降</h2>
+
+<p>用梯度下降算法最小化任意函数J，包括线性函数、非线性函数等。</p>
+
+<p>$J(\theta_{0},\theta_{1})$可扩展$J(\theta_{0},\theta_{1},\theta_{2}\ldots\theta_{n})$</p>
+
+<p>最小化$\mathop{min}\limits_{\theta_{0},\theta_{1}}J(\theta_{0},\theta_{1})$亦可$\mathop{min}\limits_{\theta_{0},\theta_{1}}J(\theta_{0},\theta_{1},\theta_{2}\ldots\theta_{n})$</p>
+
+<p>梯度下降，一般设$\theta_{0}=0,\theta_{1}=0)$，假如能看到哪里是最低点，如下图一步一步走不断收敛至局部最低点。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/19.PNG" alt="" /></p>
+
+<p>实际上，我们并不能环顾四周看哪里是最低的，是碰运气不断走着，直到获得完全不同的局部最优解<sup id="fnref:foot2" role="doc-noteref"><a href="#fn:foot2" class="footnote" rel="footnote">2</a></sup>。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/20.PNG" alt="" /></p>
+
+<h3 id="梯度下降算法">梯度下降算法</h3>
+
+\[\text{重复直至收敛}{\theta_{j}:=\theta_{j}-\alpha\frac{\partial}{\partial\theta_{j}}J(\theta_{0},\theta_{1})\qquad (\text{同时更新 j=0 和 j=1})}\]
+
+<p><code class="language-plaintext success highlighter-rouge">正确：同时更新</code>
+\(temp0:=\theta_{0}-\alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0},\theta_{1}) \\
+temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{1}) \\
+\theta_{0}:=temp0  \\
+\theta_{1}:=temp1\)</p>
+
+<p><code class="language-plaintext error highlighter-rouge">错误：异步更新</code>
+\(temp0:=\theta_{0}-\alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0},\theta_{1}) \\
+\theta_{0}:=temp0  \\
+temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{1}) \\
+\theta_{1}:=temp1\)</p>
+
+<blockquote>
+  <p><code class="language-plaintext info highlighter-rouge">:=</code>这是计算机赋值的意思</p>
+</blockquote>
+
+<p>$\alpha$是<strong>学习率</strong>，如果这个<strong>常数很大</strong>，那么梯度下降$J(\theta_{0},\theta_{1})$容易<strong>越过最小值</strong>，左右横跳导致梯度上升(自己算)；如果<strong>太小</strong>，要迭代<strong>很多次</strong>才能收敛。</p>
+
+<p>反复迭代，直至收敛为止。如果使用异步更新，那就不是梯度下降法了，是其它的算法。</p>
+
+<h3 id="梯度下降法的意义">梯度下降法的意义</h3>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/21.PNG" alt="" /></p>
+
+<p>公式的$\frac{\partial}{\partial \theta_{1}}J(\theta_{0})$是取坐标轴曲线一点的切线(红色直线的斜率)，这条线有正斜率，说明它有正导数。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/22.PNG" alt="" /></p>
+
+<p>因为是正数，$\theta_{1}$减去$\partial$乘以的正数，在坐标轴体现的是向左移动，然后迭代几轮收敛到最小值。</p>
+
+<p>如果$\theta_{1}$在左边，那么$\frac{\partial}{\partial \theta_{1}} J(\theta_{1})$的导数是负的，按公式(3)$\theta_{1}$的值不断递增，直至梯度最小值为止。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/23.PNG" alt="" /></p>
+
+<h4 id="梯度消失">梯度消失</h4>
+
+<p>假设$\theta_{1}$处于局部最优解，这样的话$\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})$的斜率等于0，不上升也不下降。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/24.PNG" alt="" /></p>
+
+<p>是因为$\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})$的斜率更新，刚开始从右边紫点出发，这时导数值值比较大，绿点随着接近最小值，得到导数值变小了，得到红点，再继续梯度下降，直至收敛到局部极小值。根据定义，在局部最低点时导数等于0，这是梯度下降法的运行方式，所以没必要减小$\partial$的值</p>
+
+\[\begin{equation*}
+  \begin{split}
+    \frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})
+	&amp; = \frac{\partial}{\partial \theta_{1}}\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2  \\
+	&amp; = \frac{\partial}{\partial \theta_{1}}\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (\theta_{0}+\theta_{1}x^{(i)}-y^{(i)})^2  \\
+	&amp; = 
+  \end{split}
+\end{equation*}\]
+
+<p>推导函数的两个$\theta$值，按上述推导可以明白(多元微分推导)</p>
+
+<p>对应$\theta_{0}$的$\frac{\vartheta}{\vartheta \theta_{0}}J(\theta_{0},\theta_{1})$的偏导数</p>
+
+\[\begin{equation*}
+  \begin{split}
+    \theta_{0}
+	&amp; = 0:\frac{\partial}{\partial \theta_{0}}J(\theta_{0},\theta_{1})
+	&amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})
+  \end{split}
+\end{equation*}\]
+
+<p>对应$\theta_{1}$的$\frac{\vartheta}{\vartheta \theta_{1}}J(\theta_{0},\theta_{1})$的偏导数</p>
+
+\[\begin{equation*}
+  \begin{split}
+    \theta_{1}
+	&amp; = 1:\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})
+	&amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})*x^{(i)}
+  \end{split}
+\end{equation*}\]
+
+<p>然后$\theta_{0},\theta_{1}$不断重复该过程直到收敛。线性回归问题通常表现为弓状函数(凸函数)，这种看起来像弓形，只有一个全局最优解，当计算这种损失函数的梯度下降，总是收敛到全局最优。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/26.PNG" alt="" /></p>
+
+<p>房价的数据集，先初始设定$\theta_{0}=-900,\theta_{1}=-0.1$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/27.PNG" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/28.PNG" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/29.PNG" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/30.PNG" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/31.PNG" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/32.PNG" alt="" /></p>
+
+<p>这种梯度下降法叫<strong>“Batch”</strong>梯度下降，遍历所有训练样本并计算偏导数，每一次梯度下降总要计算m个样本的总和。</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:foot1" role="doc-endnote">
+      <p>误差项，某些文献也称呼敏感度、错误率 <a href="#fnref:foot1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:foot2" role="doc-endnote">
+      <p><a href="">关于局部最优解</a> <a href="#fnref:foot2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div><section class="article__sharing d-print-none"><!-- Addthis BEGIN --><script type="text/javascript"
+    src="//s7.addthis.com/js/300/addthis_widget.js#pubid=allrobot"></script>
+  <div class="addthis_inline_share_toolbox addthis_default_style"></div><!-- Addthis END -->
+</section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-02-11T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>上篇</span><a href="/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/CNN-day-1.html">CNN入门</a></div><div class="next"><span>下篇</span><a href="/Study-Blog/2022/02/11/.html"></a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
+</div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet -->
+</div>
+            </div></div></div><div class="page__footer d-print-none">
+<footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李广琛"><meta itemprop="url" content="https://www.cnblogs.com/allrobot-blog"><meta itemprop="description" content="目前学习技术中."><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"><link itemprop="url" href="https://www.cnblogs.com/allrobot-blog"><li title="给我发邮件。">
+      <a class="button button--circle mail-button" itemprop="email" href="mailto:allrobots@163.com" target="_blank">
+        <i class="fas fa-envelope"></i>
+      </a><li title="在 Linkedin 上关注我。">
+        <a class="button button--circle linkedin-button" itemprop="sameAs" href="https://www.linkedin.com/in/广琛-李-323292225" target="_blank">
+          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M260.096 155.648c0 27.307008-9.899008 50.516992-29.696 69.632-19.796992 19.115008-45.396992 28.672-76.8 28.672-30.036992 0-54.612992-9.556992-73.728-28.672-19.115008-19.115008-28.672-42.324992-28.672-69.632 0-28.672 9.556992-52.224 28.672-70.656 19.115008-18.432 44.372992-27.648 75.776-27.648 31.403008 0 56.32 9.216 74.752 27.648 18.432 18.432 28.331008 41.984 29.696 70.656 0 0 0 0 0 0m-202.752 808.96c0 0 0-632.832 0-632.832 0 0 196.608 0 196.608 0 0 0 0 632.832 0 632.832 0 0-196.608 0-196.608 0 0 0 0 0 0 0m313.344-430.08c0-58.708992-1.364992-126.292992-4.096-202.752 0 0 169.984 0 169.984 0 0 0 10.24 88.064 10.24 88.064 0 0 4.096 0 4.096 0 40.96-68.267008 105.812992-102.4 194.56-102.4 68.267008 0 123.220992 22.868992 164.864 68.608 41.643008 45.739008 62.464 113.664 62.464 203.776 0 0 0 374.784 0 374.784 0 0-196.608 0-196.608 0 0 0 0-350.208 0-350.208 0-91.476992-33.451008-137.216-100.352-137.216-47.787008 0-81.236992 24.576-100.352 73.728-4.096 8.192-6.144 24.576-6.144 49.152 0 0 0 364.544 0 364.544 0 0-198.656 0-198.656 0 0 0 0-430.08 0-430.08 0 0 0 0 0 0" />
+</svg>
+</div>
+        </a>
+      </li><li title="在 Github 上关注我。">
+        <a class="button button--circle github-button" itemprop="sameAs" href="https://github.com/allrobot" target="_blank">
+          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path class="svgpath" data-index="path_0" fill="#272636" d="M0 525.2c0 223.6 143.3 413.7 343 483.5 26.9 6.8 22.8-12.4 22.8-25.4l0-88.7c-155.3 18.2-161.5-84.6-172-101.7-21.1-36-70.8-45.2-56-62.3 35.4-18.2 71.4 4.6 113.1 66.3 30.2 44.7 89.1 37.2 119 29.7 6.5-26.9 20.5-50.9 39.7-69.6C248.8 728.2 181.7 630 181.7 513.2c0-56.6 18.7-108.7 55.3-150.7-23.3-69.3 2.2-128.5 5.6-137.3 66.5-6 135.5 47.6 140.9 51.8 37.8-10.2 80.9-15.6 129.1-15.6 48.5 0 91.8 5.6 129.8 15.9 12.9-9.8 77-55.8 138.8-50.2 3.3 8.8 28.2 66.7 6.3 135 37.1 42.1 56 94.6 56 151.4 0 117-67.5 215.3-228.8 243.7 26.9 26.6 43.6 63.4 43.6 104.2l0 128.8c0.9 10.3 0 20.5 17.2 20.5C878.1 942.4 1024 750.9 1024 525.3c0-282.9-229.3-512-512-512C229.1 13.2 0 242.3 0 525.2L0 525.2z" />
+</svg>
+</div>
+        </a>
+      </li></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© allrobot的云笔记博客 2020,
+        Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> & <a
+        title="TeXt is a super customizable Jekyll theme." href="https://github.com/kitian616/jekyll-TeXt-theme">TeXt Theme</a>.
+      </div>
+    </div>
+  </div>
+</footer>
+</div></div>
+    </div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">搜索</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text" />
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        取消</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script>
+</div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+/*(function () {
+
+})();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script><script>
+  window.Lazyload.js(['https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js', 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js'], function() {
+    var $canvas = null, $this = null, _ctx = null, _text = '';
+    $('.language-chart').each(function(){
+      $this = $(this);
+      $canvas = $('<canvas></canvas>');
+      _text = $this.text();
+      $this.text('').append($canvas);
+      _ctx = $canvas.get(0).getContext('2d');
+      (_ctx && _text) && (new Chart(_ctx, JSON.parse(_text)) && $this.attr('data-processed', true));
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+	var _config = { tex2jax: {
+		inlineMath: [['$','$'], ['\\(','\\)']]
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
+</script>
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
+</script>
+
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>
+
