@@ -1,0 +1,1436 @@
+<!DOCTYPE html><html lang="zh-CN">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>吴恩达机器学习笔记 Day 3 - allrobot的云笔记博客</title>
+
+<meta name="description" content="分类先从二分类开始，假设$y\epsilon${0,1}，0和1分别输出no、yes：阈值可以设为0.5，当激活函数的加权输入$\ge$0.5则输出1，小于0.5则输出0  这种叫Logistic回归（逻辑回归）。但增加额外样本后，拟合情况就不那么好了，如图所示：所以不推荐线性回归模型用于分类问题。逻辑回归\[\...">
+<link rel="canonical" href="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/14/Andrew-Ng-DL-3.html"><link rel="alternate" type="application/rss+xml" title="allrobot的云笔记博客" href="/Study-Blog/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/Study-Blog/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/Study-Blog/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/Study-Blog/assets/favicon-16x16.png"><link rel="manifest" href="/Study-Blog/assets/site.webmanifest"><link rel="mask-icon" href="/Study-Blog/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/Study-Blog/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/Study-Blog/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet --><link rel="stylesheet" href="/Study-Blog/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" ><!-- start custom head snippets -->
+
+<!-- end custom head snippets -->
+<script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.6',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/Study-Blog/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script>
+</head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24">
+<style type="text/css">
+	.st0{fill:#515151;}
+</style>
+<path class="st0" d="M1.7,22.3c5.7-5.7,11.3-5.7,17,0c3.3-3.3,3.5-5.3,0.8-6c2.7,0.7,3.5-1.1,2.3-5.6s-3.3-5.2-6.3-2.1
+	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3"/>
+</svg>
+<a title="没啥好说的，本站是云笔记的博客，从Github拉取Blog
+" href="/Study-Blog/">allrobot的云笔记博客</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/Study-Blog/archive.html">归档</a></li><li class="navigation__item"><a href="/Study-Blog/about.html">关于</a></li><li class="navigation__item"><a href="https://www.cnblogs.com/allrobot-blog">博客园</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet -->
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>吴恩达机器学习笔记 Day 3</h1></header></div><meta itemprop="headline" content="吴恩达机器学习笔记 Day 3"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E5%90%B4%E6%81%A9%E8%BE%BE">吴恩达</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月14日</span>
+            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-14T00:00:00+00:00">
+    <meta itemprop="keywords" content="机器学习,吴恩达"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><h2 id="分类">分类</h2>
+
+<p>先从二分类开始，假设$y\epsilon${0,1}，0和1分别输出no、yes：</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/7.png" alt="" /></p>
+
+<p>阈值可以设为0.5，当激活函数的加权输入$\ge$0.5则输出1，小于0.5则输出0</p>
+
+<blockquote>
+  <p>这种叫<strong>Logistic回归（逻辑回归）</strong>。</p>
+</blockquote>
+
+<p>但增加额外样本后，拟合情况就不那么好了，如图所示：</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/8.png" alt="" /></p>
+
+<p>所以不推荐线性回归模型用于分类问题。</p>
+
+<h2 id="逻辑回归">逻辑回归</h2>
+
+\[\begin{equation*}
+  h_{\theta}(x)=g(\theta^{T}x)
+\end{equation*}\]
+
+<p>其中sigmoid激活函数</p>
+
+\[\begin{equation*}
+g(z)=\frac{1}{1+e^{-z}}
+\end{equation*}\]
+
+<blockquote>
+  <p>Sigmoid和Logistic函数是同义词</p>
+</blockquote>
+
+<p>激活函数的z为$\theta^{T}x$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/9.png" alt="" /></p>
+
+<p>z横坐标，$g(z)$纵坐标，左端趋于0，右端趋于1。</p>
+
+<p>假设一个患者的肿瘤，模型输出肿瘤大小x对于患者是有害还是无害的：</p>
+
+\[\begin{equation*}
+x=\begin{bmatrix}
+x_{0}  \\
+x_{1}
+\end{bmatrix}
+=\begin{bmatrix}
+1  \\
+\text{肿瘤面积}  \\
+\end{bmatrix}
+h_{\theta}(x)=0.7
+\end{equation*}\]
+
+<p>说明患者的肿瘤输出y=1的概率为0.7，写成数学表达式：$P(y=1|x;\theta)$，$\theta$为概率。
+y=1的表达式：$P(y=1|x;\theta)=1-P(y=1|x;\theta)$</p>
+
+<h3 id="决策边界">决策边界</h3>
+
+<p>决策边界(decision boundary)，下图中紫线是决策边界:</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/10.png" alt="" /></p>
+
+\[\begin{equation*}
+  h_{\theta}(x)=g(\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2})  \\
+\end{equation*}\]
+
+<p>输出</p>
+
+\[\begin{equation*}
+  \theta^{T}x=-3+x_{1}+x_{2}\ge 0  \\
+\end{equation*}\]
+
+<p>所以</p>
+
+\[\begin{equation*}
+  x_{1}+x_{2}\ge 3  \\
+  x_{1}+x_{2}&lt; 3  \\
+
+\end{equation*}\]
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/11.png" alt="" /></p>
+
+\[\begin{equation*}
+  h_{\theta}(x)=g(\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{3}+\theta_{4}x_{4})  \\
+\end{equation*}\]
+
+<p>$\theta$初始化为{-1，0，0，1，1}：</p>
+
+\[\begin{equation*}
+  \theta=
+  \begin{bmatrix}
+  -1  \\ 0  \\ 0  \\ 1  \\ 1  \\
+  \end{bmatrix}
+\end{equation*}\]
+
+<p>如果y=1</p>
+
+\[\begin{equation*}
+  -1+x_{1}^{2}+x_{2}^{2}\ge 0  \\
+\end{equation*}\]
+
+<p>那么</p>
+
+\[\begin{equation*}
+  x_{1}^{2}+x_{2}^{2}\ge 1
+\end{equation*}\]
+
+<p>决策边界是取决于参数的，并非通过训练训练集得出的结果，参数不同会得到不同的决策边界。</p>
+
+<p>复杂点的例子：</p>
+
+\[\begin{equation*}
+  h_{\theta}(x)=g(\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{3}+\theta_{4}x_{1}^{2}x_{2}+\theta_{4}x_{1}^{2}x_{2}^{2}+\theta_{4}x_{1}^{3}x_{2}+\ldots)  \\
+
+\end{equation*}\]
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/12.png" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/13.png" alt="" /></p>
+
+<h3 id="损失函数">损失函数</h3>
+
+<p>给出训练集$(x^{(i)},y^{(i)})$，i维特征向量矩阵，以及激活函数：</p>
+
+<p>$(x^{(1)},y^{(1)}),x^{(2)},y^{(2)}),\ldots,(x^{(n)},y^{(n)})$</p>
+
+\[\begin{equation*}
+  x^{(i)}=
+  \begin{bmatrix}
+    x_{0}^{(i)}  \\
+    x_{1}^{(i)}  \\
+    \ldots     \\
+    x_{n}^{(i)}  
+  \end{bmatrix}
+  x_{0}=1,\ 0\ &lt;\ y\ &lt;\ 1  \\
+  h_{\theta}(x)=\frac{1}{1+e^{-z}}
+\end{equation*}\]
+
+<p>接下来$\theta$目标值如何优化？</p>
+
+<p>原来的线性回归模型的损失函数，把$\frac{1}{2}$移至右边函数里面：</p>
+
+\[\begin{equation*}
+  J(\theta_{0},\theta_{1})=\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})^2  \\
+  
+  Cost(h_{\theta}(x^{(i)}),y^{(i)})=\frac{1}{2}(h_{\theta}(x^{(i)}),y^{(i)})^2
+\end{equation*}\]
+
+<p>这种损失函数在线性回归模型比较能良好工作，线性回归的非凹函数和凹函数，通常是希望凹函数能很好收敛全局最优解。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/14.png" alt="" /></p>
+
+<p>代价函数可能实际是非凹函数图的，迭代有时经常收敛到局部最优解，为了达到理想中的梯度下降，需要推导新的梯度下降法来收敛全局最小值的。</p>
+
+\[\begin{equation*}
+  Cost(h_{\theta}(x),y)=
+  \begin{cases}-log(h_{\theta}(x)) &amp; \text{if}\ y=1  \\
+  -log(1-h_{\theta}(x)) &amp; \text{if}\ y=0  
+  \end{cases}
+\end{equation*}\]
+
+<p>当y=1时，纵坐标为$J(\theta)$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/15.png" alt="" /></p>
+
+<p>y值无限趋于1，当$y=1,h_{\theta}(x)=1$时，损失函数输出为0，如果$h_{\theta}(x)$趋于0，那么损失趋于无穷。</p>
+
+<p>如果$h_{\theta}=0$，$P(y=1|x;\theta)=0$，y=1的概率趋于0。假如y=1的话，那么损失函数的值就很大了，用很大的损失来训练这个学习算法，使之下次确保输出1的概率趋于1.</p>
+
+<p>当y=0时，原理是一样的：</p>
+
+<p>$h_{\theta}=1$，$P(y=0|x;\theta)=0$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/16.png" alt="" /></p>
+
+<h2 id="简化损失函数和梯度下降法">简化损失函数和梯度下降法</h2>
+
+\[\begin{equation*}
+  J(\theta)=\frac{1}{m}\displaystyle\sum\limits_{i=1}^{m}Cost(h_{\theta}(x^{(i)},y^{(i)})  \\
+  Cost(h_{\theta}(x),y)=
+  \begin{cases}-log(h_{\theta}(x)) &amp; if\ y=1  \\
+  -log(1-h_{\theta}(x)) &amp; if\ y=0  
+  \end{cases}
+\end{equation*}\]
+
+<p>为了避免梯度下降法按两种情况写，把两个式子合并:</p>
+
+\[\begin{equation*}
+  Cost(h_{\theta}(x),y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x))  \\
+\end{equation*}\]
+
+<p>逻辑回归的损失函数，可以这么写的：</p>
+
+\[\begin{equation*}
+  
+  \begin{split}
+  J(\theta)
+  &amp; =\frac{1}{m}Cost(h_{\theta}(x^{(i)},y^{(i)})  \\
+  &amp; =-\frac{1}{m}[\displaystyle\sum\limits_{i=1}^{m}y^{(i)}log h_{\theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\theta}(x))]  \\
+  \end{split}
+\end{equation*}\]
+
+<p>公式是由统计学的极大似然法决定的，统计学为不同模型快速找参数，给出此方法(原理和证明略)，它的优点是凸函数。</p>
+
+\[\begin{equation*} min_{\theta}J(\theta):  \\
+\theta_{j}:=\theta_{j}-\alpha \frac{\partial}{\partial\theta_{j}}J(\theta)
+\end{equation*}\]
+
+<p>在此式中，$\frac{\partial}{\partial\theta_{j}}J(\theta)$多元微分推导成：</p>
+
+\[\begin{equation*} \frac{\partial}{\partial\theta_{j}}J(\theta)=\frac{1}{m}\displaystyle\sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}
+\end{equation*}\]
+
+<p>所以导数项：</p>
+
+\[\begin{equation*} \theta_{j}:=\theta_{j}-\alpha \displaystyle\sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}
+\end{equation*}\]
+
+<p>有若干$\theta$参数，更新参数值需要用到这个公式。</p>
+
+<p>线性回归和逻辑回归有什么区别？它们的梯度下降法不是同一个，拟合数据也比线性回归更佳，目前已广泛应用于机器学习领域中。</p>
+
+<h2 id="高级优化算法">高级优化算法</h2>
+
+<p>优化算法，给一个$\theta$，需要代码去计算损失函数和偏导数：</p>
+
+<ul>
+  <li>$J(\theta)$</li>
+  <li>$\frac{\partial}{\partial\theta_{j}}J(\theta) \qquad (for j=0,1,\ldots,n)$</li>
+</ul>
+
+<p>然后利用梯度下降法去优化目标值：</p>
+
+\[\begin{equation*} min_{\theta}J(\theta):  \\
+\theta_{j}:=\theta_{j}-\alpha \frac{\partial}{\partial\theta_{j}}J(\theta)
+\end{equation*}\]
+
+<p>除了常规优化算法，还有一些高级优化算法：</p>
+
+<ul>
+  <li>批次梯度下降法</li>
+  <li>共轭梯度法</li>
+  <li>BFGS</li>
+  <li>L-BFGS</li>
+</ul>
+
+<p>已知的梯度下降法就不介绍了，简单介绍其它三种优化算法的优点：
+优点：
+	- 不需要手动选择学习率
+	- 比常规梯度下降法快多了</p>
+
+<p>缺点：
+	- 非常复杂</p>
+
+<p>这些算法给出计算导数项和损失函数的方法，它们有线性搜索算法(智能内循环clever inner-loop)，每次迭代自动尝试不同学习率，所以收敛速度远远比常规梯度下降法快多了。</p>
+
+<p>细节待补充…可能要学几周时间</p>
+
+<h2 id="多分类一对多">多分类：一对多</h2>
+
+<p>二分类  VS  多分类：</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/17.png" alt="" /></p>
+
+<p>三种符号来代表三个不同类别的样本，逻辑回归模型能解决二类别问题，将训练集分为正类和负类，这种思想可以用于多分类：</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/18.png" alt="" /></p>
+
+<p>把三角形划分正类，其它作为圆形划分到负类，那么就可以训练一个标准的逻辑回归分类器，类推红叉号、蓝正方形可以这么划分。</p>
+
+<p>拟合出3个分类器，根据$h_{\theta}^{(i)}=P(y=i|x;\theta)=0\qquad(i=1,2,3)$来估计出x的概率，$\displaystyle\mathop{max}\limits_{i}h_{\theta_{\theta}^{(i)}(x)}$哪个概率大,分别对应各自的分类。</p>
+
+<p>每个分类器针对一种情况进行训练</p>
+
+<h2 id="过度拟合的问题">过度拟合的问题</h2>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/19.png" alt="" /></p>
+
+<p>第一个图，函数模型的直线不能很好拟合训练集，房价上升处是比较平缓、曲线的，这叫<strong>欠拟合</strong>，这算法具有高偏差特性，因为它和训练集理想的情况有很大的偏差；</p>
+
+<p>第二个图，加入二项式，它能很好拟合训练集；</p>
+
+<p>第三个图，四项式模拟的曲线上下波动，看似很好的拟合训练集(正好通过每一个训练样本），实际并不是预测房价的好模型，这种称为过度拟合，算法具有高方差。</p>
+
+<p>高阶多项式虽然能拟合训练集，但它面临庞大的变量问题，导致训练进程缓慢，再千方百计拟合训练集，只要不能泛化到新的样本就是白搭。</p>
+
+<blockquote>
+  <p>泛化：模型应用到新样本的能力</p>
+</blockquote>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/20.png" alt="" /></p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/21.png" alt="" /></p>
+
+<p>解决方案：
+	1. 减少特征变量$\theta$
+		- 手动保留特征变量
+		- 模型选择算法
+	2. 正则化
+		- 保留所有特征，减小参数的量级或参数$\theta_{j}$的大小
+		- 训练更多的训练样本，它能很好工作</p>
+
+<h2 id="损失函数正则化">损失函数正则化</h2>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/22.png" alt="" /></p>
+
+<p>高阶多项式，由于过拟合现象导致预测效果不太理想，为了解决应添加正则化参数，$\lambda$参数设为1000，因为数值较大，$\theta_{3}$和$\theta_{4}$的<strong>数值尽可能小</strong>。</p>
+
+\[\begin{equation*} 
+
+\mathop{min}\limits{\theta}\frac{1}{2m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})^{2}+1000\ \theta_{3}^3 + 1000\ \theta_{4}^2
+
+\end{equation*}\]
+
+<p>$\theta_{3}\ \approx\ 0\qquad\theta_{3}\ \approx\ 0$，这样取得更好的模型，增大了两个参数带来的效果。在实际测试中，结果表明<strong>参数越接近0</strong>，得到的函数越<strong>平滑、简单</strong>(原理证明略)。</p>
+
+<p>假设预测房价的模型的特征为$x_{1},x_{2},\ldots,x_{100}$，参数为$\theta_{0},\theta_{1},\theta_{2},\ldots,\theta_{100}$</p>
+
+<h3 id="正则化公式">正则化公式</h3>
+
+\[\begin{equation*} 
+
+J(\theta)=\frac{1}{2m}[\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})^{2}+\lambda\sum\limits_{i=1}^m\theta_{j}^2]
+
+\end{equation*}\]
+
+<p>如果$\lambda$值取得太大，会造成惩罚值变大，导致迭代后的参数几乎接近0，最后结果为欠拟合。</p>
+
+<h2 id="线性回归的正则化">线性回归的正则化</h2>
+
+<p>线性回归的优化算法:</p>
+
+\[\begin{equation*} 
+  \theta_{j}:=\theta_{j}-\alpha\qquad\frac{1}{m}\sum\limits_{i=1}^m \mathop{(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}}\qquad\text{j=0,1,2,}\ldots,n
+\end{equation*}\]
+
+<p>训练所有训练样本后，加起来再除以m进行迭代$\theta$参数。正则化的线性回归，它不迭代$\theta_{0}$参数，因为正则化是计算$j=1,2,3,\ldots,n$惩罚值的，要分开对待两种参数的惩罚值。</p>
+
+\[\begin{equation*} 
+  \theta_{j}:=\theta_{j}-\alpha[\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}+\frac{\lambda}{m}\theta_{j}]
+\end{equation*}\]
+
+<p>上面公式方括号包含的是$\frac{\partial}{\partial \theta_{j}}J(\theta)$的偏导数，证明略，最终得到：</p>
+
+\[\begin{equation*} 
+  \theta_{j}:=\theta_{j}(1-\alpha\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}
+\end{equation*}\]
+
+<p>这里的$\theta_{j}(1-\alpha\frac{1}{m})&lt;1$，学习率很小，m是较大的数值，因此$\alpha\frac{1}{m}$是一个正数，假如该项值=0.99，那么$\theta*0.99$值会变得小一点，也就是在$\theta_{j}^2$的平方范数值变小了。</p>
+
+<h2 id="正规方程的正则化">正规方程的正则化</h2>
+
+<p>设计一个$m*(n+1)$的矩阵X，X的每行代表一个训练样本，y矩阵为训练集的标签：</p>
+
+\[\begin{equation*} 
+X=
+\begin{bmatrix}
+(x^{(1)})^{T}  \\
+\ldots  \\
+(x^{(m)})^{T}  
+\end{bmatrix}
+\qquad\qquad\qquad
+y=
+\begin{bmatrix}
+y^{(1)}  \\
+\ldots   \\
+y^{(m)}  
+\end{bmatrix}
+\end{equation*}\]
+
+<p>为了最小化损失函数，$\mathop{min}\limits{\theta}J(\theta)$</p>
+
+\[\begin{equation*} 
+\theta=(x^{T}X+\lambda
+\begin{bmatrix}
+0&amp;0&amp;0&amp;\ldots&amp;0  \\
+0&amp;1&amp;0&amp;\ldots&amp;0  \\
+0&amp;0&amp;1&amp;\ldots&amp;0  \\
+0&amp;0&amp;0&amp;\ldots&amp;0  \\
+0&amp;0&amp;0&amp;\ldots&amp;1
+\end{bmatrix}
+)^{-1}X^{T}y
+
+\end{equation*}\]
+
+<p>设n=2的话，上面公式的矩阵是3x3，因此矩阵是(n+1)x(n+1)，按公式去计算可以取得$J(\theta)$最小值。</p>
+
+<p>当训练样本$m\ \le$特征$n$时，X转置乘以X的矩阵是不可逆的，当发现不可逆的时候，可以考虑采用正则化来解决。</p>
+
+<h2 id="逻辑回归的正则化">逻辑回归的正则化</h2>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/23.png" alt="" /></p>
+
+<p>逻辑回归的函数有众多相关度较低的特征，损失函数为：</p>
+
+\[\begin{equation*} 
+-\frac{1}{m}[\displaystyle\sum\limits_{i=1}^{m}y^{(i)}log h_{\theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\theta}(x))]
+
+\end{equation*}\]
+
+<p>正则化的逻辑回归损失函数：</p>
+
+\[\begin{equation*} 
+-\frac{1}{m}[\displaystyle\sum\limits_{i=1}^{m}y^{(i)}log h_{\theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\theta}(x))]+\frac{\lambda}{m}\theta_{j}
+\end{equation*}\]
+
+<p>依旧是针对$\theta_{1},\theta_{2},\ldots,\theta_{n}$参数，关于参数的更新，还是分开对待的。</p>
+
+<h3 id="梯度下降算法">梯度下降算法</h3>
+
+\[\begin{equation*} 
+  \theta_{j}:=\theta_{j}(1-\alpha\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}  \\
+  \theta_{j}:=\theta_{j}(1-\alpha[\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}+\frac{\lambda}{m}\theta_{j}]  \\
+\end{equation*}\]
+
+<p>其中的$\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}+\frac{\lambda}{m}\theta_{j}$是损失函数</p>
+
+<p>关于更高级的优化算法使用正则化，假设有n个参数的n维矩阵：</p>
+
+\[\begin{equation*} 
+\theta=
+\begin{bmatrix}
+\theta_{0}  \\
+\theta_{1}  \\
+\theta_{2}  \\
+\ldots  \\
+\theta_{n}
+\end{bmatrix}
+\end{equation*}\]
+
+<h3 id="优化算法">优化算法</h3>
+
+<p>先计算所有样本的总误差项$J(\theta)$：</p>
+
+\[\begin{equation*} 
+-\frac{1}{m}[\displaystyle\sum\limits_{i=1}^{m}y^{(i)}log h_{\theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\theta}(x))]+\frac{\lambda}{m}\theta_{j}
+\end{equation*}\]
+
+<p>然后计算$\frac{\partial}{\partial\theta_{0}}J(\theta)$对\theta_{0}$的偏导数：
+\(\begin{equation*} 
+  \frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x_{0}^{(i)})
+\end{equation*}\)
+$\frac{\partial}{\partial\theta_{1}}J(\theta)$对于$\theta_{1}$的导数项：
+\(\begin{equation*} 
+  [\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x_{1}^{(i)})]+\frac{\lambda}{m}\theta_{1}
+\end{equation*}\)
+$\frac{\partial}{\partial\theta_{2}}J(\theta)$对于$\theta_{2}$导数项：
+\(\begin{equation*} 
+  [\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x_{2}^{(i)})]+\frac{\lambda}{m}\theta_{2}
+\end{equation*}\)
+后面</p>
+
+</div><section class="article__sharing d-print-none"><!-- Addthis BEGIN --><script type="text/javascript"
+    src="//s7.addthis.com/js/300/addthis_widget.js#pubid=allrobot"></script>
+  <div class="addthis_inline_share_toolbox addthis_default_style"></div><!-- Addthis END -->
+</section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-02-14T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>上篇</span><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/12/Andrew-Ng-DL-2.html">吴恩达机器学习笔记 Day 2</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
+</div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet -->
+</div>
+            </div></div></div><div class="page__footer d-print-none">
+<footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李广琛"><meta itemprop="url" content="https://www.cnblogs.com/allrobot-blog"><meta itemprop="description" content="目前学习技术中."><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"><link itemprop="url" href="https://www.cnblogs.com/allrobot-blog"><li title="给我发邮件。">
+      <a class="button button--circle mail-button" itemprop="email" href="mailto:allrobots@163.com" target="_blank">
+        <i class="fas fa-envelope"></i>
+      </a><li title="在 Linkedin 上关注我。">
+        <a class="button button--circle linkedin-button" itemprop="sameAs" href="https://www.linkedin.com/in/广琛-李-323292225" target="_blank">
+          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M260.096 155.648c0 27.307008-9.899008 50.516992-29.696 69.632-19.796992 19.115008-45.396992 28.672-76.8 28.672-30.036992 0-54.612992-9.556992-73.728-28.672-19.115008-19.115008-28.672-42.324992-28.672-69.632 0-28.672 9.556992-52.224 28.672-70.656 19.115008-18.432 44.372992-27.648 75.776-27.648 31.403008 0 56.32 9.216 74.752 27.648 18.432 18.432 28.331008 41.984 29.696 70.656 0 0 0 0 0 0m-202.752 808.96c0 0 0-632.832 0-632.832 0 0 196.608 0 196.608 0 0 0 0 632.832 0 632.832 0 0-196.608 0-196.608 0 0 0 0 0 0 0m313.344-430.08c0-58.708992-1.364992-126.292992-4.096-202.752 0 0 169.984 0 169.984 0 0 0 10.24 88.064 10.24 88.064 0 0 4.096 0 4.096 0 40.96-68.267008 105.812992-102.4 194.56-102.4 68.267008 0 123.220992 22.868992 164.864 68.608 41.643008 45.739008 62.464 113.664 62.464 203.776 0 0 0 374.784 0 374.784 0 0-196.608 0-196.608 0 0 0 0-350.208 0-350.208 0-91.476992-33.451008-137.216-100.352-137.216-47.787008 0-81.236992 24.576-100.352 73.728-4.096 8.192-6.144 24.576-6.144 49.152 0 0 0 364.544 0 364.544 0 0-198.656 0-198.656 0 0 0 0-430.08 0-430.08 0 0 0 0 0 0" />
+</svg>
+</div>
+        </a>
+      </li><li title="在 Github 上关注我。">
+        <a class="button button--circle github-button" itemprop="sameAs" href="https://github.com/allrobot" target="_blank">
+          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path class="svgpath" data-index="path_0" fill="#272636" d="M0 525.2c0 223.6 143.3 413.7 343 483.5 26.9 6.8 22.8-12.4 22.8-25.4l0-88.7c-155.3 18.2-161.5-84.6-172-101.7-21.1-36-70.8-45.2-56-62.3 35.4-18.2 71.4 4.6 113.1 66.3 30.2 44.7 89.1 37.2 119 29.7 6.5-26.9 20.5-50.9 39.7-69.6C248.8 728.2 181.7 630 181.7 513.2c0-56.6 18.7-108.7 55.3-150.7-23.3-69.3 2.2-128.5 5.6-137.3 66.5-6 135.5 47.6 140.9 51.8 37.8-10.2 80.9-15.6 129.1-15.6 48.5 0 91.8 5.6 129.8 15.9 12.9-9.8 77-55.8 138.8-50.2 3.3 8.8 28.2 66.7 6.3 135 37.1 42.1 56 94.6 56 151.4 0 117-67.5 215.3-228.8 243.7 26.9 26.6 43.6 63.4 43.6 104.2l0 128.8c0.9 10.3 0 20.5 17.2 20.5C878.1 942.4 1024 750.9 1024 525.3c0-282.9-229.3-512-512-512C229.1 13.2 0 242.3 0 525.2L0 525.2z" />
+</svg>
+</div>
+        </a>
+      </li></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© allrobot的云笔记博客 2020,
+        Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> & <a
+        title="TeXt is a super customizable Jekyll theme." href="https://github.com/kitian616/jekyll-TeXt-theme">TeXt Theme</a>.
+      </div>
+    </div>
+  </div>
+</footer>
+</div></div>
+    </div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">搜索</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text" />
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        取消</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script>
+</div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+/*(function () {
+
+})();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script><script>
+  window.Lazyload.js(['https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js', 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js'], function() {
+    var $canvas = null, $this = null, _ctx = null, _text = '';
+    $('.language-chart').each(function(){
+      $this = $(this);
+      $canvas = $('<canvas></canvas>');
+      _text = $this.text();
+      $this.text('').append($canvas);
+      _ctx = $canvas.get(0).getContext('2d');
+      (_ctx && _text) && (new Chart(_ctx, JSON.parse(_text)) && $this.attr('data-processed', true));
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+	var _config = { tex2jax: {
+		inlineMath: [['$','$'], ['\\(','\\)']]
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
+</script>
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
+</script>
+
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>
+

@@ -1,5 +1,455 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/Study-Blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/Study-Blog/" rel="alternate" type="text/html" hreflang="zh-CN" /><updated>2022-02-13T10:07:26+00:00</updated><id>http://localhost:4000/Study-Blog/feed.xml</id><title type="html">allrobot的云笔记博客</title><subtitle>没啥好说的，本站是云笔记的博客，从Github拉取Blog
-</subtitle><author><name>李广琛</name><email>allrobots@163.com</email></author><entry><title type="html">吴恩达机器学习笔记 Day 2</title><link href="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/12/Andrew-Ng-DL-2.html" rel="alternate" type="text/html" title="吴恩达机器学习笔记 Day 2" /><published>2022-02-12T00:00:00+00:00</published><updated>2022-02-12T00:00:00+00:00</updated><id>http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/12/Andrew-Ng-DL-2</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/12/Andrew-Ng-DL-2.html"><![CDATA[<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/Study-Blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/Study-Blog/" rel="alternate" type="text/html" hreflang="zh-CN" /><updated>2022-02-17T08:38:56+00:00</updated><id>http://localhost:4000/Study-Blog/feed.xml</id><title type="html">allrobot的云笔记博客</title><subtitle>没啥好说的，本站是云笔记的博客，从Github拉取Blog
+</subtitle><author><name>李广琛</name><email>allrobots@163.com</email></author><entry><title type="html">吴恩达机器学习笔记 Day 3</title><link href="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/14/Andrew-Ng-DL-3.html" rel="alternate" type="text/html" title="吴恩达机器学习笔记 Day 3" /><published>2022-02-14T00:00:00+00:00</published><updated>2022-02-14T00:00:00+00:00</updated><id>http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/14/Andrew-Ng-DL-3</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/14/Andrew-Ng-DL-3.html"><![CDATA[<h2 id="分类">分类</h2>
+
+<p>先从二分类开始，假设$y\epsilon${0,1}，0和1分别输出no、yes：</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/7.png" alt="" /></p>
+
+<p>阈值可以设为0.5，当激活函数的加权输入$\ge$0.5则输出1，小于0.5则输出0</p>
+
+<blockquote>
+  <p>这种叫<strong>Logistic回归（逻辑回归）</strong>。</p>
+</blockquote>
+
+<p>但增加额外样本后，拟合情况就不那么好了，如图所示：</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/8.png" alt="" /></p>
+
+<p>所以不推荐线性回归模型用于分类问题。</p>
+
+<h2 id="逻辑回归">逻辑回归</h2>
+
+\[\begin{equation*}
+  h_{\theta}(x)=g(\theta^{T}x)
+\end{equation*}\]
+
+<p>其中sigmoid激活函数</p>
+
+\[\begin{equation*}
+g(z)=\frac{1}{1+e^{-z}}
+\end{equation*}\]
+
+<blockquote>
+  <p>Sigmoid和Logistic函数是同义词</p>
+</blockquote>
+
+<p>激活函数的z为$\theta^{T}x$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/9.png" alt="" /></p>
+
+<p>z横坐标，$g(z)$纵坐标，左端趋于0，右端趋于1。</p>
+
+<p>假设一个患者的肿瘤，模型输出肿瘤大小x对于患者是有害还是无害的：</p>
+
+\[\begin{equation*}
+x=\begin{bmatrix}
+x_{0}  \\
+x_{1}
+\end{bmatrix}
+=\begin{bmatrix}
+1  \\
+\text{肿瘤面积}  \\
+\end{bmatrix}
+h_{\theta}(x)=0.7
+\end{equation*}\]
+
+<p>说明患者的肿瘤输出y=1的概率为0.7，写成数学表达式：$P(y=1|x;\theta)$，$\theta$为概率。
+y=1的表达式：$P(y=1|x;\theta)=1-P(y=1|x;\theta)$</p>
+
+<h3 id="决策边界">决策边界</h3>
+
+<p>决策边界(decision boundary)，下图中紫线是决策边界:</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/10.png" alt="" /></p>
+
+\[\begin{equation*}
+  h_{\theta}(x)=g(\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2})  \\
+\end{equation*}\]
+
+<p>输出</p>
+
+\[\begin{equation*}
+  \theta^{T}x=-3+x_{1}+x_{2}\ge 0  \\
+\end{equation*}\]
+
+<p>所以</p>
+
+\[\begin{equation*}
+  x_{1}+x_{2}\ge 3  \\
+  x_{1}+x_{2}&lt; 3  \\
+
+\end{equation*}\]
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/11.png" alt="" /></p>
+
+\[\begin{equation*}
+  h_{\theta}(x)=g(\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{3}+\theta_{4}x_{4})  \\
+\end{equation*}\]
+
+<p>$\theta$初始化为{-1，0，0，1，1}：</p>
+
+\[\begin{equation*}
+  \theta=
+  \begin{bmatrix}
+  -1  \\ 0  \\ 0  \\ 1  \\ 1  \\
+  \end{bmatrix}
+\end{equation*}\]
+
+<p>如果y=1</p>
+
+\[\begin{equation*}
+  -1+x_{1}^{2}+x_{2}^{2}\ge 0  \\
+\end{equation*}\]
+
+<p>那么</p>
+
+\[\begin{equation*}
+  x_{1}^{2}+x_{2}^{2}\ge 1
+\end{equation*}\]
+
+<p>决策边界是取决于参数的，并非通过训练训练集得出的结果，参数不同会得到不同的决策边界。</p>
+
+<p>复杂点的例子：</p>
+
+\[\begin{equation*}
+  h_{\theta}(x)=g(\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{3}+\theta_{4}x_{1}^{2}x_{2}+\theta_{4}x_{1}^{2}x_{2}^{2}+\theta_{4}x_{1}^{3}x_{2}+\ldots)  \\
+
+\end{equation*}\]
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/12.png" alt="" />
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/13.png" alt="" /></p>
+
+<h3 id="损失函数">损失函数</h3>
+
+<p>给出训练集$(x^{(i)},y^{(i)})$，i维特征向量矩阵，以及激活函数：</p>
+
+<p>$(x^{(1)},y^{(1)}),x^{(2)},y^{(2)}),\ldots,(x^{(n)},y^{(n)})$</p>
+
+\[\begin{equation*}
+  x^{(i)}=
+  \begin{bmatrix}
+    x_{0}^{(i)}  \\
+    x_{1}^{(i)}  \\
+    \ldots     \\
+    x_{n}^{(i)}  
+  \end{bmatrix}
+  x_{0}=1,\ 0\ &lt;\ y\ &lt;\ 1  \\
+  h_{\theta}(x)=\frac{1}{1+e^{-z}}
+\end{equation*}\]
+
+<p>接下来$\theta$目标值如何优化？</p>
+
+<p>原来的线性回归模型的损失函数，把$\frac{1}{2}$移至右边函数里面：</p>
+
+\[\begin{equation*}
+  J(\theta_{0},\theta_{1})=\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})^2  \\
+  
+  Cost(h_{\theta}(x^{(i)}),y^{(i)})=\frac{1}{2}(h_{\theta}(x^{(i)}),y^{(i)})^2
+\end{equation*}\]
+
+<p>这种损失函数在线性回归模型比较能良好工作，线性回归的非凹函数和凹函数，通常是希望凹函数能很好收敛全局最优解。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/14.png" alt="" /></p>
+
+<p>代价函数可能实际是非凹函数图的，迭代有时经常收敛到局部最优解，为了达到理想中的梯度下降，需要推导新的梯度下降法来收敛全局最小值的。</p>
+
+\[\begin{equation*}
+  Cost(h_{\theta}(x),y)=
+  \begin{cases}-log(h_{\theta}(x)) &amp; \text{if}\ y=1  \\
+  -log(1-h_{\theta}(x)) &amp; \text{if}\ y=0  
+  \end{cases}
+\end{equation*}\]
+
+<p>当y=1时，纵坐标为$J(\theta)$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/15.png" alt="" /></p>
+
+<p>y值无限趋于1，当$y=1,h_{\theta}(x)=1$时，损失函数输出为0，如果$h_{\theta}(x)$趋于0，那么损失趋于无穷。</p>
+
+<p>如果$h_{\theta}=0$，$P(y=1|x;\theta)=0$，y=1的概率趋于0。假如y=1的话，那么损失函数的值就很大了，用很大的损失来训练这个学习算法，使之下次确保输出1的概率趋于1.</p>
+
+<p>当y=0时，原理是一样的：</p>
+
+<p>$h_{\theta}=1$，$P(y=0|x;\theta)=0$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/16.png" alt="" /></p>
+
+<h2 id="简化损失函数和梯度下降法">简化损失函数和梯度下降法</h2>
+
+\[\begin{equation*}
+  J(\theta)=\frac{1}{m}\displaystyle\sum\limits_{i=1}^{m}Cost(h_{\theta}(x^{(i)},y^{(i)})  \\
+  Cost(h_{\theta}(x),y)=
+  \begin{cases}-log(h_{\theta}(x)) &amp; if\ y=1  \\
+  -log(1-h_{\theta}(x)) &amp; if\ y=0  
+  \end{cases}
+\end{equation*}\]
+
+<p>为了避免梯度下降法按两种情况写，把两个式子合并:</p>
+
+\[\begin{equation*}
+  Cost(h_{\theta}(x),y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x))  \\
+\end{equation*}\]
+
+<p>逻辑回归的损失函数，可以这么写的：</p>
+
+\[\begin{equation*}
+  
+  \begin{split}
+  J(\theta)
+  &amp; =\frac{1}{m}Cost(h_{\theta}(x^{(i)},y^{(i)})  \\
+  &amp; =-\frac{1}{m}[\displaystyle\sum\limits_{i=1}^{m}y^{(i)}log h_{\theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\theta}(x))]  \\
+  \end{split}
+\end{equation*}\]
+
+<p>公式是由统计学的极大似然法决定的，统计学为不同模型快速找参数，给出此方法(原理和证明略)，它的优点是凸函数。</p>
+
+\[\begin{equation*} min_{\theta}J(\theta):  \\
+\theta_{j}:=\theta_{j}-\alpha \frac{\partial}{\partial\theta_{j}}J(\theta)
+\end{equation*}\]
+
+<p>在此式中，$\frac{\partial}{\partial\theta_{j}}J(\theta)$多元微分推导成：</p>
+
+\[\begin{equation*} \frac{\partial}{\partial\theta_{j}}J(\theta)=\frac{1}{m}\displaystyle\sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}
+\end{equation*}\]
+
+<p>所以导数项：</p>
+
+\[\begin{equation*} \theta_{j}:=\theta_{j}-\alpha \displaystyle\sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}
+\end{equation*}\]
+
+<p>有若干$\theta$参数，更新参数值需要用到这个公式。</p>
+
+<p>线性回归和逻辑回归有什么区别？它们的梯度下降法不是同一个，拟合数据也比线性回归更佳，目前已广泛应用于机器学习领域中。</p>
+
+<h2 id="高级优化算法">高级优化算法</h2>
+
+<p>优化算法，给一个$\theta$，需要代码去计算损失函数和偏导数：</p>
+
+<ul>
+  <li>$J(\theta)$</li>
+  <li>$\frac{\partial}{\partial\theta_{j}}J(\theta) \qquad (for j=0,1,\ldots,n)$</li>
+</ul>
+
+<p>然后利用梯度下降法去优化目标值：</p>
+
+\[\begin{equation*} min_{\theta}J(\theta):  \\
+\theta_{j}:=\theta_{j}-\alpha \frac{\partial}{\partial\theta_{j}}J(\theta)
+\end{equation*}\]
+
+<p>除了常规优化算法，还有一些高级优化算法：</p>
+
+<ul>
+  <li>批次梯度下降法</li>
+  <li>共轭梯度法</li>
+  <li>BFGS</li>
+  <li>L-BFGS</li>
+</ul>
+
+<p>已知的梯度下降法就不介绍了，简单介绍其它三种优化算法的优点：
+优点：
+	- 不需要手动选择学习率
+	- 比常规梯度下降法快多了</p>
+
+<p>缺点：
+	- 非常复杂</p>
+
+<p>这些算法给出计算导数项和损失函数的方法，它们有线性搜索算法(智能内循环clever inner-loop)，每次迭代自动尝试不同学习率，所以收敛速度远远比常规梯度下降法快多了。</p>
+
+<p>细节待补充…可能要学几周时间</p>
+
+<h2 id="多分类一对多">多分类：一对多</h2>
+
+<p>二分类  VS  多分类：</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/17.png" alt="" /></p>
+
+<p>三种符号来代表三个不同类别的样本，逻辑回归模型能解决二类别问题，将训练集分为正类和负类，这种思想可以用于多分类：</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/18.png" alt="" /></p>
+
+<p>把三角形划分正类，其它作为圆形划分到负类，那么就可以训练一个标准的逻辑回归分类器，类推红叉号、蓝正方形可以这么划分。</p>
+
+<p>拟合出3个分类器，根据$h_{\theta}^{(i)}=P(y=i|x;\theta)=0\qquad(i=1,2,3)$来估计出x的概率，$\displaystyle\mathop{max}\limits_{i}h_{\theta_{\theta}^{(i)}(x)}$哪个概率大,分别对应各自的分类。</p>
+
+<p>每个分类器针对一种情况进行训练</p>
+
+<h2 id="过度拟合的问题">过度拟合的问题</h2>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/19.png" alt="" /></p>
+
+<p>第一个图，函数模型的直线不能很好拟合训练集，房价上升处是比较平缓、曲线的，这叫<strong>欠拟合</strong>，这算法具有高偏差特性，因为它和训练集理想的情况有很大的偏差；</p>
+
+<p>第二个图，加入二项式，它能很好拟合训练集；</p>
+
+<p>第三个图，四项式模拟的曲线上下波动，看似很好的拟合训练集(正好通过每一个训练样本），实际并不是预测房价的好模型，这种称为过度拟合，算法具有高方差。</p>
+
+<p>高阶多项式虽然能拟合训练集，但它面临庞大的变量问题，导致训练进程缓慢，再千方百计拟合训练集，只要不能泛化到新的样本就是白搭。</p>
+
+<blockquote>
+  <p>泛化：模型应用到新样本的能力</p>
+</blockquote>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/20.png" alt="" /></p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/21.png" alt="" /></p>
+
+<p>解决方案：
+	1. 减少特征变量$\theta$
+		- 手动保留特征变量
+		- 模型选择算法
+	2. 正则化
+		- 保留所有特征，减小参数的量级或参数$\theta_{j}$的大小
+		- 训练更多的训练样本，它能很好工作</p>
+
+<h2 id="损失函数正则化">损失函数正则化</h2>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/22.png" alt="" /></p>
+
+<p>高阶多项式，由于过拟合现象导致预测效果不太理想，为了解决应添加正则化参数，$\lambda$参数设为1000，因为数值较大，$\theta_{3}$和$\theta_{4}$的<strong>数值尽可能小</strong>。</p>
+
+\[\begin{equation*} 
+
+\mathop{min}\limits{\theta}\frac{1}{2m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})^{2}+1000\ \theta_{3}^3 + 1000\ \theta_{4}^2
+
+\end{equation*}\]
+
+<p>$\theta_{3}\ \approx\ 0\qquad\theta_{3}\ \approx\ 0$，这样取得更好的模型，增大了两个参数带来的效果。在实际测试中，结果表明<strong>参数越接近0</strong>，得到的函数越<strong>平滑、简单</strong>(原理证明略)。</p>
+
+<p>假设预测房价的模型的特征为$x_{1},x_{2},\ldots,x_{100}$，参数为$\theta_{0},\theta_{1},\theta_{2},\ldots,\theta_{100}$</p>
+
+<h3 id="正则化公式">正则化公式</h3>
+
+\[\begin{equation*} 
+
+J(\theta)=\frac{1}{2m}[\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})^{2}+\lambda\sum\limits_{i=1}^m\theta_{j}^2]
+
+\end{equation*}\]
+
+<p>如果$\lambda$值取得太大，会造成惩罚值变大，导致迭代后的参数几乎接近0，最后结果为欠拟合。</p>
+
+<h2 id="线性回归的正则化">线性回归的正则化</h2>
+
+<p>线性回归的优化算法:</p>
+
+\[\begin{equation*} 
+  \theta_{j}:=\theta_{j}-\alpha\qquad\frac{1}{m}\sum\limits_{i=1}^m \mathop{(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}}\qquad\text{j=0,1,2,}\ldots,n
+\end{equation*}\]
+
+<p>训练所有训练样本后，加起来再除以m进行迭代$\theta$参数。正则化的线性回归，它不迭代$\theta_{0}$参数，因为正则化是计算$j=1,2,3,\ldots,n$惩罚值的，要分开对待两种参数的惩罚值。</p>
+
+\[\begin{equation*} 
+  \theta_{j}:=\theta_{j}-\alpha[\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}+\frac{\lambda}{m}\theta_{j}]
+\end{equation*}\]
+
+<p>上面公式方括号包含的是$\frac{\partial}{\partial \theta_{j}}J(\theta)$的偏导数，证明略，最终得到：</p>
+
+\[\begin{equation*} 
+  \theta_{j}:=\theta_{j}(1-\alpha\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}
+\end{equation*}\]
+
+<p>这里的$\theta_{j}(1-\alpha\frac{1}{m})&lt;1$，学习率很小，m是较大的数值，因此$\alpha\frac{1}{m}$是一个正数，假如该项值=0.99，那么$\theta*0.99$值会变得小一点，也就是在$\theta_{j}^2$的平方范数值变小了。</p>
+
+<h2 id="正规方程的正则化">正规方程的正则化</h2>
+
+<p>设计一个$m*(n+1)$的矩阵X，X的每行代表一个训练样本，y矩阵为训练集的标签：</p>
+
+\[\begin{equation*} 
+X=
+\begin{bmatrix}
+(x^{(1)})^{T}  \\
+\ldots  \\
+(x^{(m)})^{T}  
+\end{bmatrix}
+\qquad\qquad\qquad
+y=
+\begin{bmatrix}
+y^{(1)}  \\
+\ldots   \\
+y^{(m)}  
+\end{bmatrix}
+\end{equation*}\]
+
+<p>为了最小化损失函数，$\mathop{min}\limits{\theta}J(\theta)$</p>
+
+\[\begin{equation*} 
+\theta=(x^{T}X+\lambda
+\begin{bmatrix}
+0&amp;0&amp;0&amp;\ldots&amp;0  \\
+0&amp;1&amp;0&amp;\ldots&amp;0  \\
+0&amp;0&amp;1&amp;\ldots&amp;0  \\
+0&amp;0&amp;0&amp;\ldots&amp;0  \\
+0&amp;0&amp;0&amp;\ldots&amp;1
+\end{bmatrix}
+)^{-1}X^{T}y
+
+\end{equation*}\]
+
+<p>设n=2的话，上面公式的矩阵是3x3，因此矩阵是(n+1)x(n+1)，按公式去计算可以取得$J(\theta)$最小值。</p>
+
+<p>当训练样本$m\ \le$特征$n$时，X转置乘以X的矩阵是不可逆的，当发现不可逆的时候，可以考虑采用正则化来解决。</p>
+
+<h2 id="逻辑回归的正则化">逻辑回归的正则化</h2>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/23.png" alt="" /></p>
+
+<p>逻辑回归的函数有众多相关度较低的特征，损失函数为：</p>
+
+\[\begin{equation*} 
+-\frac{1}{m}[\displaystyle\sum\limits_{i=1}^{m}y^{(i)}log h_{\theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\theta}(x))]
+
+\end{equation*}\]
+
+<p>正则化的逻辑回归损失函数：</p>
+
+\[\begin{equation*} 
+-\frac{1}{m}[\displaystyle\sum\limits_{i=1}^{m}y^{(i)}log h_{\theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\theta}(x))]+\frac{\lambda}{m}\theta_{j}
+\end{equation*}\]
+
+<p>依旧是针对$\theta_{1},\theta_{2},\ldots,\theta_{n}$参数，关于参数的更新，还是分开对待的。</p>
+
+<h3 id="梯度下降算法">梯度下降算法</h3>
+
+\[\begin{equation*} 
+  \theta_{j}:=\theta_{j}(1-\alpha\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}  \\
+  \theta_{j}:=\theta_{j}(1-\alpha[\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}+\frac{\lambda}{m}\theta_{j}]  \\
+\end{equation*}\]
+
+<p>其中的$\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}+\frac{\lambda}{m}\theta_{j}$是损失函数</p>
+
+<p>关于更高级的优化算法使用正则化，假设有n个参数的n维矩阵：</p>
+
+\[\begin{equation*} 
+\theta=
+\begin{bmatrix}
+\theta_{0}  \\
+\theta_{1}  \\
+\theta_{2}  \\
+\ldots  \\
+\theta_{n}
+\end{bmatrix}
+\end{equation*}\]
+
+<h3 id="优化算法">优化算法</h3>
+
+<p>先计算所有样本的总误差项$J(\theta)$：</p>
+
+\[\begin{equation*} 
+-\frac{1}{m}[\displaystyle\sum\limits_{i=1}^{m}y^{(i)}log h_{\theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\theta}(x))]+\frac{\lambda}{m}\theta_{j}
+\end{equation*}\]
+
+<p>然后计算$\frac{\partial}{\partial\theta_{0}}J(\theta)$对\theta_{0}$的偏导数：
+\(\begin{equation*} 
+  \frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x_{0}^{(i)})
+\end{equation*}\)
+$\frac{\partial}{\partial\theta_{1}}J(\theta)$对于$\theta_{1}$的导数项：
+\(\begin{equation*} 
+  [\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x_{1}^{(i)})]+\frac{\lambda}{m}\theta_{1}
+\end{equation*}\)
+$\frac{\partial}{\partial\theta_{2}}J(\theta)$对于$\theta_{2}$导数项：
+\(\begin{equation*} 
+  [\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x_{2}^{(i)})]+\frac{\lambda}{m}\theta_{2}
+\end{equation*}\)
+后面</p>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="机器学习" /><category term="机器学习" /><category term="吴恩达" /><summary type="html"><![CDATA[分类 先从二分类开始，假设$y\epsilon${0,1}，0和1分别输出no、yes： 阈值可以设为0.5，当激活函数的加权输入$\ge$0.5则输出1，小于0.5则输出0 这种叫Logistic回归（逻辑回归）。 但增加额外样本后，拟合情况就不那么好了，如图所示： 所以不推荐线性回归模型用于分类问题。 逻辑回归 \[\begin{equation*} h_{\theta}(x)=g(\theta^{T}x) \end{equation*}\] 其中sigmoid激活函数 \[\begin{equation*} g(z)=\frac{1}{1+e^{-z}} \end{equation*}\] Sigmoid和Logistic函数是同义词 激活函数的z为$\theta^{T}x$ z横坐标，$g(z)$纵坐标，左端趋于0，右端趋于1。 假设一个患者的肿瘤，模型输出肿瘤大小x对于患者是有害还是无害的： \[\begin{equation*} x=\begin{bmatrix} x_{0} \\ x_{1} \end{bmatrix} =\begin{bmatrix} 1 \\ \text{肿瘤面积} \\ \end{bmatrix} h_{\theta}(x)=0.7 \end{equation*}\] 说明患者的肿瘤输出y=1的概率为0.7，写成数学表达式：$P(y=1|x;\theta)$，$\theta$为概率。 y=1的表达式：$P(y=1|x;\theta)=1-P(y=1|x;\theta)$ 决策边界 决策边界(decision boundary)，下图中紫线是决策边界: \[\begin{equation*} h_{\theta}(x)=g(\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}) \\ \end{equation*}\] 输出 \[\begin{equation*} \theta^{T}x=-3+x_{1}+x_{2}\ge 0 \\ \end{equation*}\] 所以 \[\begin{equation*} x_{1}+x_{2}\ge 3 \\ x_{1}+x_{2}&lt; 3 \\ \end{equation*}\] \[\begin{equation*} h_{\theta}(x)=g(\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{3}+\theta_{4}x_{4}) \\ \end{equation*}\] $\theta$初始化为{-1，0，0，1，1}： \[\begin{equation*} \theta= \begin{bmatrix} -1 \\ 0 \\ 0 \\ 1 \\ 1 \\ \end{bmatrix} \end{equation*}\] 如果y=1 \[\begin{equation*} -1+x_{1}^{2}+x_{2}^{2}\ge 0 \\ \end{equation*}\] 那么 \[\begin{equation*} x_{1}^{2}+x_{2}^{2}\ge 1 \end{equation*}\] 决策边界是取决于参数的，并非通过训练训练集得出的结果，参数不同会得到不同的决策边界。 复杂点的例子： \[\begin{equation*} h_{\theta}(x)=g(\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{3}+\theta_{4}x_{1}^{2}x_{2}+\theta_{4}x_{1}^{2}x_{2}^{2}+\theta_{4}x_{1}^{3}x_{2}+\ldots) \\ \end{equation*}\] 损失函数 给出训练集$(x^{(i)},y^{(i)})$，i维特征向量矩阵，以及激活函数： $(x^{(1)},y^{(1)}),x^{(2)},y^{(2)}),\ldots,(x^{(n)},y^{(n)})$ \[\begin{equation*} x^{(i)}= \begin{bmatrix} x_{0}^{(i)} \\ x_{1}^{(i)} \\ \ldots \\ x_{n}^{(i)} \end{bmatrix} x_{0}=1,\ 0\ &lt;\ y\ &lt;\ 1 \\ h_{\theta}(x)=\frac{1}{1+e^{-z}} \end{equation*}\] 接下来$\theta$目标值如何优化？ 原来的线性回归模型的损失函数，把$\frac{1}{2}$移至右边函数里面： \[\begin{equation*} J(\theta_{0},\theta_{1})=\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})^2 \\ Cost(h_{\theta}(x^{(i)}),y^{(i)})=\frac{1}{2}(h_{\theta}(x^{(i)}),y^{(i)})^2 \end{equation*}\] 这种损失函数在线性回归模型比较能良好工作，线性回归的非凹函数和凹函数，通常是希望凹函数能很好收敛全局最优解。 代价函数可能实际是非凹函数图的，迭代有时经常收敛到局部最优解，为了达到理想中的梯度下降，需要推导新的梯度下降法来收敛全局最小值的。 \[\begin{equation*} Cost(h_{\theta}(x),y)= \begin{cases}-log(h_{\theta}(x)) &amp; \text{if}\ y=1 \\ -log(1-h_{\theta}(x)) &amp; \text{if}\ y=0 \end{cases} \end{equation*}\] 当y=1时，纵坐标为$J(\theta)$ y值无限趋于1，当$y=1,h_{\theta}(x)=1$时，损失函数输出为0，如果$h_{\theta}(x)$趋于0，那么损失趋于无穷。 如果$h_{\theta}=0$，$P(y=1|x;\theta)=0$，y=1的概率趋于0。假如y=1的话，那么损失函数的值就很大了，用很大的损失来训练这个学习算法，使之下次确保输出1的概率趋于1. 当y=0时，原理是一样的： $h_{\theta}=1$，$P(y=0|x;\theta)=0$ 简化损失函数和梯度下降法 \[\begin{equation*} J(\theta)=\frac{1}{m}\displaystyle\sum\limits_{i=1}^{m}Cost(h_{\theta}(x^{(i)},y^{(i)}) \\ Cost(h_{\theta}(x),y)= \begin{cases}-log(h_{\theta}(x)) &amp; if\ y=1 \\ -log(1-h_{\theta}(x)) &amp; if\ y=0 \end{cases} \end{equation*}\] 为了避免梯度下降法按两种情况写，把两个式子合并: \[\begin{equation*} Cost(h_{\theta}(x),y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x)) \\ \end{equation*}\] 逻辑回归的损失函数，可以这么写的： \[\begin{equation*} \begin{split} J(\theta) &amp; =\frac{1}{m}Cost(h_{\theta}(x^{(i)},y^{(i)}) \\ &amp; =-\frac{1}{m}[\displaystyle\sum\limits_{i=1}^{m}y^{(i)}log h_{\theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\theta}(x))] \\ \end{split} \end{equation*}\] 公式是由统计学的极大似然法决定的，统计学为不同模型快速找参数，给出此方法(原理和证明略)，它的优点是凸函数。 \[\begin{equation*} min_{\theta}J(\theta): \\ \theta_{j}:=\theta_{j}-\alpha \frac{\partial}{\partial\theta_{j}}J(\theta) \end{equation*}\] 在此式中，$\frac{\partial}{\partial\theta_{j}}J(\theta)$多元微分推导成： \[\begin{equation*} \frac{\partial}{\partial\theta_{j}}J(\theta)=\frac{1}{m}\displaystyle\sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)} \end{equation*}\] 所以导数项： \[\begin{equation*} \theta_{j}:=\theta_{j}-\alpha \displaystyle\sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)} \end{equation*}\] 有若干$\theta$参数，更新参数值需要用到这个公式。 线性回归和逻辑回归有什么区别？它们的梯度下降法不是同一个，拟合数据也比线性回归更佳，目前已广泛应用于机器学习领域中。 高级优化算法 优化算法，给一个$\theta$，需要代码去计算损失函数和偏导数： $J(\theta)$ $\frac{\partial}{\partial\theta_{j}}J(\theta) \qquad (for j=0,1,\ldots,n)$ 然后利用梯度下降法去优化目标值： \[\begin{equation*} min_{\theta}J(\theta): \\ \theta_{j}:=\theta_{j}-\alpha \frac{\partial}{\partial\theta_{j}}J(\theta) \end{equation*}\] 除了常规优化算法，还有一些高级优化算法： 批次梯度下降法 共轭梯度法 BFGS L-BFGS 已知的梯度下降法就不介绍了，简单介绍其它三种优化算法的优点： 优点： - 不需要手动选择学习率 - 比常规梯度下降法快多了 缺点： - 非常复杂 这些算法给出计算导数项和损失函数的方法，它们有线性搜索算法(智能内循环clever inner-loop)，每次迭代自动尝试不同学习率，所以收敛速度远远比常规梯度下降法快多了。 细节待补充…可能要学几周时间 多分类：一对多 二分类 VS 多分类： 三种符号来代表三个不同类别的样本，逻辑回归模型能解决二类别问题，将训练集分为正类和负类，这种思想可以用于多分类： 把三角形划分正类，其它作为圆形划分到负类，那么就可以训练一个标准的逻辑回归分类器，类推红叉号、蓝正方形可以这么划分。 拟合出3个分类器，根据$h_{\theta}^{(i)}=P(y=i|x;\theta)=0\qquad(i=1,2,3)$来估计出x的概率，$\displaystyle\mathop{max}\limits_{i}h_{\theta_{\theta}^{(i)}(x)}$哪个概率大,分别对应各自的分类。 每个分类器针对一种情况进行训练 过度拟合的问题 第一个图，函数模型的直线不能很好拟合训练集，房价上升处是比较平缓、曲线的，这叫欠拟合，这算法具有高偏差特性，因为它和训练集理想的情况有很大的偏差； 第二个图，加入二项式，它能很好拟合训练集； 第三个图，四项式模拟的曲线上下波动，看似很好的拟合训练集(正好通过每一个训练样本），实际并不是预测房价的好模型，这种称为过度拟合，算法具有高方差。 高阶多项式虽然能拟合训练集，但它面临庞大的变量问题，导致训练进程缓慢，再千方百计拟合训练集，只要不能泛化到新的样本就是白搭。 泛化：模型应用到新样本的能力 解决方案： 1. 减少特征变量$\theta$ - 手动保留特征变量 - 模型选择算法 2. 正则化 - 保留所有特征，减小参数的量级或参数$\theta_{j}$的大小 - 训练更多的训练样本，它能很好工作 损失函数正则化 高阶多项式，由于过拟合现象导致预测效果不太理想，为了解决应添加正则化参数，$\lambda$参数设为1000，因为数值较大，$\theta_{3}$和$\theta_{4}$的数值尽可能小。 \[\begin{equation*} \mathop{min}\limits{\theta}\frac{1}{2m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})^{2}+1000\ \theta_{3}^3 + 1000\ \theta_{4}^2 \end{equation*}\] $\theta_{3}\ \approx\ 0\qquad\theta_{3}\ \approx\ 0$，这样取得更好的模型，增大了两个参数带来的效果。在实际测试中，结果表明参数越接近0，得到的函数越平滑、简单(原理证明略)。 假设预测房价的模型的特征为$x_{1},x_{2},\ldots,x_{100}$，参数为$\theta_{0},\theta_{1},\theta_{2},\ldots,\theta_{100}$ 正则化公式 \[\begin{equation*} J(\theta)=\frac{1}{2m}[\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})^{2}+\lambda\sum\limits_{i=1}^m\theta_{j}^2] \end{equation*}\] 如果$\lambda$值取得太大，会造成惩罚值变大，导致迭代后的参数几乎接近0，最后结果为欠拟合。 线性回归的正则化 线性回归的优化算法: \[\begin{equation*} \theta_{j}:=\theta_{j}-\alpha\qquad\frac{1}{m}\sum\limits_{i=1}^m \mathop{(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}}\qquad\text{j=0,1,2,}\ldots,n \end{equation*}\] 训练所有训练样本后，加起来再除以m进行迭代$\theta$参数。正则化的线性回归，它不迭代$\theta_{0}$参数，因为正则化是计算$j=1,2,3,\ldots,n$惩罚值的，要分开对待两种参数的惩罚值。 \[\begin{equation*} \theta_{j}:=\theta_{j}-\alpha[\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}+\frac{\lambda}{m}\theta_{j}] \end{equation*}\] 上面公式方括号包含的是$\frac{\partial}{\partial \theta_{j}}J(\theta)$的偏导数，证明略，最终得到： \[\begin{equation*} \theta_{j}:=\theta_{j}(1-\alpha\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)} \end{equation*}\] 这里的$\theta_{j}(1-\alpha\frac{1}{m})&lt;1$，学习率很小，m是较大的数值，因此$\alpha\frac{1}{m}$是一个正数，假如该项值=0.99，那么$\theta*0.99$值会变得小一点，也就是在$\theta_{j}^2$的平方范数值变小了。 正规方程的正则化 设计一个$m*(n+1)$的矩阵X，X的每行代表一个训练样本，y矩阵为训练集的标签： \[\begin{equation*} X= \begin{bmatrix} (x^{(1)})^{T} \\ \ldots \\ (x^{(m)})^{T} \end{bmatrix} \qquad\qquad\qquad y= \begin{bmatrix} y^{(1)} \\ \ldots \\ y^{(m)} \end{bmatrix} \end{equation*}\] 为了最小化损失函数，$\mathop{min}\limits{\theta}J(\theta)$ \[\begin{equation*} \theta=(x^{T}X+\lambda \begin{bmatrix} 0&amp;0&amp;0&amp;\ldots&amp;0 \\ 0&amp;1&amp;0&amp;\ldots&amp;0 \\ 0&amp;0&amp;1&amp;\ldots&amp;0 \\ 0&amp;0&amp;0&amp;\ldots&amp;0 \\ 0&amp;0&amp;0&amp;\ldots&amp;1 \end{bmatrix} )^{-1}X^{T}y \end{equation*}\] 设n=2的话，上面公式的矩阵是3x3，因此矩阵是(n+1)x(n+1)，按公式去计算可以取得$J(\theta)$最小值。 当训练样本$m\ \le$特征$n$时，X转置乘以X的矩阵是不可逆的，当发现不可逆的时候，可以考虑采用正则化来解决。 逻辑回归的正则化 逻辑回归的函数有众多相关度较低的特征，损失函数为： \[\begin{equation*} -\frac{1}{m}[\displaystyle\sum\limits_{i=1}^{m}y^{(i)}log h_{\theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\theta}(x))] \end{equation*}\] 正则化的逻辑回归损失函数： \[\begin{equation*} -\frac{1}{m}[\displaystyle\sum\limits_{i=1}^{m}y^{(i)}log h_{\theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\theta}(x))]+\frac{\lambda}{m}\theta_{j} \end{equation*}\] 依旧是针对$\theta_{1},\theta_{2},\ldots,\theta_{n}$参数，关于参数的更新，还是分开对待的。 梯度下降算法 \[\begin{equation*} \theta_{j}:=\theta_{j}(1-\alpha\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)} \\ \theta_{j}:=\theta_{j}(1-\alpha[\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}+\frac{\lambda}{m}\theta_{j}] \\ \end{equation*}\] 其中的$\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}+\frac{\lambda}{m}\theta_{j}$是损失函数 关于更高级的优化算法使用正则化，假设有n个参数的n维矩阵： \[\begin{equation*} \theta= \begin{bmatrix} \theta_{0} \\ \theta_{1} \\ \theta_{2} \\ \ldots \\ \theta_{n} \end{bmatrix} \end{equation*}\] 优化算法 先计算所有样本的总误差项$J(\theta)$： \[\begin{equation*} -\frac{1}{m}[\displaystyle\sum\limits_{i=1}^{m}y^{(i)}log h_{\theta}(x^{(i)})+(1-y^{(i)})log(1-h_{\theta}(x))]+\frac{\lambda}{m}\theta_{j} \end{equation*}\] 然后计算$\frac{\partial}{\partial\theta_{0}}J(\theta)$对\theta_{0}$的偏导数： \(\begin{equation*} \frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x_{0}^{(i)}) \end{equation*}\) $\frac{\partial}{\partial\theta_{1}}J(\theta)$对于$\theta_{1}$的导数项： \(\begin{equation*} [\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x_{1}^{(i)})]+\frac{\lambda}{m}\theta_{1} \end{equation*}\) $\frac{\partial}{\partial\theta_{2}}J(\theta)$对于$\theta_{2}$导数项： \(\begin{equation*} [\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x_{2}^{(i)})]+\frac{\lambda}{m}\theta_{2} \end{equation*}\) 后面]]></summary></entry><entry><title type="html">吴恩达机器学习笔记 Day 2</title><link href="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/12/Andrew-Ng-DL-2.html" rel="alternate" type="text/html" title="吴恩达机器学习笔记 Day 2" /><published>2022-02-12T00:00:00+00:00</published><updated>2022-02-12T00:00:00+00:00</updated><id>http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/12/Andrew-Ng-DL-2</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/12/Andrew-Ng-DL-2.html"><![CDATA[<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->
 
 <h2 id="矩阵和向量">矩阵和向量</h2>
 
@@ -93,6 +543,8 @@
 <h3 id="矩阵特性">矩阵特性</h3>
 
 <p>参考《线性代数》矩阵相关的公式、定义等</p>
+
+<p>链接：<a href="https://github.com/allrobot/Study-Blog/raw/main/docs/about_data/线性代数.pdf">https://github.com/allrobot/Study-Blog/raw/main/docs/about_data/线性代数.pdf</a></p>
 
 <table>
   <tbody>
@@ -298,22 +750,22 @@ x_{n}
 <p>之前最简函数$h_{\theta}=\theta_{0}+\theta_{1}x$的$\theta_{0}$，给出的梯度下降法：</p>
 
 \[\begin{equation*}
-\theta_{0}:=\theta_{0}-\vartheta\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}}_{\frac{\partial}{\partial \theta_{0}}J(\theta)}  \\
+\theta_{0}:=\theta_{0}-\alpha\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}}_{\frac{\partial}{\partial \theta_{0}}J(\theta)}  \\
 
-\theta_{1}:=\theta_{1}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}
+\theta_{1}:=\theta_{1}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}
 \end{equation*}\]
 
 <p>意味着当有其它参数时，可给出公式：</p>
 
 \[\begin{equation*}
-\theta_{j}:=\theta_{j}-\vartheta\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}}_{\text{同时更新所有\theta_{j}}}  \\
+\theta_{j}:=\theta_{j}-\alpha\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}}_{\text{同时更新所有\theta_{j}}}  \\
 
 text{类推 }  \\
-\theta_{0}:=\theta_{0}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
+\theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
 
-\theta_{1}:=\theta_{1}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
+\theta_{1}:=\theta_{1}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
 
-\theta_{2}:=\theta_{2}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
+\theta_{2}:=\theta_{2}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
 
 \ldots
 
@@ -349,9 +801,9 @@ $-100\le x_{3}\le 100 \qquad -0.0001\le x_{4}\le 0.0001$</p>
 <p>假若房子面积平均值为1000，每套房子的卧室平均数量为2</p>
 
 \[\begin{equation*}
-x_{1}=frac{\text{面积}-1000}{2000}  \\
+x_{1}=\frac{\text{面积}-1000}{2000}  \\
 
-x_{2}=frac{\text{卧室数量}-2}{5}  \\
+x_{2}=\frac{\text{卧室数量}-2}{5}  \\
 
 -0.5\le x_{1}\le 0.5,-0.5\le x_{2}\le 0.5
 
@@ -410,7 +862,251 @@ h_{\theta}=\theta_{0}+\theta_{1}\text{(面积)}+\theta_{2}\sqrt{\text{(面积)}}
 
 <p>特征的选择需要多种合适的角度去看待。</p>
 
-<h2 id="正规方程">正规方程</h2>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="机器学习" /><category term="机器学习" /><category term="吴恩达" /><summary type="html"><![CDATA[矩阵和向量 矩阵是矩形数组的，由行数i和列数j构成 4*2矩阵，用数学符号表现为$R^{4*2}$ \[A= \begin{equation*}\begin{bmatrix} 1402&amp;191 \\ 1372&amp;821 \\ 949&amp;1437 \\ 147&amp;1448 \end{bmatrix}\end{equation*}\] $A_{ij}$，那么$A_{11}=1402,A_{22}=821,A_{32}=1437$ 2*3矩阵，用数学符号表现为$R^{2*3}$ \[\\ \begin{equation*}\begin{bmatrix} 1&amp;2&amp;3 \\ 4&amp;5&amp;6 \end{bmatrix}\end{equation*}\] 由n*1的向量矩阵，$R^{4}$ \(y= \begin{equation*}\begin{bmatrix} 460 \\ 232 \\ 315 \\ 178 \end{bmatrix}\end{equation*}\) $y_{1}=460,y_{2}=232$ 它是从下标1开始的，计算机中是从0开始的。矩阵通常以大写字母表示的，小写字母表现为标量向量的。 矩阵计算 $h_{\theta}(x)=-40+0.25x$ 那么矩阵计算过程为 \(\begin{bmatrix} 1&amp;2104 \\ 1&amp;1416 \\ 1&amp;1534 \\ 1&amp;852 \end{bmatrix} * \begin{bmatrix} -40 \\ 0.25 \end{bmatrix} = \begin{bmatrix} -40*1+0.25*2104 \\ -40*1+0.25*1416 \\ -40*1+0.25*1534 \\ -40*1+0.25*852 \end{bmatrix}\) 给定3个假定函数 $h_{\theta}(x)=-40+0.25x$ $h_{\theta}(x)=200+0.1x$ $h_{\theta}(x)=-150+0.4x$ \[\begin{equation*} \begin{bmatrix} 1&amp;2104 \\ 1&amp;1416 \\ 1&amp;1534 \\ 1&amp;852 \end{bmatrix} * \begin{bmatrix} -40&amp;200&amp;-150 \\ 0.25&amp;0.1&amp;0.4 \end{bmatrix} = \begin{bmatrix} 486&amp;410&amp;692 \\ 314&amp;342&amp;416 \\ 344&amp;353&amp;464 \\ 173&amp;285&amp;191 \end{bmatrix} \end{equation*}\] 矩阵特性 参考《线性代数》矩阵相关的公式、定义等 AB未必与BA相等 AX=AY 不能推出X=Y $(AB)^k$与$A^{k}B^{k}$不一定相等 $A^{2}+(k+j)AB+kjB^{2}$ 与 $(A+kB)(A+jB)$ 不一定相等,但$A^{2}+(k+j)A+kjE=A^{2}+(k+j)AE+kjE^{2}=(A+kE)(A+jE)$ $|\lambda A|=\lambda^{n}|A|$ $|(AB)^{T}|=B^{T}A^{T}$ $A*A^{1}=E\ or\ A^{1}*A=E$ $A*A^{*}=|A|E\ or\ A^{*}*A=|A|E$ 条件 解的情况 齐次 $R(A)=$未知数个数 唯一解（零解） $R(A)&lt;$未知数个数 多个解（零解和多个非零解） 非齐次 $R(A)\ne R(A|b)$ 无解 $R(A)=R(A|b)$ 有解 $R(A)=R(A|b)=$未知数个数 一个非零解 $R(A)=R(A|b)&lt;$未知数个数 多个非零解 多种特征 特征向量，以房价为例 面积$m^2$ 卧室数量 门数量 房龄 价格 2104 5 1 45 460 1416 3 2 40 232 1534 3 2 30 315 852 2 1 36 178 $\ldots$ $\ldots$ $\ldots$ $\ldots$   n=特征数量 \[\begin{equation*} n=4 \end{equation*}\] $x^{(i)}$=$i^{th}$训练样本的特征向量 \[\begin{equation*}x^{2}= \begin{bmatrix} 1416 \\ 3 \\ 2 \\ 40 \end{bmatrix} \end{equation*} \epsilon R^{4}\] $x_{j}^{(i)}$=$i^{th}$训练样本的第j个特征量的值 \[\begin{equation*} x_{3}^{(2)}=2 \end{equation*}\] 线性回归的假定函数$h_{\theta}=\theta_{0}+\theta_{1}x$不适用此情况，此时的函数模型应为： \[\begin{equation*} h_{\theta}=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{3}-\theta_{4}x_{4} \end{equation*}\] 意味着后续特征增加时，模型可应为: \[\begin{equation*} h_{\theta}=\theta_{0}+\theta_{1}x_{1}+\theta_{1}x_{2}+\ldots+\theta_{n}x_{n} \\ x= \begin{bmatrix} x_{0} \\ x_{1} \\ x_{2} \\ \ldots \\ x_{n} \end{bmatrix}\ \epsilon\ R^{n+1} \qquad \theta= \begin{bmatrix} R_{0} \\ R_{1} \\ R_{2} \\ \ldots \\ R_{n} \end{bmatrix} \epsilon\ R^{n+1} \\ \begin{split} h_{\theta} &amp; = \theta_{0}x_{0}+\theta_{1}x_{1}+\theta_{1}x_{2}+\ldots-\theta_{n}x_{n} \\ &amp; = \theta_{x}^{T} \\ \end{split} \\ \text{其中} \\ \begin{bmatrix} \theta_{0}x_{0}&amp;\theta_{1}x_{1}&amp;\ldots&amp;\theta_{n}x_{n} \\ \end{bmatrix} \begin{bmatrix} x_{0} \\ x_{0} \\ \ldots \\ x_{n} \end{bmatrix} \end{equation*}\] 为了方便，$\theta_{0}x{0}$的$x{0}=1$,故省去 多种参数的梯度下降法 之前最简函数$h_{\theta}=\theta_{0}+\theta_{1}x$的$\theta_{0}$，给出的梯度下降法： \[\begin{equation*} \theta_{0}:=\theta_{0}-\vartheta\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}}_{\frac{\partial}{\partial \theta_{0}}J(\theta)} \\ \theta_{1}:=\theta_{1}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)} \end{equation*}\] 意味着当有其它参数时，可给出公式： \[\begin{equation*} \theta_{j}:=\theta_{j}-\vartheta\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}}_{\text{同时更新所有\theta_{j}}} \\ text{类推 } \\ \theta_{0}:=\theta_{0}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)} \\ \theta_{1}:=\theta_{1}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)} \\ \theta_{2}:=\theta_{2}-\vartheta\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)} \\ \ldots \end{equation*}\] 以后的多元梯度下降法用到类似的更新规则。 梯度下降训练：特征缩放 假定$x_{1}=面积(0~2000/m^2),x_{2}=卧室数量(1~5)$，呈现的等高线图比较瘦长，梯度下降的点会反复来回震荡很长时间才能抵达全局最优解。 解决办法是特征缩放把两个x值设为$0\le x_{1}\le 1, \ 0\le x_{2}\le 1$，椭圆等高线图呈现比较扁平，偏移没那么严重。 一般特征缩放后的值范围为$-1\le x_{i} \le 1$ 正确 $0\le x_{1} \le 3 \qquad -2\le x_{2} \le 0.5 \ \qquad \qquad -3\ to\ 3 \qquad -\frac{1}{3}\ to\ \frac{1}{3}$ 错误 $-100\le x_{3}\le 100 \qquad -0.0001\le x_{4}\le 0.0001$ 只有这样，梯度下降法才会正常工作！ 均值归一化 用$x_{i}$替换$x_{i}-u_{i}$使特征的均值近似为零(不使$x_{0}=1) 假若房子面积平均值为1000，每套房子的卧室平均数量为2 \[\begin{equation*} x_{1}=frac{\text{面积}-1000}{2000} \\ x_{2}=frac{\text{卧室数量}-2}{5} \\ -0.5\le x_{1}\le 0.5,-0.5\le x_{2}\le 0.5 \end{equation*}\] 取值范围可以为-1~5一切是为了梯度下降的速度更快。 \[x_{i}=\frac{x_{1}-u_{1}}{s_{1}}\] 梯度下降训练：学习率 学习率选择比较重要，如果选大了，也许梯度下降只要30步就完成了；选小了，梯度也可能要3000，甚至3，000，000步才能抵达全局最优解。 如何判断梯度下降曲线，从而选择合适的学习率。当判断梯度下降的时候发现$J(\theta)$图正上升，这里学习率可能选大了，应选小，不然会发生梯度爆炸的情况。 也有$J(\theta)$显示波浪线，这里暂不讨论，上述学习率的选择适用于线性回归问题。 有一个解决方案比较适合： \[\ldots,0.001,\ldots,0.01,\ldots,0.1,\ldots,1,\ldots\] 每迭代10~100轮，学习率0.001递增3倍，若不影响梯度下降就升为0.03，再递增…出现梯度上升的情况就反之。 \[\ldots,0.001,0.003,0.01,\ldots,0.1,\ldots,1,\ldots\] 多变量的线性回归 要设计函数模型输出房子的售价，要考虑提取哪些特征，上图有2个特征，房子正面和纵深的长度乘号得面积，模型也许二次项$h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}$能很好预测价格，但随着房子面积增加且价格下降，这就不能很好拟合数据集了，改成三次方$h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3}$ \(\begin{equation*} \begin{split} h_{\theta}(x) &amp; = h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3} \\ &amp; = h_{\theta}=\theta_{0}+\theta_{1}\text{(面积)}+\theta_{2}\text{(面积)}^{2}+\theta_{3}\text{(面积)}^{3} \\ \end{split} \end{equation*}\) \(\begin{equation*} x_{1}=\text{(面积)} \qquad \qquad \text{(面积:1~1000)}\\ x_{2}=\text{(面积)}^2\qquad \qquad \text{(面积:1~10^5)} \\ x_{3}=\text{(面积)}^3\qquad \qquad \text{(面积:1~10^9)} \end{equation*}\) 三个参数的值较大，采用特征缩放为宜。 除此之外，当房子面积增加时二次项函数不太拟合数据集，除了改至三次项，第二个参数可以采用平方根函数： \[\begin{equation*} h_{\theta}=\theta_{0}+\theta_{1}\text{(面积)}+\theta_{2}\sqrt{\text{(面积)}} \end{equation*}\] 特征的选择需要多种合适的角度去看待。 正规方程]]></summary></entry><entry><title type="html">吴恩达机器学习笔记 Day 1</title><link href="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1.html" rel="alternate" type="text/html" title="吴恩达机器学习笔记 Day 1" /><published>2022-02-11T00:00:00+00:00</published><updated>2022-02-11T00:00:00+00:00</updated><id>http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1.html"><![CDATA[<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ 
+<h2 id="梯度下降法正规方程">梯度下降法：正规方程</h2>
+
+<p>正规方程法相比batch梯度下降一次次迭代获取全局最优解，它能<strong>一次性</strong>直接获取$\theta$值。batch梯度下降法，需要分别去计算误差项对各个特征的偏导数$\frac{\partial}{\partial\theta_{j}}J(\theta)$，步骤相当多，推导又麻烦</p>
+
+<p>正规方程法的训练步骤：训练样本m为4个</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>面积$x_{1}$</th>
+      <th>卧室数量$x_{2}$</th>
+      <th>门数量$x_{3}$</th>
+      <th>房龄$x_{4}$</th>
+      <th>价格$y$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2104</td>
+      <td>5</td>
+      <td>1</td>
+      <td>45</td>
+      <td>460</td>
+    </tr>
+    <tr>
+      <td>1416</td>
+      <td>3</td>
+      <td>2</td>
+      <td>40</td>
+      <td>232</td>
+    </tr>
+    <tr>
+      <td>1534</td>
+      <td>3</td>
+      <td>2</td>
+      <td>30</td>
+      <td>315</td>
+    </tr>
+    <tr>
+      <td>852</td>
+      <td>2</td>
+      <td>1</td>
+      <td>36</td>
+      <td>178</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>n+1维特征向量
+\(\begin{equation*}
+  X=
+  \begin{bmatrix}
+    1&amp;2104&amp;5&amp;1&amp;45&amp;460  \\
+    1&amp;1416&amp;3&amp;2&amp;40&amp;232  \\
+    1&amp;1534&amp;3&amp;2&amp;30&amp;315  \\
+    1&amp;852&amp;2&amp;1&amp;36&amp;178
+  \end{bmatrix}
+  \qquad
+  y=
+    \begin{bmatrix}
+    460  \\
+    232  \\
+    315  \\
+    178
+  \end{bmatrix}
+\end{equation*}\)</p>
+
+<p>$m*(n+1)$维矩阵，正规方程法如下</p>
+
+\[\begin{equation*}
+  \theta=(X^{T}X)^{-1}X^{T}y
+\end{equation*}\]
+
+<p>举个例子，训练样本共m个，它的数据集是:$(x^{(1)},y^{(1)}),x^{(2)},y^{(2)}),\ldots,(x^{(n)},y^{(n)})$，有n个特征。</p>
+
+<p>特征矩阵，有n+1个特征向量
+\(\begin{equation*}
+  x^{(i)}=
+  \begin{bmatrix}
+    x_{0}^{(i)}  \\
+    x_{1}^{(i)}  \\
+    \ldots     \\
+    x_{n}^{(i)}
+  \end{bmatrix}
+\end{equation*}\)</p>
+
+<p>然后计算X的转置
+\(\begin{equation*}
+  X=
+  \begin{bmatrix}
+    ——(x^{(1)})^{T}——  \\
+    ——(x^{(2)})^{T}——  \\
+    \ldots  \\
+    ——(x^{(m)})^{T}——
+  \end{bmatrix}
+\end{equation*}\)</p>
+
+<p>举一个具体的例子：
+假如特征矩阵有2个特征向量
+\(\begin{equation*}
+  x^{(i)}=\begin{bmatrix}
+    1  \\
+	x_{1}^{(i)}
+  \end{bmatrix}
+\end{equation*}\)</p>
+
+\[\begin{equation*}
+  X=\begin{bmatrix}
+    1&amp;x_{1}^{(1)}  \\
+	1&amp;x_{2}^{(1)}  \\
+	\ldots  \\
+	1&amp;x_{m}^{(1)}  \\
+	
+  \end{bmatrix}
+  y=\begin{bmatrix}
+    y^{(1)}  \\
+	y^{(2)}  \\
+	\ldots   \\
+	y^{(m)}  \\
+  \end{bmatrix}
+\end{equation*}\]
+
+<p>这个X矩阵构建后，计算$\theta=(X^{T}X)^{-1}X^{T}y$能一次性训练出$x_{1}$的$\theta$值</p>
+
+<p><strong>正规方程法</strong></p>
+<ul>
+  <li>不需要学习率</li>
+  <li>不需要迭代</li>
+  <li>需要计算$(X^{T}X)^{-1}$</li>
+  <li>如果n个特征向量的数很大，计算缓慢</li>
+</ul>
+
+<p><strong>批次梯度下降法</strong></p>
+<ul>
+  <li>需要学习率</li>
+  <li>需要迭代</li>
+  <li>n个特征向量很大，能很好工作</li>
+</ul>
+
+<p>正规方程法适用计算1万以下的特征向量，1万以上的适用批次梯度下降法。</p>
+
+<h3 id="正规方程和不可逆转性">正规方程和不可逆转性</h3>
+
+<p>如果出现$X^{T}X$矩阵不可逆，可以考虑特征矩阵删除一些多余的特征，使之可逆。</p>
+
+<h2 id="例子代码">例子代码</h2>
+
+<h3 id="数据集链接">数据集链接</h3>
+
+<p><a href="https://github.com/Yongsgithub/picturebed/tree/Yongsgithub-NG-Machine-Learning">https://github.com/Yongsgithub/picturebed/tree/Yongsgithub-NG-Machine-Learning</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'D:</span><span class="se">\\</span><span class="s">note</span><span class="se">\\</span><span class="s">ex1-linear regression</span><span class="se">\\</span><span class="s">ex1data1.txt'</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">'横坐标'</span><span class="p">,</span> <span class="s">'纵坐标'</span><span class="p">])</span>
+
+<span class="c1"># # 输出散点图
+# sns.lmplot('横坐标', '纵坐标', data=df, size=6, fit_reg=True)
+# # fit_reg:拟合回归参数,如果fit_reg=True则散点图中则出现拟合直线
+# plt.show()
+</span>
+
+<span class="k">def</span> <span class="nf">computeCost</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+    <span class="c1"># 矩阵相乘，正好((x1 * theta_1 + x2 * theta_2)-2)^2
+</span>    <span class="n">inner</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">power</span><span class="p">((</span><span class="n">X</span> <span class="o">*</span> <span class="n">theta</span><span class="p">.</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># theta.T就是矩阵theta的转置矩阵
+</span>    <span class="c1"># np.power(A,B)   ## 对A中的每个元素求B次方
+</span>    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">inner</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+
+
+<span class="n">df</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">'ONE'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cols</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># 获取表格df的列数
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="n">cols</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># 除最后一列外，取其他列的所有行，即X为O和人口组成的列表
+</span><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">cols</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span><span class="n">cols</span><span class="p">]</span>  <span class="c1"># 取最后一列的所有行，即y为利润
+</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">y</span><span class="p">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+
+<span class="n">computeCost</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">gradientDescent</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">iters</span><span class="p">):</span>  <span class="c1"># alpha是学习率,iters为迭代次数
+</span>    <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">theta</span><span class="p">.</span><span class="n">shape</span><span class="p">))</span>  <span class="c1"># np.zeros(theta.shape)=[0.,0.],然后将temp变为矩阵[0.,0.]
+</span>    <span class="n">parameters</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">theta</span><span class="p">.</span><span class="n">ravel</span><span class="p">().</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1"># theta.ravel()：将多维数组theta降为一维，.shape[1]是统计这个一维数组有多少个元
+</span>    <span class="c1"># parameters表示参数
+</span>    <span class="n">cost</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">iters</span><span class="p">)</span>  <span class="c1"># 初始化代价函数值为0数组，元素个数为迭代次数
+</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iters</span><span class="p">):</span>  <span class="c1"># 循环iters次
+</span>        <span class="n">error</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">theta</span><span class="p">.</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="n">j</span><span class="p">])</span>  <span class="c1"># 将误差与训练数据相乘，term为偏导数，参考笔记P27
+</span>            <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="p">((</span><span class="n">alpha</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">term</span><span class="p">))</span>  <span class="c1"># 更新theta
+</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="n">temp</span>
+        <span class="n">cost</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">computeCost</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>  <span class="c1"># 计算每一次的代价函数
+</span>
+    <span class="k">return</span> <span class="n">theta</span><span class="p">,</span> <span class="n">cost</span>
+
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">iters</span> <span class="o">=</span> <span class="mi">2000</span>
+
+<span class="n">g</span><span class="p">,</span> <span class="n">cost</span> <span class="o">=</span> <span class="n">gradientDescent</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">iters</span><span class="p">)</span>  <span class="c1"># 令g和cost分别等于函数的两个返回值
+</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">横坐标</span><span class="p">.</span><span class="nb">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">.</span><span class="n">横坐标</span><span class="p">.</span><span class="nb">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># 以人口最小值为起点，最大值为终点，创建元素个数为100的等差数列
+</span><span class="n">f</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># f是假设函数H
+</span>
+<span class="c1"># 输出数据集的拟合情况
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">横坐标</span><span class="p">.</span><span class="nb">min</span><span class="p">(),</span><span class="n">df</span><span class="p">.</span><span class="n">横坐标</span><span class="p">.</span><span class="nb">max</span><span class="p">(),</span><span class="mi">100</span><span class="p">)</span><span class="c1">#以人口最小值为起点，最大值为终点，创建元素个数为100的等差数列
+</span><span class="n">f</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="c1">#f是假设函数H
+</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span><span class="c1">#以其他关键字参数**fig_kw来创建图
+#figsize=(a,b):figsize 设置图形的大小,b为图形的宽,b为图形的高,单位为英寸
+</span><span class="n">ax</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s">'r'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Prediction'</span><span class="p">)</span>   <span class="c1">#设置点的横坐标，纵坐标，用红色线，并且设置Prediction为关键字参数
+</span><span class="n">ax</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">横坐标</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">纵坐标</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Traning Data'</span><span class="p">)</span>  <span class="c1">#以人口为横坐标，利润为纵坐标并且设置Traning Data为关键字参数
+</span><span class="n">ax</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1">#legend为显示图例函数，loc为设置图例显示的位置，loc=2即在左上方
+</span><span class="n">ax</span><span class="p">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'Population'</span><span class="p">)</span>  <span class="c1">#设置x轴变量
+</span><span class="n">ax</span><span class="p">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Profit'</span><span class="p">)</span>  <span class="c1">#设置x轴变量
+</span><span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'Predicted Profit vs. Population Size'</span><span class="p">)</span> <span class="c1">#设置表头
+</span><span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1"># 代价数据可视化1
+</span><span class="n">c</span><span class="o">=</span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'inters'</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">iters</span><span class="p">)),</span><span class="s">'cost'</span><span class="p">:</span><span class="n">cost</span>  <span class="p">})</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">sns</span><span class="p">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">'inters'</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s">'cost'</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">c</span><span class="p">,</span><span class="n">fit_reg</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1"># # 代价数据可视化2
+# fig, ax = plt.subplots(figsize=(12,8)) #以其他关键字参数**fig_kw来创建图
+# #figsize=(a,b):figsize 设置图形的大小,b为图形的宽,b为图形的高,单位为英寸
+# ax.plot(np.arange(iters), cost, 'b') #作图:以迭代次数为x，代价函数值为y,线条颜色为红色
+# ax.set_xlabel('Iterations')  #设置x轴变量
+# ax.set_ylabel('Cost')  #设置y轴变量
+# ax.set_title('Error vs. Training Epoch') #设置表头
+# plt.show()
+</span>
+</code></pre></div></div>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="机器学习" /><category term="机器学习" /><category term="吴恩达" /><summary type="html"><![CDATA[矩阵和向量 矩阵是矩形数组的，由行数i和列数j构成 4*2矩阵，用数学符号表现为$R^{4*2}$ \[A= \begin{equation*}\begin{bmatrix} 1402&amp;191 \\ 1372&amp;821 \\ 949&amp;1437 \\ 147&amp;1448 \end{bmatrix}\end{equation*}\] $A_{ij}$，那么$A_{11}=1402,A_{22}=821,A_{32}=1437$ 2*3矩阵，用数学符号表现为$R^{2*3}$ \[\\ \begin{equation*}\begin{bmatrix} 1&amp;2&amp;3 \\ 4&amp;5&amp;6 \end{bmatrix}\end{equation*}\] 由n*1的向量矩阵，$R^{4}$ \(y= \begin{equation*}\begin{bmatrix} 460 \\ 232 \\ 315 \\ 178 \end{bmatrix}\end{equation*}\) $y_{1}=460,y_{2}=232$ 它是从下标1开始的，计算机中是从0开始的。矩阵通常以大写字母表示的，小写字母表现为标量向量的。 矩阵计算 $h_{\theta}(x)=-40+0.25x$ 那么矩阵计算过程为 \(\begin{bmatrix} 1&amp;2104 \\ 1&amp;1416 \\ 1&amp;1534 \\ 1&amp;852 \end{bmatrix} * \begin{bmatrix} -40 \\ 0.25 \end{bmatrix} = \begin{bmatrix} -40*1+0.25*2104 \\ -40*1+0.25*1416 \\ -40*1+0.25*1534 \\ -40*1+0.25*852 \end{bmatrix}\) 给定3个假定函数 $h_{\theta}(x)=-40+0.25x$ $h_{\theta}(x)=200+0.1x$ $h_{\theta}(x)=-150+0.4x$ \[\begin{equation*} \begin{bmatrix} 1&amp;2104 \\ 1&amp;1416 \\ 1&amp;1534 \\ 1&amp;852 \end{bmatrix} * \begin{bmatrix} -40&amp;200&amp;-150 \\ 0.25&amp;0.1&amp;0.4 \end{bmatrix} = \begin{bmatrix} 486&amp;410&amp;692 \\ 314&amp;342&amp;416 \\ 344&amp;353&amp;464 \\ 173&amp;285&amp;191 \end{bmatrix} \end{equation*}\] 矩阵特性 参考《线性代数》矩阵相关的公式、定义等 链接：https://github.com/allrobot/Study-Blog/raw/main/docs/about_data/线性代数.pdf AB未必与BA相等 AX=AY 不能推出X=Y $(AB)^k$与$A^{k}B^{k}$不一定相等 $A^{2}+(k+j)AB+kjB^{2}$ 与 $(A+kB)(A+jB)$ 不一定相等,但$A^{2}+(k+j)A+kjE=A^{2}+(k+j)AE+kjE^{2}=(A+kE)(A+jE)$ $|\lambda A|=\lambda^{n}|A|$ $|(AB)^{T}|=B^{T}A^{T}$ $A*A^{1}=E\ or\ A^{1}*A=E$ $A*A^{*}=|A|E\ or\ A^{*}*A=|A|E$ 条件 解的情况 齐次 $R(A)=$未知数个数 唯一解（零解） $R(A)&lt;$未知数个数 多个解（零解和多个非零解） 非齐次 $R(A)\ne R(A|b)$ 无解 $R(A)=R(A|b)$ 有解 $R(A)=R(A|b)=$未知数个数 一个非零解 $R(A)=R(A|b)&lt;$未知数个数 多个非零解 多种特征 特征向量，以房价为例 面积$m^2$ 卧室数量 门数量 房龄 价格 2104 5 1 45 460 1416 3 2 40 232 1534 3 2 30 315 852 2 1 36 178 $\ldots$ $\ldots$ $\ldots$ $\ldots$   n=特征数量 \[\begin{equation*} n=4 \end{equation*}\] $x^{(i)}$=$i^{th}$训练样本的特征向量 \[\begin{equation*}x^{2}= \begin{bmatrix} 1416 \\ 3 \\ 2 \\ 40 \end{bmatrix} \end{equation*} \epsilon R^{4}\] $x_{j}^{(i)}$=$i^{th}$训练样本的第j个特征量的值 \[\begin{equation*} x_{3}^{(2)}=2 \end{equation*}\] 线性回归的假定函数$h_{\theta}=\theta_{0}+\theta_{1}x$不适用此情况，此时的函数模型应为： \[\begin{equation*} h_{\theta}=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{3}-\theta_{4}x_{4} \end{equation*}\] 意味着后续特征增加时，模型可应为: \[\begin{equation*} h_{\theta}=\theta_{0}+\theta_{1}x_{1}+\theta_{1}x_{2}+\ldots+\theta_{n}x_{n} \\ x= \begin{bmatrix} x_{0} \\ x_{1} \\ x_{2} \\ \ldots \\ x_{n} \end{bmatrix}\ \epsilon\ R^{n+1} \qquad \theta= \begin{bmatrix} R_{0} \\ R_{1} \\ R_{2} \\ \ldots \\ R_{n} \end{bmatrix} \epsilon\ R^{n+1} \\ \begin{split} h_{\theta} &amp; = \theta_{0}x_{0}+\theta_{1}x_{1}+\theta_{1}x_{2}+\ldots-\theta_{n}x_{n} \\ &amp; = \theta_{x}^{T} \\ \end{split} \\ \text{其中} \\ \begin{bmatrix} \theta_{0}x_{0}&amp;\theta_{1}x_{1}&amp;\ldots&amp;\theta_{n}x_{n} \\ \end{bmatrix} \begin{bmatrix} x_{0} \\ x_{0} \\ \ldots \\ x_{n} \end{bmatrix} \end{equation*}\] 为了方便，$\theta_{0}x{0}$的$x{0}=1$,故省去 多种参数的梯度下降法 之前最简函数$h_{\theta}=\theta_{0}+\theta_{1}x$的$\theta_{0}$，给出的梯度下降法： \[\begin{equation*} \theta_{0}:=\theta_{0}-\alpha\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}}_{\frac{\partial}{\partial \theta_{0}}J(\theta)} \\ \theta_{1}:=\theta_{1}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)} \end{equation*}\] 意味着当有其它参数时，可给出公式： \[\begin{equation*} \theta_{j}:=\theta_{j}-\alpha\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}}_{\text{同时更新所有\theta_{j}}} \\ text{类推 } \\ \theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)} \\ \theta_{1}:=\theta_{1}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)} \\ \theta_{2}:=\theta_{2}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)} \\ \ldots \end{equation*}\] 以后的多元梯度下降法用到类似的更新规则。 梯度下降训练：特征缩放 假定$x_{1}=面积(0~2000/m^2),x_{2}=卧室数量(1~5)$，呈现的等高线图比较瘦长，梯度下降的点会反复来回震荡很长时间才能抵达全局最优解。 解决办法是特征缩放把两个x值设为$0\le x_{1}\le 1, \ 0\le x_{2}\le 1$，椭圆等高线图呈现比较扁平，偏移没那么严重。 一般特征缩放后的值范围为$-1\le x_{i} \le 1$ 正确 $0\le x_{1} \le 3 \qquad -2\le x_{2} \le 0.5 \ \qquad \qquad -3\ to\ 3 \qquad -\frac{1}{3}\ to\ \frac{1}{3}$ 错误 $-100\le x_{3}\le 100 \qquad -0.0001\le x_{4}\le 0.0001$ 只有这样，梯度下降法才会正常工作！ 均值归一化 用$x_{i}$替换$x_{i}-u_{i}$使特征的均值近似为零(不使$x_{0}=1) 假若房子面积平均值为1000，每套房子的卧室平均数量为2 \[\begin{equation*} x_{1}=\frac{\text{面积}-1000}{2000} \\ x_{2}=\frac{\text{卧室数量}-2}{5} \\ -0.5\le x_{1}\le 0.5,-0.5\le x_{2}\le 0.5 \end{equation*}\] 取值范围可以为-1~5一切是为了梯度下降的速度更快。 \[x_{i}=\frac{x_{1}-u_{1}}{s_{1}}\] 梯度下降训练：学习率 学习率选择比较重要，如果选大了，也许梯度下降只要30步就完成了；选小了，梯度也可能要3000，甚至3，000，000步才能抵达全局最优解。 如何判断梯度下降曲线，从而选择合适的学习率。当判断梯度下降的时候发现$J(\theta)$图正上升，这里学习率可能选大了，应选小，不然会发生梯度爆炸的情况。 也有$J(\theta)$显示波浪线，这里暂不讨论，上述学习率的选择适用于线性回归问题。 有一个解决方案比较适合： \[\ldots,0.001,\ldots,0.01,\ldots,0.1,\ldots,1,\ldots\] 每迭代10~100轮，学习率0.001递增3倍，若不影响梯度下降就升为0.03，再递增…出现梯度上升的情况就反之。 \[\ldots,0.001,0.003,0.01,\ldots,0.1,\ldots,1,\ldots\] 多变量的线性回归 要设计函数模型输出房子的售价，要考虑提取哪些特征，上图有2个特征，房子正面和纵深的长度乘号得面积，模型也许二次项$h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}$能很好预测价格，但随着房子面积增加且价格下降，这就不能很好拟合数据集了，改成三次方$h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3}$ \(\begin{equation*} \begin{split} h_{\theta}(x) &amp; = h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3} \\ &amp; = h_{\theta}=\theta_{0}+\theta_{1}\text{(面积)}+\theta_{2}\text{(面积)}^{2}+\theta_{3}\text{(面积)}^{3} \\ \end{split} \end{equation*}\) \(\begin{equation*} x_{1}=\text{(面积)} \qquad \qquad \text{(面积:1~1000)}\\ x_{2}=\text{(面积)}^2\qquad \qquad \text{(面积:1~10^5)} \\ x_{3}=\text{(面积)}^3\qquad \qquad \text{(面积:1~10^9)} \end{equation*}\) 三个参数的值较大，采用特征缩放为宜。 除此之外，当房子面积增加时二次项函数不太拟合数据集，除了改至三次项，第二个参数可以采用平方根函数： \[\begin{equation*} h_{\theta}=\theta_{0}+\theta_{1}\text{(面积)}+\theta_{2}\sqrt{\text{(面积)}} \end{equation*}\] 特征的选择需要多种合适的角度去看待。 梯度下降法：正规方程 正规方程法相比batch梯度下降一次次迭代获取全局最优解，它能一次性直接获取$\theta$值。batch梯度下降法，需要分别去计算误差项对各个特征的偏导数$\frac{\partial}{\partial\theta_{j}}J(\theta)$，步骤相当多，推导又麻烦 正规方程法的训练步骤：训练样本m为4个 面积$x_{1}$ 卧室数量$x_{2}$ 门数量$x_{3}$ 房龄$x_{4}$ 价格$y$ 2104 5 1 45 460 1416 3 2 40 232 1534 3 2 30 315 852 2 1 36 178 n+1维特征向量 \(\begin{equation*} X= \begin{bmatrix} 1&amp;2104&amp;5&amp;1&amp;45&amp;460 \\ 1&amp;1416&amp;3&amp;2&amp;40&amp;232 \\ 1&amp;1534&amp;3&amp;2&amp;30&amp;315 \\ 1&amp;852&amp;2&amp;1&amp;36&amp;178 \end{bmatrix} \qquad y= \begin{bmatrix} 460 \\ 232 \\ 315 \\ 178 \end{bmatrix} \end{equation*}\) $m*(n+1)$维矩阵，正规方程法如下 \[\begin{equation*} \theta=(X^{T}X)^{-1}X^{T}y \end{equation*}\] 举个例子，训练样本共m个，它的数据集是:$(x^{(1)},y^{(1)}),x^{(2)},y^{(2)}),\ldots,(x^{(n)},y^{(n)})$，有n个特征。 特征矩阵，有n+1个特征向量 \(\begin{equation*} x^{(i)}= \begin{bmatrix} x_{0}^{(i)} \\ x_{1}^{(i)} \\ \ldots \\ x_{n}^{(i)} \end{bmatrix} \end{equation*}\) 然后计算X的转置 \(\begin{equation*} X= \begin{bmatrix} ——(x^{(1)})^{T}—— \\ ——(x^{(2)})^{T}—— \\ \ldots \\ ——(x^{(m)})^{T}—— \end{bmatrix} \end{equation*}\) 举一个具体的例子： 假如特征矩阵有2个特征向量 \(\begin{equation*} x^{(i)}=\begin{bmatrix} 1 \\ x_{1}^{(i)} \end{bmatrix} \end{equation*}\) \[\begin{equation*} X=\begin{bmatrix} 1&amp;x_{1}^{(1)} \\ 1&amp;x_{2}^{(1)} \\ \ldots \\ 1&amp;x_{m}^{(1)} \\ \end{bmatrix} y=\begin{bmatrix} y^{(1)} \\ y^{(2)} \\ \ldots \\ y^{(m)} \\ \end{bmatrix} \end{equation*}\] 这个X矩阵构建后，计算$\theta=(X^{T}X)^{-1}X^{T}y$能一次性训练出$x_{1}$的$\theta$值 正规方程法 不需要学习率 不需要迭代 需要计算$(X^{T}X)^{-1}$ 如果n个特征向量的数很大，计算缓慢 批次梯度下降法 需要学习率 需要迭代 n个特征向量很大，能很好工作 正规方程法适用计算1万以下的特征向量，1万以上的适用批次梯度下降法。 正规方程和不可逆转性 如果出现$X^{T}X$矩阵不可逆，可以考虑特征矩阵删除一些多余的特征，使之可逆。 例子代码 数据集链接 https://github.com/Yongsgithub/picturebed/tree/Yongsgithub-NG-Machine-Learning import pandas as pd import seaborn as sns import numpy as np from matplotlib import pyplot as plt df = pd.read_csv('D:\\note\\ex1-linear regression\\ex1data1.txt', names=['横坐标', '纵坐标']) # # 输出散点图 # sns.lmplot('横坐标', '纵坐标', data=df, size=6, fit_reg=True) # # fit_reg:拟合回归参数,如果fit_reg=True则散点图中则出现拟合直线 # plt.show() def computeCost(X, y, theta): # 矩阵相乘，正好((x1 * theta_1 + x2 * theta_2)-2)^2 inner = np.power((X * theta.T) - y, 2) # theta.T就是矩阵theta的转置矩阵 # np.power(A,B) ## 对A中的每个元素求B次方 return np.sum(inner) / (2 * len(X)) df.insert(0, 'ONE', 1) cols = df.shape[1] # 获取表格df的列数 X = df.iloc[:, 0:cols - 1] # 除最后一列外，取其他列的所有行，即X为O和人口组成的列表 y = df.iloc[:, cols - 1:cols] # 取最后一列的所有行，即y为利润 X = np.matrix(X.values) y = np.matrix(y.values) theta = np.matrix(np.array([0, 0])) computeCost(X, y, theta) def gradientDescent(X, y, theta, alpha, iters): # alpha是学习率,iters为迭代次数 temp = np.matrix(np.zeros(theta.shape)) # np.zeros(theta.shape)=[0.,0.],然后将temp变为矩阵[0.,0.] parameters = int(theta.ravel().shape[1]) # theta.ravel()：将多维数组theta降为一维，.shape[1]是统计这个一维数组有多少个元 # parameters表示参数 cost = np.zeros(iters) # 初始化代价函数值为0数组，元素个数为迭代次数 for i in range(iters): # 循环iters次 error = (X * theta.T) - y for j in range(parameters): term = np.multiply(error, X[:, j]) # 将误差与训练数据相乘，term为偏导数，参考笔记P27 temp[0, j] = theta[0, j] - ((alpha / len(X)) * np.sum(term)) # 更新theta theta = temp cost[i] = computeCost(X, y, theta) # 计算每一次的代价函数 return theta, cost alpha = 0.01 iters = 2000 g, cost = gradientDescent(X, y, theta, alpha, iters) # 令g和cost分别等于函数的两个返回值 x = np.linspace(df.横坐标.min(), df.横坐标.max(), 100) # 以人口最小值为起点，最大值为终点，创建元素个数为100的等差数列 f = g[0, 0] + (g[0, 1] * x) # f是假设函数H # 输出数据集的拟合情况 x = np.linspace(df.横坐标.min(),df.横坐标.max(),100)#以人口最小值为起点，最大值为终点，创建元素个数为100的等差数列 f = g[0,0] + (g[0,1] * x) #f是假设函数H fig, ax = plt.subplots(figsize=(12,8))#以其他关键字参数**fig_kw来创建图 #figsize=(a,b):figsize 设置图形的大小,b为图形的宽,b为图形的高,单位为英寸 ax.plot(x, f, 'r', label='Prediction') #设置点的横坐标，纵坐标，用红色线，并且设置Prediction为关键字参数 ax.scatter(df.横坐标, df.纵坐标, label='Traning Data') #以人口为横坐标，利润为纵坐标并且设置Traning Data为关键字参数 ax.legend(loc=2) #legend为显示图例函数，loc为设置图例显示的位置，loc=2即在左上方 ax.set_xlabel('Population') #设置x轴变量 ax.set_ylabel('Profit') #设置x轴变量 ax.set_title('Predicted Profit vs. Population Size') #设置表头 plt.show() # 代价数据可视化1 c=pd.DataFrame({'inters':list(range(iters)),'cost':cost }) ax=sns.lmplot(x='inters',y='cost',data=c,fit_reg=False) plt.show() # # 代价数据可视化2 # fig, ax = plt.subplots(figsize=(12,8)) #以其他关键字参数**fig_kw来创建图 # #figsize=(a,b):figsize 设置图形的大小,b为图形的宽,b为图形的高,单位为英寸 # ax.plot(np.arange(iters), cost, 'b') #作图:以迭代次数为x，代价函数值为y,线条颜色为红色 # ax.set_xlabel('Iterations') #设置x轴变量 # ax.set_ylabel('Cost') #设置y轴变量 # ax.set_title('Error vs. Training Epoch') #设置表头 # plt.show()]]></summary></entry><entry><title type="html">吴恩达机器学习笔记 Day 1</title><link href="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1.html" rel="alternate" type="text/html" title="吴恩达机器学习笔记 Day 1" /><published>2022-02-11T00:00:00+00:00</published><updated>2022-02-11T00:00:00+00:00</updated><id>http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1.html"><![CDATA[<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ 
 $\displaystyle\underbrace{a_i}_{\text{i从1到n}}$
 
 $\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
@@ -564,7 +1260,7 @@ $\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
 
 <p>minimize v. 使减少到最低限度</p>
 
-<p>假设的函数模型的参数有各种各样,为了计算方便，这里先假定函数$h_{\theta}=\theta_{1}x^{(i)}$</p>
+<p>函数模型的参数有各种各样,为了计算方便，这里先假定函数$h_{\theta}=\theta_{1}x^{(i)}$</p>
 
 <p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/10.PNG" alt="" /></p>
 
@@ -709,7 +1405,7 @@ temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{
 
 <p>推导函数的两个$\theta$值，按上述推导可以明白(多元微分推导)</p>
 
-<p>对应$\theta_{0}$的$\frac{\vartheta}{\vartheta \theta_{0}}J(\theta_{0},\theta_{1})$的偏导数</p>
+<p>对应$\theta_{0}$的$\frac{\partial}{\vartheta \theta_{0}}J(\theta_{0},\theta_{1})$的偏导数</p>
 
 \[\begin{equation*}
   \begin{split}
@@ -719,7 +1415,7 @@ temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{
   \end{split}
 \end{equation*}\]
 
-<p>对应$\theta_{1}$的$\frac{\vartheta}{\vartheta \theta_{1}}J(\theta_{0},\theta_{1})$的偏导数</p>
+<p>对应$\theta_{1}$的$\frac{\partial}{\vartheta \theta_{1}}J(\theta_{0},\theta_{1})$的偏导数</p>
 
 \[\begin{equation*}
   \begin{split}
@@ -753,12 +1449,192 @@ temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{
       <p><a href="">关于局部最优解</a> <a href="#fnref:foot2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
-</div>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="机器学习" /><category term="机器学习" /><category term="吴恩达" /><summary type="html"><![CDATA[模型描述 线性回归，这里的回归是指分类问题，用来预测离散值输出。 举个例子：城市不同房子对应不同售价，假设某房子1250英尺，它的售价220000美元，数据集包含卖出的房子面积大小和价格。 $面积/m^{2} (x)$ $价格/1000美元(y)$ 2014 460 1416 212 1436 315 859 178 … … 符号 m=训练样本的数量 假如表格有47列，那么m=47 x’s=输入变量/特征 表格左侧的面积是输入变量或特征 y’s=输出变量/目标变量 表格右侧的价格 模型的工作是从这个数据中训练的。 $(x,y)$ 表示特定训练样本 $(x^{(i)},y^{(i)})$ 上标i表示第i个训练样本，充当索引作用，$x^{(1)}$是$2104$，$x^{(2)}$是$1416$，$y^{(1)}$是$460$ graph TB; A[训练集] B[学习算法] C[h(函数)] D[房子面积] E[售价] A--&gt;B; B--&gt;C; D--&gt;C; C--&gt;E; 得到h函数，房子面积作为x输入，得到y的输出。这种根据房子尺寸进行房价预测的函数，函数取决于于用户用什么来表达。 \[h_{\theta}=\theta_{0}+\theta_{1}x\] 缩写: \(h_{\theta}(x)\) 这种线性回归类型，是取决于x单一变量的。 监督学习 y轴是房价，x轴是房子面积，此时用一条直线拟合数据,假设卖家的房子尺寸是$750^2$，那么它的售价为150*1000美元，如上图所示。 如果函数用二阶多项式来表达，那么拟合数据的表现可能会更佳。 这回归问题的价格是一个离散值，预测离散值的输出。 无论采用哪种模型算法，都属于监督学习的类型，监督学习算法目的是给定训练数据集，迭代函数的权重获得正确的答案，下次输入未知的x也能输出需要的答案。 无监督学习 假设某函数判断病人的肿瘤是否良性或恶性，用输出0与1来表示，这类有答案的 当这些数据集没有任何标签，没有答案，算法自行学习其中的结构，将其给不同数据自行分类。 损失函数 $\theta_{0},\theta_{1}$是常数，输出的值可能不同，通过数据集的训练使直线尽可能靠拢、拟合数据 如何得到正确的$\theta_{0},\theta_{1}$呢？ 损失函数定义：$\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2$，其中$h_{\theta}(x^{(i)})=\theta_{0}+\theta_{1}x^{(i)}$ m为47个训练样本，通过损失函数计算它们的输出值$h_{\theta}$减去实际值$y^{(i)}$的二次方和从而得到的总误差项1，目的是尽可能降低这个值。 为了让损失函数变得容易理解，减少至$\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2$ 这是线性回归的整体目标函数，目标是减小$\theta_{0},\theta_{1}$的值，使总误差项最小化。 损失函数公式 \[\begin{equation} J(\theta_{0},\theta_{1})=\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2 \\ \mathop{minimize}\limits_{\theta_{0},\theta_{1}} \mathop{J(\theta_{0},\theta_{1})}_{\text{损失函数}} \end{equation}\] minimize v. 使减少到最低限度 假设的函数模型的参数有各种各样,为了计算方便，这里先假定函数$h_{\theta}=\theta_{1}x^{(i)}$ 假定$\theta_{1}=1$ \[\begin{equation*} \begin{split} J(1) &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2 \\ &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (\theta-y^{(i)})^2 \\ &amp; = \frac{1}{2m}(0^{2}+0^{2}+0^{2}) \\ &amp; = 0^{2} \end{split} \end{equation*}\] 函数拟合数据得到最好的表现，总误差项为0，这是最理想的情况 假定$\theta_{1}=0.5$ \[\begin{equation*} \begin{split} J(0.5) &amp; = \frac{1}{2m}[(0*5-1)^{2}+(1-2)^{2}+(1*5-3)^{2})] \\ &amp; = \frac{1}{2*3}(3*5) \\ &amp; = \frac{3*5}{6} \\ &amp; = 0.58 \end{split} \end{equation*}\] \[\begin{equation*} \begin{split} J(0) &amp; = \frac{1}{2m}[1^{2}+2^{2}+3^{2})] \\ &amp; = \frac{1}{6}*14 \\ &amp; = 2.3 \end{split} \end{equation*}\] 同理，当$\theta_{1}=-0.5$时，总误差项为5.25，误差非常大 横轴为$\theta_{1}$，纵轴为总误差项，之前$\theta_{1}=1、\theta_{0}=1\ldots$给出的总误差项y，构成上图 损失函数的优化目标是获得最小值的$J(\theta_{1})$，此时上图$\theta_{1}=1$已结完美拟合了 $\theta_{0}=50,\theta_{1}=0.06$,绘制$J(\theta_{0},\theta_{1})$就多了一个$\theta_{0}=50$，它与训练集相关 这是等高线图，用2D表现如下图(几圈圈椭圆)，最小值位于最小的椭圆中心。 首先假定$\theta_{0}=800,\theta_{1}=-0.15$，位于下图$J(\theta_{0},\theta_{1})$手绘篮圈的红叉号。左边的$h(x)$显然不符合，离最小值甚远，因为拟合的不好 假定$\theta_{0}=360,\theta_{1}=0$，离最小值有些接近了 到了这里，虽然不是最小值，这是训练样本实际值与预测值之间的所有误差和，$J(\theta_{0},\theta_{1})$表示损失函数J的意义，接近损失函数J最小值的点。 我们目标是寻找一个高效的算法，来自动寻找损失函数J最小值，之后由于涉及众多参数、更高维的图形，只能通过代码实现。 梯度下降 用梯度下降算法最小化任意函数J，包括线性函数、非线性函数等。 $J(\theta_{0},\theta_{1})$可扩展$J(\theta_{0},\theta_{1},\theta_{2}\ldots\theta_{n})$ 最小化$\mathop{min}\limits_{\theta_{0},\theta_{1}}J(\theta_{0},\theta_{1})$亦可$\mathop{min}\limits_{\theta_{0},\theta_{1}}J(\theta_{0},\theta_{1},\theta_{2}\ldots\theta_{n})$ 梯度下降，一般设$\theta_{0}=0,\theta_{1}=0)$，假如能看到哪里是最低点，如下图一步一步走不断收敛至局部最低点。 实际上，我们并不能环顾四周看哪里是最低的，是碰运气不断走着，直到获得完全不同的局部最优解2。 梯度下降算法 \[\text{重复直至收敛}{\theta_{j}:=\theta_{j}-\alpha\frac{\partial}{\partial\theta_{j}}J(\theta_{0},\theta_{1})\qquad (\text{同时更新 j=0 和 j=1})}\] 正确：同时更新 \(temp0:=\theta_{0}-\alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0},\theta_{1}) \\ temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{1}) \\ \theta_{0}:=temp0 \\ \theta_{1}:=temp1\) 错误：异步更新 \(temp0:=\theta_{0}-\alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0},\theta_{1}) \\ \theta_{0}:=temp0 \\ temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{1}) \\ \theta_{1}:=temp1\) :=这是计算机赋值的意思 $\alpha$是学习率，如果这个常数很大，那么梯度下降$J(\theta_{0},\theta_{1})$容易越过最小值，左右横跳导致梯度上升(自己算)；如果太小，要迭代很多次才能收敛。 反复迭代，直至收敛为止。如果使用异步更新，那就不是梯度下降法了，是其它的算法。 梯度下降法的意义 公式的$\frac{\partial}{\partial \theta_{1}}J(\theta_{0})$是取坐标轴曲线一点的切线(红色直线的斜率)，这条线有正斜率，说明它有正导数。 因为是正数，$\theta_{1}$减去$\partial$乘以的正数，在坐标轴体现的是向左移动，然后迭代几轮收敛到最小值。 如果$\theta_{1}$在左边，那么$\frac{\partial}{\partial \theta_{1}} J(\theta_{1})$的导数是负的，按公式(3)$\theta_{1}$的值不断递增，直至梯度最小值为止。 梯度消失 假设$\theta_{1}$处于局部最优解，这样的话$\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})$的斜率等于0，不上升也不下降。 是因为$\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})$的斜率更新，刚开始从右边紫点出发，这时导数值值比较大，绿点随着接近最小值，得到导数值变小了，得到红点，再继续梯度下降，直至收敛到局部极小值。根据定义，在局部最低点时导数等于0，这是梯度下降法的运行方式，所以没必要减小$\partial$的值 \[\begin{equation*} \begin{split} \frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1}) &amp; = \frac{\partial}{\partial \theta_{1}}\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2 \\ &amp; = \frac{\partial}{\partial \theta_{1}}\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (\theta_{0}+\theta_{1}x^{(i)}-y^{(i)})^2 \\ &amp; = \end{split} \end{equation*}\] 推导函数的两个$\theta$值，按上述推导可以明白(多元微分推导) 对应$\theta_{0}$的$\frac{\vartheta}{\vartheta \theta_{0}}J(\theta_{0},\theta_{1})$的偏导数 \[\begin{equation*} \begin{split} \theta_{0} &amp; = 0:\frac{\partial}{\partial \theta_{0}}J(\theta_{0},\theta_{1}) &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)}) \end{split} \end{equation*}\] 对应$\theta_{1}$的$\frac{\vartheta}{\vartheta \theta_{1}}J(\theta_{0},\theta_{1})$的偏导数 \[\begin{equation*} \begin{split} \theta_{1} &amp; = 1:\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1}) &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})*x^{(i)} \end{split} \end{equation*}\] 然后$\theta_{0},\theta_{1}$不断重复该过程直到收敛。线性回归问题通常表现为弓状函数(凸函数)，这种看起来像弓形，只有一个全局最优解，当计算这种损失函数的梯度下降，总是收敛到全局最优。 房价的数据集，先初始设定$\theta_{0}=-900,\theta_{1}=-0.1$ 这种梯度下降法叫“Batch”梯度下降，遍历所有训练样本并计算偏导数，每一次梯度下降总要计算m个样本的总和。 误差项，某些文献也称呼敏感度、错误率 &#8617; 关于局部最优解 &#8617;]]></summary></entry><entry><title type="html"></title><link href="http://localhost:4000/Study-Blog/2022/02/11/.html" rel="alternate" type="text/html" title="" /><published>2022-02-11T00:00:00+00:00</published><updated>2022-02-11T00:00:00+00:00</updated><id>http://localhost:4000/Study-Blog/2022/02/11/</id><content type="html" xml:base="http://localhost:4000/Study-Blog/2022/02/11/.html"><![CDATA[<!-- 
+</div>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="机器学习" /><category term="机器学习" /><category term="吴恩达" /><summary type="html"><![CDATA[模型描述 线性回归，这里的回归是指分类问题，用来预测离散值输出。 举个例子：城市不同房子对应不同售价，假设某房子1250英尺，它的售价220000美元，数据集包含卖出的房子面积大小和价格。 $面积/m^{2} (x)$ $价格/1000美元(y)$ 2014 460 1416 212 1436 315 859 178 … … 符号 m=训练样本的数量 假如表格有47列，那么m=47 x’s=输入变量/特征 表格左侧的面积是输入变量或特征 y’s=输出变量/目标变量 表格右侧的价格 模型的工作是从这个数据中训练的。 $(x,y)$ 表示特定训练样本 $(x^{(i)},y^{(i)})$ 上标i表示第i个训练样本，充当索引作用，$x^{(1)}$是$2104$，$x^{(2)}$是$1416$，$y^{(1)}$是$460$ graph TB; A[训练集] B[学习算法] C[h(函数)] D[房子面积] E[售价] A--&gt;B; B--&gt;C; D--&gt;C; C--&gt;E; 得到h函数，房子面积作为x输入，得到y的输出。这种根据房子尺寸进行房价预测的函数，函数取决于于用户用什么来表达。 \[h_{\theta}=\theta_{0}+\theta_{1}x\] 缩写: \(h_{\theta}(x)\) 这种线性回归类型，是取决于x单一变量的。 监督学习 y轴是房价，x轴是房子面积，此时用一条直线拟合数据,假设卖家的房子尺寸是$750^2$，那么它的售价为150*1000美元，如上图所示。 如果函数用二阶多项式来表达，那么拟合数据的表现可能会更佳。 这回归问题的价格是一个离散值，预测离散值的输出。 无论采用哪种模型算法，都属于监督学习的类型，监督学习算法目的是给定训练数据集，迭代函数的权重获得正确的答案，下次输入未知的x也能输出需要的答案。 无监督学习 假设某函数判断病人的肿瘤是否良性或恶性，用输出0与1来表示，这类有答案的 当这些数据集没有任何标签，没有答案，算法自行学习其中的结构，将其给不同数据自行分类。 损失函数 $\theta_{0},\theta_{1}$是常数，输出的值可能不同，通过数据集的训练使直线尽可能靠拢、拟合数据 如何得到正确的$\theta_{0},\theta_{1}$呢？ 损失函数定义：$\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2$，其中$h_{\theta}(x^{(i)})=\theta_{0}+\theta_{1}x^{(i)}$ m为47个训练样本，通过损失函数计算它们的输出值$h_{\theta}$减去实际值$y^{(i)}$的二次方和从而得到的总误差项1，目的是尽可能降低这个值。 为了让损失函数变得容易理解，减少至$\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2$ 这是线性回归的整体目标函数，目标是减小$\theta_{0},\theta_{1}$的值，使总误差项最小化。 损失函数公式 \[\begin{equation} J(\theta_{0},\theta_{1})=\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2 \\ \mathop{minimize}\limits_{\theta_{0},\theta_{1}} \mathop{J(\theta_{0},\theta_{1})}_{\text{损失函数}} \end{equation}\] minimize v. 使减少到最低限度 函数模型的参数有各种各样,为了计算方便，这里先假定函数$h_{\theta}=\theta_{1}x^{(i)}$ 假定$\theta_{1}=1$ \[\begin{equation*} \begin{split} J(1) &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2 \\ &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (\theta-y^{(i)})^2 \\ &amp; = \frac{1}{2m}(0^{2}+0^{2}+0^{2}) \\ &amp; = 0^{2} \end{split} \end{equation*}\] 函数拟合数据得到最好的表现，总误差项为0，这是最理想的情况 假定$\theta_{1}=0.5$ \[\begin{equation*} \begin{split} J(0.5) &amp; = \frac{1}{2m}[(0*5-1)^{2}+(1-2)^{2}+(1*5-3)^{2})] \\ &amp; = \frac{1}{2*3}(3*5) \\ &amp; = \frac{3*5}{6} \\ &amp; = 0.58 \end{split} \end{equation*}\] \[\begin{equation*} \begin{split} J(0) &amp; = \frac{1}{2m}[1^{2}+2^{2}+3^{2})] \\ &amp; = \frac{1}{6}*14 \\ &amp; = 2.3 \end{split} \end{equation*}\] 同理，当$\theta_{1}=-0.5$时，总误差项为5.25，误差非常大 横轴为$\theta_{1}$，纵轴为总误差项，之前$\theta_{1}=1、\theta_{0}=1\ldots$给出的总误差项y，构成上图 损失函数的优化目标是获得最小值的$J(\theta_{1})$，此时上图$\theta_{1}=1$已结完美拟合了 $\theta_{0}=50,\theta_{1}=0.06$,绘制$J(\theta_{0},\theta_{1})$就多了一个$\theta_{0}=50$，它与训练集相关 这是等高线图，用2D表现如下图(几圈圈椭圆)，最小值位于最小的椭圆中心。 首先假定$\theta_{0}=800,\theta_{1}=-0.15$，位于下图$J(\theta_{0},\theta_{1})$手绘篮圈的红叉号。左边的$h(x)$显然不符合，离最小值甚远，因为拟合的不好 假定$\theta_{0}=360,\theta_{1}=0$，离最小值有些接近了 到了这里，虽然不是最小值，这是训练样本实际值与预测值之间的所有误差和，$J(\theta_{0},\theta_{1})$表示损失函数J的意义，接近损失函数J最小值的点。 我们目标是寻找一个高效的算法，来自动寻找损失函数J最小值，之后由于涉及众多参数、更高维的图形，只能通过代码实现。 梯度下降 用梯度下降算法最小化任意函数J，包括线性函数、非线性函数等。 $J(\theta_{0},\theta_{1})$可扩展$J(\theta_{0},\theta_{1},\theta_{2}\ldots\theta_{n})$ 最小化$\mathop{min}\limits_{\theta_{0},\theta_{1}}J(\theta_{0},\theta_{1})$亦可$\mathop{min}\limits_{\theta_{0},\theta_{1}}J(\theta_{0},\theta_{1},\theta_{2}\ldots\theta_{n})$ 梯度下降，一般设$\theta_{0}=0,\theta_{1}=0)$，假如能看到哪里是最低点，如下图一步一步走不断收敛至局部最低点。 实际上，我们并不能环顾四周看哪里是最低的，是碰运气不断走着，直到获得完全不同的局部最优解2。 梯度下降算法 \[\text{重复直至收敛}{\theta_{j}:=\theta_{j}-\alpha\frac{\partial}{\partial\theta_{j}}J(\theta_{0},\theta_{1})\qquad (\text{同时更新 j=0 和 j=1})}\] 正确：同时更新 \(temp0:=\theta_{0}-\alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0},\theta_{1}) \\ temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{1}) \\ \theta_{0}:=temp0 \\ \theta_{1}:=temp1\) 错误：异步更新 \(temp0:=\theta_{0}-\alpha\frac{\partial}{\partial\theta_{0}}J(\theta_{0},\theta_{1}) \\ \theta_{0}:=temp0 \\ temp1:=\theta_{1}-\alpha\frac{\partial}{\partial\theta_{1}}J(\theta_{0},\theta_{1}) \\ \theta_{1}:=temp1\) :=这是计算机赋值的意思 $\alpha$是学习率，如果这个常数很大，那么梯度下降$J(\theta_{0},\theta_{1})$容易越过最小值，左右横跳导致梯度上升(自己算)；如果太小，要迭代很多次才能收敛。 反复迭代，直至收敛为止。如果使用异步更新，那就不是梯度下降法了，是其它的算法。 梯度下降法的意义 公式的$\frac{\partial}{\partial \theta_{1}}J(\theta_{0})$是取坐标轴曲线一点的切线(红色直线的斜率)，这条线有正斜率，说明它有正导数。 因为是正数，$\theta_{1}$减去$\partial$乘以的正数，在坐标轴体现的是向左移动，然后迭代几轮收敛到最小值。 如果$\theta_{1}$在左边，那么$\frac{\partial}{\partial \theta_{1}} J(\theta_{1})$的导数是负的，按公式(3)$\theta_{1}$的值不断递增，直至梯度最小值为止。 梯度消失 假设$\theta_{1}$处于局部最优解，这样的话$\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})$的斜率等于0，不上升也不下降。 是因为$\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1})$的斜率更新，刚开始从右边紫点出发，这时导数值值比较大，绿点随着接近最小值，得到导数值变小了，得到红点，再继续梯度下降，直至收敛到局部极小值。根据定义，在局部最低点时导数等于0，这是梯度下降法的运行方式，所以没必要减小$\partial$的值 \[\begin{equation*} \begin{split} \frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1}) &amp; = \frac{\partial}{\partial \theta_{1}}\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})^2 \\ &amp; = \frac{\partial}{\partial \theta_{1}}\frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (\theta_{0}+\theta_{1}x^{(i)}-y^{(i)})^2 \\ &amp; = \end{split} \end{equation*}\] 推导函数的两个$\theta$值，按上述推导可以明白(多元微分推导) 对应$\theta_{0}$的$\frac{\partial}{\vartheta \theta_{0}}J(\theta_{0},\theta_{1})$的偏导数 \[\begin{equation*} \begin{split} \theta_{0} &amp; = 0:\frac{\partial}{\partial \theta_{0}}J(\theta_{0},\theta_{1}) &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)}) \end{split} \end{equation*}\] 对应$\theta_{1}$的$\frac{\partial}{\vartheta \theta_{1}}J(\theta_{0},\theta_{1})$的偏导数 \[\begin{equation*} \begin{split} \theta_{1} &amp; = 1:\frac{\partial}{\partial \theta_{1}}J(\theta_{0},\theta_{1}) &amp; = \frac{1}{2m}\displaystyle\sum\limits_{i=1}^m (h_{\theta}-y^{(i)})*x^{(i)} \end{split} \end{equation*}\] 然后$\theta_{0},\theta_{1}$不断重复该过程直到收敛。线性回归问题通常表现为弓状函数(凸函数)，这种看起来像弓形，只有一个全局最优解，当计算这种损失函数的梯度下降，总是收敛到全局最优。 房价的数据集，先初始设定$\theta_{0}=-900,\theta_{1}=-0.1$ 这种梯度下降法叫“Batch”梯度下降，遍历所有训练样本并计算偏导数，每一次梯度下降总要计算m个样本的总和。 误差项，某些文献也称呼敏感度、错误率 &#8617; 关于局部最优解 &#8617;]]></summary></entry><entry><title type="html"></title><link href="http://localhost:4000/Study-Blog/2022/02/11/.html" rel="alternate" type="text/html" title="" /><published>2022-02-11T00:00:00+00:00</published><updated>2022-02-11T00:00:00+00:00</updated><id>http://localhost:4000/Study-Blog/2022/02/11/</id><content type="html" xml:base="http://localhost:4000/Study-Blog/2022/02/11/.html"><![CDATA[<!-- 
 categories: 机器学习
 tags: [机器学习,吴恩达]
  -->
 
-<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">撰写博客</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts.html" rel="alternate" type="text/html" title="撰写博客" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts.html"><![CDATA[<h1 id="jekyll博客的编写">Jekyll博客的编写</h1>
+<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">基于sEMG信号的手势识别系统</title><link href="http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/sEMG-proposal-report.html" rel="alternate" type="text/html" title="基于sEMG信号的手势识别系统" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/sEMG-proposal-report</id><content type="html" xml:base="http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/sEMG-proposal-report.html"><![CDATA[<p>（报告内容包括课题的意义、国内外发展状况、本课题的研究内容、研究方法、研究手段、研究步骤以及参考文献资料等。）</p>
+<h2 id="课题的意义">课题的意义：</h2>
+<p><code class="language-plaintext highlighter-rouge">sEMG</code>(Surface Electromyography)是指浅层肌肉纤维收缩时形成的综合电位差信号，肌电本质是大脑的中枢神经系统通过MUs(motor units)逐次兴奋和单位时间内的兴奋次数等控制肌肉收缩力的大小和变化速度。肌电信号是一维时间序列信号，来源于中枢神经脊髓中的运动神经元，是电极接触的众多运动单元发射与释放的APs（action potentials）总和。所以肌电信号包含肌肉收缩模式及强度的信息。
+  因此sEMG客观反映了人体肌肉活动的情况，手臂驱使人手作出不同手势动作的肌肉层的电势变化，各种动作的不同肌电变化是本课题研究目的。手势语言作为语言障碍者的交际工具、AR交互输入方式、遥控机器人、义肢等，应用前景相当广泛，本选题目的是建立sEMG识别模型推测sEMG活动段所对应的含义。课题意义是研究人机交互的一种方式，sEMG客观反映了人体肌肉活动的情况，采用非入侵式肌电检测方法，检测皮层下的肌电活动信号，计算机从肌电信号提取某些特殊特征将其经拟合函数输出，输出为计算机理解对应的含义，以实现计算机解读手势动作，达成较好的人机交互效果。</p>
+
+<h2 id="国内外发展状况">国内外发展状况：</h2>
+<p>国内外90年代肌电研究历程，大多数研究采用三种方案：</p>
+<ol>
+  <li><strong>基于阈值识别方案</strong>
+  sEMG信号经校正、滤波和调制后，肌肉每次收缩产生信号峰值，通过比较峰值与阈值，表示肌电状态处于握拳或伸展状态；</li>
+  <li>
+    <p><strong>基于幅值编码方案</strong>
+  将将肌电信号的三态模式按照时序进行编码输出。具体的肌电控制语言由三位编码组成，（a1(t),a2(t),a3(t)） ai(t)属于{0，1，2}  每一位可以使用肌电信号幅值的三个态“1”“2”“0”表示（通过肌电收缩幅度的大小实现“1”和“2”，“0”代表无肌肉活动）它们组合起来对应输出各种模式。
+  每次肌肉收缩的检测依靠对肌电信号的非高斯性评估（倾斜度、峭度），并随即进行特定时间窗口内的滤波（去除干扰噪声），以确定信号幅度峰值强度是“1”或“2”。编码语言的全部三位采集完毕后对应模式即作出规定输出（映射表，不同肌电活动段分别映射不同模式）；</p>
+  </li>
+  <li><strong>分层控制决策</strong>，由先进的信号调制及模式识别算法识别出手臂肌肉进行的输出模式。
+  目前，现在已发展新的一种模式：基于<code class="language-plaintext highlighter-rouge">模式（NN）识别</code>的算法
+  国外已有产品案例，Thalmic Labs公司的产品MYO手环2016年正式上市，MYO手环的8个非入侵式干电极用于捕获用户胳臂运动时肌肉产生的生物电活动段，加上九轴IMU（三轴加速计、三轴陀螺仪、三轴磁强计）判断胳膊的运动姿势，通过模式识别从而实现判别佩戴者的动作，亦可利用蓝牙远程控制设备。
+  使用肌电信号的义肢，论文Shared human–robot proportional control of a dexterous myoelectric prosthesis提出的概念：通过截肢者残肢的肌肉活动来解码手指运动的意图，以达到控制单个手指的目的，这种神经工程学与机器人工程学交叉的概念已在截肢者获得试验成功，发表于《Nature Machine Intelligence》。其核心关键是NN算法学习如何解码用户的肌肉活动信号的意图，并转换为操控义肢控制装置的指令，来完成手指的动作。</li>
+</ol>
+
+<h2 id="本课题的研究内容">本课题的研究内容：</h2>
+<p>肌电识别的定义：提取肌电信号有<code class="language-plaintext highlighter-rouge">价值</code>的信息，并解码生物电信号表达的手指<code class="language-plaintext highlighter-rouge">运动意图</code>。表层肌电信号是电极接触的皮肤表层皮下的经过皮脂、溶液传导的动作电位总和，由于表层肌肉活动信号存在三种特点：</p>
+
+<ul>
+  <li>肌电信号微弱；</li>
+  <li>随机性强；</li>
+  <li>信噪比低</li>
+</ul>
+
+<p>从模式识别的角度看，肌电信号的特征在特征空间允许呈现无穷维，所以我们用机器学习算法对有限的模式进行训练，一是NN算法，二是样本量，只要两者相当合适，可以保证肌电信号有用信息的提取与识别。
+ 本课题运用NN模式识别将某些样本量的特征提取出来（肌肉收缩的信号幅值、统计学特性的变化等），经一定训练组成合适的状态空间，等待下一次肌电活动段识别的时候去判断信号与状态空间的哪个状态最为接近（识别与回归）。</p>
+
+<h3 id="主要实现功能如下">主要实现功能如下：</h3>
+<ol>
+  <li>模拟信号采集：根据香农采样定理，采样频率应不小于1000HZ；</li>
+  <li>信号预处理：整流、过滤10～500hz有效范围的信号；</li>
+  <li>无线传输信号：每个数据包带有0.1s内的数字信息，数据包抵达处理终端时自动打上时间戳；</li>
+  <li>数字过滤：使用过滤算法去掉无用噪音，提取有价值的信息</li>
+  <li>特征提取：系统分割活动段后，用如平均绝对值、简单平方积分、均方根值等；样本均值、方差、积分等；频率的平均频率、平均功率等特征，特征提取由NN模型决定；</li>
+  <li>RNN、CNN、SVM向量机等神经网络模型，根据5.创建的数据集测量它们的识别精度，决定手势识别系统采用哪个模型；</li>
+  <li>NN模型推测某段肌电活动段可能的最大概率的字符，从而实现NN模式识别
+ 
+<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-08-sEMG-proposal-report/设计流程与实现.png" alt="图1 设计流程与实现" /></li>
+</ol>
+
+<h3 id="研究方法和手段">研究方法和手段：</h3>
+<ul>
+  <li>通过Arduino开发平台完成sEMG采集装置的设计与实现。</li>
+  <li>借用NN开发工具实现分类算法设计、样本采集工具以及训练。</li>
+  <li>手势映射表的设计与实现。</li>
+</ul>
+
+<h3 id="研究步骤">研究步骤：</h3>
+<ul>
+  <li>通过图书馆、互联网，充分查阅相关的文献资料，规划设计的需求。</li>
+  <li>明确毕设方案，进行课题方案和进度设计，且能不断地研究和完善。</li>
+  <li>系统的界面设计，要求简洁大方，资源库要保证准确性。</li>
+  <li>认真测试和维护系统，保证系统的正常运行。</li>
+  <li>毕业设计说明书的内容要对所开发系统的过程进行充分的论述说明，其格式要符合天津理工大学本科毕业设计说明书规范格式的要求。按时保质保量完成毕业设计。</li>
+</ul>
+
+<h2 id="参考文献">参考文献：</h2>
+<p>[1] Andrés G. Jaramillo; Marco E. Benalcázar . Real-time hand gesture recognition with EMG using machine learning . 2017 IEEE Second Ecuador Technical Chapters
+[2] 待添加</p>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="sEMG识别" /><category term="深度学习" /><category term="机器学习" /><category term="生理信号" /><category term="sEMG识别" /><summary type="html"><![CDATA[（报告内容包括课题的意义、国内外发展状况、本课题的研究内容、研究方法、研究手段、研究步骤以及参考文献资料等。） 课题的意义： sEMG(Surface Electromyography)是指浅层肌肉纤维收缩时形成的综合电位差信号，肌电本质是大脑的中枢神经系统通过MUs(motor units)逐次兴奋和单位时间内的兴奋次数等控制肌肉收缩力的大小和变化速度。肌电信号是一维时间序列信号，来源于中枢神经脊髓中的运动神经元，是电极接触的众多运动单元发射与释放的APs（action potentials）总和。所以肌电信号包含肌肉收缩模式及强度的信息。 因此sEMG客观反映了人体肌肉活动的情况，手臂驱使人手作出不同手势动作的肌肉层的电势变化，各种动作的不同肌电变化是本课题研究目的。手势语言作为语言障碍者的交际工具、AR交互输入方式、遥控机器人、义肢等，应用前景相当广泛，本选题目的是建立sEMG识别模型推测sEMG活动段所对应的含义。课题意义是研究人机交互的一种方式，sEMG客观反映了人体肌肉活动的情况，采用非入侵式肌电检测方法，检测皮层下的肌电活动信号，计算机从肌电信号提取某些特殊特征将其经拟合函数输出，输出为计算机理解对应的含义，以实现计算机解读手势动作，达成较好的人机交互效果。 国内外发展状况： 国内外90年代肌电研究历程，大多数研究采用三种方案： 基于阈值识别方案 sEMG信号经校正、滤波和调制后，肌肉每次收缩产生信号峰值，通过比较峰值与阈值，表示肌电状态处于握拳或伸展状态； 基于幅值编码方案 将将肌电信号的三态模式按照时序进行编码输出。具体的肌电控制语言由三位编码组成，（a1(t),a2(t),a3(t)） ai(t)属于{0，1，2}  每一位可以使用肌电信号幅值的三个态“1”“2”“0”表示（通过肌电收缩幅度的大小实现“1”和“2”，“0”代表无肌肉活动）它们组合起来对应输出各种模式。 每次肌肉收缩的检测依靠对肌电信号的非高斯性评估（倾斜度、峭度），并随即进行特定时间窗口内的滤波（去除干扰噪声），以确定信号幅度峰值强度是“1”或“2”。编码语言的全部三位采集完毕后对应模式即作出规定输出（映射表，不同肌电活动段分别映射不同模式）； 分层控制决策，由先进的信号调制及模式识别算法识别出手臂肌肉进行的输出模式。 目前，现在已发展新的一种模式：基于模式（NN）识别的算法 国外已有产品案例，Thalmic Labs公司的产品MYO手环2016年正式上市，MYO手环的8个非入侵式干电极用于捕获用户胳臂运动时肌肉产生的生物电活动段，加上九轴IMU（三轴加速计、三轴陀螺仪、三轴磁强计）判断胳膊的运动姿势，通过模式识别从而实现判别佩戴者的动作，亦可利用蓝牙远程控制设备。 使用肌电信号的义肢，论文Shared human–robot proportional control of a dexterous myoelectric prosthesis提出的概念：通过截肢者残肢的肌肉活动来解码手指运动的意图，以达到控制单个手指的目的，这种神经工程学与机器人工程学交叉的概念已在截肢者获得试验成功，发表于《Nature Machine Intelligence》。其核心关键是NN算法学习如何解码用户的肌肉活动信号的意图，并转换为操控义肢控制装置的指令，来完成手指的动作。 本课题的研究内容： 肌电识别的定义：提取肌电信号有价值的信息，并解码生物电信号表达的手指运动意图。表层肌电信号是电极接触的皮肤表层皮下的经过皮脂、溶液传导的动作电位总和，由于表层肌肉活动信号存在三种特点： 肌电信号微弱； 随机性强； 信噪比低 从模式识别的角度看，肌电信号的特征在特征空间允许呈现无穷维，所以我们用机器学习算法对有限的模式进行训练，一是NN算法，二是样本量，只要两者相当合适，可以保证肌电信号有用信息的提取与识别。 本课题运用NN模式识别将某些样本量的特征提取出来（肌肉收缩的信号幅值、统计学特性的变化等），经一定训练组成合适的状态空间，等待下一次肌电活动段识别的时候去判断信号与状态空间的哪个状态最为接近（识别与回归）。 主要实现功能如下： 模拟信号采集：根据香农采样定理，采样频率应不小于1000HZ； 信号预处理：整流、过滤10～500hz有效范围的信号； 无线传输信号：每个数据包带有0.1s内的数字信息，数据包抵达处理终端时自动打上时间戳； 数字过滤：使用过滤算法去掉无用噪音，提取有价值的信息 特征提取：系统分割活动段后，用如平均绝对值、简单平方积分、均方根值等；样本均值、方差、积分等；频率的平均频率、平均功率等特征，特征提取由NN模型决定； RNN、CNN、SVM向量机等神经网络模型，根据5.创建的数据集测量它们的识别精度，决定手势识别系统采用哪个模型； NN模型推测某段肌电活动段可能的最大概率的字符，从而实现NN模式识别   研究方法和手段： 通过Arduino开发平台完成sEMG采集装置的设计与实现。 借用NN开发工具实现分类算法设计、样本采集工具以及训练。 手势映射表的设计与实现。 研究步骤： 通过图书馆、互联网，充分查阅相关的文献资料，规划设计的需求。 明确毕设方案，进行课题方案和进度设计，且能不断地研究和完善。 系统的界面设计，要求简洁大方，资源库要保证准确性。 认真测试和维护系统，保证系统的正常运行。 毕业设计说明书的内容要对所开发系统的过程进行充分的论述说明，其格式要符合天津理工大学本科毕业设计说明书规范格式的要求。按时保质保量完成毕业设计。 参考文献： [1] Andrés G. Jaramillo; Marco E. Benalcázar . Real-time hand gesture recognition with EMG using machine learning . 2017 IEEE Second Ecuador Technical Chapters [2] 待添加]]></summary></entry><entry><title type="html">CNN入门</title><link href="http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/CNN-day-1.html" rel="alternate" type="text/html" title="CNN入门" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/CNN-day-1</id><content type="html" xml:base="http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/CNN-day-1.html"><![CDATA[<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->
+
+<h2 id="激活函数relu">激活函数Relu</h2>
+
+<p>$f(x)=\max{(0,x)}$</p>
+
+<!-- ![CNN示意图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN.PNG){:.height=50%,width=50%}
+
+常用架构描述：`INPUT -> [[CONV]*N -> POOL?]*M -> [FC]*K`{:info}，CNN由**卷积层、池化层、全连接**层组成
+
+描述为`INPUT -> CONV -> POOL -> CONV -> POOL -> FC -> FC`{:.info}，一个卷积层（含池化层），为N=1个卷积层叠加,重复了M=2次,最后共K=2个全连接层 -->
+
+<h2 id="卷积输出">卷积输出</h2>
+
+<p>通过图像的矩阵乘以filter矩阵得到特征图</p>
+
+<!-- ![卷积输出](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_1.PNG){:.height=50%,width=50%} -->
+
+\[\begin{equation*}
+  \begin{split}
+    Out_{0,0}
+    &amp; = f(\sum_{m=0}^{2}\sum_{n=0}^{2}W_{m,n}X_{m+0,n+1}+W_{b}) \\
+    &amp; = relu(W_{0,0}X_{0,0}+W_{0,1}X_{0,1}+W_{0,2}X_{0,2}+W_{1,0}X_{1,0}+W_{1,1}X_{1,1}+W_{1,2}X_{1,2}+W_{2,0}X_{2,0}+W_{2,1}X_{2,1}+W_{2,2}X_{2,2}+W_{b}) \\
+    &amp; = relu(1+0+1+0+1+0+0+0+1+0) \\
+    &amp; = relu(4) \\
+    &amp; = 4
+  \end{split}
+\end{equation*}\]
+
+<p>M为第M行，N为第N列</p>
+
+<h3 id="卷积输出的计算过程">卷积输出的计算过程</h3>
+<!-- ![步幅为1时的卷积输出特征图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_2.GIF)
+
+步幅为2时的卷积输出，看完二图就明白
+
+![步幅为2时的卷积输出特征图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_3.PNG)
+
+![步幅为2时的卷积输出特征图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_4.PNG)
+
+宽度跳2下，高度也跳二个步骤，共输出
+
+ 4 | 4 
+--|:--:|--
+ 2 | 4  -->
+
+<h3 id="特征图大小的关系公式">特征图大小的关系公式</h3>
+
+\[\begin{equation*}特征图宽度=\frac{输入矩阵宽度-filter矩阵宽度+2*补几圈的0}{步幅}+1\end{equation*}\]
+
+\[\begin{equation*}特征图高度=\frac{输入矩阵高度-filter矩阵高度+2*补几圈的0}{步幅}+1\end{equation*}\]
+
+<p>参考上面步幅为2的图，输入矩阵宽度5，filter矩阵宽度3，补圈0为0，步幅为2</p>
+
+\[\begin{equation*}
+  \begin{split}
+    特征图宽度
+    &amp; = \frac{5-3+2*0}{2}+1 \\
+    &amp; = 2 
+  \end{split}
+\end{equation*}\]
+
+<h3 id="多输入多filter的卷积计算过程">多输入多Filter的卷积计算过程</h3>
+
+<p>输入矩阵若多个时，深度为D个矩阵，F为filter矩阵的大小（高和宽相同），$w_{d,m,n}$表示filter矩阵的第d层第m行第n列filter，$Out_{d,i,j}$为第d层第i行第j列的元素</p>
+
+<blockquote>
+  <p>filter矩阵为超参数<sup id="fnref:foot1" role="doc-noteref"><a href="#fn:foot1" class="footnote" rel="footnote">1</a></sup>，有<strong>几个</strong>filter矩阵就有<strong>几个</strong>输出矩阵（数量相同）</p>
+</blockquote>
+
+<blockquote>
+  <p>补了一圈0，便于图像边缘的特征提取</p>
+</blockquote>
+
+<p>7<em>7</em>3的输入，经2个3<em>3</em>3filter矩阵的卷积计算（步幅为2），得到3<em>3</em>2的输出</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_5.GIF" alt="多个输入矩阵的计算过程" /></p>
+
+<blockquote>
+  <p>上面卷积的计算方法，体现了<strong>局部连接</strong>和<strong>权值共享</strong>，2个3<em>3</em>3的filter卷积层参数仅有(3<em>3</em>3+1)*2=56个，相比全连接大大减少了参数数量</p>
+</blockquote>
+
+\[\begin{equation*}
+  \begin{split}
+    Out_{i,j}
+    &amp; = f(\displaystyle\sum\limits_{d=0}^{D-1}\displaystyle\sum\limits_{m=0}^{F-1}\displaystyle\sum\limits_{n=0}^{F-1}W_{d,m,n}X_{d,i+m,j+n}+W_{b}) \\
+  \end{split}
+\end{equation*}\]
+
+<h2 id="pooling层的计算">Pooling层的计算</h2>
+
+<h3 id="max-pooling">Max Pooling</h3>
+
+<p>n*n的样本中取最大值</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/Max_Pooling.png" alt="Max_Pooling" /></p>
+
+<p>n*n的样本中取均值
+类似上图，取4个元素的均值</p>
+
+<h2 id="卷积层的训练">卷积层的训练</h2>
+
+<p>训练算法原理：利用链式求导计算损失函数对每个权重的偏导数（梯度），然后根据梯度下降公式更新权重。</p>
+
+<ul>
+  <li>前向计算每个神经元的输出值$a_{j}$(j表示网络的第j个神经元)</li>
+  <li>反向计算每个神经元的误差项，是网络的损失函数对神经元<strong>加权</strong>输入\(net_{j}\)的偏导数，即\(\delta_{j}=\frac{\vartheta E_{d}}{\vartheta net_{j}}\)</li>
+  <li>计算每个神经元的连接权重$W_{ji}$(神经元i到神经元j的权重)的<strong>梯度</strong>，公式为\(\frac{\vartheta E_{d}}{\vartheta W_{ji}}=a_{i}\delta_{j}\)</li>
+</ul>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:foot1" role="doc-endnote">
+      <p>人为设定的参数 <a href="#fnref:foot1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="sEMG识别" /><category term="深度学习" /><category term="CNN" /><summary type="html"><![CDATA[激活函数Relu $f(x)=\max{(0,x)}$ 卷积输出 通过图像的矩阵乘以filter矩阵得到特征图 \[\begin{equation*} \begin{split} Out_{0,0} &amp; = f(\sum_{m=0}^{2}\sum_{n=0}^{2}W_{m,n}X_{m+0,n+1}+W_{b}) \\ &amp; = relu(W_{0,0}X_{0,0}+W_{0,1}X_{0,1}+W_{0,2}X_{0,2}+W_{1,0}X_{1,0}+W_{1,1}X_{1,1}+W_{1,2}X_{1,2}+W_{2,0}X_{2,0}+W_{2,1}X_{2,1}+W_{2,2}X_{2,2}+W_{b}) \\ &amp; = relu(1+0+1+0+1+0+0+0+1+0) \\ &amp; = relu(4) \\ &amp; = 4 \end{split} \end{equation*}\] M为第M行，N为第N列 卷积输出的计算过程 特征图大小的关系公式 \[\begin{equation*}特征图宽度=\frac{输入矩阵宽度-filter矩阵宽度+2*补几圈的0}{步幅}+1\end{equation*}\] \[\begin{equation*}特征图高度=\frac{输入矩阵高度-filter矩阵高度+2*补几圈的0}{步幅}+1\end{equation*}\] 参考上面步幅为2的图，输入矩阵宽度5，filter矩阵宽度3，补圈0为0，步幅为2 \[\begin{equation*} \begin{split} 特征图宽度 &amp; = \frac{5-3+2*0}{2}+1 \\ &amp; = 2 \end{split} \end{equation*}\] 多输入多Filter的卷积计算过程 输入矩阵若多个时，深度为D个矩阵，F为filter矩阵的大小（高和宽相同），$w_{d,m,n}$表示filter矩阵的第d层第m行第n列filter，$Out_{d,i,j}$为第d层第i行第j列的元素 filter矩阵为超参数1，有几个filter矩阵就有几个输出矩阵（数量相同） 补了一圈0，便于图像边缘的特征提取 773的输入，经2个333filter矩阵的卷积计算（步幅为2），得到332的输出 上面卷积的计算方法，体现了局部连接和权值共享，2个333的filter卷积层参数仅有(333+1)*2=56个，相比全连接大大减少了参数数量 \[\begin{equation*} \begin{split} Out_{i,j} &amp; = f(\displaystyle\sum\limits_{d=0}^{D-1}\displaystyle\sum\limits_{m=0}^{F-1}\displaystyle\sum\limits_{n=0}^{F-1}W_{d,m,n}X_{d,i+m,j+n}+W_{b}) \\ \end{split} \end{equation*}\] Pooling层的计算 Max Pooling n*n的样本中取最大值 n*n的样本中取均值 类似上图，取4个元素的均值 卷积层的训练 训练算法原理：利用链式求导计算损失函数对每个权重的偏导数（梯度），然后根据梯度下降公式更新权重。 前向计算每个神经元的输出值$a_{j}$(j表示网络的第j个神经元) 反向计算每个神经元的误差项，是网络的损失函数对神经元加权输入\(net_{j}\)的偏导数，即\(\delta_{j}=\frac{\vartheta E_{d}}{\vartheta net_{j}}\) 计算每个神经元的连接权重$W_{ji}$(神经元i到神经元j的权重)的梯度，公式为\(\frac{\vartheta E_{d}}{\vartheta W_{ji}}=a_{i}\delta_{j}\) 人为设定的参数 &#8617;]]></summary></entry><entry><title type="html">撰写博客</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts.html" rel="alternate" type="text/html" title="撰写博客" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/writing-posts.html"><![CDATA[<h1 id="jekyll博客的编写">Jekyll博客的编写</h1>
 
 <p>在<a href="http://jekyllcn.com/docs/structure/">目录结构</a>介绍中说明过，<strong>所有的文章都在 <em>/_posts</em> 文件夹中</strong>。这些文件可以用 Markdown 或 HTML 编写。只要文件中有 YAML 头信息，它们就会从源格式转化成 HTML 页面，从而成为你的静态网站的一部分。</p>
 
@@ -2077,187 +2953,7 @@ PYENV_SHELL=bash
       <p>The 2nd footnote source <a href="#fnref:fn-nth-2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
-</div>]]></content><author><name>Tian Qi</name><email>kitian616@outlook.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[Jekyll博客的编写 在目录结构介绍中说明过，所有的文章都在 /_posts 文件夹中。这些文件可以用 Markdown 或 HTML 编写。只要文件中有 YAML 头信息，它们就会从源格式转化成 HTML 页面，从而成为你的静态网站的一部分。]]></summary></entry><entry><title type="html">基于sEMG信号的手势识别系统</title><link href="http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/sEMG-proposal-report.html" rel="alternate" type="text/html" title="基于sEMG信号的手势识别系统" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/sEMG-proposal-report</id><content type="html" xml:base="http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/sEMG-proposal-report.html"><![CDATA[<p>（报告内容包括课题的意义、国内外发展状况、本课题的研究内容、研究方法、研究手段、研究步骤以及参考文献资料等。）</p>
-<h2 id="课题的意义">课题的意义：</h2>
-<p><code class="language-plaintext highlighter-rouge">sEMG</code>(Surface Electromyography)是指浅层肌肉纤维收缩时形成的综合电位差信号，肌电本质是大脑的中枢神经系统通过MUs(motor units)逐次兴奋和单位时间内的兴奋次数等控制肌肉收缩力的大小和变化速度。肌电信号是一维时间序列信号，来源于中枢神经脊髓中的运动神经元，是电极接触的众多运动单元发射与释放的APs（action potentials）总和。所以肌电信号包含肌肉收缩模式及强度的信息。
-  因此sEMG客观反映了人体肌肉活动的情况，手臂驱使人手作出不同手势动作的肌肉层的电势变化，各种动作的不同肌电变化是本课题研究目的。手势语言作为语言障碍者的交际工具、AR交互输入方式、遥控机器人、义肢等，应用前景相当广泛，本选题目的是建立sEMG识别模型推测sEMG活动段所对应的含义。课题意义是研究人机交互的一种方式，sEMG客观反映了人体肌肉活动的情况，采用非入侵式肌电检测方法，检测皮层下的肌电活动信号，计算机从肌电信号提取某些特殊特征将其经拟合函数输出，输出为计算机理解对应的含义，以实现计算机解读手势动作，达成较好的人机交互效果。</p>
-
-<h2 id="国内外发展状况">国内外发展状况：</h2>
-<p>国内外90年代肌电研究历程，大多数研究采用三种方案：</p>
-<ol>
-  <li><strong>基于阈值识别方案</strong>
-  sEMG信号经校正、滤波和调制后，肌肉每次收缩产生信号峰值，通过比较峰值与阈值，表示肌电状态处于握拳或伸展状态；</li>
-  <li>
-    <p><strong>基于幅值编码方案</strong>
-  将将肌电信号的三态模式按照时序进行编码输出。具体的肌电控制语言由三位编码组成，（a1(t),a2(t),a3(t)） ai(t)属于{0，1，2}  每一位可以使用肌电信号幅值的三个态“1”“2”“0”表示（通过肌电收缩幅度的大小实现“1”和“2”，“0”代表无肌肉活动）它们组合起来对应输出各种模式。
-  每次肌肉收缩的检测依靠对肌电信号的非高斯性评估（倾斜度、峭度），并随即进行特定时间窗口内的滤波（去除干扰噪声），以确定信号幅度峰值强度是“1”或“2”。编码语言的全部三位采集完毕后对应模式即作出规定输出（映射表，不同肌电活动段分别映射不同模式）；</p>
-  </li>
-  <li><strong>分层控制决策</strong>，由先进的信号调制及模式识别算法识别出手臂肌肉进行的输出模式。
-  目前，现在已发展新的一种模式：基于<code class="language-plaintext highlighter-rouge">模式（NN）识别</code>的算法
-  国外已有产品案例，Thalmic Labs公司的产品MYO手环2016年正式上市，MYO手环的8个非入侵式干电极用于捕获用户胳臂运动时肌肉产生的生物电活动段，加上九轴IMU（三轴加速计、三轴陀螺仪、三轴磁强计）判断胳膊的运动姿势，通过模式识别从而实现判别佩戴者的动作，亦可利用蓝牙远程控制设备。
-  使用肌电信号的义肢，论文Shared human–robot proportional control of a dexterous myoelectric prosthesis提出的概念：通过截肢者残肢的肌肉活动来解码手指运动的意图，以达到控制单个手指的目的，这种神经工程学与机器人工程学交叉的概念已在截肢者获得试验成功，发表于《Nature Machine Intelligence》。其核心关键是NN算法学习如何解码用户的肌肉活动信号的意图，并转换为操控义肢控制装置的指令，来完成手指的动作。</li>
-</ol>
-
-<h2 id="本课题的研究内容">本课题的研究内容：</h2>
-<p>肌电识别的定义：提取肌电信号有<code class="language-plaintext highlighter-rouge">价值</code>的信息，并解码生物电信号表达的手指<code class="language-plaintext highlighter-rouge">运动意图</code>。表层肌电信号是电极接触的皮肤表层皮下的经过皮脂、溶液传导的动作电位总和，由于表层肌肉活动信号存在三种特点：</p>
-
-<ul>
-  <li>肌电信号微弱；</li>
-  <li>随机性强；</li>
-  <li>信噪比低</li>
-</ul>
-
-<p>从模式识别的角度看，肌电信号的特征在特征空间允许呈现无穷维，所以我们用机器学习算法对有限的模式进行训练，一是NN算法，二是样本量，只要两者相当合适，可以保证肌电信号有用信息的提取与识别。
- 本课题运用NN模式识别将某些样本量的特征提取出来（肌肉收缩的信号幅值、统计学特性的变化等），经一定训练组成合适的状态空间，等待下一次肌电活动段识别的时候去判断信号与状态空间的哪个状态最为接近（识别与回归）。</p>
-
-<h3 id="主要实现功能如下">主要实现功能如下：</h3>
-<ol>
-  <li>模拟信号采集：根据香农采样定理，采样频率应不小于1000HZ；</li>
-  <li>信号预处理：整流、过滤10～500hz有效范围的信号；</li>
-  <li>无线传输信号：每个数据包带有0.1s内的数字信息，数据包抵达处理终端时自动打上时间戳；</li>
-  <li>数字过滤：使用过滤算法去掉无用噪音，提取有价值的信息</li>
-  <li>特征提取：系统分割活动段后，用如平均绝对值、简单平方积分、均方根值等；样本均值、方差、积分等；频率的平均频率、平均功率等特征，特征提取由NN模型决定；</li>
-  <li>RNN、CNN、SVM向量机等神经网络模型，根据5.创建的数据集测量它们的识别精度，决定手势识别系统采用哪个模型；</li>
-  <li>NN模型推测某段肌电活动段可能的最大概率的字符，从而实现NN模式识别
- 
-<img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-08-sEMG-proposal-report/设计流程与实现.png" alt="图1 设计流程与实现" /></li>
-</ol>
-
-<h3 id="研究方法和手段">研究方法和手段：</h3>
-<ul>
-  <li>通过Arduino开发平台完成sEMG采集装置的设计与实现。</li>
-  <li>借用NN开发工具实现分类算法设计、样本采集工具以及训练。</li>
-  <li>手势映射表的设计与实现。</li>
-</ul>
-
-<h3 id="研究步骤">研究步骤：</h3>
-<ul>
-  <li>通过图书馆、互联网，充分查阅相关的文献资料，规划设计的需求。</li>
-  <li>明确毕设方案，进行课题方案和进度设计，且能不断地研究和完善。</li>
-  <li>系统的界面设计，要求简洁大方，资源库要保证准确性。</li>
-  <li>认真测试和维护系统，保证系统的正常运行。</li>
-  <li>毕业设计说明书的内容要对所开发系统的过程进行充分的论述说明，其格式要符合天津理工大学本科毕业设计说明书规范格式的要求。按时保质保量完成毕业设计。</li>
-</ul>
-
-<h2 id="参考文献">参考文献：</h2>
-<p>[1] Andrés G. Jaramillo; Marco E. Benalcázar . Real-time hand gesture recognition with EMG using machine learning . 2017 IEEE Second Ecuador Technical Chapters
-[2] 待添加</p>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="sEMG识别" /><category term="深度学习" /><category term="机器学习" /><category term="生理信号" /><category term="sEMG识别" /><summary type="html"><![CDATA[（报告内容包括课题的意义、国内外发展状况、本课题的研究内容、研究方法、研究手段、研究步骤以及参考文献资料等。） 课题的意义： sEMG(Surface Electromyography)是指浅层肌肉纤维收缩时形成的综合电位差信号，肌电本质是大脑的中枢神经系统通过MUs(motor units)逐次兴奋和单位时间内的兴奋次数等控制肌肉收缩力的大小和变化速度。肌电信号是一维时间序列信号，来源于中枢神经脊髓中的运动神经元，是电极接触的众多运动单元发射与释放的APs（action potentials）总和。所以肌电信号包含肌肉收缩模式及强度的信息。 因此sEMG客观反映了人体肌肉活动的情况，手臂驱使人手作出不同手势动作的肌肉层的电势变化，各种动作的不同肌电变化是本课题研究目的。手势语言作为语言障碍者的交际工具、AR交互输入方式、遥控机器人、义肢等，应用前景相当广泛，本选题目的是建立sEMG识别模型推测sEMG活动段所对应的含义。课题意义是研究人机交互的一种方式，sEMG客观反映了人体肌肉活动的情况，采用非入侵式肌电检测方法，检测皮层下的肌电活动信号，计算机从肌电信号提取某些特殊特征将其经拟合函数输出，输出为计算机理解对应的含义，以实现计算机解读手势动作，达成较好的人机交互效果。 国内外发展状况： 国内外90年代肌电研究历程，大多数研究采用三种方案： 基于阈值识别方案 sEMG信号经校正、滤波和调制后，肌肉每次收缩产生信号峰值，通过比较峰值与阈值，表示肌电状态处于握拳或伸展状态； 基于幅值编码方案 将将肌电信号的三态模式按照时序进行编码输出。具体的肌电控制语言由三位编码组成，（a1(t),a2(t),a3(t)） ai(t)属于{0，1，2}  每一位可以使用肌电信号幅值的三个态“1”“2”“0”表示（通过肌电收缩幅度的大小实现“1”和“2”，“0”代表无肌肉活动）它们组合起来对应输出各种模式。 每次肌肉收缩的检测依靠对肌电信号的非高斯性评估（倾斜度、峭度），并随即进行特定时间窗口内的滤波（去除干扰噪声），以确定信号幅度峰值强度是“1”或“2”。编码语言的全部三位采集完毕后对应模式即作出规定输出（映射表，不同肌电活动段分别映射不同模式）； 分层控制决策，由先进的信号调制及模式识别算法识别出手臂肌肉进行的输出模式。 目前，现在已发展新的一种模式：基于模式（NN）识别的算法 国外已有产品案例，Thalmic Labs公司的产品MYO手环2016年正式上市，MYO手环的8个非入侵式干电极用于捕获用户胳臂运动时肌肉产生的生物电活动段，加上九轴IMU（三轴加速计、三轴陀螺仪、三轴磁强计）判断胳膊的运动姿势，通过模式识别从而实现判别佩戴者的动作，亦可利用蓝牙远程控制设备。 使用肌电信号的义肢，论文Shared human–robot proportional control of a dexterous myoelectric prosthesis提出的概念：通过截肢者残肢的肌肉活动来解码手指运动的意图，以达到控制单个手指的目的，这种神经工程学与机器人工程学交叉的概念已在截肢者获得试验成功，发表于《Nature Machine Intelligence》。其核心关键是NN算法学习如何解码用户的肌肉活动信号的意图，并转换为操控义肢控制装置的指令，来完成手指的动作。 本课题的研究内容： 肌电识别的定义：提取肌电信号有价值的信息，并解码生物电信号表达的手指运动意图。表层肌电信号是电极接触的皮肤表层皮下的经过皮脂、溶液传导的动作电位总和，由于表层肌肉活动信号存在三种特点： 肌电信号微弱； 随机性强； 信噪比低 从模式识别的角度看，肌电信号的特征在特征空间允许呈现无穷维，所以我们用机器学习算法对有限的模式进行训练，一是NN算法，二是样本量，只要两者相当合适，可以保证肌电信号有用信息的提取与识别。 本课题运用NN模式识别将某些样本量的特征提取出来（肌肉收缩的信号幅值、统计学特性的变化等），经一定训练组成合适的状态空间，等待下一次肌电活动段识别的时候去判断信号与状态空间的哪个状态最为接近（识别与回归）。 主要实现功能如下： 模拟信号采集：根据香农采样定理，采样频率应不小于1000HZ； 信号预处理：整流、过滤10～500hz有效范围的信号； 无线传输信号：每个数据包带有0.1s内的数字信息，数据包抵达处理终端时自动打上时间戳； 数字过滤：使用过滤算法去掉无用噪音，提取有价值的信息 特征提取：系统分割活动段后，用如平均绝对值、简单平方积分、均方根值等；样本均值、方差、积分等；频率的平均频率、平均功率等特征，特征提取由NN模型决定； RNN、CNN、SVM向量机等神经网络模型，根据5.创建的数据集测量它们的识别精度，决定手势识别系统采用哪个模型； NN模型推测某段肌电活动段可能的最大概率的字符，从而实现NN模式识别   研究方法和手段： 通过Arduino开发平台完成sEMG采集装置的设计与实现。 借用NN开发工具实现分类算法设计、样本采集工具以及训练。 手势映射表的设计与实现。 研究步骤： 通过图书馆、互联网，充分查阅相关的文献资料，规划设计的需求。 明确毕设方案，进行课题方案和进度设计，且能不断地研究和完善。 系统的界面设计，要求简洁大方，资源库要保证准确性。 认真测试和维护系统，保证系统的正常运行。 毕业设计说明书的内容要对所开发系统的过程进行充分的论述说明，其格式要符合天津理工大学本科毕业设计说明书规范格式的要求。按时保质保量完成毕业设计。 参考文献： [1] Andrés G. Jaramillo; Marco E. Benalcázar . Real-time hand gesture recognition with EMG using machine learning . 2017 IEEE Second Ecuador Technical Chapters [2] 待添加]]></summary></entry><entry><title type="html">CNN入门</title><link href="http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/CNN-day-1.html" rel="alternate" type="text/html" title="CNN入门" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/CNN-day-1</id><content type="html" xml:base="http://localhost:4000/Study-Blog/semg%E8%AF%86%E5%88%AB/2022/02/06/CNN-day-1.html"><![CDATA[<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->
-
-<h2 id="激活函数relu">激活函数Relu</h2>
-
-<p>$f(x)=\max{(0,x)}$</p>
-
-<!-- ![CNN示意图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN.PNG){:.height=50%,width=50%}
-
-常用架构描述：`INPUT -> [[CONV]*N -> POOL?]*M -> [FC]*K`{:info}，CNN由**卷积层、池化层、全连接**层组成
-
-描述为`INPUT -> CONV -> POOL -> CONV -> POOL -> FC -> FC`{:.info}，一个卷积层（含池化层），为N=1个卷积层叠加,重复了M=2次,最后共K=2个全连接层 -->
-
-<h2 id="卷积输出">卷积输出</h2>
-
-<p>通过图像的矩阵乘以filter矩阵得到特征图</p>
-
-<!-- ![卷积输出](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_1.PNG){:.height=50%,width=50%} -->
-
-\[\begin{equation*}
-  \begin{split}
-    Out_{0,0}
-    &amp; = f(\sum_{m=0}^{2}\sum_{n=0}^{2}W_{m,n}X_{m+0,n+1}+W_{b}) \\
-    &amp; = relu(W_{0,0}X_{0,0}+W_{0,1}X_{0,1}+W_{0,2}X_{0,2}+W_{1,0}X_{1,0}+W_{1,1}X_{1,1}+W_{1,2}X_{1,2}+W_{2,0}X_{2,0}+W_{2,1}X_{2,1}+W_{2,2}X_{2,2}+W_{b}) \\
-    &amp; = relu(1+0+1+0+1+0+0+0+1+0) \\
-    &amp; = relu(4) \\
-    &amp; = 4
-  \end{split}
-\end{equation*}\]
-
-<p>M为第M行，N为第N列</p>
-
-<h3 id="卷积输出的计算过程">卷积输出的计算过程</h3>
-<!-- ![步幅为1时的卷积输出特征图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_2.GIF)
-
-步幅为2时的卷积输出，看完二图就明白
-
-![步幅为2时的卷积输出特征图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_3.PNG)
-
-![步幅为2时的卷积输出特征图](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_4.PNG)
-
-宽度跳2下，高度也跳二个步骤，共输出
-
- 4 | 4 
---|:--:|--
- 2 | 4  -->
-
-<h3 id="特征图大小的关系公式">特征图大小的关系公式</h3>
-
-\[\begin{equation*}特征图宽度=\frac{输入矩阵宽度-filter矩阵宽度+2*补几圈的0}{步幅}+1\end{equation*}\]
-
-\[\begin{equation*}特征图高度=\frac{输入矩阵高度-filter矩阵高度+2*补几圈的0}{步幅}+1\end{equation*}\]
-
-<p>参考上面步幅为2的图，输入矩阵宽度5，filter矩阵宽度3，补圈0为0，步幅为2</p>
-
-\[\begin{equation*}
-  \begin{split}
-    特征图宽度
-    &amp; = \frac{5-3+2*0}{2}+1 \\
-    &amp; = 2 
-  \end{split}
-\end{equation*}\]
-
-<h3 id="多输入多filter的卷积计算过程">多输入多Filter的卷积计算过程</h3>
-
-<p>输入矩阵若多个时，深度为D个矩阵，F为filter矩阵的大小（高和宽相同），$w_{d,m,n}$表示filter矩阵的第d层第m行第n列filter，$Out_{d,i,j}$为第d层第i行第j列的元素</p>
-
-<blockquote>
-  <p>filter矩阵为超参数<sup id="fnref:foot1" role="doc-noteref"><a href="#fn:foot1" class="footnote" rel="footnote">1</a></sup>，有<strong>几个</strong>filter矩阵就有<strong>几个</strong>输出矩阵（数量相同）</p>
-</blockquote>
-
-<blockquote>
-  <p>补了一圈0，便于图像边缘的特征提取</p>
-</blockquote>
-
-<p>7<em>7</em>3的输入，经2个3<em>3</em>3filter矩阵的卷积计算（步幅为2），得到3<em>3</em>2的输出</p>
-
-<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/CNN_5.GIF" alt="多个输入矩阵的计算过程" /></p>
-
-<blockquote>
-  <p>上面卷积的计算方法，体现了<strong>局部连接</strong>和<strong>权值共享</strong>，2个3<em>3</em>3的filter卷积层参数仅有(3<em>3</em>3+1)*2=56个，相比全连接大大减少了参数数量</p>
-</blockquote>
-
-\[\begin{equation*}
-  \begin{split}
-    Out_{i,j}
-    &amp; = f(\displaystyle\sum\limits_{d=0}^{D-1}\displaystyle\sum\limits_{m=0}^{F-1}\displaystyle\sum\limits_{n=0}^{F-1}W_{d,m,n}X_{d,i+m,j+n}+W_{b}) \\
-  \end{split}
-\end{equation*}\]
-
-<h2 id="pooling层的计算">Pooling层的计算</h2>
-
-<h3 id="max-pooling">Max Pooling</h3>
-
-<p>n*n的样本中取最大值</p>
-
-<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-09-CNN/Max_Pooling.png" alt="Max_Pooling" /></p>
-
-<p>n*n的样本中取均值
-类似上图，取4个元素的均值</p>
-
-<h2 id="卷积层的训练">卷积层的训练</h2>
-
-<p>训练算法原理：利用链式求导计算损失函数对每个权重的偏导数（梯度），然后根据梯度下降公式更新权重。</p>
-
-<ul>
-  <li>前向计算每个神经元的输出值$a_{j}$(j表示网络的第j个神经元)</li>
-  <li>反向计算每个神经元的误差项，是网络的损失函数对神经元<strong>加权</strong>输入\(net_{j}\)的偏导数，即\(\delta_{j}=\frac{\vartheta E_{d}}{\vartheta net_{j}}\)</li>
-  <li>计算每个神经元的连接权重$W_{ji}$(神经元i到神经元j的权重)的<strong>梯度</strong>，公式为\(\frac{\vartheta E_{d}}{\vartheta W_{ji}}=a_{i}\delta_{j}\)</li>
-</ul>
-
-<div class="footnotes" role="doc-endnotes">
-  <ol>
-    <li id="fn:foot1" role="doc-endnote">
-      <p>人为设定的参数 <a href="#fnref:foot1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
-    </li>
-  </ol>
-</div>]]></content><author><name>李广琛</name><email>allrobots@163.com</email></author><category term="sEMG识别" /><category term="深度学习" /><category term="CNN" /><summary type="html"><![CDATA[激活函数Relu $f(x)=\max{(0,x)}$ 卷积输出 通过图像的矩阵乘以filter矩阵得到特征图 \[\begin{equation*} \begin{split} Out_{0,0} &amp; = f(\sum_{m=0}^{2}\sum_{n=0}^{2}W_{m,n}X_{m+0,n+1}+W_{b}) \\ &amp; = relu(W_{0,0}X_{0,0}+W_{0,1}X_{0,1}+W_{0,2}X_{0,2}+W_{1,0}X_{1,0}+W_{1,1}X_{1,1}+W_{1,2}X_{1,2}+W_{2,0}X_{2,0}+W_{2,1}X_{2,1}+W_{2,2}X_{2,2}+W_{b}) \\ &amp; = relu(1+0+1+0+1+0+0+0+1+0) \\ &amp; = relu(4) \\ &amp; = 4 \end{split} \end{equation*}\] M为第M行，N为第N列 卷积输出的计算过程 特征图大小的关系公式 \[\begin{equation*}特征图宽度=\frac{输入矩阵宽度-filter矩阵宽度+2*补几圈的0}{步幅}+1\end{equation*}\] \[\begin{equation*}特征图高度=\frac{输入矩阵高度-filter矩阵高度+2*补几圈的0}{步幅}+1\end{equation*}\] 参考上面步幅为2的图，输入矩阵宽度5，filter矩阵宽度3，补圈0为0，步幅为2 \[\begin{equation*} \begin{split} 特征图宽度 &amp; = \frac{5-3+2*0}{2}+1 \\ &amp; = 2 \end{split} \end{equation*}\] 多输入多Filter的卷积计算过程 输入矩阵若多个时，深度为D个矩阵，F为filter矩阵的大小（高和宽相同），$w_{d,m,n}$表示filter矩阵的第d层第m行第n列filter，$Out_{d,i,j}$为第d层第i行第j列的元素 filter矩阵为超参数1，有几个filter矩阵就有几个输出矩阵（数量相同） 补了一圈0，便于图像边缘的特征提取 773的输入，经2个333filter矩阵的卷积计算（步幅为2），得到332的输出 上面卷积的计算方法，体现了局部连接和权值共享，2个333的filter卷积层参数仅有(333+1)*2=56个，相比全连接大大减少了参数数量 \[\begin{equation*} \begin{split} Out_{i,j} &amp; = f(\displaystyle\sum\limits_{d=0}^{D-1}\displaystyle\sum\limits_{m=0}^{F-1}\displaystyle\sum\limits_{n=0}^{F-1}W_{d,m,n}X_{d,i+m,j+n}+W_{b}) \\ \end{split} \end{equation*}\] Pooling层的计算 Max Pooling n*n的样本中取最大值 n*n的样本中取均值 类似上图，取4个元素的均值 卷积层的训练 训练算法原理：利用链式求导计算损失函数对每个权重的偏导数（梯度），然后根据梯度下降公式更新权重。 前向计算每个神经元的输出值$a_{j}$(j表示网络的第j个神经元) 反向计算每个神经元的误差项，是网络的损失函数对神经元加权输入\(net_{j}\)的偏导数，即\(\delta_{j}=\frac{\vartheta E_{d}}{\vartheta net_{j}}\) 计算每个神经元的连接权重$W_{ji}$(神经元i到神经元j的权重)的梯度，公式为\(\frac{\vartheta E_{d}}{\vartheta W_{ji}}=a_{i}\delta_{j}\) 人为设定的参数 &#8617;]]></summary></entry><entry><title type="html">快速建Jekyll博客</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html" rel="alternate" type="text/html" title="快速建Jekyll博客" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html"><![CDATA[<p>TeXt 是一款 100% 兼容 GitHub Pages 的 Jekyll 主题，你可以通过 Fork、下载或主题等方式安装。</p>
+</div>]]></content><author><name>Tian Qi</name><email>kitian616@outlook.com</email></author><category term="博客" /><category term="博客" /><category term="写作" /><summary type="html"><![CDATA[Jekyll博客的编写 在目录结构介绍中说明过，所有的文章都在 /_posts 文件夹中。这些文件可以用 Markdown 或 HTML 编写。只要文件中有 YAML 头信息，它们就会从源格式转化成 HTML 页面，从而成为你的静态网站的一部分。]]></summary></entry><entry><title type="html">快速建Jekyll博客</title><link href="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html" rel="alternate" type="text/html" title="快速建Jekyll博客" /><published>2022-02-06T11:26:41+00:00</published><updated>2022-02-06T11:26:41+00:00</updated><id>http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start</id><content type="html" xml:base="http://localhost:4000/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html"><![CDATA[<p>TeXt 是一款 100% 兼容 GitHub Pages 的 Jekyll 主题，你可以通过 Fork、下载或主题等方式安装。</p>
 
 <p>在这篇文章中，你将学到如何<strong>安装设置主题</strong>，通过<strong>本地预览</strong>进行开发以及<strong>编译</strong>和<strong>发布</strong>。</p>
 

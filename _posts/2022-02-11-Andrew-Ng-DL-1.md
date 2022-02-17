@@ -125,7 +125,7 @@ $$\begin{equation}
 
 minimize v. 使减少到最低限度
 
-假设的函数模型的参数有各种各样,为了计算方便，这里先假定函数$h_{\theta}=\theta_{1}x^{(i)}$
+函数模型的参数有各种各样,为了计算方便，这里先假定函数$h_{\theta}=\theta_{1}x^{(i)}$
 
 ![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-11/10.PNG)
 
@@ -270,7 +270,7 @@ $$\begin{equation*}
 
 推导函数的两个$\theta$值，按上述推导可以明白(多元微分推导)
 
-对应$\theta_{0}$的$\frac{\vartheta}{\vartheta \theta_{0}}J(\theta_{0},\theta_{1})$的偏导数
+对应$\theta_{0}$的$\frac{\partial}{\vartheta \theta_{0}}J(\theta_{0},\theta_{1})$的偏导数
 
 $$\begin{equation*}
   \begin{split}
@@ -280,7 +280,7 @@ $$\begin{equation*}
   \end{split}
 \end{equation*}$$
 
-对应$\theta_{1}$的$\frac{\vartheta}{\vartheta \theta_{1}}J(\theta_{0},\theta_{1})$的偏导数
+对应$\theta_{1}$的$\frac{\partial}{\vartheta \theta_{1}}J(\theta_{0},\theta_{1})$的偏导数
 
 $$\begin{equation*}
   \begin{split}
