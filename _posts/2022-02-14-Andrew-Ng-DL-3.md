@@ -5,22 +5,26 @@ date:   2022-02-14
 categories: 机器学习
 tags: [机器学习,吴恩达]
 ---
+<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ 
+$\displaystyle\underbrace{a_i}_{\text{i从1到n}}$
 
+$\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
+-->
 ## 分类
 
 先从二分类开始，假设$y\epsilon$\{0,1\}，0和1分别输出no、yes：
 
 ![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/7.png)
 
-阈值可以设为0.5，当激活函数的加权输入$\ge$0.5则输出1，小于0.5则输出0
+阈值可以设为0.5，当激活函数的加权输入$\ge$0.5则输出1，小于0.5则输出0，如图所示：
 
 >这种叫**Logistic回归（逻辑回归）**。
 
-但增加额外样本后，拟合情况就不那么好了，如图所示：
+但增加额外样本后，蓝线拟合情况就不那么好了，离红叉号的偏差较高，如图所示：
 
 ![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/8.png)
 
-所以不推荐线性回归模型用于分类问题。
+不推荐线性回归模型用于分类问题。
 
 ## 逻辑回归
 
@@ -51,7 +55,7 @@ x_{1}
 \end{bmatrix}
 =\begin{bmatrix}
 1  \\
-\text{肿瘤面积}  \\
+\text{肿瘤面积参数1}  \\
 \end{bmatrix}
 h_{\theta}(x)=0.7
 \end{equation*}$$
@@ -61,7 +65,7 @@ y=1的表达式：$P(y=1\|x;\theta)=1-P(y=1\|x;\theta)$
 
 ### 决策边界
 
-决策边界(decision boundary)，下图中紫线是决策边界:
+决策边界(decision boundary)，下图的紫线是决策边界：
 
 ![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/10.png)
 
@@ -154,7 +158,7 @@ $$\begin{equation*}
 
 ![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/14.png)
 
-代价函数可能实际是非凹函数图的，迭代有时经常收敛到局部最优解，为了达到理想中的梯度下降，需要推导新的梯度下降法来收敛全局最小值的。
+代价函数可能实际是非凹函数图的，迭代有时经常收敛到局部最优解，为了达到理想中的梯度下降，需要推导新的梯度下降算法来收敛全局最小值的。
 
 $$\begin{equation*}
   Cost(h_{\theta}(x),y)=
@@ -177,7 +181,7 @@ $h_{\theta}=1$，$P(y=0\|x;\theta)=0$
 
 ![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/16.png)
 
-## 简化损失函数和梯度下降法
+### 简化损失函数
 
 $$\begin{equation*}
   J(\theta)=\frac{1}{m}\displaystyle\sum\limits_{i=1}^{m}Cost(h_{\theta}(x^{(i)},y^{(i)})  \\
@@ -187,7 +191,7 @@ $$\begin{equation*}
   \end{cases}
 \end{equation*}$$
 
-为了避免梯度下降法按两种情况写，把两个式子合并:
+为了避免梯度下降算法按两种情况写，把两个式子合并:
 
 $$\begin{equation*}
   Cost(h_{\theta}(x),y)=-ylog(h_{\theta}(x))-(1-y)log(1-h_{\theta}(x))  \\
@@ -206,6 +210,8 @@ $$\begin{equation*}
 
 公式是由统计学的极大似然法决定的，统计学为不同模型快速找参数，给出此方法(原理和证明略)，它的优点是凸函数。
 
+### 梯度下降算法
+
 $$\begin{equation*} min_{\theta}J(\theta):  \\
 \theta_{j}:=\theta_{j}-\alpha \frac{\partial}{\partial\theta_{j}}J(\theta)
 \end{equation*}$$
@@ -222,16 +228,16 @@ $$\begin{equation*} \theta_{j}:=\theta_{j}-\alpha \displaystyle\sum\limits_{i=1}
 
 有若干$\theta$参数，更新参数值需要用到这个公式。
 
-线性回归和逻辑回归有什么区别？它们的梯度下降法不是同一个，拟合数据也比线性回归更佳，目前已广泛应用于机器学习领域中。
+线性回归和逻辑回归有什么区别？它们的梯度下降算法不是同一个，拟合数据也比线性回归更佳，目前已广泛应用于机器学习领域中。
 
 ## 高级优化算法
 
 优化算法，给一个$\theta$，需要代码去计算损失函数和偏导数：
 
 - $J(\theta)$
-- $\frac{\partial}{\partial\theta_{j}}J(\theta) \qquad (for j=0,1,\ldots,n)$
+- $\frac{\partial}{\partial\theta_{j}}J(\theta) \qquad (for\ j=0,1,\ldots,n)$
 
-然后利用梯度下降法去优化目标值：
+然后利用梯度下降算法去优化目标值：
 
 $$\begin{equation*} min_{\theta}J(\theta):  \\
 \theta_{j}:=\theta_{j}-\alpha \frac{\partial}{\partial\theta_{j}}J(\theta)
@@ -239,20 +245,21 @@ $$\begin{equation*} min_{\theta}J(\theta):  \\
 
 除了常规优化算法，还有一些高级优化算法：
 
-- 批次梯度下降法
+- 批量梯度下降算法
 - 共轭梯度法
 - BFGS
 - L-BFGS
 
-已知的梯度下降法就不介绍了，简单介绍其它三种优化算法的优点：
+已知的梯度下降算法就不介绍了，简单介绍其它三种优化算法的优点：
 优点：
 	- 不需要手动选择学习率
-	- 比常规梯度下降法快多了
+	- 比常规梯度下降算法快多了
 	
 缺点：
 	- 非常复杂
+	- 漫长的学习时长
 
-这些算法给出计算导数项和损失函数的方法，它们有线性搜索算法(智能内循环clever inner-loop)，每次迭代自动尝试不同学习率，所以收敛速度远远比常规梯度下降法快多了。
+这些算法给出计算导数项和损失函数的方法，它们有线性搜索算法(智能内循环clever inner-loop)，每次迭代自动尝试不同学习率，所以收敛速度远远比常规梯度下降算法快多了。
 
 细节待补充...可能要学几周时间
 
@@ -262,13 +269,13 @@ $$\begin{equation*} min_{\theta}J(\theta):  \\
 
 ![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/17.png)
 
-三种符号来代表三个不同类别的样本，逻辑回归模型能解决二类别问题，将训练集分为正类和负类，这种思想可以用于多分类：
+三种符号来代表三个不同类别的样本，逻辑回归模型能解决二类别问题，将**训练集分为正类和负类**，这种思想可以用于多分类：
 
 ![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/18.png)
 
-把三角形划分正类，其它作为圆形划分到负类，那么就可以训练一个标准的逻辑回归分类器，类推红叉号、蓝正方形可以这么划分。
+把三角形划分正类，其它作为圆形划分到负类，那么就可以训练一个标准的**逻辑回归分类器**，类推红叉号、蓝正方形**可以这么划分**。
 
-拟合出3个分类器，根据$h_{\theta}^{(i)}=P(y=i\|x;\theta)=0\qquad(i=1,2,3)$来估计出x的概率，$\displaystyle\mathop{max}\limits_{i}h_{\theta_{\theta}^{(i)}(x)}$哪个概率大,分别对应各自的分类。
+拟合出3个分类器，根据$h_{\theta}^{(i)}=P(y=i\|x;\theta)=0\qquad(i=1,2,3)$来估计出x的概率，$\displaystyle\mathop{max}\limits_{i}h_{\theta_{\theta}^{(i)}(x)}$**哪个概率大,分别对应各自的分类**。
 
 每个分类器针对一种情况进行训练
 
@@ -276,11 +283,11 @@ $$\begin{equation*} min_{\theta}J(\theta):  \\
 
 ![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/19.png)
 
-第一个图，函数模型的直线不能很好拟合训练集，房价上升处是比较平缓、曲线的，这叫**欠拟合**，这算法具有高偏差特性，因为它和训练集理想的情况有很大的偏差；
+第一个图，函数模型的直线不能很好拟合训练集，房价上升处是比较平缓、曲线的，这叫**欠拟合**，这算法具有**高偏差**，因为它和训练集理想的情况有很大的偏差；
 
-第二个图，加入二项式，它能很好拟合训练集；
+第二个图，加入二项式，它能很好**拟合**训练集；
 
-第三个图，四项式模拟的曲线上下波动，看似很好的拟合训练集(正好通过每一个训练样本），实际并不是预测房价的好模型，这种称为过度拟合，算法具有高方差。
+第三个图，四项式模拟的曲线上下波动，看似很好的拟合训练集(正好通过每一个训练样本），实际并不是预测房价的好模型，这种称为**过度拟合**，算法具有**高方差**。
 
 高阶多项式虽然能拟合训练集，但它面临庞大的变量问题，导致训练进程缓慢，再千方百计拟合训练集，只要不能泛化到新的样本就是白搭。
 
@@ -314,7 +321,7 @@ $\theta_{3}\ \approx\ 0\qquad\theta_{3}\ \approx\ 0$，这样取得更好的模�
 
 假设预测房价的模型的特征为$x_{1},x_{2},\ldots,x_{100}$，参数为$\theta_{0},\theta_{1},\theta_{2},\ldots,\theta_{100}$
 
-### 正则化公式
+### 正则化算法
 
 $$\begin{equation*} 
 
@@ -326,15 +333,25 @@ J(\theta)=\frac{1}{2m}[\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})^{2}+\la
 
 ## 线性回归的正则化
 
-线性回归的优化算法:
+### 正则化损失函数:
 
 $$
 \begin{equation*} 
-  \theta_{j}:=\theta_{j}-\alpha\qquad\frac{1}{m}\sum\limits_{i=1}^m \mathop{(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}}\qquad\text{j=0,1,2,}\ldots,n
+  J(\theta)=\frac{1}{2m}[\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}+\lambda\sum\limits_{i=1}^n \theta_{j}^2]
 \end{equation*}
 $$
 
-训练所有训练样本后，加起来再除以m进行迭代$\theta$参数。正则化的线性回归，它不迭代$\theta_{0}$参数，因为正则化是计算$j=1,2,3,\ldots,n$惩罚值的，要分开对待两种参数的惩罚值。
+### 梯度下降算法：
+
+$\theta_{0}$已经算过了：
+
+$$
+\begin{equation*} 
+  \theta_{0}:=\theta_{0}-\alpha\qquad\frac{1}{m}\sum\limits_{i=1}^m \mathop{(h_{\theta}(x^{(i)})-y^{(i)})x_{0}^{(i)}}
+\end{equation*}
+$$
+
+计算正则化损失函数对$\theta_{j}$，即$\frac{\partial}{\partial \theta_{j}}J(\theta)$偏导数
 
 $$
 \begin{equation*} 
@@ -342,13 +359,15 @@ $$
 \end{equation*}
 $$
 
-上面公式方括号包含的是$\frac{\partial}{\partial \theta_{j}}J(\theta)$的偏导数，证明略，最终得到：
-
 $$
 \begin{equation*} 
   \theta_{j}:=\theta_{j}(1-\alpha\frac{1}{m})-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}
 \end{equation*}
 $$
+
+训练所有训练样本后，加起来再除以m进行迭代$\theta$参数。正则化的线性回归，它不迭代$\theta_{0}$参数，因为正则化是计算$j=1,2,3,\ldots,n$惩罚值的，要分开计算两种参数的惩罚值。
+
+
 
 这里的$\theta_{j}(1-\alpha\frac{1}{m})<1$，学习率很小，m是较大的数值，因此$\alpha\frac{1}{m}$是一个正数，假如该项值=0.99，那么$\theta*0.99$值会变得小一点，也就是在$\theta_{j}^2$的平方范数值变小了。
 
@@ -376,6 +395,9 @@ $$
 
 为了最小化损失函数，$\mathop{min}\limits{\theta}J(\theta)$
 
+### 梯度下降算法
+
+$\frac{\partial}{\partial \theta_{j}}J(\theta)$设各个参数为0进行偏导
 $$
 \begin{equation*} 
 \theta=(x^{T}X+\lambda
@@ -393,7 +415,32 @@ $$
 
 设n=2的话，上面公式的矩阵是3x3，因此矩阵是(n+1)x(n+1)，按公式去计算可以取得$J(\theta)$最小值。
 
-当训练样本$m\ \le\$特征$n$时，X转置乘以X的矩阵是不可逆的，当发现不可逆的时候，可以考虑采用正则化来解决。
+### 正规方程不可逆
+
+当训练样本$m\ \le\$特征$n$时，X转置乘以X的矩阵是不可逆的，算法：
+
+$$
+\begin{equation*} 
+\theta=(x^{T}X)^{-1}X^{T}y
+\end{equation*}
+$$
+
+解决方案是减少$\theta_{j}$参数来解决的，正则化考虑到这点，只要正则化参数，严格要求**$\lambda$大于0**，一般可以解决不可逆的问题。
+
+$$
+\begin{equation*} 
+\theta=(x^{T}X+\lambda
+\begin{bmatrix}
+0&0&0&\ldots&0  \\
+0&1&0&\ldots&0  \\
+0&0&1&\ldots&0  \\
+0&0&0&\ldots&0  \\
+0&0&0&\ldots&1
+\end{bmatrix}
+)^{-1}X^{T}y
+
+\end{equation*}
+$$
 
 ## 逻辑回归的正则化
 
@@ -446,7 +493,7 @@ $$
 
 ### 优化算法
 
-先计算所有样本的总误差项$J(\theta)$：
+先计算所有样本的$J(\theta)$：
 
 $$
 \begin{equation*} 

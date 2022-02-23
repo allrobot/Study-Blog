@@ -6,8 +6,11 @@ categories: 机器学习
 tags: [机器学习,吴恩达]
 ---
 
-<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ -->
+<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ 
+$\displaystyle\underbrace{a_i}_{\text{i从1到n}}$
 
+$\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
+-->
 ## 矩阵和向量
 
 矩阵是矩形数组的，由行数i和列数j构成
@@ -246,7 +249,7 @@ R_{n}
 
 \begin{bmatrix}
 x_{0}  \\
-x_{0}  \\
+x_{1}  \\
 \ldots  \\
 x_{n} 
 \end{bmatrix}
@@ -257,41 +260,47 @@ $$
 
 >为了方便，$\theta_{0}x{0}$的$x{0}=1$,故省去
 
-## 多种参数的梯度下降法
+## 多种参数的梯度下降算法
 
-之前最简函数$h_{\theta}=\theta_{0}+\theta_{1}x$的$\theta_{0}$，给出的梯度下降法：
+之前最简函数$h_{\theta}=\theta_{0}+\theta_{1}x$的$\theta_{0}$，给出的梯度下降算法：
 
 $$
 \begin{equation*}
 \theta_{0}:=\theta_{0}-\alpha\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}}_{\frac{\partial}{\partial \theta_{0}}J(\theta)}  \\
 
+\end{equation*}
+$$
+微分推导后：
+$$
+\begin{equation*}
+
 \theta_{1}:=\theta_{1}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}
 \end{equation*}
 $$
 
-意味着当有其它参数时，可给出公式：
+意味着其它参数可同样推导：
 
 $$
 \begin{equation*}
-\theta_{j}:=\theta_{j}-\alpha\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}}_{\text{同时更新所有\theta_{j}}}  \\
+\theta_{j}:=\theta_{j}-\alpha\underbrace{\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x^{(i)}}_{\text{同时更新所有}\theta_{j}}  \\
 
 text{类推 }  \\
 \theta_{0}:=\theta_{0}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
 
-\theta_{1}:=\theta_{1}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
+\theta_{1}:=\theta_{1}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{1}^{(i)}  \\
 
-\theta_{2}:=\theta_{2}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{0}^{(i)}  \\
+\theta_{2}:=\theta_{2}-\alpha\frac{1}{m}\sum\limits_{i=1}^m (h_{\theta_{(i)}-y^{(i)})}x_{2}^{(i)}  \\
 
 \ldots
 
 \end{equation*}
 $$
 
-以后的多元梯度下降法用到类似的更新规则。
+以后的多元梯度下降算法用到类似的更新规则。
 
 ## 梯度下降训练：特征缩放
 
-假定$x_{1}=面积(0~2000/m^2),x_{2}=卧室数量(1~5)$，呈现的等高线图比较瘦长，梯度下降的点会反复来回震荡很长时间才能抵达全局最优解。
+假定$x_{1}$=面积$(0$~$2000/m^2),x_{2}=$卧室数量$(1$~$5)$，呈现的等高线图比较瘦长，梯度下降的点会反复来回震荡很长时间才能抵达全局最优解。
 
 ![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/1.png)
 
@@ -308,11 +317,11 @@ $0\le x_{1} \le 3 \qquad -2\le x_{2} \le 0.5  \\ \qquad \qquad
 `错误`{:.error}
 $-100\le x_{3}\le 100 \qquad -0.0001\le x_{4}\le 0.0001$
 
-只有这样，梯度下降法才会**正常工作**！
+只有这样，梯度下降算法才会**正常工作**！
 
 ## 均值归一化
 
-用$x_{i}$替换$x_{i}-u_{i}$使特征的均值近似为零(不使$x_{0}=1)
+用$x_{i}$替换$x_{i}-u_{i}$使特征的均值近似为零(不使$x_{0}=1$)
 
 假若房子面积平均值为1000，每套房子的卧室平均数量为2
 
@@ -335,7 +344,7 @@ $$
 
 ## 梯度下降训练：学习率
 
-学习率选择比较重要，如果选大了，也许梯度下降只要30步就完成了；选小了，梯度也可能要3000，甚至3，000，000步才能抵达全局最优解。
+学习率选择比较重要，如果选大了，也许梯度下降只要30步就完成了；选小了，梯度也可能要3000，甚至3000000步才能抵达全局最优解。
 
 ![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/3.png)
 
@@ -349,7 +358,7 @@ $$
 
 $$\ldots,0.001,\ldots,0.01,\ldots,0.1,\ldots,1,\ldots$$
 
-每迭代10~100轮，学习率0.001递增3倍，若不影响梯度下降就升为0.03，再递增...出现梯度上升的情况就反之。
+每迭代10~100轮，学习率0.001递增3倍，若不影响梯度下降就升为0.03，再递增...出现梯度上升的情况则反之。
 
 $$\ldots,0.001,0.003,0.01,\ldots,0.1,\ldots,1,\ldots$$
 
@@ -383,9 +392,9 @@ h_{\theta}=\theta_{0}+\theta_{1}\text{(面积)}+\theta_{2}\sqrt{\text{(面积)}}
 
 特征的选择需要多种合适的角度去看待。
 
-## 梯度下降法：正规方程
+## 梯度下降算法：正规方程
 
-正规方程法相比batch梯度下降一次次迭代获取全局最优解，它能**一次性**直接获取$\theta$值。batch梯度下降法，需要分别去计算误差项对各个特征的偏导数$\frac{\partial}{\partial\theta_{j}}J(\theta)$，步骤相当多，推导又麻烦
+正规方程法相比batch梯度下降一次次迭代获取全局最优解，它能**一次性**直接获取$\theta$值。batch梯度下降算法，需要分别去计算$J(\theta)$对各个特征的偏导数$\frac{\partial}{\partial\theta_{j}}J(\theta)$，步骤相当多，推导又麻烦
 
 正规方程法的训练步骤：训练样本m为4个
 
@@ -479,12 +488,12 @@ $$\begin{equation*}
 - 需要计算$(X^{T}X)^{-1}$
 - 如果n个特征向量的数很大，计算缓慢
 
-**批次梯度下降法**
+**批量梯度下降算法**
 - 需要学习率
 - 需要迭代
 - n个特征向量很大，能很好工作
 
-正规方程法适用计算1万以下的特征向量，1万以上的适用批次梯度下降法。
+正规方程法适用计算1万以下的特征向量，1万以上的适用批量梯度下降算法。
 
 ### 正规方程和不可逆转性
 

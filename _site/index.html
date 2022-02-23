@@ -280,6 +280,69 @@
 
 <!-- end custom main top snippet -->
 <article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>主页</h1></header><meta itemprop="headline" content="主页"><meta itemprop="author" content="李广琛"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/19/Andrew-Ng-DL-5.html"><h2 itemprop="headline" class="item__header">吴恩达机器学习笔记 Day 6</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody"></div><p><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/19/Andrew-Ng-DL-5.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E5%90%B4%E6%81%A9%E8%BE%BE">吴恩达</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月19日</span>
+            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-19T00:00:00+00:00">
+    <meta itemprop="keywords" content="机器学习,吴恩达"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/17/Andrew-Ng-DL-5.html"><h2 itemprop="headline" class="item__header">吴恩达机器学习笔记 Day 5</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">评估模型
+
+验证模型性能
+
+训练集分为三部分：
+
+  60%训练集traning set
+  20%交叉验证集cross validation set
+  20%测试集test set
+
+
+60%训练集训练出来的$\theta$参数，最小化$J(\theta)$，然后计算验证集的测试误差$J(\theta)$(线性回归、逻辑回归的$J(\theta)$定义是不同的)。
+
+选择多项式模型
+
+
+  $h_{\theta}(x)=\theta_{0}+\theta_{1}x$
+  $h_{\theta}(x)=\theta_{0}+\theta_{1}x+\theta_{2}x^2$
+  $h_{\theta}(x)=\theta_{0}+\theta_{1}x+\ldots+\theta_...</div><p><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/17/Andrew-Ng-DL-5.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E5%90%B4%E6%81%A9%E8%BE%BE">吴恩达</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月17日</span>
+            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-17T00:00:00+00:00">
+    <meta itemprop="keywords" content="机器学习,吴恩达"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/16/Andrew-Ng-DL-4.html"><h2 itemprop="headline" class="item__header">吴恩达机器学习笔记 Day 4</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">非线性模型
+
+关于住房的分类，假设房子有很多特征，面积、卧室、门、房龄等等100多个参数，预测函数表现为：
+
+\[\begin{equation*} 
+
+g(\theta_{0}+\theta_{1}x_{2}+\theta_{1}x_{2}+\theta_{3}x_{1}x_{2}+\theta_{4}x_{1}^{2}x_{2}\ldots\theta_{100}x_{99}x_{100}^{2}\ldots
+
+\end{equation*}\]
+
+逻辑回归的二阶多项式二次项有多少呢，通过$\frac{n^2}{2}$可知参数大约5000个，三阶多项式约17000个三次项，特征数太大，会使特征空间急剧膨胀，这并非非线性模型的最佳解决方案。
+
+图像识别中，提取车辆把手的像素点亮度矩阵...</div><p><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/16/Andrew-Ng-DL-4.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/Study-Blog/archive.html?tag=%E5%90%B4%E6%81%A9%E8%BE%BE">吴恩达</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月16日</span>
+            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-16T00:00:00+00:00">
+    <meta itemprop="keywords" content="机器学习,吴恩达"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/14/Andrew-Ng-DL-3.html"><h2 itemprop="headline" class="item__header">吴恩达机器学习笔记 Day 3</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">分类
 
@@ -287,17 +350,17 @@
 
 
 
-阈值可以设为0.5，当激活函数的加权输入$\ge$0.5则输出1，小于0.5则输出0
+阈值可以设为0.5，当激活函数的加权输入$\ge$0.5则输出1，小于0.5则输出0，如图所示：
 
 
   这种叫Logistic回归（逻辑回归）。
 
 
-但增加额外样本后，拟合情况就不那么好了，如图所示：
+但增加额外样本后，蓝线拟合情况就不那么好了，离红叉号的偏差较高，如图所示：
 
 
 
-所以不推荐线性回归模型用于分类问题。
+不推荐线性回归模型用于分类问题。
 
 逻辑回归
 
@@ -312,7 +375,7 @@ g(z)=\frac{1}{1+e^{-z}}
 \end{equation*}\]
 
 
-  Sigmoid和Logistic函数是同义词...</div><p><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/14/Andrew-Ng-DL-3.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+  Sigmoi...</div><p><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/14/Andrew-Ng-DL-3.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/Study-Blog/archive.html?tag=%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
             </li><li>
@@ -360,49 +423,35 @@ $A_{ij}$，那么$A_{11}=1402,A_{22}=821,A_{32}=1437$
             </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-11T00:00:00+00:00"></div>
       </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1.html"><h2 itemprop="headline" class="item__header">吴恩达机器学习笔记 Day 1</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">模型描述
-
-线性回归，这里的回归是指分类问题，用来预测离散值输出。
-
-举个例子：城市不同房子对应不同售价，假设某房子1250英尺，它的售价220000美元，数据集包含卖出的房子面积大小和价格。
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">监督学习
 
 
-  
-    
-      $面积/m^{2} (x)$
-      $价格/1000美元(y)$
-    
-  
-  
-    
-      2014
-      460
-    
-    
-      1416
-      212
-    
-    
-      1436
-      315
-    
-    
-      859
-      178
-    
-    
-      …
-      …
-    
-  
+
+y轴是房价，x轴是房子面积，此时用一条直线拟合数据,假设卖家的房子尺寸是$750^2$，那么它的售价为150*1000美元，如上图所示。
+
+如果函数用二阶多项式，甚至更高的高阶多项式来表达，那么拟合数据的表现可能会更佳。
 
 
-符号
+
+这回归问题的价格是一个离散值，预测离散值的输出。
+
+无论采用哪种模型算法，都属于监督学习的类型，监督学习算法目的是给定训练数据集，迭代函数的权重获得正确的答案，下次输入未知的x也能输出需要的答案。
+
+无监督学习
+
+假设某函数判断病人的肿瘤是否良性或恶性，用输出0与1来表示，这类有答案的。
 
 
-  m=训练样本的数量
-    
-      假如表格有...</div><p><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+
+当这些数据集没有任何标签，没有答案，算法自行学习其中的结构，将其给不同数据自行分类。
+
+
+
+
+
+模型描述
+
+线性回归，这里的回归是指分类问题，用来预测离散...</div><p><a href="/Study-Blog/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/2022/02/11/Andrew-Ng-DL-1.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/Study-Blog/archive.html?tag=%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a>
             </li><li>
@@ -472,71 +521,20 @@ sEMG(Surface Electromyography)是指浅层肌肉纤维收缩时形成的综合�
             </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>Tian Qi</span></li><li><i class="far fa-calendar-alt"></i> <span>2022年 02月06日</span>
             </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="Tian Qi"/><meta itemprop="datePublished" content="2022-02-06T11:26:41+00:00">
     <meta itemprop="keywords" content="博客,写作"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html"><h2 itemprop="headline" class="item__header">快速建Jekyll博客</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">TeXt 是一款 100% 兼容 GitHub Pages 的 Jekyll 主题，你可以通过 Fork、下载或主题等方式安装。
-
-在这篇文章中，你将学到如何安装设置主题，通过本地预览进行开发以及编译和发布。</div><p><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/quick-start.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/Study-Blog/archive.html?tag=%E5%8D%9A%E5%AE%A2">博客</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/Study-Blog/archive.html?tag=%E5%86%99%E4%BD%9C">写作</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月06日</span>
-            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-06T11:26:41+00:00">
-    <meta itemprop="keywords" content="博客,写作"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/configuration.html"><h2 itemprop="headline" class="item__header">Jekyll博客配置</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Jekyll 允许你很轻松的设计你的网站，这很大程度上归功于灵活强大的配置功能。既可以配置在网站根目录下的  _config.yml 文件，也可以作为命令行的标记来配置。
-
-_config.yml 包括一些在运行时一次性读入的全局配置和变量定义， 在自动生成的过程中并不会重新加载，除非重新运行。注意 Data Files 包括在自动生成范围内，可以在更改后自动重新加载。</div><p><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/configuration.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/Study-Blog/archive.html?tag=%E5%8D%9A%E5%AE%A2">博客</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/Study-Blog/archive.html?tag=%E5%86%99%E4%BD%9C">写作</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月06日</span>
-            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-06T11:26:41+00:00">
-    <meta itemprop="keywords" content="博客,写作"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html"><h2 itemprop="headline" class="item__header">Win10建云笔记用的简易博客Github+Jekyll </h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">前言
-
-花了半天时间建的博客，博客链接在此
-
-写一个Github建博客指南，防以后忘记
-
-若以下内容过时导致失效，请查阅Jekyll文档
-
-Jekyll文档：https://jekyllrb.com/docs/
-以及https://jekyllrb.com/docs/themes/
-
-安装环境
-
-  Ruby
-  RubyGems
-  NodeJS
-  Python3
-  GCC和Make
-
-
-下载的6个程序包，需设系统的环境变量…安装教程自行搜索，弄完了输入版本指令验证是否安装成功
-
-打开CMD安装jekyll和bundler
- # gem安装依赖RubyGems实现
- gem install jekyll bundler
- # 输入查询版本指令，查看是否安装成功
- jekyll -...</div><p><a href="/Study-Blog/%E5%8D%9A%E5%AE%A2/2022/02/06/article1.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/Study-Blog/archive.html?tag=%E5%8D%9A%E5%AE%A2">博客</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/Study-Blog/archive.html?tag=%E5%86%99%E4%BD%9C">写作</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月06日</span>
-            </li><li><i class="far fa-eye"></i> <span class="js-pageview" data-page-key="">0</span> 阅读</li></ul></div><meta itemprop="author" content="李广琛"/><meta itemprop="datePublished" content="2022-02-06T00:00:00+00:00">
-    <meta itemprop="keywords" content="博客,写作"></div>
       </article></div>
-</div><div class="layout--home"></div>
+</div><div class="layout--home"><div class="pagination"><p>共计 13 篇文章，2 页。</p>
+    <div class="pagination__menu">
+      <ul class="menu menu--nowrap"><li><div class="button button--secondary button--circle disabled">
+            <i class="fas fa-angle-left"></i>
+          </div></li><li>
+              <div class="button button--primary button--circle focus"><span>1</span></div>
+            </li><li>
+                <a class="button button--secondary button--circle" href="/Study-Blog/page2"><span>2</span></a>
+              </li><li><a class="button button--secondary button--circle" href="/Study-Blog/page2">
+            <i class="fas fa-angle-right"></i>
+          </a></li></ul>
+    </div>
+  </div></div>
 <script>/*(function () {
 
 })();*/

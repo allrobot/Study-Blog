@@ -1,0 +1,53 @@
+I"�<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ 
+$\displaystyle\underbrace{a_i}_{\text{i从1到n}}$
+
+$\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
+-->
+<h2 id="评估模型">评估模型</h2>
+
+<h3 id="验证模型性能">验证模型性能</h3>
+
+<p>训练集分为三部分：</p>
+<ul>
+  <li>60%训练集traning set</li>
+  <li>20%交叉验证集cross validation set</li>
+  <li>20%测试集test set</li>
+</ul>
+
+<p>60%训练集训练出来的$\theta$参数，最小化$J(\theta)$，然后计算验证集的测试误差$J(\theta)$(线性回归、逻辑回归的$J(\theta)$定义是不同的)。</p>
+
+<h3 id="选择多项式模型">选择多项式模型</h3>
+
+<ol>
+  <li>$h_{\theta}(x)=\theta_{0}+\theta_{1}x$<br /></li>
+  <li>$h_{\theta}(x)=\theta_{0}+\theta_{1}x+\theta_{2}x^2$<br /></li>
+  <li>$h_{\theta}(x)=\theta_{0}+\theta_{1}x+\ldots+\theta_{3}x^3$<br />
+.
+.
+.</li>
+  <li>$h_{\theta}(x)=\theta_{0}+\theta_{1}x+\ldots+\theta_{10}x^{10}$</li>
+</ol>
+
+<p>各个不同多项式模型通过训练集训练的$\theta$参数，然后用验证集验出误差，哪个模型的验证集误差较小就选哪个。</p>
+
+<h3 id="判断模型的拟合">判断模型的拟合</h3>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/1.PNG" alt="" /></p>
+
+<p>偏差（欠拟合）：</p>
+<ul>
+  <li>$J_{训练}(\theta)$属于高偏差</li>
+  <li>$J_{交叉验证}(\theta)\approx J_{训练}(\theta)$</li>
+</ul>
+
+<p>方差（过拟合）：</p>
+<ul>
+  <li>$J_{训练}(\theta)$属于高方差</li>
+  <li>$J_{交叉验证}(\theta)» J_{训练}(\theta)$</li>
+</ul>
+
+<blockquote>
+  <p>&gt;&gt;数学符号的意思是远远大于此值</p>
+</blockquote>
+
+:ET
