@@ -1,0 +1,195 @@
+I"�<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ 
+$\displaystyle\underbrace{a_i}_{\text{i从1到n}}$
+
+$\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
+-->
+<h2 id="评估模型">评估模型</h2>
+
+<h3 id="验证模型性能">验证模型性能</h3>
+
+<p>训练集分为三部分：</p>
+<ul>
+  <li>60%训练集traning set</li>
+  <li>20%交叉验证集cross validation set</li>
+  <li>20%测试集test set</li>
+</ul>
+
+<p>60%训练集训练出来的$\theta$参数，最小化$J(\theta)$，然后计算验证集的测试误差$J(\theta)$(线性回归、逻辑回归的$J(\theta)$定义是不同的)。</p>
+
+<h3 id="选择多项式模型">选择多项式模型</h3>
+
+<ol>
+  <li>$h_{\theta}(x)=\theta_{0}+\theta_{1}x$<br /></li>
+  <li>$h_{\theta}(x)=\theta_{0}+\theta_{1}x+\theta_{2}x^2$<br /></li>
+  <li>$h_{\theta}(x)=\theta_{0}+\theta_{1}x+\ldots+\theta_{3}x^3$<br />
+.<br />
+.<br />
+.<br /></li>
+  <li>$h_{\theta}(x)=\theta_{0}+\theta_{1}x+\ldots+\theta_{10}x^{10}$</li>
+</ol>
+
+<p>各个不同多项式模型通过训练集训练的$\theta$参数，然后用验证集验出误差，哪个模型的验证集误差较小就选哪个。</p>
+
+<h3 id="判断模型的拟合">判断模型的拟合</h3>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/1.png" alt="" /></p>
+
+<p>偏差（欠拟合）：</p>
+<ul>
+  <li>$J_{训练}(\theta)$值很高，左边的bias</li>
+  <li>$J_{交叉验证}(\theta)\approx J_{训练}(\theta)$</li>
+</ul>
+
+<p>方差（过拟合）：</p>
+<ul>
+  <li>$J_{训练}(\theta)$值较低，右边的variance</li>
+  <li>$J_{交叉验证}(\theta)» J_{训练}(\theta)$</li>
+</ul>
+
+<blockquote>
+  <p>&gt;&gt;数学符号的意思是远远大于此值</p>
+</blockquote>
+
+<h3 id="正则化和偏差方差">正则化和偏差/方差</h3>
+
+<p>模型：
+$$
+\begin{equation*}</p>
+
+<p>h_{\theta}(x)=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3}+\theta_{4}x^{4}  <br />
+\end{equation<em>}
+\(\)
+\begin{equation</em>} 
+J(\theta)=\frac{1}{2m}\sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^{2}+\frac{\lambda}{2m}\sum\limits_{j=1}^{m}\theta_{j}^{2}</p>
+
+<p>\end{equation*}
+$$</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/2.png" alt="" /></p>
+
+<p>$\lambda$值过大，导致迭代后的大部分$\theta$参数$\approx$0，最后模型输出$\approx$0，使之欠拟合；</p>
+
+<p>$\lambda$值过小，导致过拟合现象；</p>
+
+<p>解决方案：</p>
+<h4 id="自动选择">自动选择</h4>
+
+<ol>
+  <li>$\lambda=0$</li>
+  <li>$\lambda=0.01$</li>
+  <li>$\lambda=0.02$</li>
+  <li>$\lambda=0.04$</li>
+  <li>$\lambda=0.08$
+.<br />
+.<br />
+.<br /></li>
+  <li>$\lambda=10$</li>
+</ol>
+
+<p>用训练集批次$\mathop{min}limits_{\theta}J(\theta)$，然后通过验证集批次计算各自的$J_{cv}(\theta^(i))$平均的误差平方和，接着选择误差值最小的$\lambda$值，做完后观察该模型在测试集的泛化能力表现</p>
+
+<h4 id="手动选择">手动选择</h4>
+
+<p>偏差/方差作为正则化参数$\lambda$，自己手动调整$\lambda$值(0.01~1000)，观察训练误差和验证误差，然后从验证集的曲线低洼处选择最合适$\lambda$，最后查验模型的泛化能力。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/3.png" alt="" /></p>
+
+<h3 id="学习曲线">学习曲线</h3>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/4.png" alt="" /></p>
+
+<p>随着m个样本增加，训练误差随m增大二增大，验证误差经较少的样本m训练后，误差项较大，随m增大而减少，直至贴近训练误差变平。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/6.png" alt="" /></p>
+
+<p>因为模型是直线，不能很好拟合数据，m增加时总误差项增大，到了最后变平。所以样本增加的再多，训练误差不会有什么变化，如左边的紫线和蓝线随着m增大，结果没什么太大变化。</p>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/6.png" alt="" /></p>
+
+<p>总误差项随着样本m增加而增加，但和验证误差的曲线间隔较大，说明方差较高，可以通过增加样本或正则化来解决。</p>
+
+<h3 id="评价学习算法">评价学习算法</h3>
+
+<p>调试一个学习算法:
+假如已实现正则线性回归模型来预测房价。然而，用一组新的样本来测试效果，发现它在预测中出现了难以接受的巨大错误。接下来要做的判断：
+（先画学习曲线）</p>
+<ul>
+  <li>获取更多训练样本              解决高方差问题</li>
+  <li>减少特征数量                  解决高方差问题</li>
+  <li>添加更多特征                  解决高偏差问题</li>
+  <li>减少$\lambda$值               解决高偏差问题</li>
+  <li>增加$\lambda$值               解决高方差问题</li>
+</ul>
+
+<p><img src="https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/7.png" alt="" /></p>
+
+<p>神经网络规模较小、参数少、容易欠拟合，计算量成本较低</p>
+
+<p>神经网络规模较大、参数多、容易过拟合，计算量成本较高</p>
+
+<p>默认一层隐藏层神经网络，添加隐藏层需测试验证集的误差，关于过拟合用正则化解决。</p>
+
+<h2 id="快速开发机器学习">快速开发机器学习</h2>
+
+<p>开局先用简单粗暴的算法训练参数，绘制学习曲线，观察图进行误差分析，根据数据评价指标了解哪些算法是需要或不需要的，以及训练集、参数都有哪些问题等等，从而决定之后的优化方法</p>
+
+<h3 id="误差度量评估算法">误差度量评估算法</h3>
+
+<p>癌症分类示例：
+训练逻辑回归模型$h_{\theta}(x)$(癌症y=1，否则y=0)，当发现模型在测试集中有1%的错误。</p>
+
+<p>测试集中有0.5%人有癌症，这错误率就不那么好了</p>
+
+<p>假如模型的错误率降低到0.8，甚至0.5%，模型的质量是否提升？</p>
+
+<p>需要一个标准来判定：</p>
+
+<table>
+	<tr style="border: none;">
+		<th style="border: none;"></th>
+		<th style="border: none;"></th>
+		<th style="border: none;">实际</th>
+		<th style="border: none;">分组</th>
+	</tr>
+	<tr style="border: none;">
+		<th style="border: none;"></th>
+		<th style="border: none;"></th>
+		<th style="border: none;">1</th>
+		<th style="border: none;">0</th>
+	</tr>
+	<tr>
+		<th style="border: none;">预测</th>
+		<th style="border: none;">1</th>
+		<th>真阳性</th>
+		<th>假阳性</th>
+	</tr>
+	<tr>
+		<th style="border: none;">分类</th>
+		<th style="border: none;">0</th>
+		<th>假阴性</th>
+		<th>真阴性</th>
+	</tr>
+</table>
+
+<p>精度：
+所有病人中预测y=1的，有多少人换癌症？</p>
+
+<p>查准率：在所有预测患有癌症的患者中有多大比率的病人是真正拥有癌症的</p>
+
+\[\begin{equation*} 
+
+查准率=\frac{所有预测正确有阳性的人(真阳性)}{所有预测有阳性的人}=\frac{真阳性}{真阳性+假阳性}
+
+\end{equation*}\]
+
+<p>召回率：在所有患者中真实有癌症的人有多大比率</p>
+
+\[\begin{equation*} 
+
+召回率=\frac{真阳性}{所有患有癌症的人}=\frac{真阳性}{真阳性+假阴性}
+
+\end{equation*}\]
+
+<p>好的模型，查准率和召回率很高</p>
+
+:ET
