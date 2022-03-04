@@ -55,7 +55,8 @@ $\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
 $$
 \begin{equation*} 
 
-h_{\theta}(x)}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3}+\theta_{4}x^{4}  \\
+h_{\theta}(x)=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3}+\theta_{4}x^{4}
+
 \end{equation*}
 $$
 
