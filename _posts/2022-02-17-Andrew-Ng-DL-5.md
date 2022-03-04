@@ -55,7 +55,7 @@ $\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
 $$
 \begin{equation*} 
 
-h_{\theta}(x)=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3}+\theta_{4}x^{4}  \\
+h_{\theta}(x)}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3}+\theta_{4}x^{4}  \\
 \end{equation*}
 $$
 
@@ -101,7 +101,7 @@ $\lambda$值过小，导致过拟合现象；
 
 随着m个样本增加，训练误差随m增大二增大，验证误差经较少的样本m训练后，误差项较大，随m增大而减少，直至贴近训练误差变平。
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/6.png)
+![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/5.png)
 
 因为模型是直线，不能很好拟合数据，m增加时总误差项增大，到了最后变平。所以样本增加的再多，训练误差不会有什么变化，如左边的紫线和蓝线随着m增大，结果没什么太大变化。
 
