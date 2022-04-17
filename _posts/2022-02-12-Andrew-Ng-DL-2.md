@@ -6,7 +6,7 @@ categories: 机器学习
 tags: [机器学习,吴恩达]
 ---
 
-<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ 
+<!-- ./images/ 
 $\displaystyle\underbrace{a_i}_{\text{i从1到n}}$
 
 $\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
@@ -302,11 +302,11 @@ $$
 
 假定$x_{1}$=面积$(0$~$2000/m^2),x_{2}=$卧室数量$(1$~$5)$，呈现的等高线图比较瘦长，梯度下降的点会反复来回震荡很长时间才能抵达全局最优解。
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/1.png)
+![](./images/2022-02-12/1.png)
 
 解决办法是**特征缩放**把两个x值设为$0\le x_{1}\le 1, \  0\le x_{2}\le 1$，椭圆等高线图呈现比较扁平，偏移没那么严重。
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/2.png)
+![](./images/2022-02-12/2.png)
 
 一般特征缩放后的值范围为$-1\le x_{i} \le 1$
 
@@ -346,11 +346,11 @@ $$
 
 学习率选择比较重要，如果选大了，也许梯度下降只要30步就完成了；选小了，梯度也可能要3000，甚至3000000步才能抵达全局最优解。
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/3.png)
+![](./images/2022-02-12/3.png)
 
 如何判断梯度下降曲线，从而选择合适的学习率。当判断梯度下降的时候发现$J(\theta)$图正上升，这里学习率可能选大了，应选小，不然会发生梯度爆炸的情况。
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/4.png)
+![](./images/2022-02-12/4.png)
 
 也有$J(\theta)$显示波浪线，这里暂不讨论，上述学习率的选择适用于线性回归问题。
 
@@ -364,7 +364,7 @@ $$\ldots,0.001,0.003,0.01,\ldots,0.1,\ldots,1,\ldots$$
 
 ## 多变量的线性回归
  
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/5.png)
+![](./images/2022-02-12/5.png)
 
 要设计函数模型输出房子的售价，要考虑提取哪些特征，上图有2个特征，房子正面和纵深的长度乘号得面积，模型也许二次项$h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}$能很好预测价格，但随着房子面积增加且价格下降，这就不能很好拟合数据集了，改成三次方$h_{\theta}=\theta_{0}+\theta_{1}x+\theta_{2}x^{2}+\theta_{3}x^{3}$
 

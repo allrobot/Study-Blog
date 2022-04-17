@@ -5,7 +5,7 @@ date:   2022-02-17
 categories: 机器学习
 tags: [机器学习,吴恩达]
 ---
-<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ 
+<!-- ./images/ 
 $\displaystyle\underbrace{a_i}_{\text{i从1到n}}$
 
 $\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
@@ -37,7 +37,7 @@ $\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
 
 ### 判断模型的拟合
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/1.png)
+![](./images/2022-02-17/1.png)
 
 偏差（欠拟合）：
 - $J_{训练}(\theta)$值很高，左边的bias
@@ -67,7 +67,7 @@ J(\theta)=\frac{1}{2m}\sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^{2}+\fr
 \end{equation*}
 $$
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/2.png)
+![](./images/2022-02-17/2.png)
 
 $\lambda$值过大，导致迭代后的大部分$\theta$参数$\approx$0，最后模型输出$\approx$0，使之欠拟合；
 
@@ -94,19 +94,19 @@ $\lambda$值过小，导致过拟合现象；
 
 偏差/方差作为正则化参数$\lambda$，自己手动调整$\lambda$值(0.01~1000)，观察训练误差和验证误差，然后从验证集的曲线低洼处选择最合适$\lambda$，最后查验模型的泛化能力。
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/3.png)
+![](./images/2022-02-17/3.png)
 
 ### 学习曲线
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/4.png)
+![](./images/2022-02-17/4.png)
 
 随着m个样本增加，训练误差随m增大二增大，验证误差经较少的样本m训练后，误差项较大，随m增大而减少，直至贴近训练误差变平。
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/5.png)
+![](./images/2022-02-17/5.png)
 
 因为模型是直线，不能很好拟合数据，m增加时总误差项增大，到了最后变平。所以样本增加的再多，训练误差不会有什么变化，如左边的紫线和蓝线随着m增大，结果没什么太大变化。
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/6.png)
+![](./images/2022-02-17/6.png)
 
 总误差项随着样本m增加而增加，但和验证误差的曲线间隔较大，说明方差较高，可以通过增加样本或正则化来解决。
 
@@ -121,7 +121,7 @@ $\lambda$值过小，导致过拟合现象；
 - 减少$\lambda$值               解决高偏差问题
 - 增加$\lambda$值               解决高方差问题
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-17/7.png)
+![](./images/2022-02-17/7.png)
 
 神经网络规模较小、参数少、容易欠拟合，计算量成本较低
 

@@ -5,7 +5,7 @@ date:   2022-02-16
 categories: 机器学习
 tags: [机器学习,吴恩达]
 ---
-<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ 
+<!-- ./images/ 
 $\displaystyle\underbrace{a_i}_{\text{i从1到n}}$
 
 $\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
@@ -26,9 +26,9 @@ $$
 
 图像识别中，提取车辆把手的像素点亮度矩阵：
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-16/1.png)
+![](./images/2022-02-16/1.png)
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-16/2.png)
+![](./images/2022-02-16/2.png)
 
 车辆图片只有50x50像素点，那么n为2500个特征，每个特征值范围为0~255灰度值，假如图片为彩色RGB，RGB包含红蓝绿三个值，特征共n=7500个。
 
@@ -36,7 +36,7 @@ $$
 
 ## 神经网络
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-16/3.png)
+![](./images/2022-02-16/3.png)
 
 $a_{i}^{(j)}$=第j层第i个的激活输出
 
@@ -59,13 +59,13 @@ $$
 
 ### 一对多
 
-![四层神经网络](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-16/4.png)
+![四层神经网络](./images/2022-02-16/4.png)
 
 希望模型y能输出步人时[1 0 0 0]，输出汽车时[0 1 0 0]，输出摩托车时[0 0 1 0]等等。
 
 ### 损失函数
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-16/5.png)
+![](./images/2022-02-16/5.png)
 
 L=神经网络的层数
 
@@ -106,7 +106,7 @@ m个训练样本，K个输出层的神经单元，L-1层，第i层的神经单�
 
 第二层的隐藏层的误差项计算：$(\delta^{(2)}=(\theta^(2))^{T}\delta^{(3)}$.\*g'$(z^{(2)})=a^{(2)}.*(1-a^{(2)})$
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-16/6.png)
+![](./images/2022-02-16/6.png)
 
 $\frac{\partial}{\partial\theta_{ij}^{(l)}}J(\theta)$的偏导数为$a_{j}^{(l)}\delta{i}^{(l+1)}$
 
@@ -156,7 +156,7 @@ $\delta_{j}^{(l)}=$第l层的每个$a_{j}^{(l)}$的损失函数值
 
 ## 梯度检验
 
-![梯度数值的估计](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-16/7.png)
+![梯度数值的估计](./images/2022-02-16/7.png)
 
 梯度下降算法计算蓝色切线的斜率，梯度检验求的是由$\theta+\varepsilon$到$\theta-\varepsilon$的红线的斜率，高$J(\theta+\varepsilon)-J(\theta-\varepsilon)$，宽$J(\theta+2\varepsilon)$，由三角形边长原理求得该点导数的近似值：
 

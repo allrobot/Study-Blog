@@ -1,0 +1,17 @@
+ubuntu
+username:li1gu
+password:password
+kali
+username:admin
+password:password
+
+command:
+
+view wsl list:
+wsl --list --verbose
+
+stop anything process:
+wsl -t xxxxx
+
+stop all process:
+wsl --shutdown

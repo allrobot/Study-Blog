@@ -1,0 +1,7 @@
+系统变量
+
+C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;%Z_CL%;%Z_VM%;C:\Program Files\dotnet\;%Z_Polyspace%;C:\Program Files\Wolfram Research\WolframScript\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\PuTTY\;%Z_SQL%;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files (x86)\NetSarang\Xftp 7\;C:\Program Files (x86)\NetSarang\Xshell 7\;
+
+用户变量
+
+%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;%USERPROFILE%\.dotnet\tools;%Z_AHK%;%Z_ANDROID_HOME%;%Z_CL%;%Z_CLASSPATH%;%Z_CONDA%;%Z_GUN_ARM%;%Z_IDF%;%Z_LLVM%;%Z_MINGW64%;%Z_MSMPI%;%Z_mysql%;%Z_Nvidia%;%Z_NVTOOLSEXT_PATH%;%Z_OpenOCD%;%Z_Polyspace%;%Z_python%;%Z_RUBY%;%Z_SQL%;%Z_VcXsrv%;%Z_VM%;

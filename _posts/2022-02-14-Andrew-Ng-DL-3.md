@@ -5,7 +5,7 @@ date:   2022-02-14
 categories: 机器学习
 tags: [机器学习,吴恩达]
 ---
-<!-- https://github.com/allrobot/Study-Blog/raw/main/assets/images/ 
+<!-- ./images/ 
 $\displaystyle\underbrace{a_i}_{\text{i从1到n}}$
 
 $\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
@@ -14,7 +14,7 @@ $\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
 
 先从二分类开始，假设$y\epsilon$\{0,1\}，0和1分别输出no、yes：
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/7.png)
+![](./images/2022-02-12/7.png)
 
 阈值可以设为0.5，当激活函数的加权输入$\ge$0.5则输出1，小于0.5则输出0，如图所示：
 
@@ -22,7 +22,7 @@ $\displaystyle\mathop{a_i}\limits_{i\text{从1到}n}$
 
 但增加额外样本后，蓝线拟合情况就不那么好了，离红叉号的偏差较高，如图所示：
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/8.png)
+![](./images/2022-02-12/8.png)
 
 不推荐线性回归模型用于分类问题。
 
@@ -42,7 +42,7 @@ g(z)=\frac{1}{1+e^{-z}}
 
 激活函数的z为$\theta^{T}x$
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/9.png)
+![](./images/2022-02-12/9.png)
 
 z横坐标，$g(z)$纵坐标，左端趋于0，右端趋于1。
 
@@ -67,7 +67,7 @@ y=1的表达式：$P(y=1\|x;\theta)=1-P(y=1\|x;\theta)$
 
 决策边界(decision boundary)，下图的紫线是决策边界：
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/10.png)
+![](./images/2022-02-12/10.png)
 
 $$\begin{equation*}
   h_{\theta}(x)=g(\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2})  \\
@@ -87,7 +87,7 @@ $$\begin{equation*}
 
 \end{equation*}$$
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/11.png)
+![](./images/2022-02-12/11.png)
 
 $$\begin{equation*}
   h_{\theta}(x)=g(\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}+\theta_{3}x_{3}+\theta_{4}x_{4})  \\
@@ -123,8 +123,8 @@ $$\begin{equation*}
 
 \end{equation*}$$
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/12.png)
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/13.png)
+![](./images/2022-02-12/12.png)
+![](./images/2022-02-12/13.png)
 
 ### 损失函数
 
@@ -156,7 +156,7 @@ $$\begin{equation*}
 
 这种损失函数在线性回归模型比较能良好工作，线性回归的非凹函数和凹函数，通常是希望凹函数能很好收敛全局最优解。
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/14.png)
+![](./images/2022-02-12/14.png)
 
 代价函数可能实际是非凹函数图的，迭代有时经常收敛到局部最优解，为了达到理想中的梯度下降，需要推导新的梯度下降算法来收敛全局最小值的。
 
@@ -169,7 +169,7 @@ $$\begin{equation*}
 
 当y=1时，纵坐标为$J(\theta)$
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/15.png)
+![](./images/2022-02-12/15.png)
 
 y值无限趋于1，当$y=1,h_{\theta}(x)=1$时，损失函数输出为0，如果$h_{\theta}(x)$趋于0，那么损失趋于无穷。
 
@@ -179,7 +179,7 @@ y值无限趋于1，当$y=1,h_{\theta}(x)=1$时，损失函数输出为0，如�
 
 $h_{\theta}=1$，$P(y=0\|x;\theta)=0$
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/16.png)
+![](./images/2022-02-12/16.png)
 
 ### 简化损失函数
 
@@ -267,11 +267,11 @@ $$\begin{equation*} min_{\theta}J(\theta):  \\
 
 二分类  VS  多分类：
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/17.png)
+![](./images/2022-02-12/17.png)
 
 三种符号来代表三个不同类别的样本，逻辑回归模型能解决二类别问题，将**训练集分为正类和负类**，这种思想可以用于多分类：
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/18.png)
+![](./images/2022-02-12/18.png)
 
 把三角形划分正类，其它作为圆形划分到负类，那么就可以训练一个标准的**逻辑回归分类器**，类推红叉号、蓝正方形**可以这么划分**。
 
@@ -281,7 +281,7 @@ $$\begin{equation*} min_{\theta}J(\theta):  \\
 
 ## 过度拟合的问题
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/19.png)
+![](./images/2022-02-12/19.png)
 
 第一个图，函数模型的直线不能很好拟合训练集，房价上升处是比较平缓、曲线的，这叫**欠拟合**，这算法具有**高偏差**，因为它和训练集理想的情况有很大的偏差；
 
@@ -293,9 +293,9 @@ $$\begin{equation*} min_{\theta}J(\theta):  \\
 
 >泛化：模型应用到新样本的能力
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/20.png)
+![](./images/2022-02-12/20.png)
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/21.png)
+![](./images/2022-02-12/21.png)
 
 解决方案：
 	1. 减少特征变量$\theta$
@@ -307,7 +307,7 @@ $$\begin{equation*} min_{\theta}J(\theta):  \\
 
 ## 损失函数正则化
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/22.png)
+![](./images/2022-02-12/22.png)
 
 高阶多项式，由于过拟合现象导致预测效果不太理想，为了解决应添加正则化参数，$\lambda$参数设为1000，因为数值较大，$\theta_{3}$和$\theta_{4}$的**数值尽可能小**。
 
@@ -444,7 +444,7 @@ $$
 
 ## 逻辑回归的正则化
 
-![](https://github.com/allrobot/Study-Blog/raw/main/assets/images/2022-02-12/23.png)
+![](./images/2022-02-12/23.png)
 
 逻辑回归的函数有众多相关度较低的特征，损失函数为：
 
